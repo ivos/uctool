@@ -1,0 +1,109 @@
+ ---
+ Use case details
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-23
+ ---
+
+Use case details
+
+ Apart from main success scenario and its extensions, 
+ there are several other things that can be set on a use case.
+
+* Description
+
+ Set use case description using the <<<description>>> sub-element:
+ 
++--
+<use-case goal="Transfer funds">
+	<description>Some description of the use case.</description>
+</use-case>
++--
+ 
+ The description can for example be used to refer to a requirement that 
+ initiated writing the use case, or to refer to some attachments
+ relevant to the use case as a whole.
+ 
+ It can also be used to contain the use case narrative / story,
+ before it is expanded into main success scenario. 
+ After the expansion, the narrative should be deleted: 
+ it is not recommended to duplicate the steps of use case 
+ in both main success scenario and narrative.
+ 
+* Stakeholders' interests
+
+ Set use case stakeholders' interests using the <<<stakeholders-interests>>> sub-element:
+ 
++--
+<use-case goal="Transfer funds">
+	<stakeholders-interests>
+		<interest stakeholder="Client">Credit the amount to credit account.</interest>
+		<interest stakeholder="Bank's retail department">Charge the fee.</interest>
+		<interest stakeholder="Bank's audit department">Have all successful transactions posted into
+			transaction log.</interest>
+		<interest stakeholder="Bank's audit department">Have all failed transactions posted into 
+			audit log.</interest>
+	</stakeholders-interests>
+</use-case>
++--
+
+* Preconditions
+
+ Set use case preconditions using the <<<preconditions>>> sub-element:
+ 
++--
+<use-case goal="Transfer funds">
+	<preconditions>
+		<item>User is logged in.</item>
+		<item>Client is present at the branch office.</item>
+	</preconditions>
+</use-case>
++--
+ 
+* Trigger
+
+ Set use case trigger event using the <<<trigger>>> sub-element:
+ 
++--
+<use-case goal="Transfer funds">
+	<trigger>Client asks to transfer funds.</trigger>
+</use-case>
++--
+ 
+* Success and minimal guarantees
+
+ Set use case success and minimal guarantees using 
+ the <<<success-guarantees>>> and <<<minimal-guarantees>>> sub-elements:
+ 
++--
+<use-case goal="Transfer funds">
+	<minimal-guarantees>
+		<item>Transfer failure and its reason logged in audit log.</item>
+		<item>Error message displayed to user.</item>
+		<item>No changes made to accounts.</item>
+	</minimal-guarantees>
+	<success-guarantees>
+		<item>Amount and fee debited from the debit account.</item>
+		<item>Amount credited to the credit account.</item>
+		<item>Fee credited to proper general ledger account.</item>
+		<item>Transfer logged in transaction log.</item>
+	</success-guarantees>
+</use-case>
++--
+
+* Notes
+
+ Set use case notes using the <<<notes>>> sub-element:
+ 
++--
+<use-case goal="Transfer funds">
+	<notes>Some notes at the end of the use case.</notes>
+</use-case>
++--
+ 
+ The notes section can for example list outstanding issues in the use case, etc.
+
+*--:
+ {{{../write/step-ref.html}Next >>}}
+*--:

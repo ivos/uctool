@@ -1,0 +1,48 @@
+ ---
+ Step references
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-25
+ ---
+
+Step references
+
+* Referring to steps of the main success scenario
+
+ Sometimes you want to refer from an extension step (or another main success scenario step) 
+ to a particular step of the main success scenario.
+ 
+ In such a case, use a <<<step-ref>>> element:
+
++--
+<use-case goal="Transfer funds" code="NCA-100">
+	<success>
+		<step handle="debit">User identifies debit account.</step>
+		<step handle="credit">User identifies credit account.</step>
+		<step>User enters amount.</step>
+		<step>User submits the transaction.</step>
+	</success>
+	<extensions>
+		<condition step-ref="credit" when="Debit and credit accounts are the same">
+			<step>System displays error message
+				and returns to step <step-ref handle="debit" />.</step>
+		</condition>
+	</extensions>
+</use-case>
++--
+
+ In the above example the text within the extension condition refers to the step of the 
+ main success scenario with handle "debit" using <<<<step-ref handle="debit" />>>> 
+ element. This element will be replaced by the number of the referred step in the HTML output.
+ 
+ So, in our example, the output text of the condition will be 
+ "System displays error message and returns to step 1.".
+
+ Such reference mechanism provides for addition of new steps into the use case
+ without the need to manually re-number all such references. In UCTool, they get
+ re-numbered automatically.
+
+*--:
+ {{{../write/uc-composition.html}Next >>}}
+*--:

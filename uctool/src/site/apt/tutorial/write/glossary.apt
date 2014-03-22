@@ -1,0 +1,31 @@
+ ---
+ Glossary
+ ---
+ Ivo Maixner
+ ---
+ 2013-10-05
+ ---
+
+Glossary
+
+ You can define a glossary of terms.
+
+ Declare a term as follows:
+
++--
+<term name="HyperText Markup Language" abbreviation="HTML">
+	<description>HyperText Markup Language (HTML) is the main markup language 
+		for creating web pages and other information 
+		that can be displayed in a web browser.</description>
+</term>
+<term name="Hypertext Transfer Protocol" abbreviation="HTTP">
+	<description>The Hypertext Transfer Protocol (HTTP) is an application protocol 
+		for distributed, collaborative, hypermedia information systems. 
+		HTTP is the foundation of data communication for the World Wide Web.</description>
+</term>
++--
+
+
+*--:
+ {{{../write/html-format.html}Next >>}}
+*--:

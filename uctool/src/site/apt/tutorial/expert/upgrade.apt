@@ -1,0 +1,47 @@
+ ---
+ Upgrade UCTool
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-16
+ ---
+
+Upgrade UCTool
+
+ To upgrade a project to a new version of UCTool:
+ 
+ [[1]] Before you begin, prepare the following:
+ 
+  [[a]] Target version of UCTool. \
+  (Current UCTool version is displayed on {{{http://uctool.sf.net/}UCTool site}}.)
+ 
+  [[a]] Corresponding version of <<<uctool-maven-plugin>>>. \
+  (The UCTool Maven plugin version corresponding to the current UCTool 
+  is displayed in {{{http://uctool.sf.net/plugins.html}plugins overview}} 
+  on UCTool site.)
+ 
+ [[1]] Upgrade pom.xml: 
+  
+  [[a]] Set the value of the <<<uctool.version>>> property
+  to the target version of UCTool.
+  
+  [[a]] Set the value of the <<<uctool.maven.plugin.version>>> property
+  to the target version of UCTool Maven plugin.
+ 
+ [[1]] Upgrade use case XML source files: 
+   
+  [[a]] Replace the current version in schema location path of UCTool
+  with the target UCTool version. \
+  (Select <<<src/main/ucs>>> folder, Search -> File, enter current schema location, 
+  eg. <<<http://uctool.sf.net/xsd/3.0.0/uct.xsd>>>, 
+  Replace, enter schema location with target version, 
+  eg. <<<http://uctool.sf.net/xsd/4.0.0/uct.xsd>>>, Ok.)
+  
+  []
+  
+  []
+
+*--:
+ {{{./svn.html}Next >>}}
+*--:
+ 

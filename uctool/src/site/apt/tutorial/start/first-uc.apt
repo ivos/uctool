@@ -1,0 +1,78 @@
+ ---
+ My first use case
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-16
+ ---
+
+My first use case
+
+ <This is an entry-level, simple how-to manual to create your first use case. \
+ It delves into details of controlling Eclipse XML editor to imprint
+ the basics of effective use.>
+  
+ To create your first use case, copy the <<<empty.xml>>> file in 
+ <<<src/main/ucs>>> folder to say <<<withdraw.xml>>>, and open the new file.
+
+ You can see that it is an XML file with the top level XML element <<<uct>>> defined,
+ which is empty.
+ 
+ Place the cursor into the <<<uct>>> element (eg. at the beginning of the last line)
+ and press Ctrl-space. 
+ The Eclipse XML editor gives you choice of what can be created in the document 
+ at the cursor.
+
+ Each use case must have a primary actor, so we need to create an actor first. \
+ Choose <<<actor>>> to be created and enter its name ("Bank teller") 
+ and code ("teller"). \
+ Format the source (Ctrl-Shift-F) to keep it readable. \
+ Now we have the following:
+
++--
+...
+<uct ...>
+	<actor name="Bank teller" code="teller"></actor>
+</uct>
++--
+
+ Now place the cursor at the end of the actor line, 
+ press Ctrl-space and choose <<<uc-group>>> to be created. \
+ Enter the code of the actor ("teller") as primary actor.
+ 
+ Create <<<use-case>>> element within the <<<uc-group>>> start and end tags.
+ Enter the goal of the use case ("Withdraw cash in local currency"). \
+ Add the <<<code>>> attribute to the <<<use-case>>> element 
+ (enter space in between the last quotes of the goal attribute and the '>'
+ character of the start tag of use case, press Ctrl-space, and choose <<<code>>>) 
+ and put "CAS-100" into it. \
+ Create <<<success>>> element within <<<use-case>>>, and 
+ <<<step>>> element within <<<success>>>. \
+ Enter text of the use case step in between the <<<step>>> tags
+ ("User identifies account."). \
+ After entering some steps and final re-formatting the source, we have:
+
++--
+<actor name="Bank teller" code="teller"></actor>
+<uc-group primary-actor="teller">
+	<use-case goal="Withdraw cash in local currency" code="CAS-100">
+		<success>
+			<step>User identifies account.</step>
+			<step>User identifies client based on the account number.</step>
+			<step>User verifies client's signature.</step>
+			<step>User enters amount.</step>
+			<step>System calculates fee and total amount.</step>
+			<step>User submits the transaction.</step>
+		</success>
+	</use-case>
+</uc-group>
++--
+
+ Save the source file (Ctrl-S), 
+ open the entry index.html page and follow the "Entry point list" link. \
+ The new use case is displayed in the list. \
+ Click on the use case goal, the detail of the use case is displayed.
+
+*--:
+ {{{./tips.html}Next >>}}
+*--:

@@ -1,0 +1,73 @@
+ ---
+ HTML formatting
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-26
+ ---
+
+HTML formatting
+
+ UCTool supports arbitrary formatting of the use case documentation by allowing
+ the writer to use any HTML elements directly in the XML use case source files.
+ 
+ For example, to have a bullet list in a step of a use case, do the following:
+ 
++--
+<use-case goal="Do something" code="DOMAIN-123">
+	<success>
+		<step>
+			The following is a bullet list:
+			<h:ul>
+				<h:li>Item 1.</h:li>
+				<h:li>Item 2.</h:li>
+			</h:ul>
+		</step>
+	</success>
+</use-case>
++--
+ 
+ To have a table in a step of a use case:
+ 
++--
+<use-case goal="Do something" code="DOMAIN-123">
+	<success>
+		<step>
+			The following text is formatted in table:
+			<h:table border="1">
+				<h:tr>
+					<h:td>Row 1, col 1</h:td>
+					<h:td>Row 1, col 2</h:td>
+				</h:tr>
+				<h:tr>
+					<h:td>Row 2, col 1</h:td>
+					<h:td>Row 2, col 2</h:td>
+				</h:tr>
+			</h:table>
+		</step>
+	</success>
+</use-case>
++--
+
+ The HTML elements pop up automatically in Content assist feature of Eclipse
+ in all appropriate places, under the "h" namespace.
+ 
+ HTML elements can be used at these contexts:
+ 
+ * <<<step>>> element.
+ 
+ * <<<when>>> sub-element of condition.
+ 
+ * <<<interest>>> element.
+ 
+ * <<<description>>> element(s).
+ 
+ * <<<item>>> element(s).
+ 
+ * <<<text>>> element(s).
+ 
+ []
+ 
+*--:
+ {{{../expert/upgrade.html}Next >>}}
+*--:

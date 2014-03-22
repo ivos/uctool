@@ -1,0 +1,38 @@
+ ---
+ Data references
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-25
+ ---
+
+Data references
+
+* Referring to data structures from use cases
+
+ Use the <<<data-ref>>> element to refer to a data structure from use case:
+ 
++--
+<uc-group ...>
+	<use-case goal="Identify account" code="SYS-100">
+		<success>
+			<step>User enters <data-ref code="AccountNumber">account number</data-ref>.</step>
+			<step>System validates account number.</step>
+			<step>User searches for the account.</step>
+		</success>
+	</use-case>
+</uc-group>
+<data-structure name="Account number" code="AccountNumber">
+	<attribute name="Prefix" />
+	<attribute name="Number" />
+	<attribute name="Bank code" />
+</data-structure>
++--
+
+ In the above example, the content of the <<<data-ref>>> element 
+ (that is "account number") will become an HTML link to 
+ the account number data structure.
+
+*--:
+ {{{../write/requirements.html}Next >>}}
+*--:

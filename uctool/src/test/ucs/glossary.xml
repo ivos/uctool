@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd">
+	<term name="Name only" />
+	<term name="Name and abbrev." abbreviation="Abbr1." />
+	<term name="Name and description">
+		<description>Description 2.</description>
+	</term>
+	<term name="Full" abbreviation="abr3.">
+		<description>Description 3.</description>
+	</term>
+	<term name="With refs">
+		<description>
+			Description 4. A
+			<attachment-ref code="login-form">ref to attachment</attachment-ref>
+			. A
+			<data-ref code="Master">ref to data</data-ref>
+			. A
+			<req-ref code="req01">ref to requirement</req-ref>
+			.
+		</description>
+	</term>
+</uct>

@@ -1,0 +1,17 @@
+ ---
+ Sample project source files
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-28
+ ---
+
+Sample project source files
+
+ See how the sample UCTool project works under-cover by reviewing 
+ {{{http://uctool.svn.sf.net/viewvc/uctool/trunk/uctool-reactor/uctool-sample/}its source files}}
+ or by checking them out from SVN at:
+ 
++--
+https://uctool.svn.sourceforge.net/svnroot/uctool/trunk/uctool-reactor/uctool-sample/
++--

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd">
+	<uc-group primary-actor="merged-actor">
+		<use-case goal="Goal of merged actor" />
+	</uc-group>
+	<uc-group primary-actor="primary-actor-with-goals">
+		<use-case goal="Goal for actor-goal list merged from other file" />
+	</uc-group>
+	<actor name="Merged actor" code="merged-actor" />
+	<requirement name="Requirement in other file" code="req-other-file" status="canceled">
+		<description>Some description in other file.</description>
+	</requirement>
+</uct>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.com/"
+	xmlns="http://example.com/" elementFormDefault="qualified">
+	<xs:element name="Empty" type="EmptyType" />
+	<xs:complexType name="EmptyType">
+		<xs:annotation>
+			<xs:documentation>Empty</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Master" type="MasterType" />
+	<xs:complexType name="MasterType">
+		<xs:annotation>
+			<xs:documentation>A master</xs:documentation>
+			<xs:documentation>
+			This is the master entity.
+			HTML tags.
+		       </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="empty" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Empty</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="withCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>With code</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="withAll" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>With all</xs:documentation>
+					<xs:documentation>Attribute with all options set up.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="123" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="displayOnly" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Display only</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="optional" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Optional</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mandatory">
+				<xs:annotation>
+					<xs:documentation>Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unique">
+				<xs:annotation>
+					<xs:documentation>Unique</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="naturalKey">
+				<xs:annotation>
+					<xs:documentation>Natural key</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="primaryKey">
+				<xs:annotation>
+					<xs:documentation>Primary key</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="integer" minOccurs="0" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>Integer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="float" minOccurs="0" type="xs:float">
+				<xs:annotation>
+					<xs:documentation>Float</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="decimal" minOccurs="0" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>Decimal</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="boolean" minOccurs="0" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Boolean</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="date" minOccurs="0" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Date</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="time" minOccurs="0" type="xs:time">
+				<xs:annotation>
+					<xs:documentation>Time</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dateTime" minOccurs="0" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Date time</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="timestamp" minOccurs="0" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Timestamp</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="binary" minOccurs="0" type="xs:base64Binary">
+				<xs:annotation>
+					<xs:documentation>Binary</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="stringWithoutLength" minOccurs="0" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>String without length</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="binaryWithoutLength" minOccurs="0" type="xs:base64Binary">
+				<xs:annotation>
+					<xs:documentation>Binary without length</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="referenceToOtherData" minOccurs="0" type="MasterDetail1Type">
+				<xs:annotation>
+					<xs:documentation>Reference to other structure</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectionOfIntegers" minOccurs="0" maxOccurs="unbounded" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>Collection of integers</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="integerWithLength" minOccurs="0" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>Integer with length</xs:documentation>
+					<xs:documentation>Three digits.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectionOfIntsWithLength" minOccurs="0" maxOccurs="10" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>Collection of integers with length</xs:documentation>
+					<xs:documentation>Collection of max 10 integers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectionOfStringsWithLength" minOccurs="0" maxOccurs="12" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Collection of strings with length</xs:documentation>
+					<xs:documentation>Collection of max 12 strings.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectionOfDataStructures" minOccurs="0" maxOccurs="unbounded" type="DetailNType">
+				<xs:annotation>
+					<xs:documentation>Collection of other structures</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="collectionOfDataStructuresWithLength" minOccurs="0" maxOccurs="5" type="DetailNType">
+				<xs:annotation>
+					<xs:documentation>Collection of other structures with length</xs:documentation>
+					<xs:documentation>Collection of max 5 instances of DetailN.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="selectedDetailN" minOccurs="0" type="DetailNType">
+				<xs:annotation>
+					<xs:documentation>Selected detail N</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MasterDetail1" type="MasterDetail1Type" />
+	<xs:complexType name="MasterDetail1Type">
+		<xs:annotation>
+			<xs:documentation>Detail 1</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="someInteger" minOccurs="0" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>Some integer</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="DetailN" type="DetailNType" />
+	<xs:complexType name="DetailNType">
+		<xs:annotation>
+			<xs:documentation>Detail N</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AnotherMaster" type="AnotherMasterType" />
+	<xs:complexType name="AnotherMasterType">
+		<xs:annotation>
+			<xs:documentation>Another master</xs:documentation>
+			<xs:documentation>
+			Reference to
+			
+			another structure
+			in a data structure description.
+		</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="detailN" minOccurs="0" type="DetailNType">
+				<xs:annotation>
+					<xs:documentation>A detail N</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="description-data" type="description-dataType" />
+	<xs:complexType name="description-dataType">
+		<xs:annotation>
+			<xs:documentation>Description data</xs:documentation>
+			<xs:documentation>First description.</xs:documentation>
+			<xs:documentation>Second description.</xs:documentation>
+			<xs:documentation>Third description.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

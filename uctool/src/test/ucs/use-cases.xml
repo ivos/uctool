@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<uc-group primary-actor="primary-actor-for-use-cases" type="system" visibility="black"
+		scope="Scope 1">
+		<use-case code="code001" goal="Use case header fields test" level="sea">
+			<description>Some UC description.</description>
+			<description>Some other use case description.</description>
+			<stakeholders-interests>
+				<interest stakeholder="Stakeholder 1">Interest of stakeholder 1.</interest>
+				<interest stakeholder="Stakeholder 2">
+					Interest of stakeholder 2.
+					<h:li>Bullet 1 in interest.</h:li>
+					<h:li>Bullet 2 in interest.</h:li>
+					<h:hr />
+					Text under hr, a
+					<uc-ref code="CD100">link to another UC</uc-ref>
+					and a reference to step
+					<step-ref handle="three" />
+					.
+				</interest>
+			</stakeholders-interests>
+			<preconditions>
+				<item>item 1</item>
+				<item>
+					item 2, and a
+					<uc-ref code="code003">reference to other use case</uc-ref>
+					.
+				</item>
+				<text>
+					<h:hr />
+					<h:li>bla bla</h:li>
+					<h:li>gogo huhu</h:li>
+					<h:table border="1">
+						<h:tr>
+							<h:td>row 1 cell 1</h:td>
+						</h:tr>
+						<h:tr>
+							<h:td align="right">r2c1</h:td>
+						</h:tr>
+						<h:ol>
+							<h:li>One</h:li>
+							<h:li>Two</h:li>
+							<h:li>Three</h:li>
+						</h:ol>
+					</h:table>
+				</text>
+			</preconditions>
+			<minimal-guarantees>
+				<item>Min guarantee 1.</item>
+				<item>Min guarantee 2.</item>
+			</minimal-guarantees>
+			<success-guarantees>
+				<item>Success guarantee 1.</item>
+				<item>Success guarantee 2.</item>
+			</success-guarantees>
+			<trigger>Trigger.</trigger>
+			<success>
+				<step>
+					Step 1.
+					<h:br />
+					Text in step 1, on new line.
+				</step>
+				<step>
+					Step 2.
+					<h:li> Bullet 1 under step 2.</h:li>
+					<h:li> Bullet 2 under step 2.</h:li>
+				</step>
+				<step handle="three">Step 3.</step>
+			</success>
+			<notes>
+				Some notes.
+				<h:strong>HTML in notes.</h:strong>
+			</notes>
+		</use-case>
+		<use-case code="code002" goal="Goal of Use case 2" />
+		<use-case code="code003" goal="Use case steps and extensions test">
+			<success>
+				<step handle="selectCustomer">User selects to create a customer.</step>
+				<step handle="enterCustomerData"> User enters customer data.</step>
+				<step handle="goto">
+					Go to step
+					<step-ref handle="end" />
+					.
+				</step>
+				<step>
+					System
+					<uc-ref code="CD105">creates a new customer</uc-ref>
+					.
+				</step>
+				<step>
+					Return to step
+					<step-ref handle="selectCustomer" />
+					or
+					<step-ref handle="goto" />
+					.
+				</step>
+				<step handle="end">Any other step.</step>
+			</success>
+			<extensions>
+				<condition when="Power failure" step-ref="*">
+					<step>Nothing.</step>
+				</condition>
+				<condition when="Sun sets" step-ref="*" inline-step="Nothing too." />
+				<condition step-ref="selectCustomer" when="User selects to update a customer">
+					<step>
+						User
+						<uc-ref code="CD100">finds customer</uc-ref>
+						using customer search criteria.
+					</step>
+					<step-extensions>
+						<step-condition when="Customer not found">
+							<step>User modifies customer search criteria and finds again or cancels.</step>
+							<step>System performs as requested.</step>
+							<step-extensions>
+								<step-condition when="System error" inline-step="Failure." />
+								<step-condition when="Power failure">
+									<step>What then?</step>
+									<step>Failure.</step>
+									<step>
+										Return to step
+										<step-ref handle="selectCustomer" />
+										or
+										<step-ref handle="goto" />
+										.
+									</step>
+									<step>Anything.</step>
+									<step-extensions>
+										<step-condition when="After ref-step" inline-step="Whatever." />
+									</step-extensions>
+								</step-condition>
+							</step-extensions>
+						</step-condition>
+					</step-extensions>
+					<step>User modifies customer data.</step>
+					<step>System validates customer data and updates customer data.</step>
+					<step-extensions>
+						<step-condition when="Customer data validation fails">
+							<step>User corrects customer data and has system update it.</step>
+						</step-condition>
+					</step-extensions>
+				</condition>
+				<condition step-ref="selectCustomer" when="User selects to delete a customer">
+					<step>
+						User
+						<uc-ref code="CD105">finds customer</uc-ref>
+						using customer search criteria.
+					</step>
+					<step-extensions>
+						<step-condition when="Customer not found">
+							<step>User modifies customer search criteria and finds again or cancels.</step>
+							<step>System performs.</step>
+						</step-condition>
+						<step-condition when="Multiple customers found">
+							<step>User modifies customer search criteria and finds again or cancels.</step>
+						</step-condition>
+					</step-extensions>
+					<step>User confirms deleting the customer.</step>
+					<step>System updates customer data.</step>
+				</condition>
+				<condition step-ref="goto" when="User enters other data" inline-step="Nothing." />
+				<condition step-ref="goto" when="User enters yet other data">
+					<step>Nothing as well.</step>
+				</condition>
+				<condition when="Something happens" step-ref="goto-end" inline-step="Do this." />
+				<condition step-ref="goto-end">
+					<when>
+						When with a reference to step
+						<step-ref handle="enterCustomerData" />
+						and
+						<data-ref code="Empty">data reference</data-ref>
+					</when>
+					<step>Step for when element test.</step>
+					<step-extensions>
+						<step-condition>
+							<when>
+								When in step condition with a reference to step
+								<step-ref handle="enterCustomerData" />
+								and
+								<data-ref code="Empty">data reference</data-ref>
+							</when>
+							<step>Step for when element on step condition.</step>
+						</step-condition>
+					</step-extensions>
+				</condition>
+			</extensions>
+		</use-case>
+	</uc-group>
+</uct>

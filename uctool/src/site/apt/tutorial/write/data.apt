@@ -1,0 +1,88 @@
+ ---
+ Data structures
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-24
+ ---
+
+Data structures
+
+ In a data structure you can define data attributes in the level of detail required
+ and then use it from all the appropriate places in the analysis.
+
+* Define data structure
+ 
+ To define a data structure use the <<<data-structure>>> element:
+ 
++--
+<uct ...>
+	<data-structure name="Account number" code="AccountNumber"></data-structure>
+</uct>
++--
+
+ Attributes of <<<data-structure>>>:
+ 
+*--*--*
+||Name||Description|
+*--*--+
+|name|Name of the data structure, as displayed to the reader of the use cases.|
+*--*--+
+|code|Unique code of the data structure, used to reference the data structure. \ |
+|    |If the data structure corresponds to a future entity/table of the system, |
+|    |you may consider using the proposed name of the entity/table as the code.|
+*--*--+
+|category|Category of the data structure. A choice described below.|
+*--*--+
+|expand|Should the attributes of the data structure be expanded when |
+|      |referenced within other data structure? See |
+|      |{{{../write/data-expand.html}Sharing attributes between data structures >>}}|
+*--*--+
+
+ Attribute <<<category>>> values:
+ 
+*--*--*
+||Value||Description|
+*--*--+
+|persistence-entity|Persistence layer. Generic business entity.|
+*--*--+
+|persistence-code-table|Persistence layer. Code table, user-maintained list of values.|
+*--*--+
+|persistence-enumeration|Persistence layer. Enumeration, list of values fixed in the system.|
+*--*--+
+|ui-list|UI layer. A list panel, grid, table containing multiple instances of an entity.|
+*--*--+
+|ui-form|UI layer. A form panel, detail, set of fields containing single instance of an entity.|
+*--*--+
+|interface|Interface with other system.|
+*--*--+
+|interface-request|Request on interface with other system.|
+*--*--+
+|interface-response|Response on interface with other system.|
+*--*--+
+
+* Data structure description
+
+ To describe data structure use the <<<description>>> sub-element:
+
++--
+<data-structure name="Account number" code="AccountNumber">
+	<description>Structure of a domestic account number.</description>
+</data-structure>
++--
+
+* Define attributes
+
+ To define attributes of a data structure use the <<<attribute>>> sub-element:
+
++--
+<data-structure name="Account number" code="AccountNumber">
+	<attribute name="Prefix" />
+	<attribute name="Number" />
+	<attribute name="Bank code" />
+</data-structure>
++--
+
+*--:
+ {{{../write/data-attributes.html}Next >>}}
+*--:

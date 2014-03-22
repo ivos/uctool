@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<data-structure name="Empty" code="Empty" />
+	<data-structure name="A master" code="Master">
+		<description>
+			This is the master entity.
+			<h:li>HTML tags.</h:li>
+		</description>
+		<attribute name="Empty" code="empty" />
+		<attribute name="With code" code="withCode" />
+		<attribute name="With all" code="withAll" status="optional" type="string" length="123" description="Attribute with all options set up." />
+		<attribute name="Display only" code="displayOnly" status="display-only" />
+		<attribute name="Optional" code="optional" status="optional" />
+		<attribute name="Mandatory" code="mandatory" status="mandatory" />
+		<attribute name="Unique" code="unique" status="unique" />
+		<attribute name="Natural key" code="naturalKey" status="natural-key" />
+		<attribute name="Primary key" code="primaryKey" status="primary-key" />
+		<attribute name="Integer" code="integer" type="integer" />
+		<attribute name="Float" code="float" type="float" />
+		<attribute name="Decimal" code="decimal" type="decimal" />
+		<attribute name="Boolean" code="boolean" type="boolean" />
+		<attribute name="Date" code="date" type="date" />
+		<attribute name="Time" code="time" type="time" />
+		<attribute name="Date time" code="dateTime" type="date-time" />
+		<attribute name="Timestamp" code="timestamp" type="timestamp" />
+		<attribute name="Binary" code="binary" type="binary" length="4098" />
+		<attribute name="String without length" code="stringWithoutLength" type="string" />
+		<attribute name="Binary without length" code="binaryWithoutLength" type="binary" />
+		<attribute name="Reference to other structure" code="referenceToOtherData" type="MasterDetail1" />
+		<attribute name="Collection of integers" code="collectionOfIntegers" type="integer" collection="true" />
+		<attribute name="Integer with length" code="integerWithLength" type="integer" length="3" description="Three digits." />
+		<attribute name="Collection of integers with length" code="collectionOfIntsWithLength" type="integer" collection="true" length="10" description="Collection of max 10 integers." />
+		<attribute name="Collection of strings with length" code="collectionOfStringsWithLength" type="string" collection="true" length="12" description="Collection of max 12 strings." />
+		<attribute name="Collection of other structures" code="collectionOfDataStructures" type="DetailN" collection="true" />
+		<attribute name="Collection of other structures with length" code="collectionOfDataStructuresWithLength" type="DetailN" collection="true" length="5" description="Collection of max 5 instances of DetailN." />
+		<attribute name="Selected detail N" code="selectedDetailN" type="DetailN" />
+	</data-structure>
+	<data-structure name="Detail 1" code="MasterDetail1">
+		<attribute name="Some integer" code="someInteger" status="optional" type="integer" />
+	</data-structure>
+	<data-structure name="Detail N" code="DetailN" />
+	<data-structure name="Another master" code="AnotherMaster">
+		<description>
+			Reference to
+			<data-ref code="MasterDetail1">
+			another structure</data-ref>
+			in a data structure description.
+		</description>
+		<attribute name="A detail N" code="detailN" type="DetailN" />
+	</data-structure>
+	<data-structure name="Description data" code="description-data">
+		<description>First description.</description>
+		<description>Second description.</description>
+		<description>Third description.</description>
+	</data-structure>
+</uct>

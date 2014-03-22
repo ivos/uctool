@@ -1,0 +1,169 @@
+<document xmlns="http://maven.apache.org/changes/1.0.0"
+	xmlns:xsi="http://http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/plugins/maven-changes-plugin/xsd/changes-1.0.0.xsd">
+	<properties>
+		<title>Changes</title>
+		<author email="ivo.maixner@gmail.com">Ivo Maixner</author>
+	</properties>
+	<body>
+		<release version="3.0.0" date="2013-12-01"
+			description="XSD import and export. Maven archetype. Other additions and fixes.">
+			<action type="mod" dev="imaixner">
+				Rename XSD remove "-lax".
+			</action>
+			<action type="fix" dev="imaixner">
+				Disable caching of generated web pages.
+			</action>
+			<action type="add" dev="imaixner">
+				Add use case notes section.
+			</action>
+			<action type="add" dev="imaixner">
+				Add data attribute status conditional.
+			</action>
+			<action type="add" dev="imaixner">
+				Add data structure categories.
+			</action>
+			<action type="add" dev="imaixner">
+				Add use case type for design use cases,
+				incl. icons.
+			</action>
+			<action type="update" dev="imaixner">
+				Move stakeholders and interests
+				before preconditions.
+			</action>
+			<action type="add" dev="imaixner">
+				Add export of data structures into XSD
+				files.
+			</action>
+			<action type="add" dev="imaixner">
+				Add import of XSD files into data
+				structures.
+			</action>
+			<action type="add" dev="imaixner" due-to="Tomas Mayer">
+				Add support for
+				glossary.
+			</action>
+		</release>
+		<release version="2.0.0" date="11.1.2013"
+			description="Requirements, attachments, data refs. Bootstrap.">
+			<action type="update" dev="imaixner">
+				Switch generated site to Twitter
+				Bootstrap.
+			</action>
+			<action type="add" dev="imaixner">
+				Add data structure attribute
+				references.
+			</action>
+			<action type="add" dev="imaixner">
+				Add references to requirement from
+				descriptions.
+			</action>
+			<action type="add" dev="imaixner">
+				Add use case description.
+			</action>
+			<action type="add" dev="imaixner" due-to="Tomas Mayer">
+				Add support for
+				attachments.
+			</action>
+			<action type="add" dev="imaixner" due-to="Tomas Mayer">
+				Add support for
+				requirements.
+			</action>
+		</release>
+		<release version="1.0" date="2010-11-29" description="Release for Maven Central.">
+			<action type="update" dev="imaixner">
+				Rename "use case" in Czech
+				translation from Scenar to
+				Pripad uziti.
+			</action>
+			<action type="update" dev="imaixner">
+				Change the type of collection
+				attribute from custom
+				yes/no to standard XSD boolean true/false.
+			</action>
+			<action type="add" dev="imaixner">
+				Add favicon to generated use case
+				pages.
+			</action>
+			<action type="add" dev="imaixner">
+				Add tutorial to site.
+			</action>
+		</release>
+		<release version="0.4" date="2010-11-11" description="">
+			<action type="fix" dev="imaixner">
+				Fix step handle type in XSD: limit
+				allowed characters.
+				Minus character was allowed but was interpreted
+				as interval of steps
+				in step reference.
+				Step reference type amended
+				accordingly.
+			</action>
+			<action type="add" dev="imaixner">
+				Add support for length on data
+				attributes of all types.
+			</action>
+			<action type="update" dev="imaixner">
+				Format UC steps and conditions
+				indented by step
+				number.
+			</action>
+			<action type="add" dev="imaixner">
+				Update css: no empty lines around HTML
+				ul and ol.
+			</action>
+			<action type="add" dev="imaixner">
+				Add use cases name on the index page
+				and single page.
+			</action>
+			<action type="add" dev="imaixner">
+				Support XHTML elements in source files,
+				use default XML
+				namespace.
+			</action>
+			<action type="add" dev="imaixner">
+				Show version on single page overview.
+			</action>
+			<action type="update" dev="imaixner">
+				Refactor index page.
+			</action>
+			<action type="update" dev="imaixner">
+				Change font to sans serif.
+			</action>
+			<action type="fix" dev="imaixner">
+				Fix displaying of image alt texts on
+				Firefox.
+			</action>
+			<action type="add" dev="imaixner">
+				Allow multiple descriptions on data
+				structure.
+			</action>
+			<action type="add" dev="imaixner">
+				Add actor description (multiple).
+			</action>
+			<action type="update" dev="imaixner">
+				Change XML namespace to new project
+				URL.
+			</action>
+			<action type="update" dev="imaixner">
+				Every actor must be defined.
+			</action>
+		</release>
+		<release version="0.3" date="2010-03-23" description="Attribute status enhancements">
+			<action type="add" dev="imaixner">
+				Attribute status hint.
+			</action>
+			<action type="add" dev="imaixner">
+				Support attribute status display-only
+				and natural-key.
+			</action>
+		</release>
+		<release version="0.2" date="2010-03-18"
+			description="First release to start tracking changes">
+			<action type="add" dev="imaixner">
+				First release to start tracking
+				changes.
+			</action>
+		</release>
+	</body>
+</document>

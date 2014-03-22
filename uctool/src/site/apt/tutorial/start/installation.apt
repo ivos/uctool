@@ -1,0 +1,47 @@
+ ---
+ Installation
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-11
+ ---
+
+Installation
+
+ To start using UCTool on a new workstation:
+ 
+ [[1]] Install JDK. \
+ {{{http://www.google.com/search?q=sun+jdk&btnI=Search}Latest Sun/Oracle JDK (SE)}}
+ is recommended.
+ (Do not install JRE, but a full JDK.)\
+ Verify JDK was installed by running:
+
++--
+javac -version
++--
+
+ [[1]] Install {{{http://maven.apache.org/}Maven}}. \
+ {{{http://maven.apache.org/download.html}Download Maven 
+ and review installation instructions}}.
+ Version 3.0.3 is now used in development of UCTool.\
+ Verify Maven was installed by running:
+
++--
+mvn --version
++--
+ 
+ [[1]] Install an XML editor. \
+ You can use any XML editor with support for XSD.\
+ \
+ If you choose an IDE,
+ you will get a single tool to perform all the tasks needed. \
+ {{{http://www.eclipse.org/}Eclipse}} is a free, open source IDE, that is used to develop UCTool itself.
+ It is recommended as a first choice IDE for UCTool projects.\
+ You can download  
+ {{{http://www.eclipse.org/downloads/}Eclipse IDE for Java Developers here}}.
+ 
+ []
+
+*--:
+ {{{./new-project.html}Next >>}}
+*--:

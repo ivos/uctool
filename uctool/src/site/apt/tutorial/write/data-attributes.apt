@@ -1,0 +1,113 @@
+ ---
+ Data attributee details
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-24
+ ---
+
+Data attribute details
+
+ You can define the following properties on an <<<attribute>>>:
+
++--
+<data-structure name="Account number" code="AccountNumber">
+	<attribute name="Prefix" code="prefix" status="optional" type="integer"
+		collection="false" length="6" description="Account number prefix." />
+	<attribute name="Number" code="number" status="mandatory" type="integer"
+		length="10" description="The account number itself." />
+</data-structure>
++--
+
+ Attributes of <<<attribute>>> element:
+ 
+*--*--*
+||Name||Description|
+*--*--+
+|name|Name of the attribute, eg. "Available balance".|
+*--*--+
+|code|Code of the attribute, eg. "availableBalance". \ |
+|    |If the data structure corresponds to a future entity/table of the system, |
+|    |you may consider using the proposed name of the |
+|    |entity attribute/table column as the code.|
+*--*--+
+|status|Status of the attribute. A choice described below.|
+*--*--+
+|type|Data type of the attribute. A choice described below or a code of a data structure |
+|    |(representing a relation between data structures, explained later).|
+*--*--+
+|collection|A boolean to mark collection-typed attributes.|
+*--*--+
+|length|Length of the attribute.|
+*--*--+
+|description|Description of the attribute.|
+*--*--+
+
+ Attribute <<<status>>> values:
+ 
+*--*--*
+||Value||Description|
+*--*--+
+|display-only <<<D/O>>>|A non-editable/disabled field on a user interface form. \ |
+|                      |Example: Available account balance field on Account details form.|
+*--*--+
+|optional <<<O>>>|Optional attribute. Value is not required. \ |
+|                |Example: Middle name attribute of Client details data structure.|
+*--*--+
+|conditional <<<C>>>|Conditional attribute. Value may or may not be required depending on a condition, 
+|                   |which should be described in the attribute description. \ |
+|                   |Example: Either lastName or firstName is required. None is mandatory neither optional per se,|
+|                   |but each may become either mandatory or optional, depending on a condition: they are conditional.|
+*--*--+
+|mandatory <<<M>>>|Mandatory attribute. Value is required. \ |
+|                 |Example: Last name attribute of Client details data structure.|
+*--*--+
+|unique <<<U>>>|A mandatory attribute whose value must be unique |
+|              |within all instances of the data structure. \ |
+|              |If multiple attributes are marked as unique, |
+|              |the combination of them must be unique. \ |
+|              |Example: SSN attribute of User details data structure.|
+*--*--+
+|natural-key <<<NK>>>|A unique attribute whose value serves as an identifier of |
+|                    |an instance of the data structure. \ |
+|                    |If multiple attributes are marked as natural key, |
+|                    |the combination of them constitutes the key. \ |
+|                    |Example: Login name attribute of User details data structure.|
+*--*--+
+|primary-key <<<PK>>>|Primary key attribute of a persistent entity. \ |
+|                    |Example: User id attribute of User details data structure.|
+*--*--+
+
+ Attribute <<<type>>> values:
+ 
+*--*--*
+||Value||Description|
+*--*--+
+|string|Character string, text. Example: "hello".|
+*--*--+
+|integer|Integer number. Example: "123".|
+*--*--+
+|float|Floating point number. Example: "345.654".|
+*--*--+
+|decimal|Decimal number. Example: "345.654".|
+*--*--+
+|boolean|Boolean. Example: "true".|
+*--*--+
+|date|Date. Example: "2010-11-22".|
+*--*--+
+|time|Time. Example: "12:34".|
+*--*--+
+|date-time|Date and time. Example: "2010-11-22 12:34".|
+*--*--+
+|timestamp|Timestamp. Example: "2010-11-22 12:34:58.123".|
+*--*--+
+|binary|Binary data/large object.|
+*--*--+
+|<code of a data structure>|A relation to a data structure.|
+*--*--+
+
+ \ 
+
+*--:
+ {{{../write/data-composition.html}Next >>}}
+*--:

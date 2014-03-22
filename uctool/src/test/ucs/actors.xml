@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd">
+	<actor name="Primary actor for Use cases" code="primary-actor-for-use-cases">
+		<extends-actor code="primary-actor-with-goals" />
+		<extends-actor code="no-ucs-primary-actor" />
+	</actor>
+	<actor name="Primary actor 3 for Use cases" code="primary-actor-3-for-use-cases">
+		<description>This is the actor 3 description.</description>
+		<extends-actor code="primary-actor-for-use-cases" />
+	</actor>
+	<actor name="Actor with description" code="actor-description">
+		<description>The description of the actor.</description>
+		<description>Another description.</description>
+		<description>Third description.</description>
+	</actor>
+</uct>

@@ -1,0 +1,36 @@
+ ---
+ Generate HTML use cases
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-16
+ ---
+
+Generate HTML use cases
+
+ To generate the HTML output from the use cases source files,
+ the Maven goal <<<clean generate-resources>>> should be used.\
+ Since this goal is set as the default, you can simply execute:
+
++--
+mvn
++--
+
+ This generates the HTML documentation as a whole anew, 
+ ensuring clean and complete output is generated.
+
+* Eclipse
+
+ Once you <<save your changes>> into the source XML file (Ctrl+S),
+ the output from the saved file gets <<automatically re-generated>> in the background,
+ so you can simply <<refresh>> the corresponding HTML page in your browser. 
+
+ To re-generate HTML output as a whole,
+ right-click the project -> Run As -> Maven build -> Run.
+ You can also configure automatic refresh of the project after the run.\
+ Repeating the last run can then be invoked by a simple 
+ sequence of keystrokes: Alt-R, N, Enter, Enter.
+
+*--:
+ {{{./first-uc.html}Next >>}}
+*--:

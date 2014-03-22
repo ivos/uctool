@@ -1,0 +1,85 @@
+ ---
+ Use cases
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-21
+ ---
+
+Use cases
+
+* Define use case group
+
+ First, define a use case group. 
+ Use case group is a means to define some attributes of multiple use cases once in a single place.
+ 
++--
+<uct ...>
+	<uc-group primary-actor="teller" scope="New Branch System" type="system"
+		visibility="black"></uc-group>
+</uct>
++--
+
+ Attributes:
+
+*--*--*
+||Name||Description|
+*--*--+
+|primary-actor|Code of the primary actor for the use cases.|
+*--*--+
+|scope|The scope of the use cases. A label displayed as the scope to the reader.|
+*--*--+
+|type|Type of use cases. Choice from: <<<system>>> (interaction with a computer system),| 
+|    |<<<organization>>> (interaction with an organization, a process).|
+|    |<<<design>>> (computer system design).|
+*--*--+
+|visibility|Visibility of the use cases. Choice from <<<black>>> (black-box use cases),|
+|          |<<<white>>> (white-box use cases).|
+*--*--+
+
+* Define use case
+
+ A use case is defined within a use case group:
+ 
++--
+<uc-group ...>
+	<use-case goal="Transfer funds" code="NCA-100" level="sea"></use-case>
+</uc-group>
++--
+
+ Attributes:
+
+*--*--*
+||Name||Description|
+*--*--+
+|goal|A goal of the primary actor that defines the use case.|
+*--*--+
+|code|Unique code identifying the use case. Used to refer to the use case.\ |
+|    |It is displayed to the reader, so some scheme of assigning codes to use cases|
+|    |should be defined by each project.|
+*--*--+
+|level|Level of the use case. |
+|     |It is based on a scheme defining the use case level by height relative to sea level.|
+|     |Choice from <<<sea>>> (user goal), <<<kite>>> (summary), <<<cloud>>> (high summary),|
+|     |<<<fish>>> (sub-function), <<<clam>>> (low sub-function).|
+*--*--+
+
+* Main success scenario
+
+ Specify the main success scenario of the use case using <<<success>>> 
+ and <<<step>>> sub-elements:
+
++--
+<use-case goal="Transfer funds" code="NCA-100" level="sea">
+	<success>
+		<step>User identifies debit account.</step>
+		<step>User identifies credit account.</step>
+		<step>User enters amount.</step>
+		<step>User submits the transaction.</step>
+	</success>
+</use-case>
++--
+
+*--:
+ {{{../write/uc-extensions.html}Next >>}}
+*--:

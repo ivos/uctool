@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<data-structure name="Empty" code="Empty" />
+	<data-structure name="A master" code="Master">
+		<description>
+			This is the master entity.
+			<h:li>HTML tags work here.</h:li>
+		</description>
+		<attribute name="Empty" />
+		<attribute name="With code" code="withCode" />
+		<attribute name="With all" code="withAll" status="optional" type="string"
+			length="123" description="Attribute with all options set up." />
+		<attribute name="Display only" status="display-only" />
+		<attribute name="Optional" status="optional" />
+		<attribute name="Conditional" status="conditional" />
+		<attribute name="Mandatory" status="mandatory" />
+		<attribute name="Unique" status="unique" />
+		<attribute name="Natural key" status="natural-key" />
+		<attribute name="Primary key" status="primary-key" />
+		<attribute name="Integer" type="integer" />
+		<attribute name="Float" type="float" />
+		<attribute name="Decimal" type="decimal" />
+		<attribute name="Boolean" type="boolean" />
+		<attribute name="Date" type="date" />
+		<attribute name="Time" type="time" />
+		<attribute name="Date time" type="date-time" />
+		<attribute name="Timestamp" type="timestamp" />
+		<attribute name="Binary" type="binary" length="4098" />
+		<attribute name="String without length" type="string" />
+		<attribute name="Binary without length" type="binary" />
+		<attribute name="Reference to other structure" type="MasterDetail1" />
+		<attribute name="Collection of integers" type="integer" collection="true" />
+		<attribute name="Integer with length" type="integer" length="3" description="Three digits." />
+		<attribute name="Collection of integers with length" type="integer"
+			collection="true" length="10" description="Collection of max 10 integers." />
+		<attribute name="Collection of strings with length" type="string" collection="true"
+			length="12" description="Collection of max 12 strings." />
+		<attribute name="Collection of other structures" type="DetailN" collection="true" />
+		<attribute name="Collection of other structures with length" type="DetailN"
+			collection="true" length="5" description="Collection of max 5 instances of DetailN." />
+		<attribute name="Selected detail N" type="DetailN" />
+	</data-structure>
+	<data-structure name="Detail 1" code="MasterDetail1" />
+	<data-structure name="Detail N" code="DetailN" />
+	<data-structure name="Another master" code="AnotherMaster">
+		<description>
+			Reference to
+			<data-ref code="AnotherStructure">
+			another structure</data-ref>
+			in a data structure description
+		</description>
+		<attribute name="A detail N" type="DetailN" />
+	</data-structure>
+	<data-structure name="Another structure" code="AnotherStructure" />
+	<data-structure name="Unreferenced data structure" code="UnreferencedDataStructure" />
+	<data-structure name="Description data" code="description-data">
+		<description>First description.</description>
+		<description>Second description.</description>
+		<description>Third description.</description>
+	</data-structure>
+	<data-structure name="Tree via master" code="TreeViaMaster">
+		<attribute name="Name" code="name" type="string" />
+		<attribute name="Master" code="master" type="TreeViaMaster" />
+	</data-structure>
+	<data-structure name="Tree via subordinates" code="TreeViaSubordinates">
+		<attribute name="Name" code="name" type="string" />
+		<attribute name="Subordinates" code="subordinates" type="TreeViaSubordinates"
+			collection="true" />
+	</data-structure>
+	<data-structure name="Recursive reference entity 1" code="Recursive1">
+		<attribute name="refTo2" code="refTo2" type="Recursive2" />
+	</data-structure>
+	<data-structure name="Recursive reference entity 2" code="Recursive2">
+		<attribute name="refTo1" code="refTo1" type="Recursive1" />
+	</data-structure>
+	<data-structure name="Persistent entity" code="PersistentEntity" category="persistence-entity">
+		<description>A generic business entity.</description>
+		<attribute name="Some attribute" />
+	</data-structure>
+	<data-structure name="Persistent code table" code="PersistentCodeTable"
+		category="persistence-code-table" />
+	<data-structure name="Persistent enumeration" code="PersistentEnumeration"
+		category="persistence-enumeration" />
+	<data-structure name="UI list" code="UiList" category="ui-list" />
+	<data-structure name="UI form" code="UiForm" category="ui-form" />
+	<data-structure name="Interface" code="Interface" category="interface" />
+	<data-structure name="Interface request" code="InterfaceRequest" category="interface-request" />
+	<data-structure name="Interface response" code="InterfaceResponse"
+		category="interface-response" />
+	<uc-group primary-actor="data-actor">
+		<use-case goal="Maintain masters" code="mas-001">
+			<stakeholders-interests>
+				<interest stakeholder="Administrator">
+					Every
+					<data-ref code="Master">master</data-ref>
+					created is logged in audit.
+				</interest>
+			</stakeholders-interests>
+			<preconditions>
+				<item>
+					User authorized to maintain
+					<data-ref code="Master">masters</data-ref>
+					.
+				</item>
+			</preconditions>
+			<minimal-guarantees>
+				<text>
+					Records of
+					<data-ref code="Master">master</data-ref>
+					data always kept consistent.
+				</text>
+			</minimal-guarantees>
+			<success>
+				<step>
+					User creates a
+					<data-ref code="Master">master</data-ref>
+					with the
+					<data-ref code="MasterDetail1">detail</data-ref>
+					.
+				</step>
+			</success>
+		</use-case>
+		<use-case goal="Work with masters" code="mas-002">
+			<success>
+				<step>
+					User works with a
+					<data-ref code="Master">master</data-ref>
+					.
+				</step>
+			</success>
+		</use-case>
+		<use-case goal="Ref to data in UC description" code="mas-003">
+			<description>
+				Ref to
+				<data-ref code="MasterDetail1">detail</data-ref>
+				data.
+			</description>
+		</use-case>
+	</uc-group>
+	<actor name="Data actor" code="data-actor" />
+</uct>

@@ -1,0 +1,101 @@
+ ---
+ Create a new project
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-12
+ ---
+
+Create a new project
+
+ To create a new UCTool project from scratch:
+
+ [[1]] Open command line and <<<cd>>> into the directory where you want to create the new project directory.\
+ <Example:>
+
++--
+cd /home/user/data/projects
++--
+
+ [[1]] Use Maven to generate a UCTool project from a template:
+
++--
+mvn archetype:generate -DarchetypeGroupId=net.sf.uctool -DarchetypeArtifactId=uctool-archetype -DarchetypeVersion=2.1.0
++--
+
+ Type in the following:
+
+ * The <<<groupId>>> should uniquely identify the "namespace" where you want to create the project. 
+ It can be for example a reverse of your company Internet domain. \
+ <Example:> <<<com.klmnopqr>>>.
+
+ * The <<<artifactId>>> is the name for the new project. \
+ <Examples:> <<<analysis>>>, <<<my-project>>>.
+
+ * The <<<version>>> is the initial version for the new project. \
+ The default value <<<1.0-SNAPSHOT>>> is usually a good choice. 
+
+ * The <<<package>>> is irrelevant, you can simply accept the default value. 
+
+ * The <<<uctool-maven-plugin-version>>> should be set to the version 
+ of the UCTool Maven plugin you want to use. 
+ This should be the same one that is used by the UCTool itself.\
+ It is recommended to use the latest release version, which can be seen either
+ at the {{{http://uctool.sourceforge.net/uctool-maven-plugin/}site of the plugin}}
+ or directly at {{{http://central.maven.org/maven2/net/sf/uctool/uctool-maven-plugin/}central Maven repo}}.
+
+ * The <<<uctool-version>>> should be set to the version 
+ of the UCTool you want to use. \
+ It is recommended to use the latest release version, which can be seen either
+ at the {{{http://uctool.sourceforge.net/}site of the UCTool}}
+ or directly at {{{http://central.maven.org/maven2/net/sf/uctool/uctool/}central Maven repo}}.\
+ \
+ An example of filling in the properties of a new project:
+
++--
+Define value for property 'groupId': : com.klmnopqr
+Define value for property 'artifactId': : analysis
+Define value for property 'version':  1.0-SNAPSHOT: : 
+Define value for property 'package':  com.klmnopqr: : 
+Define value for property 'uctool-maven-plugin-version': : 3.0.0
+Define value for property 'uctool-version': : 3.0.0
++--
+
+ []
+
+ [[1]] A new directory named by the <<<artifactId>>> gets created with the new UCTool project.
+
+ [[1]] Now <<<cd>>> into the project directory
+
++--
+cd analysis
++--
+
+ [[1]] Build the project
+
++--
+mvn
++--
+
+ [[1]] The use case HTML output should now be generated and accessible from <<<target/site/ucs/index.html>>>.
+
+
+* Import the project to Eclipse
+
+ If you use Eclipse, you can import the new project as follows.
+
+ [[1]] File -> Import -> Maven -> Existing Maven projects.\
+ Select the directory where the project was created and press Finish.\
+ The project is displayed in Eclipse.
+
+ [[1]] Update project configuration.\
+ Right-click on project -> Maven -> Update Project Configuration.
+
+ [[1]] Expand <<<target/site/ucs>>> and open index.html in web browser
+ (double-click, or right-click -> Open with... -> Web browser).
+ 
+ []
+
+*--:
+ {{{./generate-html.html}Next >>}}
+*--:

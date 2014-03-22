@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd">
+	<data-structure name="Expansion referred structure" code="ExpansionReferredStructure">
+		<attribute name="Some att" code="some-att" />
+	</data-structure>
+	<data-structure name="Expanded one" code="ExpandedOne" expand="true">
+		<attribute name="Exp One att 1" code="expOneAtt1" type="string" length="123"
+			status="mandatory" description="Description of Exp One att 1" />
+		<attribute name="Exp One att 2" code="expOneAtt2" type="integer" collection="true"
+			status="unique" />
+	</data-structure>
+	<data-structure name="Expanded two" code="ExpandedTwo" expand="true">
+		<attribute name="Expanded atts two one" type="ExpandedTwoOne" />
+		<attribute name="Exp Two att 1" code="expTwoAtt1" type="string" length="123"
+			status="mandatory" description="Description of Exp Two att 1" />
+		<attribute name="Exp Two att 2" code="expTwoAtt2" type="integer" collection="true"
+			status="unique" />
+	</data-structure>
+	<data-structure name="Expanded two-one" code="ExpandedTwoOne" expand="true">
+		<attribute name="Exp Two-One att 1" code="expTwoOneAtt1" type="string" length="123"
+			status="mandatory" description="Description of Exp Two One att 1" />
+		<attribute name="Exp Two-One att 2" code="expTwoOneAtt2" type="integer"
+			collection="true" status="unique" />
+		<attribute name="Not expanded atts" type="NotExpanded" />
+		<attribute name="Referred structure" type="ExpansionReferredStructure" />
+	</data-structure>
+	<data-structure name="Not expanded" code="NotExpanded">
+		<attribute name="Not Expanded att 1" code="notExpandedAtt1" type="boolean"
+			status="mandatory" />
+	</data-structure>
+	<data-structure name="Expansion test data structure" code="ExpansionTest">
+		<attribute name="Expanded atts one" type="ExpandedOne" />
+		<attribute name="Expanded atts two" type="ExpandedTwo" />
+		<attribute name="ET Own att 1" code="etOwnAtt1" type="string" />
+	</data-structure>
+	<uc-group primary-actor="data-actor">
+		<use-case goal="Test expansion" code="exp-001">
+			<success>
+				<step>
+					User creates an
+					<data-ref code="ExpansionTest">expansion test</data-ref>
+					data.
+				</step>
+			</success>
+		</use-case>
+	</uc-group>
+</uct>

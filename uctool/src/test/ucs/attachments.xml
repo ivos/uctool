@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<attachment-group directory="forms" name="Forms design">
+		<attachment name="Login form" code="login-form" file-name="login-form.txt" />
+		<attachment name="New customer form" code="new-customer-form" file-name="new_customer_form-v.1.23.txt" />
+	</attachment-group>
+	<attachment-group directory="reports" name="Report templates">
+		<attachment name="Best customers report" code="best-customers-report"
+			file-name="report-01.txt" />
+		<attachment name="Worst customers report" code="worst-customers-report"
+			file-name="report-02.txt" />
+		<attachment name="Security report" code="sec-report" file-name="sec-report.txt" />
+	</attachment-group>
+	<uc-group primary-actor="primary-actor-for-use-cases">
+		<use-case code="attachment-ref-01" goal="UC references to attachments">
+			<description>
+				Ref to
+				<attachment-ref code="login-form">attachment</attachment-ref>
+				from UC description.
+			</description>
+			<stakeholders-interests>
+				<interest stakeholder="Share holder">
+					Reference to
+					<attachment-ref code="login-form">attachment</attachment-ref>
+					from interest element.
+				</interest>
+			</stakeholders-interests>
+			<preconditions>
+				<item>
+					Precondition item with
+					<attachment-ref code="new-customer-form">attachment ref</attachment-ref>
+					.
+				</item>
+				<text>
+					Precondition text with
+					<attachment-ref code="best-customers-report">attachment ref</attachment-ref>
+					.
+				</text>
+			</preconditions>
+			<minimal-guarantees>
+				<item>
+					Minimal guarantee item with
+					<attachment-ref code="new-customer-form">attachment ref</attachment-ref>
+					.
+				</item>
+				<text>
+					Minimal guarantee text with
+					<attachment-ref code="best-customers-report">attachment ref</attachment-ref>
+					.
+				</text>
+			</minimal-guarantees>
+			<success-guarantees>
+				<item>
+					Success guarantee item with
+					<attachment-ref code="new-customer-form">attachment ref</attachment-ref>
+					.
+				</item>
+				<text>
+					Success guarantee text with
+					<attachment-ref code="best-customers-report">attachment ref</attachment-ref>
+					.
+				</text>
+			</success-guarantees>
+			<success>
+				<step handle="1">
+					Ref to
+					<attachment-ref code="login-form">login form attachment</attachment-ref>
+					in step element.
+				</step>
+			</success>
+			<extensions>
+				<condition step-ref="1">
+					<when>
+						Ref to
+						<attachment-ref code="new-customer-form">attachment</attachment-ref>
+						in when element
+					</when>
+					<step>
+						Ref to another
+						<attachment-ref code="sec-report">attachment</attachment-ref>
+						in conditioned step element.
+					</step>
+				</condition>
+			</extensions>
+		</use-case>
+	</uc-group>
+	<actor name="Attachment actor" code="attachment-actor">
+		<description>
+			Ref to
+			<attachment-ref code="sec-report">attachment</attachment-ref>
+			in actor description.
+		</description>
+	</actor>
+	<data-structure name="Attachment data structure" code="attachment-data-structure">
+		<description>
+			Ref to
+			<attachment-ref code="best-customers-report">attachment</attachment-ref>
+			in data structure description.
+		</description>
+	</data-structure>
+	<requirement name="Attachment requirement" code="attachment-requirement">
+		<description>
+			Ref to
+			<attachment-ref code="sec-report">attachment</attachment-ref>
+			in requirement description.
+		</description>
+	</requirement>
+</uct>

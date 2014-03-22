@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+	<body>
+		<menu name="Overview">
+			<item name="Introduction" href="index.html" />
+			<item name="Tutorial" href="tutorial/index.html" collapse="true">
+				<item name="Content" href="tutorial/index.html" />
+				<item name="Get started" href="tutorial/start/installation.html" collapse="true">
+					<item name="Installation" href="tutorial/start/installation.html" />
+					<item name="Create a new project" href="tutorial/start/new-project.html" />
+					<item name="Generate HTML output" href="tutorial/start/generate-html.html" />
+					<item name="My first use case" href="tutorial/start/first-uc.html" />
+					<item name="Tips" href="tutorial/start/tips.html" />
+				</item>
+				<item name="Get productive" href="tutorial/write/actors.html" collapse="true">
+					<item name="Actors" href="tutorial/write/actors.html" />
+					<item name="Use cases" href="tutorial/write/use-cases.html" />
+					<item name="Use case extensions" href="tutorial/write/uc-extensions.html" />
+					<item name="Use case details" href="tutorial/write/uc-details.html" />
+					<item name="Step references" href="tutorial/write/step-ref.html" />
+					<item name="Use case composition" href="tutorial/write/uc-composition.html" />
+					<item name="Data structures" href="tutorial/write/data.html" />
+					<item name="Data attributes" href="tutorial/write/data-attributes.html" />
+					<item name="Data composition" href="tutorial/write/data-composition.html"
+						collapse="true">
+						<item name="Data structure relations" href="tutorial/write/data-relations.html" />
+						<item name="Attribute references" href="tutorial/write/data-att-references.html" />
+						<item name="Sharing attributes between data structures" href="tutorial/write/data-expand.html" />
+					</item>
+					<item name="Data references" href="tutorial/write/data-ref.html" />
+					<item name="Requirements" href="tutorial/write/requirements.html" />
+					<item name="Attachments" href="tutorial/write/attachments.html" />
+					<item name="Glossary" href="tutorial/write/glossary.html" />
+					<item name="HTML formatting" href="tutorial/write/html-format.html" />
+				</item>
+				<item name="Get expert" href="tutorial/expert/xsd-import.html" collapse="true">
+					<item name="Import data from XSD" href="tutorial/expert/xsd-import.html" />
+					<item name="Export data to XSD" href="tutorial/expert/xsd-export.html" />
+					<item name="Upgrade UCTool" href="tutorial/expert/upgrade.html" />
+					<item name="Use Subversion" href="tutorial/expert/svn.html" />
+					<item name="Sample sources" href="tutorial/expert/sample.html" />
+				</item>
+			</item>
+			<item name="XSD files" href="./xsd" />
+			<item name="Maven plugin" href="./uctool-maven-plugin/" />
+		</menu>
+		<menu ref="reports" />
+	</body>
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-fluido-skin</artifactId>
+		<version>1.3.0</version>
+	</skin>
+	<custom>
+		<fluidoSkin>
+			<sideBarEnabled>true</sideBarEnabled>
+		</fluidoSkin>
+	</custom>
+</project>

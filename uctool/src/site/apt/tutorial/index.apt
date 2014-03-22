@@ -1,0 +1,25 @@
+ ---
+ UCTool Tutorial
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-11
+ ---
+
+UCTool Tutorial
+
+ The tutorial is divided into three sections:
+ 
+ * {{{./start/installation.html}Get started}} section takes you from installation to your first use case.
+ 
+ * {{{./write/actors.html}Get productive}} section explains in detail how to write use cases in UCTool.
+ 
+ * {{{./expert/xsd-import.html}Get expert}} section gives hints on advanced usage.
+ 
+ []
+
+ Please, follow the navigation menu bar on the left.
+
+*--:
+ {{{./start/installation.html}Next >>}}
+*--:

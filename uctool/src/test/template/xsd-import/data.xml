@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ http://uctool.sf.net/xsd/VERSION/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<data-structure name="simpleTypeDoesNotEndWith" code="simpleTypeDoesNotEndWith">
+		<description>Type: date.</description>
+	</data-structure>
+	<data-structure name="String based simple type" code="stringBasedSimple">
+		<description>Type: string.</description>
+	</data-structure>
+	<data-structure name="Integer based simple type" code="integerBasedSimple">
+		<description>Type: integer.</description>
+	</data-structure>
+	<data-structure name="String based simple type with enum" code="stringWithEnumSimple">
+		<description>Type: string.</description>
+		<description>Enumeration value: enumValue1.</description>
+		<description>Enumeration value: enumValue2.</description>
+	</data-structure>
+	<data-structure name="String based simple type with enum and docs" code="stringWithEnumDocsSimple">
+		<description>More documentation.
+				Next line simple type doc.
+			</description>
+		<description>Yet another simple type doc.</description>
+		<description>Type: string.</description>
+		<description>Enumeration value: enumValue1.</description>
+		<description>Enumeration value: enumValue2. Enum value 2. Next line. Next documentation.</description>
+	</data-structure>
+	<data-structure name="String based simple type with length" code="stringWithLengthSimple">
+		<description>Type: string.</description>
+		<description>Length: 123.</description>
+	</data-structure>
+	<data-structure name="String based simple type with length and docs" code="stringWithLengthDocsSimple">
+		<description>Type: string.</description>
+		<description>Length: 123. Length doc.</description>
+	</data-structure>
+	<data-structure name="String based simple type with min and max length" code="stringWithMinMaxLengthSimple">
+		<description>Type: string.</description>
+		<description>Minimal length: 100.</description>
+		<description>Maximal length: 200.</description>
+	</data-structure>
+	<data-structure name="String based simple type with min and max length and docs" code="stringWithMinMaxLengthDocsSimple">
+		<description>Type: string.</description>
+		<description>Minimal length: 100. Min length doc.</description>
+		<description>Maximal length: 200. Max length doc.</description>
+	</data-structure>
+	<data-structure name="String based simple type with pattern" code="stringWithPatternSimple">
+		<description>Type: string.</description>
+		<description>Pattern: pattern value 1.</description>
+	</data-structure>
+	<data-structure name="String based simple type with other specs and docs" code="stringWithPatternDocsSimple">
+		<description>Type: string.</description>
+		<description>Pattern: pattern value 1. Pattern doc.</description>
+	</data-structure>
+	<data-structure name="First line. Second line. Third line." code="withMultilineName">
+		<description>Type: byte.</description>
+	</data-structure>
+	<data-structure name="Empty" code="Empty">
+	</data-structure>
+	<data-structure name="A master" code="Master">
+		<description>
+			This is the master entity.
+			HTML tags.
+		       </description>
+		<attribute name="Empty" code="empty" status="optional" />
+		<attribute name="With code" code="withCode" status="optional" />
+		<attribute name="With all" code="withAll" status="optional" type="string" length="123" description="Attribute with all options set up." />
+		<attribute name="Display only" code="displayOnly" status="optional" />
+		<attribute name="Optional" code="optional" status="optional" />
+		<attribute name="Mandatory" code="mandatory" status="mandatory" />
+		<attribute name="Unique" code="unique" status="mandatory" />
+		<attribute name="Natural key" code="naturalKey" status="mandatory" />
+		<attribute name="Primary key" code="primaryKey" status="mandatory" />
+		<attribute name="Integer" code="integer" status="optional" type="integer" />
+		<attribute name="Float" code="float" status="optional" type="float" />
+		<attribute name="Decimal" code="decimal" status="optional" type="decimal" />
+		<attribute name="Boolean" code="boolean" status="optional" type="boolean" />
+		<attribute name="Date" code="date" status="optional" type="date" />
+		<attribute name="Time" code="time" status="optional" type="time" />
+		<attribute name="Date time" code="dateTime" status="optional" type="timestamp" />
+		<attribute name="Timestamp" code="timestamp" status="optional" type="timestamp" />
+		<attribute name="Binary" code="binary" status="optional" type="binary" />
+		<attribute name="String without length" code="stringWithoutLength" status="optional" type="string" />
+		<attribute name="Binary without length" code="binaryWithoutLength" status="optional" type="binary" />
+		<attribute name="Reference to other structure" code="referenceToOtherData" status="optional" type="MasterDetail1" />
+		<attribute name="Collection of integers" code="collectionOfIntegers" status="optional" type="integer" collection="true" />
+		<attribute name="Integer with length" code="integerWithLength" status="optional" type="integer" description="Three digits." />
+		<attribute name="Collection of integers with length" code="collectionOfIntsWithLength" status="optional" type="integer" collection="true" length="10" description="Collection of max 10 integers." />
+		<attribute name="Collection of strings with length" code="collectionOfStringsWithLength" status="optional" type="string" collection="true" length="12" description="Collection of max 12 strings." />
+		<attribute name="Collection of other structures" code="collectionOfDataStructures" status="optional" type="DetailN" collection="true" />
+		<attribute name="Collection of other structures with length" code="collectionOfDataStructuresWithLength" status="optional" type="DetailN" collection="true" length="5" description="Collection of max 5 instances of DetailN." />
+		<attribute name="Selected detail N" code="selectedDetailN" status="optional" type="DetailN" />
+		<attribute name="Multiple docs" code="multipleDocs" status="mandatory" description="Attribute with multiple XSD documentation. XSD documentation 2. XSD documentation 3. XSD documentation 4." />
+		<attribute name="Multi-line docs" code="multiLineDocs" status="mandatory" description="Attribute with XSD documentation spanning multiple lines. Next line A2. Next line A3. Next line A4. Another multi-line documentation. Next line B2. Next line B3. Next line B4." />
+		<attribute name="Integer with type as sub-element" code="integerSubType" status="optional" type="integer" />
+		<attribute name="String with type as sub-element" code="stringSubType" status="optional" type="string" />
+		<attribute name="Date with type as sub-element" code="dateSubType" status="optional" type="date" />
+		<attribute name="withMaxOccursOne" code="withMaxOccursOne" status="mandatory" type="string" />
+		<attribute name="xsanySimpleType" code="xsanySimpleType" status="mandatory" type="string" />
+		<attribute name="xsanyURI" code="xsanyURI" status="mandatory" type="string" />
+		<attribute name="xsbyte" code="xsbyte" status="mandatory" type="integer" />
+		<attribute name="xsdouble" code="xsdouble" status="mandatory" type="decimal" />
+		<attribute name="xsduration" code="xsduration" status="mandatory" type="timestamp" />
+		<attribute name="xsint" code="xsint" status="mandatory" type="integer" />
+		<attribute name="xslong" code="xslong" status="mandatory" type="integer" />
+		<attribute name="xsnonNegativeInteger" code="xsnonNegativeInteger" status="mandatory" type="integer" />
+		<attribute name="xsnonPositiveInteger" code="xsnonPositiveInteger" status="mandatory" type="integer" />
+		<attribute name="xsnormalizedString" code="xsnormalizedString" status="mandatory" type="string" />
+		<attribute name="xspositiveInteger" code="xspositiveInteger" status="mandatory" type="integer" />
+		<attribute name="xsshort" code="xsshort" status="mandatory" type="integer" />
+		<attribute name="xsunsignedByte" code="xsunsignedByte" status="mandatory" type="integer" />
+		<attribute name="xsunsignedInt" code="xsunsignedInt" status="mandatory" type="integer" />
+		<attribute name="xsunsignedLong" code="xsunsignedLong" status="mandatory" type="integer" />
+		<attribute name="xsunsignedShort" code="xsunsignedShort" status="mandatory" type="integer" />
+	</data-structure>
+	<data-structure name="Detail 1" code="MasterDetail1">
+		<attribute name="Some integer" code="someInteger" status="optional" type="integer" />
+	</data-structure>
+	<data-structure name="Detail N" code="DetailN">
+	</data-structure>
+	<data-structure name="Another master" code="AnotherMaster">
+		<description>
+			Reference to
+			
+			another structure
+			in a data structure description.
+		</description>
+		<attribute name="A detail N" code="detailN" status="optional" type="DetailN" />
+	</data-structure>
+	<data-structure name="Description data" code="description-data">
+		<description>First description.</description>
+		<description>Second description.</description>
+		<description>Third description.</description>
+	</data-structure>
+	<data-structure name="complexTypeDoesNotEndWith" code="complexTypeDoesNotEndWith">
+	</data-structure>
+	<data-structure name="withImportedTypes" code="withImportedTypes">
+		<attribute name="importedSimple" code="importedSimple" status="mandatory" type="importedSimpleString" />
+		<attribute name="importedComplex" code="importedComplex" status="mandatory" type="importedComplex" />
+	</data-structure>
+	<data-structure name="Complex first line. Second line. Third line." code="complexMultilineName">
+	</data-structure>
+</uct>

@@ -1,0 +1,82 @@
+ ---
+ Use case composition
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-25
+ ---
+
+Use case composition
+
+ One of the best features of UCTool is its support for functional decomposition 
+ of use cases via HTML links.
+ 
+ Once you write a use case at a given level of detail, say at the user goal level,
+ its steps will often represent use cases of one level lower, like sub-function.
+ 
+ In UCTool you can simply refer from such a step to the lower-level use case.
+ This reference makes the step a clickable HTML link leading 
+ to the lower-level use case.
+ 
+ For example, you have just finished drafting "Transfer funds" use case in its
+ main success scenario:
+ 
++--
+<use-case goal="Transfer funds" code="NCA-100" level="sea">
+	<success>
+		<step>User identifies debit account.</step>
+		<step>User identifies credit account.</step>
+		<step>User enters amount.</step>
+		<step>User submits the transaction.</step>
+	</success>
+</use-case>
++--
+
+ Now you realize, that the first and second steps should actually unfold 
+ to a new sub-function use case "Identify account". 
+ So, you add the new use case and create links to it from the two steps:
+ 
++--
+<use-case goal="Transfer funds" code="NCA-100" level="sea">
+	<success>
+		<step>User <uc-ref code="SYS-100">identifies debit account</uc-ref>.</step>
+		<step>User <uc-ref code="SYS-100">identifies credit account</uc-ref>.</step>
+		<step>User enters amount.</step>
+		<step>User submits the transaction.</step>
+	</success>
+</use-case>
+<use-case goal="Identify account" code="SYS-100" level="fish">
+	<success>
+		<step>User enters account number.</step>
+		<step>System validates account number.</step>
+		<step>User searches for the account.</step>
+		<step>System retrieves account details by account number.</step>
+	</success>
+</use-case>
++--
+
+ <<Note:>> a detailed guideline how to achieve this in Eclipse: \
+ Select the words to become the link ("identifies debit account"), 
+ cut them out (Ctrl-X), initiate content assist (Ctrl-space),
+ choose <<<uc-ref>>>, 
+ set cursor in-between the start and end tag of the <<<uc-ref>>> element, 
+ paste the words back (Ctrl-V),
+ and finally copy&paste the code of the referenced use case (in this case "SYS-100") 
+ into the <<<code>>> attribute of <<<uc-ref>>>.
+ 
+ After you re-generate the HTML output, the text within the <<<uc-ref>>> element
+ will become an HTML link to the referred use case.
+ 
+ Moreover, the referred use case will automatically report all the use cases 
+ from which it is referred.
+ 
+ Finally, a report of all use cases that are not referred to is compiled as
+ the "Entry point list" page. \
+ So, if you want to hook every use case into
+ some higher level use case, up until a single top-level use case 
+ (like "Use the system"), as soon as there is only this top-level
+ use case in the "Entry point list" you know you are done.
+
+*--:
+ {{{../write/data.html}Next >>}}
+*--:

@@ -1,0 +1,50 @@
+ ---
+ Tips
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-17
+ ---
+
+Tips
+
+* How to write use cases
+
+ Read the book 
+ {{{http://www.amazon.com/Writing-Effective-Cases-Alistair-Cockburn/dp/0201702258}Writing 
+ Effective Use Cases}} from {{{http://alistair.cockburn.us/}Alistair Cockburn}}. 
+ 
+ It is the foundation on which the UCTool builds.
+
+* XML
+
+ Learn the basics of XML in 
+ {{{http://www.google.com/search?q=xml+tutorial&btnI=Search}XML tutorial}}.
+ 
+ The use cases in UCTool are written in XML, so a basic understanding of XML
+ is very handy.
+
+* Eclipse keyboard shortcuts
+
+*---*---+
+|Ctrl-space|Content assist (show options to be entered at cursor).|
+*---*---+
+|Ctrl-Shift-F|Format current file.|
+*---*---+
+|Ctrl-S|Save current file.|
+*---*---+
+|Ctrl-D|Delete current row.|
+*---*---+
+|Alt-R,N|Choose from run configurations.|
+*---*---+
+|Ctrl-F4|Close current editor window.|
+*---*---+
+|Ctrl-F6 <or>\     |Switch between open editor windows.|
+|Ctrl-PgUp & PgDown| |
+*---*---+
+
+ \ 
+
+*--:
+ {{{../write/actors.html}Next >>}}
+*--:

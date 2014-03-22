@@ -1,0 +1,95 @@
+ ---
+ Requirements
+ ---
+ Ivo Maixner
+ ---
+ 2012-03-05
+ ---
+
+Requirements
+
+ You can include the current state of user requirements in the generated pages.
+ 
+* Define requirements
+
+ To define a user requirement, use the <<<requirement>>> element:
+
++--
+<requirement name="Provide bank services" code="RQ-001" status="accepted"
+	priority="normal" level="cloud" type="functional" area="General" origin="Workshop 2011-03-18" />
+<requirement name="Withdrawal" code="RQ-100" status="accepted" priority="high"
+	level="sea" type="functional" area="Cash">
+	<description>Cash teller withdraws cash for the client.</description>
+</requirement>
++--
+
+ Attributes:
+ 
+*--*--*
+||Name||Description|
+*--*--+
+|name|Name of the requirement. \ |
+|    |Summary of the requirement, distinguishes it from other requirements.|
+*--*--+
+|code|Unique code of the requirement, used to reference the requirement.|
+*--*--+
+|status|Status of requirement. A choice described below.|
+*--*--+
+|priority|Priority of requirement. Available values are <<<high>>>, <<<normal>>>, <<<low>>>.|
+*--*--+
+|area|Area of requirement. A free text that can be used to categorize requirements|
+|    |into functional areas of the product. E.g. "Cash", "Non-cash", "Cheque", etc.|
+*--*--+
+|type|Type of requirement. A choice described below.|
+*--*--+
+|level|Level of requirement. The same level values are available as for use cases.|
+*--*--+
+|origin|Origin of requirement. A free text that can be used to record|
+|      |the event, document or person that introduced the requirement.|
+|      |E.g. "Workshop 3.3.2012", "User requirements v. 1.2.doc", "John Doe".|
+*--*--+
+
+ Attribute <<<status>>> values:
+ 
+*--*--*
+||Value||Description|
+*--*--+
+|pending|Proposed by users, not accepted to be realized yet.|
+*--*--+
+|accepted|Accepted to be realized.|
+*--*--+
+|canceled|Canceled.|
+*--*--+
+|postponed|Temporarily postponed. Will be resolved as accepted or canceled in future.|
+*--*--+
+
+ Attribute <<<type>>> values:
+ 
+*--*--*
+||Value||Description|
+*--*--+
+|functional|Functional requirement.|
+*--*--+
+|nonfunctional|Non-functional requirement.|
+*--*--+
+|constraint|Constraint.|
+*--*--+
+
+ The details of the requirement can be described in the included <<<description>>> element.
+
+* Refer to a requirement
+
+ Refer to a requirement using the <<<req-ref>>> element:
+
++--
+<use-case goal="Withdraw cash in local currency" code="CAS-100" level="sea">
+	<description>
+		Based on <req-ref code="RQ-100">requirement</req-ref>.
+	</description>
+</use-case>
++--
+
+
+*--:
+ {{{../write/attachments.html}Next >>}}
+*--:

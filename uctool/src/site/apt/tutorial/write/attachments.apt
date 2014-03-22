@@ -1,0 +1,105 @@
+ ---
+ Attachments
+ ---
+ Ivo Maixner
+ ---
+ 2012-03-05
+ ---
+
+Attachments
+
+ You can include any external files as attachments into the generated pages.
+ 
+* Define attachments
+
+ Attachment files should be placed into a sub-directory structure 
+ under the root <<<src/main/attachments>>> directory in the project.
+ 
+ The attachments' root directory can be customized by 
+ <<<attachmentsDirectory>>> configuration property of the
+ UCTool Maven plugin in POM.
+ 
+ Attachment files are organized into groups, each group corresponding to
+ a sub-directory of the attachments' root directory.
+ 
+ So, provided you have the following attachment files:
+
++--
+- my-project
+  - src
+    - main
+      - attachments
+        - diagrams
+          - diagramA-v.1.2.gif
+          - diagramB.gif
+        - templates
+          - print-template1.jpg
+          - print-template2.doc
++--
+
+ you can declare them as follows:
+
++--
+<attachment-group directory="diagrams" name="Diagrams">
+	<attachment name="Diagram A" code="diagram-A" file-name="diagramA-v.1.2.gif" />
+	<attachment name="Diagram B" code="diagram-B" file-name="diagramB.gif" />
+</attachment-group>
+<attachment-group directory="templates" name="Print templates">
+	<attachment name="Template 1" code="template1" file-name="print-template1.jpg" />
+	<attachment name="Template 2" code="template2" file-name="print-template2.doc" />
+</attachment-group>
++--
+
+ Attributes of <<<attachment-group>>> element:
+ 
+*--*--*
+||Name||Description|
+*--*--+
+|directory|The sub-directory of the attachments' root directory|
+|         |(<<<src/main/attachments>>>) that contains the included attachments.|
+*--*--+
+|name|Name of the attachment group, to be displayed within the generated pages.|
+*--*--+
+
+ Attributes of <<<attachment>>> element:
+ 
+*--*--*
+||Name||Description|
+*--*--+
+|name|Name of attachment, to be displayed within the generated pages.|
+*--*--+
+|code|Unique code of attachment, used to reference the attachment.|
+*--*--+
+|file-name|File name of attachment.|
+*--*--+
+
+* Refer to an attachment
+
+ Refer to an attachment using the <<<attachment-ref>>> element.
+ 
+ Referring from a step of a use case:
+
++--
+<step>
+	System prints withdrawal receipt using
+	<attachment-ref code="withdrawal-receipt-template">printing template</attachment-ref>.
+</step>
++--
+
+ Referring from a description of a data structure:
+
++--
+<data-structure name="Withdrawal receipt" code="WithdrawalReceipt">
+	<description>Data printed on withdrawal receipt.</description>
+	<description>
+		Conforms to
+		<attachment-ref code="withdrawal-receipt-template">printing template</attachment-ref>.
+	</description>
+	...
+</data-structure>
++--
+
+
+*--:
+ {{{../write/glossary.html}Next >>}}
+*--:

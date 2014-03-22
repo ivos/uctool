@@ -1,0 +1,141 @@
+ ---
+ Use case extensions
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-22
+ ---
+
+Use case extensions
+
+* Extension to a step of the main success scenario
+
+ To define an extension to a step of the main success scenario, 
+ first define a <<<handle>>> on the step. 
+ The <<<handle>>> identifies the step, 
+ and can then be used to reference the step from the extension.
+ 
+ Then define a <<<condition>>> element 
+ within <<<extensions>>> sub-element of the use case. 
+ The <<<condition>>> refers to the step of the main success scenario via its <<<handle>>>
+ and defines the extension to the step.
+ 
++--
+<use-case goal="Transfer funds" ...>
+	<success>
+		<step>User identifies debit account.</step>
+		<step handle="credit">User identifies credit account.</step>
+		...
+	</success>
+	<extensions>
+		<condition step-ref="credit" when="Debit and credit accounts are the same">
+			<step>System displays error message and lets the user identify other accounts.</step>
+		</condition>
+	</extensions>
+</use-case>
++--
+
+ Attributes of <<<condition>>>:
+
+*--*--*
+||Name||Description|
+*--*--+
+|step-ref|The value of the <<<handle>>> attribute of the step of main success scenario|
+|        |that this extension extends.|
+*--*--+
+|when|The condition under which the extension applies. May alternatively be expressed|
+|    |using <<<when>>> sub-element.|
+*--*--+
+|inline-step|Action of the extension. May alternatively be expressed|
+|           |using <<<step>>> sub-element(s).|
+*--*--+
+
+** Alternative notation of extensions
+
+ As you can see from the table above, there are alternative ways to specify the extension.
+ 
+ [[1.]] Attribute <<<when>>> and attribute <<<inline-step>>>:
+
++--
+<condition step-ref="handle" when="Some condition" inline-step="Some action." />
++--
+ 
+ [[1.]] Attribute <<<when>>> and element(s) <<<step>>>:
+
++--
+<condition step-ref="handle" when="Some condition">
+	<step>Some action.</step>
+	<step>Some other action.</step>
+</condition>
++--
+ 
+ [[1.]] Element <<<when>>> and element(s) <<<step>>>:
+
++--
+<condition step-ref="handle">
+	<when>Some condition</when>
+	<step>Some action.</step>
+	<step>Some other action.</step>
+</condition>
++--
+
+** Extending range of steps of main success scenario
+
+ To extend a range of steps of the main success scenario, 
+ express the range using <<<handle1-handle2>>> notation 
+ in the <<<step-ref>>> attribute of the <<<condition>>> element:
+ 
++--
+<use-case goal="Transfer funds" ...>
+	<success>
+		<step handle="debit">User identifies debit account.</step>
+		<step>User identifies credit account.</step>
+		<step handle="amount">User enters amount.</step>
+		<step>User submits the transaction.</step>
+	</success>
+	<extensions>
+		<condition step-ref="debit-amount" when="User cancels the transaction">
+			<step>System logs transaction failure and its reason to audit log.</step>
+			<step>The use case processing ends.</step>
+		</condition>
+	</extensions>
+</use-case>
++--
+
+** Extending all steps of main success scenario
+
+ To extend all steps of the main success scenario, 
+ use asterisk (<<<*>>>) in the <<<step-ref>>> attribute of the <<<condition>>> element:
+ 
++--
+<use-case goal="Transfer funds" ...>
+	<success>
+		...
+	</success>
+	<extensions>
+		<condition step-ref="*" when="Client walks away at any time">
+			<step>User takes appropriate action...</step>
+		</condition>
+	</extensions>
+</use-case>
++--
+
+* Extending extensions
+
+ Each <<<step>>> within an extension can itself be extended,
+ just use a <<<step-extensions>>> element after the step:
+ 
++--
+<condition step-ref="debit" when="User decides to verify signature">
+	<step>User verifies client's signature for the debit account.</step>
+	<step-extensions>
+		<step-condition when="Signature verification fails">
+			<step>The use case ends with error.</step>
+		</step-condition>
+	</step-extensions>
+</condition>
++--
+
+*--:
+ {{{../write/uc-details.html}Next >>}}
+*--:

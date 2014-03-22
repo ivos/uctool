@@ -1,0 +1,74 @@
+ ---
+ Actors
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-21
+ ---
+
+Actors
+
+* Define actor
+
+ Each use case needs a primary actor. To define an actor, use the <<<actor>>> element:
+ 
++--
+<uct ...>
+	<actor name="Bank teller" code="teller" />
+</uct>
++--
+
+ Attributes:
+ 
+*--*--*
+||Name||Description|
+*--*--+
+|name|Name of the actor, as displayed to the reader of the use cases.|
+*--*--+
+|code|Unique code of the actor, used to reference the actor from the use cases.|
+*--*--+
+
+* Actor description
+
+ To provide the actor with a more detailed description, use the <<<description>>> element:
+ 
++--
+<actor name="Bank teller" code="teller">
+	<description>Bank teller is a bank's employee working at a bank's branch performing
+		operations on behalf of the client present at the desk.</description>
+</actor>
++--
+
+* Actors inheritance - sharing goals between actors
+
+ Use actor inheritance when there are multiple actors, each having its own goals, 
+ and all of them also sharing some common goals. 
+ In such a case assign the shared goals to a "parent" actor.
+ 
+ For example, there might be a cash teller with goals like Withdraw cash and Deposit cash,
+ and a non-cash teller with goals like Transfer funds and Execute direct debit.
+ 
+ Both cash and non-cash tellers also share goals like Login, Print receipt, Identify account.
+ 
+ To accommodate such a need, define a new "parent" actor 
+ that will be extended by both actors and will have the shared goals defined.
+ 
++--
+<actor name="Teller" code="teller" />
+<actor name="Cash teller" code="cash">
+	<extends-actor code="teller" />
+</actor>
+<actor name="Non-cash teller" code="non-cash">
+	<extends-actor code="teller" />
+</actor>
++--
+
+ Both Cash teller and Non-cash teller actors extend from a common parent actor Teller.
+ 
+ Now you can assign Teller as the primary actor for the shared use cases. 
+ Both extending actors will then have all the goals of the extended actor also 
+ assigned, as "inherited goals".
+
+*--:
+ {{{../write/use-cases.html}Next >>}}
+*--:

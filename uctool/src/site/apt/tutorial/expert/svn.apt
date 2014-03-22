@@ -1,0 +1,53 @@
+ ---
+ Manage project in Subversion
+ ---
+ Ivo Maixner
+ ---
+ 2010-11-28
+ ---
+
+Manage project in Subversion
+
+* Why SCM?
+
+ When you start managing your UCTool project in a source code management system (SCM),
+ you get several important benefits, including:
+ 
+ * Back-up. Your sources are also in the SCM, so in case of loosing your working
+ copy you can check-out them from SCM.
+ 
+ * History of changes. A SCM system keeps history of changes you made to your source
+ files, so you can see what has changed and when, revert to older versions,
+ revert particular change, etc.
+ 
+ * Concurrent editing of sources by multiple writers. A SCM system allows for multiple
+ writers to work on the use cases at the same time, and even on the same source file,
+ by providing means to merge their work together again.
+ 
+ []
+
+ One of the most widely used SCM is 
+ {{{http://www.google.com/search?q=Subversion&btnI=Search}Subversion}} (SVN). 
+ 
+* Start using SVN in your UCTool project
+
+ To start managing a UCTool project in Subversion:
+ 
+ [[1.]] Have a Subversion server (out of scope of this tutorial).
+ 
+ [[1.]] Install 
+ {{{http://www.google.com/search?q=Subclipse&btnI=Search}Subclipse}}, 
+ the Eclipse plugin for Subversion.
+ 
+ [[1.]] Open the SVN Repository Exploring perspective in Eclipse.
+ 
+ [[1.]] Add a new repository location pointing to your Subversion server.
+ 
+ [[1.]] Share the project to the repository 
+ (right-click project, Team -> Share Project...).
+ 
+ []
+
+*--:
+ {{{./sample.html}Next >>}}
+*--:

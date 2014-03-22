@@ -1,0 +1,22 @@
+<dta:Master xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dta="http://data.sample.com/"
+	xsi:schemaLocation="http://data.sample.com/ ./data.xsd">
+	<dta:withAll>abcd</dta:withAll>
+	<dta:mandatory></dta:mandatory>
+	<dta:unique></dta:unique>
+	<dta:naturalKey></dta:naturalKey>
+	<dta:primaryKey></dta:primaryKey>
+	<dta:integer>344</dta:integer>
+	<dta:boolean>false</dta:boolean>
+	<dta:date>2000-12-31</dta:date>
+	<dta:time>12:59:45</dta:time>
+	<dta:dateTime>2010-10-20T23:59:30</dta:dateTime>
+	<dta:timestamp>2010-10-20T23:59:30.123</dta:timestamp>
+	<dta:binary>12tytryreg==</dta:binary>
+	<dta:referenceToOtherData>
+		<dta:someInteger>456</dta:someInteger>
+	</dta:referenceToOtherData>
+	<dta:collectionOfIntegers>123</dta:collectionOfIntegers>
+	<dta:collectionOfIntegers>234</dta:collectionOfIntegers>
+	<dta:collectionOfIntegers>345</dta:collectionOfIntegers>
+	<dta:integerWithLength>8765</dta:integerWithLength>
+</dta:Master>
