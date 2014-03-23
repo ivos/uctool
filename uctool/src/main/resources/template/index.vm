@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Analytical Documentation</title>
+#set($rel-path="")
+#parse("template/head.vm")
+</head>
+<body>
+#set($section="home")
+#parse("template/navbar.vm")
+<h1>Analytical Documentation</h1>
+<p class="lead">Name: $ctx.project.name<br/>
+Version: $ctx.project.version</p>
+<p class="lead">$ctx.project.description</p>
+<p>Welcome to the analytical documentation site. Please follow the links below. Start exploring the site by clicking on the following link.</p>
+<div class="offset1">Start here <i class="icon-arrow-right"></i> &nbsp;
+	<a class="btn btn-success btn-large" href="summary/entry-point-list.html">Entry point list
+ &nbsp; <i class="icon-chevron-right"></i></a></div>
+<h3>Sections</h3>
+<ul class="nav nav-tabs nav-stacked">
+<li><a href="summary/index.html"><i class="icon-sitemap"></i> Overview pages</a></li>
+#if($ctx.actors.size()>0)<li><a href="actor/index.html"><i class="icon-user"></i> Actors</a></li>
+#end
+#if($ctx.useCases.size()>0)<li><a href="uc/index.html"><i class="icon-file"></i> Use cases</a></li>
+#end
+#if($ctx.dataStructures.size()>0)<li><a href="data/index.html"><i class="icon-table"></i> Data structures</a></li>
+#end
+#if($ctx.requirements.size()>0)<li><a href="req/index.html"><i class="icon-list"></i> Requirements</a></li>
+#end
+#if($ctx.attachments.size()>0)<li><a href="attachment/index.html"><i class="icon-picture"></i> Attachments</a></li>
+#end
+#if($ctx.terms.size()>0)<li><a href="glossary/index.html"><i class="icon-search"></i> Glossary</a></li>
+#end
+</ul>
+<div><a class="btn" href="single/index.html"><i class="icon-print"></i> Whole documentation on single page (print format)</a></div>
+<hr/>
+<a href="../index.html"><i class="icon-chevron-left"></i> Back to project documentation</a>
+#parse("template/footer.vm")
+</body>
+</html>

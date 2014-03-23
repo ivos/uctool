@@ -1,4 +1,4 @@
 <hr/>
 <small>Created in <a href="http://uctool.sf.net">uctool.sf.net</a>.</small>
 </div>
-<script src="../resources/js/scripts.js" type="text/javascript"></script>
+<script src="${rel-path}resources/js/scripts.js" type="text/javascript"></script>

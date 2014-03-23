@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.uctool.convert.ActorConverter;
+import net.sf.uctool.exception.ReaderException;
 import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.input.UctoolReader;
 import net.sf.uctool.output.UctoolWriter;
@@ -14,7 +15,10 @@ import net.sf.uctool.xsd.Attachment;
 import net.sf.uctool.xsd.AttachmentGroup;
 import net.sf.uctool.xsd.DataStructure;
 import net.sf.uctool.xsd.Requirement;
+import net.sf.uctool.xsd.Term;
+import net.sf.uctool.xsd.UcGroup;
 import net.sf.uctool.xsd.Uct;
+import net.sf.uctool.xsd.UseCase;
 
 import org.apache.commons.lang.time.StopWatch;
 import org.slf4j.Logger;
@@ -30,11 +34,11 @@ public class UctoolExecutor {
 	private final ActorConverter actorConverter;
 	private final UctoolWriter uctoolWriter;
 
-	public UctoolExecutor() {
+	public UctoolExecutor(Project project) {
 		time = new StopWatch();
 		timeAll = new StopWatch();
 		uctoolReader = new UctoolReader().init();
-		executionContext = new ExecutionContext();
+		executionContext = new ExecutionContext(project);
 		actorConverter = new ActorConverter(executionContext);
 		uctoolWriter = new UctoolWriter();
 	}
@@ -74,9 +78,14 @@ public class UctoolExecutor {
 		InputFileFinder inputFileFinder = new InputFileFinder(inputPath,
 				"*.xml");
 		List<File> inputFiles = inputFileFinder.getInputFiles();
-		logger.debug("Found {} input file(s) @ {}.", inputFiles.size(),
+		int filesCount = inputFiles.size();
+		logger.debug("Found {} input file(s) @ {}.", filesCount,
 				time.toString());
 		time.reset();
+		if (0 == filesCount) {
+			throw new ReaderException("No input files found at path ["
+					+ inputPath + "].");
+		}
 		return inputFiles;
 	}
 
@@ -154,6 +163,23 @@ public class UctoolExecutor {
 					}
 					executionContext.getRequirements().put(code, requirement);
 				}
+				if (object instanceof Term) {
+					Term term = (Term) object;
+					executionContext.getTerms().add(term);
+				}
+				if (object instanceof UcGroup) {
+					UcGroup ucGroup = (UcGroup) object;
+					for (UseCase useCase : ucGroup.getUseCase()) {
+						String code = useCase.getCode();
+						if (executionContext.getUseCases().containsKey(code)) {
+							throw new ValidationException(
+									"Duplicate use case with code [" + code
+											+ "].");
+						}
+						executionContext.getUseCases().put(code, useCase);
+						executionContext.getUcGroups().put(code, ucGroup);
+					}
+				}
 			}
 		}
 		logger.debug("Validated inputs @ {}.", time.toString());
@@ -177,7 +203,8 @@ public class UctoolExecutor {
 	private void writeOutputs(List<Object> outputs, File outputDir) {
 		logger.debug("Writing {} outputs.", outputs.size());
 		time.start();
-		uctoolWriter.init(outputDir);
+		uctoolWriter.init(outputDir, executionContext);
+		uctoolWriter.writeIndex();
 		for (Object output : outputs) {
 			uctoolWriter.write(output);
 		}

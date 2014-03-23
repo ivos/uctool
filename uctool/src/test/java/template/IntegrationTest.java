@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import net.sf.seaf.test.util.TemplatingTestBase;
+import net.sf.uctool.execute.Project;
 import net.sf.uctool.execute.UctoolExecutor;
 
 import org.junit.BeforeClass;
@@ -11,9 +12,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 @Ignore
-public class IntegrationTest extends TemplatingTestBase {
-
-	private static final boolean REPLACE_TEMPLATE = false;
+public class IntegrationTest extends TemplatingTestBase implements
+		TemplateTestConstants {
 
 	public IntegrationTest() {
 		super(REPLACE_TEMPLATE);
@@ -21,8 +21,11 @@ public class IntegrationTest extends TemplatingTestBase {
 
 	@BeforeClass
 	public static void execute() {
-		new UctoolExecutor().execute(new File("src/test/ucs/integration"),
-				new File("target/site/out"));
+		Project project = new Project("test-name", "test-version",
+				"test-description");
+		new UctoolExecutor(project).execute(
+				new File("src/test/ucs/integration"), new File(
+						"target/site/out"));
 	}
 
 	@Test

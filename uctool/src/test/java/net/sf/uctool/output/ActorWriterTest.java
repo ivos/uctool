@@ -14,7 +14,7 @@ public class ActorWriterTest {
 	@Before
 	public void before() {
 		w = new UctoolWriter();
-		w.init(new File("target/site/out"));
+		w.init(new File("target/site/out"), null);
 	}
 
 	@Test

@@ -2,7 +2,8 @@
 <html>
 <head>
 <title>Actor $actor.name</title>
-#include("template/head.txt")
+#set($rel-path="../")
+#parse("template/head.vm")
 </head>
 <body>
 #set($section="actor")
@@ -13,6 +14,6 @@
 #foreach($description in $actor.descriptions)<div>$description</div>
 #end
 #end
-#include("template/footer.txt")
+#parse("template/footer.vm")
 </body>
 </html>

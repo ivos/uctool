@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd">
+	xsi:schemaLocation="http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd">
 	<actor name="No Ucs Primary Actor" code="no-ucs-primary-actor"></actor>
 	<actor name="Primary Actor With Goals" code="primary-actor-with-goals"></actor>
 	<uc-group primary-actor="no-ucs-primary-actor" />
 	<uc-group primary-actor="primary-actor-with-goals">
-		<use-case goal="Goal 1 for actor-goal list" />
-		<use-case goal="Goal 2 for actor-goal list" />
-		<use-case goal="Goal 3 for actor-goal list" />
+		<use-case goal="Goal 1 for actor-goal list" code="uc1" />
+		<use-case goal="Goal 2 for actor-goal list" code="uc2" />
+		<use-case goal="Goal 3 for actor-goal list" code="uc3" />
 	</uc-group>
 </uct>
