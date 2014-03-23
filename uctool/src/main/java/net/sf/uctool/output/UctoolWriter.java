@@ -39,7 +39,7 @@ public class UctoolWriter {
 			throw new WriterException("Item is null.");
 		}
 		if (item instanceof ActorOut) {
-			actorWriter.write((ActorOut) item);
+			actorWriter.write((ActorOut) item, executionContext);
 			return;
 		}
 		throw new WriterException("Unknown item class ["
