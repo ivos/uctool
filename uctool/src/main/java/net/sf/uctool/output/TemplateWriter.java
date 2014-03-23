@@ -11,8 +11,12 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.ParseErrorException;
 import org.apache.velocity.exception.ResourceNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TemplateWriter {
+
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private final VelocityEngine ve;
 	private final File baseDir;
@@ -52,6 +56,7 @@ public class TemplateWriter {
 			throw new WriterException("Error writing output file ["
 					+ outputFile.getName() + "].", e);
 		}
+		logger.trace("Wrote [{}] to {}.", templateName, outputFile);
 	}
 
 }

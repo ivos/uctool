@@ -309,7 +309,7 @@
 							<goal>use-cases</goal>
 						</goals>
 						<configuration>
-							<useCasesDirectory>src/test/ucs</useCasesDirectory>
+							<useCasesDirectory>src/test/ucs/integration</useCasesDirectory>
 							<attachmentsDirectory>src/test/attachments</attachmentsDirectory>
 							<mergedFile>${project.build.testOutputDirectory}/net/sf/uctool/merged.xml</mergedFile>
 							<outputDirectory>${project.build.directory}/site/out-bak</outputDirectory>

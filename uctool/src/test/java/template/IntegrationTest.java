@@ -7,8 +7,10 @@ import net.sf.seaf.test.util.TemplatingTestBase;
 import net.sf.uctool.execute.UctoolExecutor;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class IntegrationTest extends TemplatingTestBase {
 
 	private static final boolean REPLACE_TEMPLATE = false;

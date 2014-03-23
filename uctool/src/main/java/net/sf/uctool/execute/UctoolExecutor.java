@@ -1,6 +1,7 @@
 package net.sf.uctool.execute;
 
 import java.io.File;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,18 +39,48 @@ public class UctoolExecutor {
 		uctoolWriter = new UctoolWriter();
 	}
 
-	public void execute(File inputDir, File outputDir) {
+	public void execute(Reader reader, File outputDir) {
 		timeAll.start();
-		logger.info("Executing UCTool for {}.", inputDir);
+		logger.info("Executing UCTool from reader stream.");
 
+		List<Uct> inputs = readReader(reader);
+		validateInputs(inputs);
+		List<Object> outputs = convertToOutputs();
+		writeOutputs(outputs, outputDir);
+
+		logger.info("Executed UCTool into {} in {}.", outputDir,
+				timeAll.toString());
+		timeAll.stop();
+	}
+
+	public void execute(File inputPath, File outputDir) {
+		timeAll.start();
+		logger.info("Executing UCTool for {}.", inputPath);
+
+		List<File> inputFiles = findInputFiles(inputPath);
+		List<Uct> inputs = readInputFiles(inputFiles);
+		validateInputs(inputs);
+		List<Object> outputs = convertToOutputs();
+		writeOutputs(outputs, outputDir);
+
+		logger.info("Executed UCTool into {} in {}.", outputDir,
+				timeAll.toString());
+		timeAll.stop();
+	}
+
+	private List<File> findInputFiles(File inputPath) {
 		logger.debug("Finding input files.");
 		time.start();
-		InputFileFinder inputFileFinder = new InputFileFinder(inputDir, "*.xml");
+		InputFileFinder inputFileFinder = new InputFileFinder(inputPath,
+				"*.xml");
 		List<File> inputFiles = inputFileFinder.getInputFiles();
 		logger.debug("Found {} input file(s) @ {}.", inputFiles.size(),
 				time.toString());
 		time.reset();
+		return inputFiles;
+	}
 
+	private List<Uct> readInputFiles(List<File> inputFiles) {
 		logger.debug("Reading input files.");
 		time.start();
 		List<Uct> inputs = new ArrayList<Uct>();
@@ -59,7 +90,21 @@ public class UctoolExecutor {
 		}
 		logger.debug("Read input files @ {}.", time.toString());
 		time.reset();
+		return inputs;
+	}
 
+	private List<Uct> readReader(Reader reader) {
+		logger.debug("Reading reader stream.");
+		time.start();
+		List<Uct> inputs = new ArrayList<Uct>();
+		Uct uct = uctoolReader.read(reader, "reader stream");
+		inputs.add(uct);
+		logger.debug("Read reader stream @ {}.", time.toString());
+		time.reset();
+		return inputs;
+	}
+
+	private void validateInputs(List<Uct> inputs) {
 		logger.debug("Validating inputs.");
 		time.start();
 		for (Uct uct : inputs) {
@@ -112,18 +157,25 @@ public class UctoolExecutor {
 			}
 		}
 		logger.debug("Validated inputs @ {}.", time.toString());
+		logger.debug("Loaded {} actor(s).", executionContext.getActors().size());
 		time.reset();
+	}
 
+	private List<Object> convertToOutputs() {
 		logger.debug("Converting to outputs.");
 		time.start();
 		List<Object> outputs = new ArrayList<Object>();
 		for (Actor actor : executionContext.getActors().values()) {
 			outputs.add(actorConverter.convert(actor));
 		}
-		logger.debug("Converted to outputs @ {}.", time.toString());
+		logger.debug("Converted to {} outputs @ {}.", outputs.size(),
+				time.toString());
 		time.reset();
+		return outputs;
+	}
 
-		logger.debug("Writing outputs.");
+	private void writeOutputs(List<Object> outputs, File outputDir) {
+		logger.debug("Writing {} outputs.", outputs.size());
 		time.start();
 		uctoolWriter.init(outputDir);
 		for (Object output : outputs) {
@@ -131,10 +183,6 @@ public class UctoolExecutor {
 		}
 		logger.debug("Wrote outputs @ {}.", time.toString());
 		time.reset();
-
-		logger.info("Executed UCTool into {} in {}.", outputDir,
-				timeAll.toString());
-		timeAll.stop();
 	}
 
 }

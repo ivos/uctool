@@ -1,6 +1,9 @@
 package net.sf.uctool.input;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -38,6 +41,16 @@ public class UctoolReader {
 	}
 
 	public Uct read(File file) {
+		try {
+			Reader reader = new FileReader(file);
+			return read(reader, file.getName());
+		} catch (FileNotFoundException e) {
+			throw new ReaderException("Input file [" + file.getName()
+					+ "] does not exist.", e);
+		}
+	}
+
+	public Uct read(Reader reader, String name) {
 		Unmarshaller unmarshaller;
 		if (null == jc) {
 			throw new ReaderException(
@@ -49,11 +62,10 @@ public class UctoolReader {
 			throw new ReaderException("Error setting up JAXB unmarshaller.", e);
 		}
 		try {
-			Uct uct = (Uct) unmarshaller.unmarshal(file);
+			Uct uct = (Uct) unmarshaller.unmarshal(reader);
 			return uct;
 		} catch (JAXBException e) {
-			throw new ReaderException("Error parsing file " + file.getName()
-					+ ".", e);
+			throw new ReaderException("Error parsing source [" + name + "].", e);
 		}
 	}
 
