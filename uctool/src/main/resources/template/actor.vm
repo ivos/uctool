@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Actor $actor.name</title>
+#include("template/head.txt")
+</head>
+<body>
+#set($section="actor")
+#parse("template/navbar.vm")
+<a id="actor_$actor.code"></a>
+<h3><i class="icon-user"></i> <span class="muted">Actor</span> $actor.name</h3>
+#if(!$actor.descriptions.isEmpty())<div><strong>Description:</strong></div>
+#foreach($description in $actor.descriptions)<div>$description</div>
+#end
+#end
+#include("template/footer.txt")
+</body>
+</html>

@@ -1,17 +1,26 @@
-package net.sf.uctool.template;
+package template;
 
+import java.io.File;
 import java.io.IOException;
 
 import net.sf.seaf.test.util.TemplatingTestBase;
+import net.sf.uctool.execute.UctoolExecutor;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TemplatesTest extends TemplatingTestBase {
+public class IntegrationTest extends TemplatingTestBase {
 
 	private static final boolean REPLACE_TEMPLATE = false;
 
-	public TemplatesTest() {
+	public IntegrationTest() {
 		super(REPLACE_TEMPLATE);
+	}
+
+	@BeforeClass
+	public static void execute() {
+		new UctoolExecutor().execute(new File("src/test/ucs/integration"),
+				new File("target/site/out"));
 	}
 
 	@Test
@@ -210,7 +219,7 @@ public class TemplatesTest extends TemplatingTestBase {
 	}
 
 	private void performTest(String location) throws IOException {
-		performTest(location, "site/out/" + location);
+		performTest("integration/" + location, "site/out/" + location);
 	}
 
 	@Test

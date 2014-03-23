@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>net.sf.uctool</groupId>
@@ -39,8 +40,8 @@
 	</issueManagement>
 
 	<properties>
-		<maven.compiler.source>1.5</maven.compiler.source>
-		<maven.compiler.target>1.5</maven.compiler.target>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<uctool.maven.plugin.version>3.0.0</uctool.maven.plugin.version>
@@ -49,11 +50,6 @@
 		<uctool.merged.ucs.file>${project.build.testOutputDirectory}/net/sf/uctool/merged.xml</uctool.merged.ucs.file>
 	</properties>
 
-	<scm>
-		<connection>scm:svn:https://svn.code.sf.net/p/uctool/svn/trunk/uctool-reactor/uctool/</connection>
-		<developerConnection>scm:svn:https://svn.code.sf.net/p/uctool/svn/trunk/uctool-reactor/uctool/</developerConnection>
-		<url>https://sourceforge.net/p/uctool/svn/HEAD/tree/trunk/uctool-reactor/uctool/</url>
-	</scm>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>sonatype-nexus-snapshots</id>
@@ -72,8 +68,158 @@
 		</site>
 	</distributionManagement>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.seaf</groupId>
+			<artifactId>seaf-test-commons</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.target}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+						<chmod>false</chmod>
+					</configuration>
+					<dependencies>
+						<!-- add support for ssh/scp -->
+						<dependency>
+							<groupId>org.apache.maven.wagon</groupId>
+							<artifactId>wagon-ssh</artifactId>
+							<version>1.0</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.4.1</version>
+					<configuration>
+						<mavenExecutorId>forked-path</mavenExecutorId>
+						<tagBase>https://svn.code.sf.net/p/uctool/svn/tags/${project.artifactId}/</tagBase>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jaxb2-maven-plugin</artifactId>
+					<version>1.6</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>jaxb2-maven-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>xjc</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>false</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>net.sf.uctool</groupId>
+										<artifactId>uctool-maven-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>use-cases</goal>
+											<goal>extract-resources</goal>
+											<goal>import-xsd</goal>
+											<goal>export-xsd</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>false</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<configuration>
+					<target>2.1</target>
+					<bindingDirectory>${project.basedir}/src/main/resources/xsd</bindingDirectory>
+					<schemaDirectory>${project.basedir}/src/main/resources/xsd</schemaDirectory>
+					<packageName>net.sf.uctool.xsd</packageName>
+				</configuration>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -166,7 +312,7 @@
 							<useCasesDirectory>src/test/ucs</useCasesDirectory>
 							<attachmentsDirectory>src/test/attachments</attachmentsDirectory>
 							<mergedFile>${project.build.testOutputDirectory}/net/sf/uctool/merged.xml</mergedFile>
-							<outputDirectory>${project.build.directory}/site/out</outputDirectory>
+							<outputDirectory>${project.build.directory}/site/out-bak</outputDirectory>
 							<bundleLanguage>en</bundleLanguage>
 							<useCasesName>test-name</useCasesName>
 							<useCasesVersion>test-version</useCasesVersion>
@@ -194,73 +340,6 @@
 				</dependencies>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.1</version>
-					<configuration>
-						<source>${maven.compiler.source}</source>
-						<target>${maven.compiler.target}</target>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>3.3</version>
-					<configuration>
-						<chmod>false</chmod>
-					</configuration>
-					<dependencies>
-						<!-- add support for ssh/scp -->
-						<dependency>
-							<groupId>org.apache.maven.wagon</groupId>
-							<artifactId>wagon-ssh</artifactId>
-							<version>1.0</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>2.4.1</version>
-					<configuration>
-						<mavenExecutorId>forked-path</mavenExecutorId>
-						<tagBase>https://svn.code.sf.net/p/uctool/svn/tags/${project.artifactId}/</tagBase>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>net.sf.uctool</groupId>
-										<artifactId>uctool-maven-plugin</artifactId>
-										<versionRange>[1.0.0,)</versionRange>
-										<goals>
-											<goal>use-cases</goal>
-											<goal>extract-resources</goal>
-											<goal>import-xsd</goal>
-											<goal>export-xsd</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute>
-											<runOnIncremental>false</runOnIncremental>
-										</execute>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 
 	<reporting>
@@ -309,21 +388,6 @@
 			</plugin>
 		</plugins>
 	</reporting>
-
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.seaf</groupId>
-			<artifactId>seaf-test-commons</artifactId>
-			<version>1.3</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 
 	<profiles>
 		<!-- Actions to take when releasing -->
