@@ -1,7 +1,7 @@
 package net.sf.uctool.execute;
 
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -28,14 +28,14 @@ public class ExecutionContext {
 
 	public ExecutionContext(Project project) {
 		this.project = project;
-		actors = new HashMap<String, Actor>();
-		attachments = new HashMap<String, Attachment>();
-		attachmentGroups = new HashMap<String, AttachmentGroup>();
-		dataStructures = new HashMap<String, DataStructure>();
-		requirements = new HashMap<String, Requirement>();
-		terms = new HashSet<Term>();
-		useCases = new HashMap<String, UseCase>();
-		ucGroups = new HashMap<String, UcGroup>();
+		actors = new LinkedHashMap<String, Actor>();
+		attachments = new LinkedHashMap<String, Attachment>();
+		attachmentGroups = new LinkedHashMap<String, AttachmentGroup>();
+		dataStructures = new LinkedHashMap<String, DataStructure>();
+		requirements = new LinkedHashMap<String, Requirement>();
+		terms = new LinkedHashSet<Term>();
+		useCases = new LinkedHashMap<String, UseCase>();
+		ucGroups = new LinkedHashMap<String, UcGroup>();
 	}
 
 	public Project getProject() {

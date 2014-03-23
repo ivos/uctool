@@ -52,4 +52,10 @@ public class UctoolWriter {
 		templateWriter.write("template/index.vm", "index", context);
 	}
 
+	public void writeActorIndex() {
+		VelocityContext context = new VelocityContext();
+		context.put("ctx", executionContext);
+		templateWriter.write("template/actor-index.vm", "actor/index", context);
+	}
+
 }

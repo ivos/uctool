@@ -11,7 +11,7 @@
 			<div class="nav-collapse collapse">
 				<ul class="nav">
 					<li#if($section=="home") class="active"#end><a href="${rel-path}index.html"><i class="icon-home"></i> Home</a></li>
-					<li><a href="index.html"><i class="icon-chevron-left"></i> Section</a></li>
+					<li#if($isSection=="true") class="active"#end><a href="index.html"><i class="icon-chevron-left"></i> Section</a></li>
 #if($ctx.useCases.size()>0)					<li><a href="${rel-path}summary/entry-point-list.html">Entry point list <i class="icon-chevron-right"></i></a></li>
 #end
 					<li class="dropdown">

@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Actors overview</title>
+#set($rel-path="../")
+#parse("template/head.vm")
+</head>
+<body>
+#set($section="actor")
+#set($isSection="true")
+#parse("template/navbar.vm")
+<h2>Actors overview</h2>
+<ul class="nav nav-tabs nav-stacked">
+#foreach($actor in $ctx.actors.values())<li><a href="../actor/${actor.code}.html" title="$actor.name">$actor.name</a></li>
+#end</ul>
+#parse("template/footer.vm")
+</body>
+</html>

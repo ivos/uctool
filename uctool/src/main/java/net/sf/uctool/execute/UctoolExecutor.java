@@ -205,6 +205,7 @@ public class UctoolExecutor {
 		time.start();
 		uctoolWriter.init(outputDir, executionContext);
 		uctoolWriter.writeIndex();
+		uctoolWriter.writeActorIndex();
 		for (Object output : outputs) {
 			uctoolWriter.write(output);
 		}

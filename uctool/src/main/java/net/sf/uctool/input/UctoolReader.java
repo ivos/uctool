@@ -41,6 +41,7 @@ public class UctoolReader {
 	}
 
 	public Uct read(File file) {
+		logger.trace("Reading input file {}.", file);
 		try {
 			Reader reader = new FileReader(file);
 			return read(reader, file.getName());

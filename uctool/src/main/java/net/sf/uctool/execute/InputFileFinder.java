@@ -3,6 +3,7 @@ package net.sf.uctool.execute;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -38,6 +39,13 @@ public class InputFileFinder extends DirectoryWalker<File> {
 	protected void handleFile(File file, int depth, Collection<File> results)
 			throws IOException {
 		results.add(file);
+	}
+
+	@Override
+	protected File[] filterDirectoryContents(File directory, int depth,
+			File[] files) throws IOException {
+		Arrays.sort(files);
+		return files;
 	}
 
 }
