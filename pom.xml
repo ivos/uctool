@@ -13,14 +13,12 @@
 
 	<modules>
 		<module>uctool</module>
-		<module>uctool-maven-plugin</module>
-		<module>uctool-archetype</module>
-		<module>uctool-sample</module>
+		<!-- <module>uctool-maven-plugin</module> <module>uctool-archetype</module> <module>uctool-sample</module> -->
 	</modules>
 
 	<scm>
 		<connection>scm:git:git@github.com:ivos/uctool.git</connection>
 		<developerConnection>scm:git:git@github.com:ivos/uctool.git</developerConnection>
-		<url>http://uctool.svn.sf.net/viewvc/uctool/trunk/uctool-reactor/</url>
+		<url>https://github.com/ivos/uctool</url>
 	</scm>
 </project>
