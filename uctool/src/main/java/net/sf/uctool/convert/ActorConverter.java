@@ -38,25 +38,32 @@ public class ActorConverter {
 
 	public ActorOut convert(Actor actor) {
 		ActorOut o = new ActorOut();
-		o.setCode(actor.getCode());
+		String code = actor.getCode();
+		o.setCode(code);
 		o.setName(actor.getName());
 		for (DescriptionType descriptionType : actor.getDescription()) {
 			StringBuilder sb = new StringBuilder();
 			for (Object content : descriptionType.getContent()) {
-				writeDescription(sb, content);
+				writeDescription(sb, content, code);
 			}
 			o.getDescriptions().add(sb.toString().trim());
 		}
 		Set<Actor> extendedActors = new LinkedHashSet<Actor>();
 		for (ExtendsActor extendsActor : actor.getExtendsActor()) {
-			String code = extendsActor.getCode();
-			Actor extended = executionContext.getActors().get(code);
-			o.getExtendsActors().add(new Reference(code, extended.getName()));
+			String extendsCode = extendsActor.getCode();
+			Actor extended = executionContext.getActors().get(extendsCode);
+			if (null == extended) {
+				throw new ValidationException("Missing actor with code ["
+						+ extendsCode + "] referenced from actor with code ["
+						+ code + "].");
+			}
+			o.getExtendsActors().add(
+					new Reference(extendsCode, extended.getName()));
 			extendedActors.add(extended);
 		}
 		for (Actor other : executionContext.getActors().values()) {
 			for (ExtendsActor extendsActor : other.getExtendsActor()) {
-				if (extendsActor.getCode().equals(actor.getCode())) {
+				if (extendsActor.getCode().equals(code)) {
 					o.getExtendedByActors().add(
 							new Reference(other.getCode(), other.getName()));
 				}
@@ -112,17 +119,25 @@ public class ActorConverter {
 		}
 	}
 
-	public void writeDescription(StringBuilder sb, Object content) {
+	public void writeDescription(StringBuilder sb, Object content,
+			String actorCode) {
 		if (content instanceof String) {
 			sb.append(content);
 			sb.append(' ');
 		}
 		if (content instanceof AttachmentRef) {
 			AttachmentRef attachmentRef = ((AttachmentRef) content);
-			String code = attachmentRef.getCode();
-			Attachment attachment = executionContext.getAttachments().get(code);
+			String attachmentCode = attachmentRef.getCode();
+			Attachment attachment = executionContext.getAttachments().get(
+					attachmentCode);
+			if (null == attachment) {
+				throw new ValidationException("Missing attachment with code ["
+						+ attachmentCode
+						+ "] referenced from actor with code [" + actorCode
+						+ "].");
+			}
 			AttachmentGroup attachmentGroup = executionContext
-					.getAttachmentGroups().get(code);
+					.getAttachmentGroups().get(attachmentCode);
 			sb.append("<a href=\"../attachment/");
 			sb.append(attachmentGroup.getDirectory());
 			sb.append("/");
@@ -144,8 +159,9 @@ public class ActorConverter {
 					.get(code);
 			if (null == dataStructure) {
 				throw new ValidationException(
-						"Invalid data structure reference, no data structure with code ["
-								+ code + "] found.");
+						"Missing data structure with code [" + code
+								+ "] referenced from actor with code ["
+								+ actorCode + "].");
 			}
 			sb.append("<a href=\"../data/");
 			sb.append(code);
@@ -161,9 +177,9 @@ public class ActorConverter {
 			Requirement requirement = executionContext.getRequirements().get(
 					code);
 			if (null == requirement) {
-				throw new ValidationException(
-						"Invalid data requirement, no requirement with code ["
-								+ code + "] found.");
+				throw new ValidationException("Missing requirement with code ["
+						+ code + "] referenced from actor with code ["
+						+ actorCode + "].");
 			}
 			sb.append("<a href=\"../req/");
 			sb.append(code);
@@ -182,21 +198,21 @@ public class ActorConverter {
 				AttachmentRef ref = new AttachmentRef();
 				ref.setCode(element.getAttribute("code"));
 				ref.setValue(element.getTextContent());
-				writeDescription(sb, ref);
+				writeDescription(sb, ref, actorCode);
 				return;
 			}
 			if ("data-ref".equals(name)) {
 				DataRef ref = new DataRef();
 				ref.setCode(element.getAttribute("code"));
 				ref.setValue(element.getTextContent());
-				writeDescription(sb, ref);
+				writeDescription(sb, ref, actorCode);
 				return;
 			}
 			if ("req-ref".equals(name)) {
 				ReqRef ref = new ReqRef();
 				ref.setCode(element.getAttribute("code"));
 				ref.setValue(element.getTextContent());
-				writeDescription(sb, ref);
+				writeDescription(sb, ref, actorCode);
 				return;
 			}
 			sb.append("<");
@@ -217,7 +233,7 @@ public class ActorConverter {
 			NodeList childNodes = element.getChildNodes();
 			for (int i = 0; i < childNodes.getLength(); i++) {
 				Node child = childNodes.item(i);
-				writeDescription(sb, child);
+				writeDescription(sb, child, actorCode);
 			}
 			sb.append("</");
 			sb.append(name);
