@@ -1,3 +1,4 @@
+#parse("template/macros.vm")
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -13,6 +14,36 @@
 #if(!$actor.descriptions.isEmpty())<div><strong>Description:</strong></div>
 #foreach($description in $actor.descriptions)<div>$description</div>
 #end
+#end
+#if(!$actor.extendsActors.isEmpty())<div><strong>Extends actors:</strong></div>
+<ul>
+#foreach($ref in $actor.extendsActors)<li>#ref("actor" $ref)</li>
+#end
+</ul>
+#end
+#if(!$actor.extendedByActors.isEmpty())<div><strong>Extended by actors:</strong></div>
+<ul>
+#foreach($ref in $actor.extendedByActors)<li>#ref("actor" $ref)</li>
+#end
+</ul>
+#end
+#if(!$actor.goals.isEmpty())<div><strong>Goals:</strong></div>
+<ul>
+#foreach($ref in $actor.goals)<li>#ref("uc" $ref)</li>
+#end
+</ul>
+#end
+#if(!$actor.inheritedActors.isEmpty())<div><strong>Inherited actors:</strong></div>
+<ul>
+#foreach($ref in $actor.inheritedActors)<li>#ref("actor" $ref)</li>
+#end
+</ul>
+#end
+#if(!$actor.inheritedGoals.isEmpty())<div><strong>Inherited goals:</strong></div>
+<ul>
+#foreach($ref in $actor.inheritedGoals)<li>#ref("uc" $ref)</li>
+#end
+</ul>
 #end
 #parse("template/footer.vm")
 </body>

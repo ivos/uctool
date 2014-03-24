@@ -25,7 +25,7 @@
 			.
 		</description>
 		<description>
-			Here 
+			Here
 			<h:strong>
 				is
 				<h:em>
@@ -41,13 +41,62 @@
 			</h:strong>
 			.
 		</description>
-		<extends-actor code="ac2" />
-		<extends-actor code="ac3" />
-		<extends-actor code="ac4" />
+		<extends-actor code="exed1" />
+		<extends-actor code="exed2" />
+		<extends-actor code="exed3" />
 	</actor>
 	<attachment-group directory="att-dir1" name="">
 		<attachment name="Att 1 name" code="att1" file-name="att1-file-name" />
 	</attachment-group>
 	<data-structure name="Dt 1 name" code="dt1"></data-structure>
 	<requirement name="Rq 1 name" code="rq1"></requirement>
+
+	<actor name="Extended 1" code="exed1">
+		<extends-actor code="ined1" />
+		<extends-actor code="ined2" />
+	</actor>
+	<actor name="Extended 2" code="exed2">
+	</actor>
+	<actor name="Extended 3" code="exed3">
+		<extends-actor code="ined3" />
+	</actor>
+	<actor name="Inherited 1" code="ined1">
+	</actor>
+	<actor name="Inherited 2" code="ined2">
+	</actor>
+	<actor name="Inherited 3" code="ined3">
+	</actor>
+
+	<actor name="Extending 1" code="exing1">
+		<extends-actor code="full" />
+	</actor>
+	<actor name="Extending 2" code="exing2">
+		<extends-actor code="full" />
+	</actor>
+	<actor name="Extending 3" code="exing3">
+		<extends-actor code="full" />
+	</actor>
+
+	<uc-group primary-actor="full">
+		<use-case goal="Own goal 1" code="own-1"></use-case>
+		<use-case goal="Own goal 2" code="own-2"></use-case>
+	</uc-group>
+	<uc-group primary-actor="exed2">
+		<use-case goal="Inherited goal 1" code="inh-1"></use-case>
+		<use-case goal="Inherited goal 2" code="inh-2"></use-case>
+	</uc-group>
+	<uc-group primary-actor="full">
+		<use-case goal="Own goal 3" code="own-3"></use-case>
+	</uc-group>
+	<uc-group primary-actor="exed3">
+		<use-case goal="Inherited goal 3" code="inh-3"></use-case>
+	</uc-group>
+	<uc-group primary-actor="ined1">
+		<use-case goal="Sub inherited goal 1" code="subinh-1"></use-case>
+		<use-case goal="Sub inherited goal 2" code="subinh-2"></use-case>
+	</uc-group>
+	<uc-group primary-actor="exing1">
+		<use-case goal="Other goal 1" code="other-1"></use-case>
+	</uc-group>
+
 </uct>
