@@ -81,7 +81,7 @@
 				<xs:element ref="uct:extensions" minOccurs="0" />
 				<xs:element ref="uct:notes" minOccurs="0" />
 			</xs:sequence>
-			<xs:attribute name="code" type="uct:CodeType">
+			<xs:attribute name="code" use="required" type="uct:CodeType">
 				<xs:annotation>
 					<xs:documentation>Code of the use case. Uniquely identifies the use case.
 					</xs:documentation>
