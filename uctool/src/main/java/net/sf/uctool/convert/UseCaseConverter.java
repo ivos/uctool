@@ -35,14 +35,22 @@ public class UseCaseConverter {
 				group.getPrimaryActor());
 		o.setPrimaryActor(primaryActor);
 
-		o.setTypeImageName(group.getVisibility() + "-" + group.getType());
-		o.setTypeTitle(executionContext.getLabels().getString(
-				"uc.type." + group.getType()));
-		o.setVisibilityTitle(executionContext.getLabels().getString(
-				"visibility." + group.getVisibility()));
-		o.setLevel(uc.getLevel().value());
-		o.setLevelTitle(executionContext.getLabels().getString(
-				"level." + uc.getLevel().value()));
+		if (null != group.getVisibility() && null != group.getType()) {
+			o.setTypeImageName(group.getVisibility() + "-" + group.getType());
+		}
+		if (null != group.getType()) {
+			o.setTypeTitle(executionContext.getLabels().getString(
+					"uc.type." + group.getType()));
+		}
+		if (null != group.getVisibility()) {
+			o.setVisibilityTitle(executionContext.getLabels().getString(
+					"visibility." + group.getVisibility()));
+		}
+		if (null != uc.getLevel()) {
+			o.setLevel(uc.getLevel().value());
+			o.setLevelTitle(executionContext.getLabels().getString(
+					"level." + uc.getLevel().value()));
+		}
 		o.setScope(group.getScope());
 
 		for (DescriptionType descriptionType : uc.getDescription()) {
