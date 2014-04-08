@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+	<actor name="Actor 1" code="a1"></actor>
+	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
+		<use-case code="description" goal="Description UC goal" level="sea">
+			<description>Some UC description.</description>
+			<description>Some other use case description.</description>
+			<description>
+				Contains
+				<h:strong class="class-1 class-2" title="A title">
+					some
+					<h:em class="class-3">HTML code</h:em>
+				</h:strong>
+				.
+			</description>
+			<description>
+				Contains
+				<attachment-ref code="att1">attachment link</attachment-ref>
+				,
+				<data-ref code="dt1">data link</data-ref>
+				,
+				<req-ref code="rq1">requirement link</req-ref>
+				.
+			</description>
+			<description>
+				Here
+				<h:strong>
+					is
+					<h:em>
+						some
+						<attachment-ref code="att1">attachment link</attachment-ref>
+						,
+						<data-ref code="dt1">data link</data-ref>
+						,
+						<req-ref code="rq1">requirement link</req-ref>
+						within
+					</h:em>
+					HTML
+				</h:strong>
+				.
+			</description>
+		</use-case>
+	</uc-group>
+
+	<attachment-group directory="att-dir1" name="">
+		<attachment name="Att 1 name" code="att1" file-name="att1-file-name" />
+	</attachment-group>
+	<data-structure name="Dt 1 name" code="dt1"></data-structure>
+	<requirement name="Rq 1 name" code="rq1"></requirement>
+
+</uct>

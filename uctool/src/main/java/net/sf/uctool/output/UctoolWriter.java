@@ -7,6 +7,8 @@ import net.sf.uctool.exception.WriterException;
 import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.output.actor.ActorOut;
 import net.sf.uctool.output.actor.ActorWriter;
+import net.sf.uctool.output.uc.UseCaseOut;
+import net.sf.uctool.output.uc.UseCaseWriter;
 
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -17,6 +19,7 @@ public class UctoolWriter {
 	private VelocityEngine ve;
 	private TemplateWriter templateWriter;
 	private ActorWriter actorWriter;
+	private UseCaseWriter useCaseWriter;
 	private ExecutionContext executionContext;
 
 	public void init(File baseDir, ExecutionContext executionContext) {
@@ -28,10 +31,13 @@ public class UctoolWriter {
 		ve.init(p);
 
 		new File(baseDir, "actor").mkdirs();
+		new File(baseDir, "uc").mkdirs();
+
+		this.executionContext = executionContext;
 
 		templateWriter = new TemplateWriter(ve, baseDir);
 		actorWriter = new ActorWriter(templateWriter);
-		this.executionContext = executionContext;
+		useCaseWriter = new UseCaseWriter(templateWriter);
 	}
 
 	public void write(Object item) {
@@ -40,6 +46,10 @@ public class UctoolWriter {
 		}
 		if (item instanceof ActorOut) {
 			actorWriter.write((ActorOut) item, executionContext);
+			return;
+		}
+		if (item instanceof UseCaseOut) {
+			useCaseWriter.write((UseCaseOut) item, executionContext);
 			return;
 		}
 		throw new WriterException("Unknown item class ["

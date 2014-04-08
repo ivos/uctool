@@ -4,14 +4,18 @@ import java.io.File;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 
 import net.sf.uctool.convert.ActorConverter;
+import net.sf.uctool.convert.UseCaseConverter;
 import net.sf.uctool.exception.ReaderException;
 import net.sf.uctool.input.UctoolReader;
 import net.sf.uctool.output.UctoolWriter;
 import net.sf.uctool.validate.UctoolValidator;
 import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Uct;
+import net.sf.uctool.xsd.UseCase;
 
 import org.apache.commons.lang.time.StopWatch;
 import org.slf4j.Logger;
@@ -22,19 +26,24 @@ public class UctoolExecutor {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	private final StopWatch timeAll, time;
 
+	private final ResourceBundle labels;
 	private final UctoolReader uctoolReader;
 	private final ExecutionContext executionContext;
 	private final ActorConverter actorConverter;
+	private final UseCaseConverter useCaseConverter;
 	private final UctoolWriter uctoolWriter;
 	private final UctoolValidator uctoolValidator;
 
 	public UctoolExecutor(Project project) {
 		time = new StopWatch();
 		timeAll = new StopWatch();
+		labels = PropertyResourceBundle
+				.getBundle("generator/uctool/translations/Resource");
 		uctoolReader = new UctoolReader().init();
-		executionContext = new ExecutionContext(project);
+		executionContext = new ExecutionContext(labels, project);
 		uctoolValidator = new UctoolValidator(executionContext);
 		actorConverter = new ActorConverter(executionContext);
+		useCaseConverter = new UseCaseConverter(executionContext);
 		uctoolWriter = new UctoolWriter();
 	}
 
@@ -123,6 +132,9 @@ public class UctoolExecutor {
 		List<Object> outputs = new ArrayList<Object>();
 		for (Actor actor : executionContext.getActors().values()) {
 			outputs.add(actorConverter.convert(actor));
+		}
+		for (UseCase useCase : executionContext.getUseCases().values()) {
+			outputs.add(useCaseConverter.convert(useCase));
 		}
 		logger.debug("Converted to {} outputs @ {}.", outputs.size(),
 				time.toString());

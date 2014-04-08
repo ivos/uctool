@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+	<actor name="Actor 1" code="a1"></actor>
+	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
+		<use-case code="min-guarantees" goal="Min guarantees UC goal" level="sea">
+			<minimal-guarantees>
+				<item>Item 1.</item>
+				<item>
+					Item 2, and a
+					<uc-ref code="RF001">reference to other use case</uc-ref>
+					, a reference to step
+					<step-ref handle="stepHandle1" />
+					,
+					<attachment-ref code="att1">attachment link</attachment-ref>
+					,
+					<data-ref code="dt1">data link</data-ref>
+					,
+					<req-ref code="rq1">requirement link</req-ref>
+					.
+				</item>
+				<item>
+					References within HTML:
+					<h:div class="custom-class">
+						Within div.
+						<h:table>
+							<h:tr>
+								<h:td>
+									Within table cell. A
+									<uc-ref code="RF001">link to another UC</uc-ref>
+									, a reference to step
+									<step-ref handle="stepHandle1" />
+									,
+									<attachment-ref code="att1">attachment link</attachment-ref>
+									,
+									<data-ref code="dt1">data link</data-ref>
+									,
+									<req-ref code="rq1">requirement link</req-ref>
+									.
+								</h:td>
+							</h:tr>
+						</h:table>
+					</h:div>
+				</item>
+				<text>
+					<h:p>text not under bullet</h:p>
+					<h:hr />
+					<h:li>text under manual bullet</h:li>
+					<h:li>more text</h:li>
+					<h:table border="1">
+						<h:tr>
+							<h:td>row 1 cell 1</h:td>
+						</h:tr>
+						<h:tr>
+							<h:td align="right">r2c1</h:td>
+						</h:tr>
+						<h:ol>
+							<h:li>One</h:li>
+							<h:li>Two</h:li>
+							<h:li>Three</h:li>
+						</h:ol>
+					</h:table>
+				</text>
+				<text>
+					References within text.
+					<uc-ref code="RF001">reference to other use case</uc-ref>
+					, a reference to step
+					<step-ref handle="stepHandle1" />
+					,
+					<attachment-ref code="att1">attachment link</attachment-ref>
+					,
+					<data-ref code="dt1">data link</data-ref>
+					,
+					<req-ref code="rq1">requirement link</req-ref>
+				</text>
+				<text>
+					References in text in HTML.
+					<h:div class="custom-class">
+						Within div.
+						<h:table>
+							<h:tr>
+								<h:td>
+									Within table cell. A
+									<uc-ref code="RF001">link to another UC</uc-ref>
+									, a reference to step
+									<step-ref handle="stepHandle1" />
+									,
+									<attachment-ref code="att1">attachment link</attachment-ref>
+									,
+									<data-ref code="dt1">data link</data-ref>
+									,
+									<req-ref code="rq1">requirement link</req-ref>
+									.
+								</h:td>
+							</h:tr>
+						</h:table>
+					</h:div>
+				</text>
+			</minimal-guarantees>
+			<success>
+				<step>Step 1.</step>
+				<step>Step 2.</step>
+				<step handle="stepHandle1">Referenced step.</step>
+				<step>Step 4.</step>
+			</success>
+		</use-case>
+	</uc-group>
+
+	<attachment-group directory="att-dir1" name="">
+		<attachment name="Att 1 name" code="att1" file-name="att1-file-name" />
+	</attachment-group>
+	<data-structure name="Dt 1 name" code="dt1"></data-structure>
+	<requirement name="Rq 1 name" code="rq1"></requirement>
+	<uc-group primary-actor="a1">
+		<use-case goal="Referenced UC" code="RF001"></use-case>
+	</uc-group>
+
+</uct>

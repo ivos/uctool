@@ -3,6 +3,7 @@ package net.sf.uctool.execute;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 import net.sf.uctool.xsd.Actor;
@@ -16,6 +17,7 @@ import net.sf.uctool.xsd.UseCase;
 
 public class ExecutionContext {
 
+	private final ResourceBundle labels;
 	private final Project project;
 	private final Map<String, Actor> actors;
 	private final Map<String, Attachment> attachments;
@@ -26,7 +28,10 @@ public class ExecutionContext {
 	private final Map<String, UseCase> useCases;
 	private final Map<String, UcGroup> ucGroups;
 
-	public ExecutionContext(Project project) {
+	private UseCase currentUseCase;
+
+	public ExecutionContext(ResourceBundle labels, Project project) {
+		this.labels = labels;
 		this.project = project;
 		actors = new LinkedHashMap<String, Actor>();
 		attachments = new LinkedHashMap<String, Attachment>();
@@ -36,6 +41,10 @@ public class ExecutionContext {
 		terms = new LinkedHashSet<Term>();
 		useCases = new LinkedHashMap<String, UseCase>();
 		ucGroups = new LinkedHashMap<String, UcGroup>();
+	}
+
+	public ResourceBundle getLabels() {
+		return labels;
 	}
 
 	public Project getProject() {
@@ -72,6 +81,14 @@ public class ExecutionContext {
 
 	public Map<String, UcGroup> getUcGroups() {
 		return ucGroups;
+	}
+
+	public UseCase getCurrentUseCase() {
+		return currentUseCase;
+	}
+
+	public void setCurrentUseCase(UseCase currentUseCase) {
+		this.currentUseCase = currentUseCase;
 	}
 
 }

@@ -1,0 +1,49 @@
+#parse("template/macros.vm")
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Use Case $uc.code - $uc.goal</title>
+#set($rel-path="../")
+#parse("template/head.vm")
+</head>
+<body>
+#set($section="actor")
+#parse("template/navbar.vm")
+<a id="uc_$uc.code"></a>
+<h3><i class="icon-file"></i> <span class="muted">Use case</span> $uc.code - <img src="../resources/${uc.typeImageName}.gif" alt="$uc.visibilityTitle, $uc.typeTitle" title="$uc.visibilityTitle, $uc.typeTitle"/>&nbsp;$uc.goal&nbsp;<img src="../resources/${uc.level}.gif" alt="$uc.levelTitle" title="$uc.levelTitle"/></h3>
+<table>
+<tr><td><strong>Scope:</strong> $uc.scope</td></tr>
+<tr><td>
+<strong>Type:</strong> $uc.typeTitle&nbsp;&nbsp;
+<strong>Visibility:</strong> $uc.visibilityTitle&nbsp;&nbsp;
+<strong>Level:</strong> $uc.levelTitle
+</td></tr>
+<tr><td><strong>Primary actor:</strong> <a href="../actor/${uc.primaryActor.code}.html" title="${uc.primaryActor.name}">${uc.primaryActor.name}</a></td></tr>
+#if(!$uc.descriptions.isEmpty())<tr><td><strong>Description:</strong>
+#foreach($description in $uc.descriptions)<div>$description</div>
+#end</td></tr>
+#end
+#if(!$uc.interests.isEmpty())<tr><td><strong>Stakeholders and interests:</strong></td></tr>
+#foreach($interest in $uc.interests)<tr><td>$interest.stakeholder: $interest.content</td></tr>
+#end
+#end
+#if(!$uc.preconditions.isEmpty())<tr><td><strong>Preconditions:</strong>
+<ul>
+#foreach($precondition in $uc.preconditions)$precondition
+#end</ul></td></tr>
+#end
+#if(!$uc.minimalGuarantees.isEmpty())<tr><td><strong>Minimal guarantees:</strong>
+<ul>
+#foreach($minimalGuarantee in $uc.minimalGuarantees)$minimalGuarantee
+#end</ul></td></tr>
+#end
+#if(!$uc.successGuarantees.isEmpty())<tr><td><strong>Success guarantees:</strong>
+<ul>
+#foreach($successGuarantee in $uc.successGuarantees)$successGuarantee
+#end</ul></td></tr>
+#end
+<tr><td><strong>Trigger:</strong> $uc.trigger</td></tr>
+</table>
+#parse("template/footer.vm")
+</body>
+</html>
