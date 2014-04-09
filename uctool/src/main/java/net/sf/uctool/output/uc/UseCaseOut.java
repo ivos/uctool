@@ -22,6 +22,8 @@ public class UseCaseOut {
 	private final List<String> minimalGuarantees = new ArrayList<String>();
 	private final List<String> successGuarantees = new ArrayList<String>();
 	private String trigger;
+	private final List<StepOut> steps = new ArrayList<StepOut>();
+	private final List<ExtensionOut> extensions = new ArrayList<ExtensionOut>();
 
 	public String getCode() {
 		return code;
@@ -121,6 +123,14 @@ public class UseCaseOut {
 
 	public void setTrigger(String trigger) {
 		this.trigger = trigger;
+	}
+
+	public List<StepOut> getSteps() {
+		return steps;
+	}
+
+	public List<ExtensionOut> getExtensions() {
+		return extensions;
 	}
 
 }

@@ -7,18 +7,20 @@
 #parse("template/head.vm")
 </head>
 <body>
-#set($section="actor")
+#set($section="uc")
 #parse("template/navbar.vm")
 <a id="uc_$uc.code"></a>
-<h3><i class="icon-file"></i> <span class="muted">Use case</span> $uc.code - #if($uc.typeImageName)<img src="../resources/${uc.typeImageName}.gif" alt="$uc.visibilityTitle, $uc.typeTitle" title="$uc.visibilityTitle, $uc.typeTitle"/>#end&nbsp;$uc.goal&nbsp;#if($uc.level)<img src="../resources/${uc.level}.gif" alt="$uc.levelTitle" title="$uc.levelTitle"/>#end</h3>
+<h3><i class="icon-file"></i> <span class="muted">Use case</span> $uc.code - #if($uc.typeImageName)<img src="../resources/${uc.typeImageName}.gif" alt="$uc.visibilityTitle, $uc.typeTitle" title="$uc.visibilityTitle, $uc.typeTitle"/>&nbsp;#end$uc.goal#if($uc.level)&nbsp;<img src="../resources/${uc.level}.gif" alt="$uc.levelTitle" title="$uc.levelTitle"/>#end</h3>
 <table>
 #if($uc.scope)<tr><td><strong>Scope:</strong> $uc.scope</td></tr>
 #end
 #if($uc.typeTitle or $uc.visibilityTitle or $uc.levelTitle)<tr><td>
-<strong>Type:</strong> $uc.typeTitle&nbsp;&nbsp;
-<strong>Visibility:</strong> $uc.visibilityTitle&nbsp;&nbsp;
-<strong>Level:</strong> $uc.levelTitle
-</td></tr>
+#if($uc.typeTitle)<strong>Type:</strong> $uc.typeTitle&nbsp;&nbsp;
+#end
+#if($uc.visibilityTitle)<strong>Visibility:</strong> $uc.visibilityTitle&nbsp;&nbsp;
+#end
+#if($uc.levelTitle)<strong>Level:</strong> $uc.levelTitle
+#end</td></tr>
 #end<tr><td><strong>Primary actor:</strong> <a href="../actor/${uc.primaryActor.code}.html" title="${uc.primaryActor.name}">${uc.primaryActor.name}</a></td></tr>
 #if(!$uc.descriptions.isEmpty())<tr><td><strong>Description:</strong>
 #foreach($description in $uc.descriptions)<div>$description</div>
@@ -44,6 +46,16 @@
 #end</ul></td></tr>
 #end
 #if($uc.trigger)<tr><td><strong>Trigger:</strong> $uc.trigger</td></tr>
+#end
+#if($uc.steps)<tr><td><strong>Main success scenario:</strong></td></tr>
+<tr><td class="layout">
+#foreach($step in $uc.steps)<table><tr><td class="layout">${step.number}.&nbsp;</td><td class="layout">$step.content</td></tr></table>
+#end</td></tr>
+#end
+#if($uc.extensions)<tr><td><strong>Extensions:</strong></td></tr>
+<tr><td class="layout">
+#foreach($extension in $uc.extensions)<table><tr><td class="layout">$extension.indent$extension.number.&nbsp;</td><td class="layout">$extension.content</td></tr></table>
+#end
 #end</table>
 #parse("template/footer.vm")
 </body>

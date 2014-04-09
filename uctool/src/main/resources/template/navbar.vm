@@ -20,7 +20,7 @@
 							<li><a href="${rel-path}summary/index.html"><i class="icon-sitemap"></i> Overview pages</a></li>
 #if($ctx.actors.size()>0)							<li#if($section=="actor") class="active"#end><a href="${rel-path}actor/index.html"><i class="icon-user"></i> Actors</a></li>
 #end
-#if($ctx.useCases.size()>0)							<li><a href="${rel-path}uc/index.html"><i class="icon-file"></i> Use cases</a></li>
+#if($ctx.useCases.size()>0)							<li#if($section=="uc") class="active"#end><a href="${rel-path}uc/index.html"><i class="icon-file"></i> Use cases</a></li>
 #end
 #if($ctx.dataStructures.size()>0)							<li><a href="${rel-path}data/index.html"><i class="icon-table"></i> Data structures</a></li>
 #end

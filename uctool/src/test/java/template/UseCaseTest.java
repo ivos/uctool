@@ -53,4 +53,10 @@ public class UseCaseTest extends TemplateTestBase {
 				"site/out/uc/success-guarantees.html");
 	}
 
+	@Test
+	public void steps() throws IOException {
+		e.execute(new File(inputBaseDir, "uc/steps.xml"), outputDir);
+		performTest("unit/uc/steps.html", "site/out/uc/steps.html");
+	}
+
 }
