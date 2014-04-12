@@ -12,6 +12,7 @@ import net.sf.uctool.convert.UseCaseConverter;
 import net.sf.uctool.exception.ReaderException;
 import net.sf.uctool.input.UctoolReader;
 import net.sf.uctool.output.UctoolWriter;
+import net.sf.uctool.output.uc.UseCaseOut;
 import net.sf.uctool.validate.UctoolValidator;
 import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Uct;
@@ -135,6 +136,12 @@ public class UctoolExecutor {
 		}
 		for (UseCase useCase : executionContext.getUseCases().values()) {
 			outputs.add(useCaseConverter.convert(useCase));
+		}
+
+		for (Object output : outputs) {
+			if (output instanceof UseCaseOut) {
+				useCaseConverter.addReferences((UseCaseOut) output);
+			}
 		}
 		logger.debug("Converted to {} outputs @ {}.", outputs.size(),
 				time.toString());

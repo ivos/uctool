@@ -1,4 +1,3 @@
-#parse("template/macros.vm")
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -47,15 +46,23 @@
 #end
 #if($uc.trigger)<tr><td><strong>Trigger:</strong> $uc.trigger</td></tr>
 #end
-#if($uc.steps)<tr><td><strong>Main success scenario:</strong></td></tr>
+#if(!$uc.steps.isEmpty())<tr><td><strong>Main success scenario:</strong></td></tr>
 <tr><td class="layout">
 #foreach($step in $uc.steps)<table><tr><td class="layout">${step.number}.&nbsp;</td><td class="layout">$step.content</td></tr></table>
 #end</td></tr>
 #end
-#if($uc.extensions)<tr><td><strong>Extensions:</strong></td></tr>
+#if(!$uc.extensions.isEmpty())<tr><td><strong>Extensions:</strong></td></tr>
 <tr><td class="layout">
 #foreach($extension in $uc.extensions)<table><tr><td class="layout">$extension.indent$extension.number.&nbsp;</td><td class="layout">$extension.content</td></tr></table>
+#end</td></tr>
 #end
+#if($uc.notes)<tr><td><strong>Notes:</strong>
+<div>$uc.notes</div>
+</td></tr>
+#end
+#if(!$uc.references.isEmpty())<tr><td><strong>References:</strong>
+#foreach($ref in $uc.references)#ref($ref)
+$newline#end</td></tr>
 #end</table>
 #parse("template/footer.vm")
 </body>

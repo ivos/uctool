@@ -11,5 +11,6 @@
 
 	<!-- 
 	<logger name="net.sf.uctool" level="trace" />
+	<logger name="org.apache.velocity" level="trace" />
 	 -->
 </configuration>

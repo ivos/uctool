@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+	<actor name="Actor 1" code="a1"></actor>
+	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
+		<use-case code="references" goal="References UC goal" level="sea">
+		</use-case>
+		<use-case goal="Ref from same uc group" code="ref-from-same-ucg">
+			<success>
+				<step>
+					<uc-ref code="references"></uc-ref>
+				</step>
+			</success>
+		</use-case>
+	</uc-group>
+
+	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
+		<use-case goal="Ref from other uc group" code="ref-from-other-ucg">
+			<success>
+				<step>
+					<uc-ref code="references"></uc-ref>
+				</step>
+			</success>
+		</use-case>
+		<use-case goal="Ref from step html" code="ref-from-step-html">
+			<success>
+				<step>
+					<h:div>
+						<h:strong>
+							<uc-ref code="references"></uc-ref>
+						</h:strong>
+					</h:div>
+				</step>
+			</success>
+		</use-case>
+
+		<use-case goal="Ref from interest" code="ref-from-interest">
+			<stakeholders-interests>
+				<interest stakeholder="S1">
+					<uc-ref code="references"></uc-ref>
+				</interest>
+			</stakeholders-interests>
+		</use-case>
+		<use-case goal="Ref from interest html" code="ref-from-interest-html">
+			<stakeholders-interests>
+				<interest stakeholder="S1">
+					<h:div>
+						<h:strong>
+							<uc-ref code="references"></uc-ref>
+						</h:strong>
+					</h:div>
+				</interest>
+			</stakeholders-interests>
+		</use-case>
+
+		<use-case goal="Ref from min guarantees item" code="ref-from-ming-item">
+			<minimal-guarantees>
+				<item>
+					<uc-ref code="references"></uc-ref>
+				</item>
+			</minimal-guarantees>
+		</use-case>
+		<use-case goal="Ref from min guarantees item html" code="ref-from-ming-item-html">
+			<minimal-guarantees>
+				<item>
+					<h:div>
+						<h:strong>
+							<uc-ref code="references"></uc-ref>
+						</h:strong>
+					</h:div>
+				</item>
+			</minimal-guarantees>
+		</use-case>
+		<use-case goal="Ref from min guarantees text" code="ref-from-ming-text">
+			<minimal-guarantees>
+				<text>
+					<uc-ref code="references"></uc-ref>
+				</text>
+			</minimal-guarantees>
+		</use-case>
+		<use-case goal="Ref from min guarantees text html" code="ref-from-ming-text-html">
+			<minimal-guarantees>
+				<text>
+					<h:div>
+						<h:strong>
+							<uc-ref code="references"></uc-ref>
+						</h:strong>
+					</h:div>
+				</text>
+			</minimal-guarantees>
+		</use-case>
+
+		<use-case goal="Ref from suc guarantees item" code="ref-from-sucg-item">
+			<success-guarantees>
+				<item>
+					<uc-ref code="references"></uc-ref>
+				</item>
+			</success-guarantees>
+		</use-case>
+		<use-case goal="Ref from suc guarantees item html" code="ref-from-sucg-item-html">
+			<success-guarantees>
+				<item>
+					<h:div>
+						<h:strong>
+							<uc-ref code="references"></uc-ref>
+						</h:strong>
+					</h:div>
+				</item>
+			</success-guarantees>
+		</use-case>
+		<use-case goal="Ref from suc guarantees text" code="ref-from-sucg-text">
+			<success-guarantees>
+				<text>
+					<uc-ref code="references"></uc-ref>
+				</text>
+			</success-guarantees>
+		</use-case>
+		<use-case goal="Ref from suc guarantees text html" code="ref-from-sucg-text-html">
+			<success-guarantees>
+				<text>
+					<h:div>
+						<h:strong>
+							<uc-ref code="references"></uc-ref>
+						</h:strong>
+					</h:div>
+				</text>
+			</success-guarantees>
+		</use-case>
+
+		<use-case goal="Ref from condition step" code="ref-from-condition-step">
+			<success>
+				<step handle="s1"></step>
+			</success>
+			<extensions>
+				<condition step-ref="s1">
+					<step>
+						<uc-ref code="references"></uc-ref>
+					</step>
+				</condition>
+			</extensions>
+		</use-case>
+		<use-case goal="Ref from condition step html" code="ref-from-condition-step-html">
+			<success>
+				<step handle="s1"></step>
+			</success>
+			<extensions>
+				<condition step-ref="s1">
+					<step>
+						<h:div>
+							<h:strong>
+								<uc-ref code="references"></uc-ref>
+							</h:strong>
+						</h:div>
+					</step>
+				</condition>
+			</extensions>
+		</use-case>
+
+		<use-case goal="Ref from step condition step" code="ref-from-step-condition-step">
+			<success>
+				<step handle="s1"></step>
+			</success>
+			<extensions>
+				<condition step-ref="s1">
+					<step></step>
+					<step-extensions>
+						<step-condition>
+							<step>
+								<uc-ref code="references"></uc-ref>
+							</step>
+						</step-condition>
+					</step-extensions>
+				</condition>
+			</extensions>
+		</use-case>
+		<use-case goal="Ref from step condition step html" code="ref-from-step-condition-step-html">
+			<success>
+				<step handle="s1"></step>
+			</success>
+			<extensions>
+				<condition step-ref="s1">
+					<step></step>
+					<step-extensions>
+						<step-condition>
+							<step>
+								<h:div>
+									<h:strong>
+										<uc-ref code="references"></uc-ref>
+									</h:strong>
+								</h:div>
+							</step>
+						</step-condition>
+					</step-extensions>
+				</condition>
+			</extensions>
+		</use-case>
+
+	</uc-group>
+
+</uct>

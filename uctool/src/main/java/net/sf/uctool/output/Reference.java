@@ -2,11 +2,16 @@ package net.sf.uctool.output;
 
 public class Reference {
 
-	private final String code, label;
+	private final String type, code, label;
 
-	public Reference(String code, String label) {
+	public Reference(String type, String code, String label) {
+		this.type = type;
 		this.code = code;
 		this.label = label;
+	}
+
+	public String getType() {
+		return type;
 	}
 
 	public String getCode() {

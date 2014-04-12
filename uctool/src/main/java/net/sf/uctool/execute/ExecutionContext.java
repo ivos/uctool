@@ -27,6 +27,7 @@ public class ExecutionContext {
 	private final Set<Term> terms;
 	private final Map<String, UseCase> useCases;
 	private final Map<String, UcGroup> ucGroups;
+	private final Map<String, Set<String>> ucReferences;
 
 	private UseCase currentUseCase;
 
@@ -41,6 +42,7 @@ public class ExecutionContext {
 		terms = new LinkedHashSet<Term>();
 		useCases = new LinkedHashMap<String, UseCase>();
 		ucGroups = new LinkedHashMap<String, UcGroup>();
+		ucReferences = new LinkedHashMap<String, Set<String>>();
 	}
 
 	public ResourceBundle getLabels() {
@@ -89,6 +91,19 @@ public class ExecutionContext {
 
 	public void setCurrentUseCase(UseCase currentUseCase) {
 		this.currentUseCase = currentUseCase;
+	}
+
+	public Map<String, Set<String>> getUcReferences() {
+		return ucReferences;
+	}
+
+	public void addUcRef(String codeUcReferenced, String codeUcReferencing) {
+		Set<String> references = ucReferences.get(codeUcReferenced);
+		if (null == references) {
+			references = new LinkedHashSet<String>();
+			ucReferences.put(codeUcReferenced, references);
+		}
+		references.add(codeUcReferencing);
 	}
 
 }

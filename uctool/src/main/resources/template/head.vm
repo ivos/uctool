@@ -1,3 +1,6 @@
+#macro(ref $ref)<a href="../$ref.type/${ref.code}.html" title="$ref.label">$ref.label</a>#end
+#set($newline="
+")
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="cache-control" content="max-age=0" />
 <meta http-equiv="cache-control" content="no-cache" />

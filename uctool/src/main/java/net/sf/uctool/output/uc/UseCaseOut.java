@@ -3,6 +3,7 @@ package net.sf.uctool.output.uc;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.uctool.output.Reference;
 import net.sf.uctool.xsd.Actor;
 
 public class UseCaseOut {
@@ -24,6 +25,8 @@ public class UseCaseOut {
 	private String trigger;
 	private final List<StepOut> steps = new ArrayList<StepOut>();
 	private final List<ExtensionOut> extensions = new ArrayList<ExtensionOut>();
+	private String notes;
+	private final List<Reference> references = new ArrayList<Reference>();
 
 	public String getCode() {
 		return code;
@@ -131,6 +134,18 @@ public class UseCaseOut {
 
 	public List<ExtensionOut> getExtensions() {
 		return extensions;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	public List<Reference> getReferences() {
+		return references;
 	}
 
 }

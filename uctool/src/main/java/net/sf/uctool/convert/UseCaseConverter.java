@@ -3,11 +3,13 @@ package net.sf.uctool.convert;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.xml.bind.JAXBElement;
 
 import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.ExecutionContext;
+import net.sf.uctool.output.Reference;
 import net.sf.uctool.output.uc.ExtensionOut;
 import net.sf.uctool.output.uc.InterestOut;
 import net.sf.uctool.output.uc.StepOut;
@@ -19,10 +21,13 @@ import net.sf.uctool.xsd.Extensions;
 import net.sf.uctool.xsd.Interest;
 import net.sf.uctool.xsd.ItemsType;
 import net.sf.uctool.xsd.Step;
+import net.sf.uctool.xsd.StepCondition;
+import net.sf.uctool.xsd.StepExtensions;
 import net.sf.uctool.xsd.Success;
 import net.sf.uctool.xsd.TextType;
 import net.sf.uctool.xsd.UcGroup;
 import net.sf.uctool.xsd.UseCase;
+import net.sf.uctool.xsd.When;
 
 public class UseCaseConverter {
 
@@ -170,12 +175,17 @@ public class UseCaseConverter {
 				extensionOut.setNumber(conditionNumber);
 				String when = condition.getWhenAttribute();
 				if (null == when) {
-					StringBuilder sb = new StringBuilder();
-					for (Object content : condition.getWhen().getContent()) {
-						converterHelper.writeDescription(sb, content,
-								"use case", code);
+					When whenElement = condition.getWhen();
+					if (null != whenElement) {
+						StringBuilder sb = new StringBuilder();
+						for (Object content : whenElement.getContent()) {
+							converterHelper.writeDescription(sb, content,
+									"use case", code);
+						}
+						when = sb.toString();
+					} else {
+						when = "";
 					}
-					when = sb.toString();
 				}
 				String content = when.trim() + ":";
 				if (null != condition.getInlineStep()) {
@@ -184,29 +194,87 @@ public class UseCaseConverter {
 				extensionOut.setContent(content);
 				o.getExtensions().add(extensionOut);
 
-				int i = 0;
-				for (Object stepOrStepExtension : condition
-						.getStepOrStepExtensions()) {
-					if (stepOrStepExtension instanceof Step) {
-						i++;
-						Step step = (Step) stepOrStepExtension;
-						extensionOut = new ExtensionOut();
-						extensionOut.setIndent("&nbsp;&nbsp;&nbsp;&nbsp;");
-						extensionOut.setNumber(conditionNumber + i);
-						StringBuilder sb = new StringBuilder();
-						for (Object stepContent : step.getContent()) {
-							converterHelper.writeDescription(sb, stepContent,
-									"use case", code);
-						}
-						extensionOut.setContent(sb.toString().trim());
-						o.getExtensions().add(extensionOut);
-					}
-				}
+				processConditionSteps(code, o, conditionNumber,
+						"&nbsp;&nbsp;&nbsp;&nbsp;",
+						condition.getStepOrStepExtensions(), stepRefs);
 			}
+		}
+
+		DescriptionType notes = uc.getNotes();
+		if (null != notes) {
+			StringBuilder sb = new StringBuilder();
+			for (Object content : notes.getContent()) {
+				converterHelper.writeDescription(sb, content, "use case", code);
+			}
+			o.setNotes(sb.toString().trim());
 		}
 
 		executionContext.setCurrentUseCase(null);
 		return o;
+	}
+
+	private void processConditionSteps(String ucCode, UseCaseOut o,
+			String conditionNumber, String indent,
+			List<Object> stepOrStepExtensionsList, Map<String, String> stepRefs) {
+		int i = 0;
+		String stepNumber = null;
+		for (Object stepOrStepExtensions : stepOrStepExtensionsList) {
+			if (stepOrStepExtensions instanceof Step) {
+				i++;
+				Step step = (Step) stepOrStepExtensions;
+				ExtensionOut extensionOut = new ExtensionOut();
+				extensionOut.setIndent(indent);
+				stepNumber = conditionNumber + i;
+				extensionOut.setNumber(stepNumber);
+				StringBuilder sb = new StringBuilder();
+				for (Object stepContent : step.getContent()) {
+					converterHelper.writeDescription(sb, stepContent,
+							"use case", ucCode);
+				}
+				extensionOut.setContent(sb.toString().trim());
+				o.getExtensions().add(extensionOut);
+			}
+			if (stepOrStepExtensions instanceof StepExtensions) {
+				StepExtensions stepExtensions = (StepExtensions) stepOrStepExtensions;
+				List<StepCondition> stepConditions = stepExtensions
+						.getStepCondition();
+
+				for (StepCondition stepCondition : stepConditions) {
+					ExtensionOut extensionOut = new ExtensionOut();
+					extensionOut.setIndent(indent + "&nbsp;&nbsp;&nbsp;&nbsp;");
+					String stepConditionNumber = appendCaseToStepRef(
+							stepNumber, stepRefs);
+					extensionOut.setNumber(stepConditionNumber);
+					String stepWhen = stepCondition.getWhenAttribute();
+					if (null == stepWhen) {
+						When stepWhenElement = stepCondition.getWhen();
+						if (null != stepWhenElement) {
+							StringBuilder sb = new StringBuilder();
+							for (Object stepContent : stepWhenElement
+									.getContent()) {
+								converterHelper.writeDescription(sb,
+										stepContent, "use case", ucCode);
+							}
+							stepWhen = sb.toString();
+						} else {
+							stepWhen = "";
+						}
+					}
+					String stepContent = stepWhen.trim() + ":";
+					if (null != stepCondition.getInlineStep()) {
+						stepContent += " "
+								+ stepCondition.getInlineStep().trim();
+					}
+					extensionOut.setContent(stepContent);
+					o.getExtensions().add(extensionOut);
+
+					processConditionSteps(ucCode, o, stepConditionNumber,
+							indent + "&nbsp;&nbsp;&nbsp;&nbsp;"
+									+ "&nbsp;&nbsp;&nbsp;&nbsp;",
+							stepCondition.getStepOrStepExtensions(), stepRefs);
+				}
+			}
+		}
 	}
 
 	private String expandStepRef(String stepRef, Map<String, String> stepRefs) {
@@ -215,7 +283,7 @@ public class UseCaseConverter {
 		}
 		if (stepRef.contains("-")) {
 			String[] split = stepRef.split("-");
-			return appendCaseToStepRef(expandStepRef(split[0], null) + "-"
+			return appendCaseToStepRef(expandStepRef(split[0], null) + "‑"
 					+ expandStepRef(split[1], null), stepRefs);
 		}
 		List<Step> steps = executionContext.getCurrentUseCase().getSuccess()
@@ -242,6 +310,20 @@ public class UseCaseConverter {
 		}
 		stepRefs.put(stepRef, case_);
 		return stepRef + case_;
+	}
+
+	public void addReferences(UseCaseOut o) {
+		Set<String> references = executionContext.getUcReferences().get(
+				o.getCode());
+		if (null != references) {
+			for (String referencingCode : references) {
+				UseCase referencingUseCase = executionContext.getUseCases()
+						.get(referencingCode);
+				o.getReferences().add(
+						new Reference("uc", referencingCode, referencingCode
+								+ " - " + referencingUseCase.getGoal()));
+			}
+		}
 	}
 
 }

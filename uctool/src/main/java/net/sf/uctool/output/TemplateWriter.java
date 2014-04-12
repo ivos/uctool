@@ -3,6 +3,8 @@ package net.sf.uctool.output;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import net.sf.uctool.exception.WriterException;
 
@@ -17,6 +19,7 @@ import org.slf4j.LoggerFactory;
 public class TemplateWriter {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
+	private final Map<String, Template> templates = new HashMap<String, Template>();
 
 	private final VelocityEngine ve;
 	private final File baseDir;
@@ -28,18 +31,23 @@ public class TemplateWriter {
 
 	public void write(String templateName, String outputFileNameCore,
 			VelocityContext context) {
-		Template template = null;
-		try {
-			template = ve.getTemplate(templateName);
-		} catch (ResourceNotFoundException e) {
-			throw new WriterException("Template not found: [" + templateName
-					+ "].", e);
-		} catch (ParseErrorException e) {
-			throw new WriterException("Error parsing template: ["
-					+ templateName + "].", e);
-		} catch (Exception e) {
-			throw new WriterException("Error processing template: ["
-					+ templateName + "].", e);
+		Template template = templates.get(templateName);
+		if (null == template) {
+			logger.trace("Loading template by name [{}]...", templateName);
+			try {
+				template = ve.getTemplate(templateName);
+			} catch (ResourceNotFoundException e) {
+				throw new WriterException("Template not found: ["
+						+ templateName + "].", e);
+			} catch (ParseErrorException e) {
+				throw new WriterException("Error parsing template: ["
+						+ templateName + "].", e);
+			} catch (Exception e) {
+				throw new WriterException("Error processing template: ["
+						+ templateName + "].", e);
+			}
+			templates.put(templateName, template);
+			logger.trace("Loaded template by name [{}].", templateName);
 		}
 		File outputFile = new File(baseDir, outputFileNameCore + ".html");
 		FileWriter fw;
@@ -49,14 +57,16 @@ public class TemplateWriter {
 			throw new WriterException("Error opening output file ["
 					+ outputFile.getName() + "].", e);
 		}
+		logger.trace("Opened file writer for file [{}].", outputFile);
 		template.merge(context, fw);
+		logger.trace("Merged template.");
 		try {
 			fw.close();
 		} catch (IOException e) {
 			throw new WriterException("Error writing output file ["
 					+ outputFile.getName() + "].", e);
 		}
-		logger.trace("Wrote [{}] to {}.", templateName, outputFile);
+		logger.debug("Wrote [{}] to {}.", templateName, outputFile);
 	}
 
 }

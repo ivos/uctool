@@ -59,4 +59,16 @@ public class UseCaseTest extends TemplateTestBase {
 		performTest("unit/uc/steps.html", "site/out/uc/steps.html");
 	}
 
+	@Test
+	public void notes() throws IOException {
+		e.execute(new File(inputBaseDir, "uc/notes.xml"), outputDir);
+		performTest("unit/uc/notes.html", "site/out/uc/notes.html");
+	}
+
+	@Test
+	public void references() throws IOException {
+		e.execute(new File(inputBaseDir, "uc/references.xml"), outputDir);
+		performTest("unit/uc/references.html", "site/out/uc/references.html");
+	}
+
 }

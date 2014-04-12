@@ -1,1 +1,0 @@
-#macro(ref $type $ref)<a href="../$type/${ref.code}.html" title="$ref.label">$ref.label</a>#end

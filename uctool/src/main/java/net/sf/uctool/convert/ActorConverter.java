@@ -48,7 +48,7 @@ public class ActorConverter {
 						+ code + "].");
 			}
 			o.getExtendsActors().add(
-					new Reference(extendsCode, extended.getName()));
+					new Reference("actor", extendsCode, extended.getName()));
 			extendedActors.add(extended);
 		}
 
@@ -56,7 +56,8 @@ public class ActorConverter {
 			for (ExtendsActor extendsActor : other.getExtendsActor()) {
 				if (extendsActor.getCode().equals(code)) {
 					o.getExtendedByActors().add(
-							new Reference(other.getCode(), other.getName()));
+							new Reference("actor", other.getCode(), other
+									.getName()));
 				}
 			}
 		}
@@ -64,8 +65,8 @@ public class ActorConverter {
 		List<UseCase> goals = getGoals(actor);
 		for (UseCase useCase : goals) {
 			o.getGoals().add(
-					new Reference(useCase.getCode(), useCase.getCode() + " - "
-							+ useCase.getGoal()));
+					new Reference("uc", useCase.getCode(), useCase.getCode()
+							+ " - " + useCase.getGoal()));
 		}
 
 		Set<Actor> inheritedActors = new LinkedHashSet<Actor>();
@@ -74,7 +75,8 @@ public class ActorConverter {
 		}
 		for (Actor inherited : inheritedActors) {
 			o.getInheritedActors().add(
-					new Reference(inherited.getCode(), inherited.getName()));
+					new Reference("actor", inherited.getCode(), inherited
+							.getName()));
 		}
 
 		Set<Actor> transitiveExtendedActors = new LinkedHashSet<Actor>();
@@ -87,8 +89,8 @@ public class ActorConverter {
 		}
 		for (UseCase useCase : inheritedGoals) {
 			o.getInheritedGoals().add(
-					new Reference(useCase.getCode(), useCase.getCode() + " - "
-							+ useCase.getGoal()));
+					new Reference("uc", useCase.getCode(), useCase.getCode()
+							+ " - " + useCase.getGoal()));
 		}
 		return o;
 	}

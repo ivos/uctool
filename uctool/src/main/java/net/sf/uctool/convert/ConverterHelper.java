@@ -125,6 +125,7 @@ public class ConverterHelper {
 			sb.append("\">");
 			sb.append(ucRef.getValue());
 			sb.append("</a>");
+			executionContext.addUcRef(code, referencedFromCode);
 		}
 		if (content instanceof StepRef) {
 			StepRef stepRef = (StepRef) content;
