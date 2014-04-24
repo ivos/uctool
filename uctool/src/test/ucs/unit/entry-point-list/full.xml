@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+	<actor name="Actor 1" code="a1"></actor>
+	<actor name="Actor 2" code="a2"></actor>
+	<actor name="Actor 3" code="a3"></actor>
+	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
+		<use-case code="UC001" goal="UC 001 goal" level="cloud" />
+		<use-case code="UC002" goal="UC 002 goal" level="kite">
+			<success>
+				<step>
+					Call
+					<uc-ref code="UC001">UC001</uc-ref>
+					.
+				</step>
+				<step>
+					Call
+					<uc-ref code="UC003">UC003</uc-ref>
+					.
+				</step>
+			</success>
+		</use-case>
+		<use-case code="UC003" goal="UC 003 goal" level="sea" />
+	</uc-group>
+	<uc-group primary-actor="a2" type="design" visibility="white" scope="Scope 2">
+		<use-case code="UC004" goal="UC 004 goal" level="sea">
+			<success>
+				<step handle="h1"></step>
+			</success>
+			<extensions>
+				<condition step-ref="h1">
+					<step>
+						Call
+						<uc-ref code="UC005">UC005</uc-ref>
+						.
+					</step>
+				</condition>
+			</extensions>
+		</use-case>
+		<use-case code="UC005" goal="UC 005 goal" level="fish" />
+		<use-case code="UC006" goal="UC 006 goal" level="clam" />
+	</uc-group>
+	<uc-group primary-actor="a3" type="organization" visibility="white" scope="Scope 3">
+		<use-case code="UC007" goal="UC 007 goal" level="cloud" />
+		<use-case code="UC008" goal="UC 008 goal" level="sea" />
+		<use-case code="UC009" goal="UC 009 goal" level="clam">
+			<minimal-guarantees>
+				<item>
+					Speak about
+					<uc-ref code="UC007">UC007</uc-ref>
+					.
+				</item>
+				<text>
+					Speak about
+					<uc-ref code="UC008">UC008</uc-ref>
+					.
+				</text>
+			</minimal-guarantees>
+		</use-case>
+	</uc-group>
+	<uc-group primary-actor="a2">
+		<use-case goal="Goal 10" code="uc10">
+			<success>
+				<step>
+					Call
+					<uc-ref code="UC009">UC009</uc-ref>
+					.
+				</step>
+			</success>
+		</use-case>
+		<use-case goal="Goal 20" code="uc20">
+			<success>
+				<step>
+					Call
+					<uc-ref code="uc10">uc10</uc-ref>
+					.
+				</step>
+			</success>
+		</use-case>
+		<use-case goal="Goal 30" code="uc30" />
+	</uc-group>
+</uct>

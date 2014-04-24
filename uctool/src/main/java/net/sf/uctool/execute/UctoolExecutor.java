@@ -135,7 +135,10 @@ public class UctoolExecutor {
 			outputs.add(actorConverter.convert(actor));
 		}
 		for (UseCase useCase : executionContext.getUseCases().values()) {
-			outputs.add(useCaseConverter.convert(useCase));
+			UseCaseOut useCaseOut = useCaseConverter.convert(useCase);
+			outputs.add(useCaseOut);
+			executionContext.getUseCaseOuts().put(useCaseOut.getCode(),
+					useCaseOut);
 		}
 
 		for (Object output : outputs) {
@@ -155,6 +158,9 @@ public class UctoolExecutor {
 		uctoolWriter.init(outputDir, executionContext);
 		uctoolWriter.writeIndex();
 		uctoolWriter.writeActorIndex();
+		uctoolWriter.writeUseCaseIndex();
+		uctoolWriter.writeSummaryIndex();
+		uctoolWriter.writeEntryPointList();
 		for (Object output : outputs) {
 			uctoolWriter.write(output);
 		}

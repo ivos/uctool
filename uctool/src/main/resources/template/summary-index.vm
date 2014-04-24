@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Overview pages list</title>
+#set($rel-path="../")
+#parse("template/head.vm")
+</head>
+<body>
+#set($section="summary")
+#set($isSection="true")
+#parse("template/navbar.vm")
+<h2>Overview pages list</h2>
+<ul class="nav nav-tabs nav-stacked">
+#if($ctx.useCases.size()>0)<li><a href="entry-point-list.html">Entry point list</a></li>
+#end
+#if($ctx.actors.size()>0)<li><a href="actor-goal-list.html">Actor-goal list</a></li>
+#end
+#if($ctx.dataStructures.size()>0)<li><a href="unused-data-list.html">Unused data structure list</a></li>
+#end
+</ul>
+#parse("template/footer.vm")
+</body>
+</html>

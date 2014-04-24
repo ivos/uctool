@@ -12,12 +12,12 @@
 				<ul class="nav">
 					<li#if($section=="home") class="active"#end><a href="${rel-path}index.html"><i class="icon-home"></i> Home</a></li>
 					<li#if($isSection=="true") class="active"#end><a href="index.html"><i class="icon-chevron-left"></i> Section</a></li>
-#if($ctx.useCases.size()>0)					<li><a href="${rel-path}summary/entry-point-list.html">Entry point list <i class="icon-chevron-right"></i></a></li>
+#if($ctx.useCases.size()>0)					<li#if($section=="entry") class="active"#end><a href="${rel-path}summary/entry-point-list.html">Entry point list <i class="icon-chevron-right"></i></a></li>
 #end
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections <b class="caret"></b> </a>
 						<ul class="dropdown-menu">
-							<li><a href="${rel-path}summary/index.html"><i class="icon-sitemap"></i> Overview pages</a></li>
+							<li#if($section=="summary" || $section=="entry") class="active"#end><a href="${rel-path}summary/index.html"><i class="icon-sitemap"></i> Overview pages</a></li>
 #if($ctx.actors.size()>0)							<li#if($section=="actor") class="active"#end><a href="${rel-path}actor/index.html"><i class="icon-user"></i> Actors</a></li>
 #end
 #if($ctx.useCases.size()>0)							<li#if($section=="uc") class="active"#end><a href="${rel-path}uc/index.html"><i class="icon-file"></i> Use cases</a></li>

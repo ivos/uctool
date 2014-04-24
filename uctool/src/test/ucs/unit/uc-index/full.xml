@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+	<actor name="Actor 1" code="a1"></actor>
+	<actor name="Actor 2" code="a2"></actor>
+	<actor name="Actor 3" code="a3"></actor>
+	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
+		<use-case code="UC001" goal="UC 001 goal" level="cloud" />
+		<use-case code="UC002" goal="UC 002 goal" level="kite" />
+		<use-case code="UC003" goal="UC 003 goal" level="sea" />
+	</uc-group>
+	<uc-group primary-actor="a2" type="design" visibility="white" scope="Scope 2">
+		<use-case code="UC004" goal="UC 004 goal" level="sea" />
+		<use-case code="UC005" goal="UC 005 goal" level="fish" />
+		<use-case code="UC006" goal="UC 006 goal" level="clam" />
+	</uc-group>
+	<uc-group primary-actor="a3" type="organization" visibility="white" scope="Scope 3">
+		<use-case code="UC007" goal="UC 007 goal" level="cloud" />
+		<use-case code="UC008" goal="UC 008 goal" level="sea" />
+		<use-case code="UC009" goal="UC 009 goal" level="clam" />
+	</uc-group>
+	<uc-group primary-actor="a2">
+		<use-case goal="Goal 10" code="uc10" />
+	</uc-group>
+</uct>

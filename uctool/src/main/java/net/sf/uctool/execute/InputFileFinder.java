@@ -44,7 +44,9 @@ public class InputFileFinder extends DirectoryWalker<File> {
 	@Override
 	protected File[] filterDirectoryContents(File directory, int depth,
 			File[] files) throws IOException {
-		Arrays.sort(files);
+		if (null != files) {
+			Arrays.sort(files);
+		}
 		return files;
 	}
 

@@ -32,6 +32,7 @@ public class UctoolWriter {
 
 		new File(baseDir, "actor").mkdirs();
 		new File(baseDir, "uc").mkdirs();
+		new File(baseDir, "summary").mkdirs();
 
 		this.executionContext = executionContext;
 
@@ -66,6 +67,26 @@ public class UctoolWriter {
 		VelocityContext context = new VelocityContext();
 		context.put("ctx", executionContext);
 		templateWriter.write("template/actor-index.vm", "actor/index", context);
+	}
+
+	public void writeUseCaseIndex() {
+		VelocityContext context = new VelocityContext();
+		context.put("ctx", executionContext);
+		templateWriter.write("template/uc-index.vm", "uc/index", context);
+	}
+
+	public void writeSummaryIndex() {
+		VelocityContext context = new VelocityContext();
+		context.put("ctx", executionContext);
+		templateWriter.write("template/summary-index.vm", "summary/index",
+				context);
+	}
+
+	public void writeEntryPointList() {
+		VelocityContext context = new VelocityContext();
+		context.put("ctx", executionContext);
+		templateWriter.write("template/entry-point-list.vm",
+				"summary/entry-point-list", context);
 	}
 
 }
