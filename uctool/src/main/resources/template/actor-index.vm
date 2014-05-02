@@ -11,7 +11,7 @@
 #parse("template/navbar.vm")
 <h2>Actors overview</h2>
 <ul class="nav nav-tabs nav-stacked">
-#foreach($actor in $ctx.actors.values())<li><a href="../actor/${actor.code}.html" title="$actor.name">$actor.name</a></li>
+#foreach($actor in $ctx.actorOuts.values())<li><a href="../actor/${actor.code}.html" title="$actor.name">$actor.name</a></li>
 #end</ul>
 #parse("template/footer.vm")
 </body>

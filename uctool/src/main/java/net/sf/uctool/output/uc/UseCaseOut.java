@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.uctool.output.Reference;
-import net.sf.uctool.xsd.Actor;
+import net.sf.uctool.output.actor.ActorOut;
 
 public class UseCaseOut {
 
 	private String code;
 	private String goal;
-	private Actor primaryActor;
+	private ActorOut primaryActor;
 	private String typeImageName;
 	private String typeTitle;
 	private String visibilityTitle;
@@ -44,11 +44,11 @@ public class UseCaseOut {
 		this.goal = goal;
 	}
 
-	public Actor getPrimaryActor() {
+	public ActorOut getPrimaryActor() {
 		return primaryActor;
 	}
 
-	public void setPrimaryActor(Actor primaryActor) {
+	public void setPrimaryActor(ActorOut primaryActor) {
 		this.primaryActor = primaryActor;
 	}
 

@@ -12,11 +12,11 @@ import javax.xml.bind.JAXBElement;
 import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.output.Reference;
+import net.sf.uctool.output.actor.ActorOut;
 import net.sf.uctool.output.uc.ExtensionOut;
 import net.sf.uctool.output.uc.InterestOut;
 import net.sf.uctool.output.uc.StepOut;
 import net.sf.uctool.output.uc.UseCaseOut;
-import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Condition;
 import net.sf.uctool.xsd.DescriptionType;
 import net.sf.uctool.xsd.Extensions;
@@ -49,7 +49,7 @@ public class UseCaseConverter {
 		o.setCode(code);
 		o.setGoal(escapeHtml(uc.getGoal()));
 
-		Actor primaryActor = executionContext.getActors().get(
+		ActorOut primaryActor = executionContext.getActorOuts().get(
 				group.getPrimaryActor());
 		o.setPrimaryActor(primaryActor);
 

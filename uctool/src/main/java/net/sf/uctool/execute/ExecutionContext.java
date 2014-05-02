@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+import net.sf.uctool.output.actor.ActorOut;
 import net.sf.uctool.output.uc.UseCaseOut;
 import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Attachment;
@@ -31,6 +32,7 @@ public class ExecutionContext {
 	private final Map<String, Set<String>> ucReferences;
 
 	private final Map<String, UseCaseOut> useCaseOuts;
+	private final Map<String, ActorOut> actorOuts;
 
 	private UseCase currentUseCase;
 
@@ -46,7 +48,9 @@ public class ExecutionContext {
 		useCases = new LinkedHashMap<String, UseCase>();
 		ucGroups = new LinkedHashMap<String, UcGroup>();
 		ucReferences = new LinkedHashMap<String, Set<String>>();
+
 		useCaseOuts = new LinkedHashMap<String, UseCaseOut>();
+		actorOuts = new LinkedHashMap<String, ActorOut>();
 	}
 
 	public ResourceBundle getLabels() {
@@ -103,6 +107,10 @@ public class ExecutionContext {
 
 	public Map<String, UseCaseOut> getUseCaseOuts() {
 		return useCaseOuts;
+	}
+
+	public Map<String, ActorOut> getActorOuts() {
+		return actorOuts;
 	}
 
 	public void addUcRef(String codeUcReferenced, String codeUcReferencing) {
