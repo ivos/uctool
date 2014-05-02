@@ -4,7 +4,7 @@
 		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
 	">
-	<actor name="Name 1" code="full">
+	<actor name="Name 1 &lt;b &amp; " code="full">
 		<description>Description 1.</description>
 		<description>Description 2.</description>
 		<description>
@@ -13,7 +13,7 @@
 				some
 				<h:em class="class-3">HTML code</h:em>
 			</h:strong>
-			.
+			and entities: &lt;b &amp; .
 		</description>
 		<description>
 			Contains
@@ -51,7 +51,7 @@
 	<data-structure name="Dt 1 name" code="dt1"></data-structure>
 	<requirement name="Rq 1 name" code="rq1"></requirement>
 
-	<actor name="Extended 1" code="exed1">
+	<actor name="Extended 1 &lt;b &amp; " code="exed1">
 		<extends-actor code="ined1" />
 		<extends-actor code="ined2" />
 	</actor>
@@ -60,14 +60,14 @@
 	<actor name="Extended 3" code="exed3">
 		<extends-actor code="ined3" />
 	</actor>
-	<actor name="Inherited 1" code="ined1">
+	<actor name="Inherited 1 &lt;b &amp; " code="ined1">
 	</actor>
 	<actor name="Inherited 2" code="ined2">
 	</actor>
 	<actor name="Inherited 3" code="ined3">
 	</actor>
 
-	<actor name="Extending 1" code="exing1">
+	<actor name="Extending 1 &lt;b &amp; " code="exing1">
 		<extends-actor code="full" />
 	</actor>
 	<actor name="Extending 2" code="exing2">
@@ -78,11 +78,11 @@
 	</actor>
 
 	<uc-group primary-actor="full">
-		<use-case goal="Own goal 1" code="own-1"></use-case>
+		<use-case goal="Own goal 1 &lt;b &amp; " code="own-1"></use-case>
 		<use-case goal="Own goal 2" code="own-2"></use-case>
 	</uc-group>
 	<uc-group primary-actor="exed2">
-		<use-case goal="Inherited goal 1" code="inh-1"></use-case>
+		<use-case goal="Inherited goal 1 &lt;b &amp; " code="inh-1"></use-case>
 		<use-case goal="Inherited goal 2" code="inh-2"></use-case>
 	</uc-group>
 	<uc-group primary-actor="full">

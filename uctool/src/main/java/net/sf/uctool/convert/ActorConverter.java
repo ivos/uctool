@@ -1,5 +1,7 @@
 package net.sf.uctool.convert;
 
+import static org.apache.commons.lang.StringEscapeUtils.*;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -28,7 +30,7 @@ public class ActorConverter {
 		ActorOut o = new ActorOut();
 		String code = actor.getCode();
 		o.setCode(code);
-		o.setName(actor.getName());
+		o.setName(escapeHtml(actor.getName()));
 
 		for (DescriptionType descriptionType : actor.getDescription()) {
 			StringBuilder sb = new StringBuilder();

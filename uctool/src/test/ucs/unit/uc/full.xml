@@ -5,8 +5,8 @@
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
 	">
 	<actor name="Actor 1" code="a1"></actor>
-	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
-		<use-case code="full" goal="Full UC goal" level="sea">
+	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1 &lt;b &amp; ">
+		<use-case code="full" goal="Full UC goal &lt;b &amp; " level="sea">
 			<description>Some description.</description>
 			<stakeholders-interests>
 				<interest stakeholder="Stakeholder 1">Interest of stakeholder 1.</interest>

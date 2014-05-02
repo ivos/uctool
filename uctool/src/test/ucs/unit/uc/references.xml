@@ -18,7 +18,7 @@
 	</uc-group>
 
 	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
-		<use-case goal="Ref from other uc group" code="ref-from-other-ucg">
+		<use-case goal="Ref from other uc group &lt;b &amp; " code="ref-from-other-ucg">
 			<success>
 				<step>
 					<uc-ref code="references"></uc-ref>

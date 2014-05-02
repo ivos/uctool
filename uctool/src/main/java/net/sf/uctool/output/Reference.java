@@ -1,5 +1,7 @@
 package net.sf.uctool.output;
 
+import static org.apache.commons.lang.StringEscapeUtils.*;
+
 public class Reference {
 
 	private final String type, code, label;
@@ -7,7 +9,7 @@ public class Reference {
 	public Reference(String type, String code, String label) {
 		this.type = type;
 		this.code = code;
-		this.label = label;
+		this.label = escapeHtml(label);
 	}
 
 	public String getType() {

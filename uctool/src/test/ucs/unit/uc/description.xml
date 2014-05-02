@@ -15,7 +15,7 @@
 					some
 					<h:em class="class-3">HTML code</h:em>
 				</h:strong>
-				.
+				&lt;b &amp; .
 			</description>
 			<description>
 				Contains

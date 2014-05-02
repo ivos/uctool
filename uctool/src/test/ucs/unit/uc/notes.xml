@@ -14,7 +14,7 @@
 				<data-ref code="dt1">data link</data-ref>
 				,
 				<req-ref code="rq1">requirement link</req-ref>
-				.
+				&lt;b &amp; .
 				References within HTML,
 				<h:div class="custom-class">
 					Within div.
