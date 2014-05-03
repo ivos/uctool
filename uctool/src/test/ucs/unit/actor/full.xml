@@ -13,7 +13,7 @@
 				some
 				<h:em class="class-3">HTML code</h:em>
 			</h:strong>
-			and entities: &lt;b &amp; .
+			and entities: &lt;b &amp; &amp;nbsp; .
 		</description>
 		<description>
 			Contains

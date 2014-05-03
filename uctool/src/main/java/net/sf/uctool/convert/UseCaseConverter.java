@@ -1,6 +1,6 @@
 package net.sf.uctool.convert;
 
-import static org.apache.commons.lang.StringEscapeUtils.*;
+import static net.sf.uctool.util.Escape.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +47,7 @@ public class UseCaseConverter {
 		String code = uc.getCode();
 		UcGroup group = executionContext.getUcGroups().get(code);
 		o.setCode(code);
-		o.setGoal(escapeHtml(uc.getGoal()));
+		o.setGoal(escape(uc.getGoal()));
 
 		ActorOut primaryActor = executionContext.getActorOuts().get(
 				group.getPrimaryActor());
@@ -69,7 +69,7 @@ public class UseCaseConverter {
 			o.setLevelTitle(executionContext.getLabels().getString(
 					"level." + uc.getLevel().value()));
 		}
-		o.setScope(escapeHtml(group.getScope()));
+		o.setScope(escape(group.getScope()));
 
 		for (DescriptionType descriptionType : uc.getDescription()) {
 			StringBuilder sb = new StringBuilder();
@@ -146,7 +146,7 @@ public class UseCaseConverter {
 			}
 		}
 
-		o.setTrigger(uc.getTrigger());
+		o.setTrigger(escape(uc.getTrigger()));
 
 		Success success = uc.getSuccess();
 		if (null != success) {

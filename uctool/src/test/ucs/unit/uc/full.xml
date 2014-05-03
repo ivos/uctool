@@ -24,7 +24,7 @@
 				<item>Success guarantee 1.</item>
 				<item>Success guarantee 2.</item>
 			</success-guarantees>
-			<trigger>Trigger 1.</trigger>
+			<trigger>Trigger 1 &lt;b &amp; .</trigger>
 			<success>
 				<step>Step 1.</step>
 				<step>Step 2.</step>

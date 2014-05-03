@@ -1,6 +1,6 @@
 package net.sf.uctool.output;
 
-import static org.apache.commons.lang.StringEscapeUtils.*;
+import static net.sf.uctool.util.Escape.*;
 
 public class Reference {
 
@@ -9,7 +9,7 @@ public class Reference {
 	public Reference(String type, String code, String label) {
 		this.type = type;
 		this.code = code;
-		this.label = escapeHtml(label);
+		this.label = escape(label);
 	}
 
 	public String getType() {

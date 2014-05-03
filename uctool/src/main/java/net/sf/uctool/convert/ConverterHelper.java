@@ -1,6 +1,6 @@
 package net.sf.uctool.convert;
 
-import static org.apache.commons.lang.StringEscapeUtils.*;
+import static net.sf.uctool.util.Escape.*;
 import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.xsd.Attachment;
@@ -34,7 +34,7 @@ public class ConverterHelper {
 			String referencedFromType, String referencedFromCode) {
 		if (content instanceof String) {
 			String string = (String) content;
-			sb.append(escapeHtml(string));
+			sb.append(escape(string));
 			if (string.length() > 0) {
 				char lastChar = string.charAt(string.length() - 1);
 				if (!Character.isWhitespace(lastChar)) {
@@ -222,7 +222,7 @@ public class ConverterHelper {
 		}
 		if (content instanceof Text) {
 			Text text = (Text) content;
-			sb.append(escapeHtml(text.getTextContent()));
+			sb.append(escape(text.getTextContent()));
 		}
 	}
 
