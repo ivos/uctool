@@ -11,15 +11,15 @@
 				<item>Item 1.</item>
 				<item>
 					Item 2, and a
-					<uc-ref code="RF001">reference to other use case</uc-ref>
+					<uc-ref code="RF001">reference to other use case &lt;b &amp; " '</uc-ref>
 					, a reference to step
 					<step-ref handle="stepHandle1" />
 					,
-					<attachment-ref code="att1">attachment link</attachment-ref>
+					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
 					,
-					<data-ref code="dt1">data link</data-ref>
+					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
 					,
-					<req-ref code="rq1">requirement link</req-ref>
+					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 					&lt;b &amp; .
 				</item>
 				<item>
@@ -34,11 +34,11 @@
 									, a reference to step
 									<step-ref handle="stepHandle1" />
 									,
-									<attachment-ref code="att1">attachment link</attachment-ref>
+									<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
 									,
-									<data-ref code="dt1">data link</data-ref>
+									<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
 									,
-									<req-ref code="rq1">requirement link</req-ref>
+									<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 									.
 								</h:td>
 							</h:tr>
@@ -66,15 +66,15 @@
 				</text>
 				<text>
 					References within text.
-					<uc-ref code="RF001">reference to other use case</uc-ref>
+					<uc-ref code="RF001">reference to other use case &lt;b &amp; " '</uc-ref>
 					, a reference to step
 					<step-ref handle="stepHandle1" />
 					,
-					<attachment-ref code="att1">attachment link</attachment-ref>
+					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
 					,
-					<data-ref code="dt1">data link</data-ref>
+					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
 					,
-					<req-ref code="rq1">requirement link</req-ref>
+					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 				</text>
 				<text>
 					References in text in HTML.
@@ -88,11 +88,11 @@
 									, a reference to step
 									<step-ref handle="stepHandle1" />
 									,
-									<attachment-ref code="att1">attachment link</attachment-ref>
+									<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
 									,
-									<data-ref code="dt1">data link</data-ref>
+									<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
 									,
-									<req-ref code="rq1">requirement link</req-ref>
+									<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 									.
 								</h:td>
 							</h:tr>

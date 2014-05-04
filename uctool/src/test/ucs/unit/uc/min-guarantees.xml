@@ -15,11 +15,11 @@
 					, a reference to step
 					<step-ref handle="stepHandle1" />
 					,
-					<attachment-ref code="att1">attachment link</attachment-ref>
+					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
 					,
-					<data-ref code="dt1">data link</data-ref>
+					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
 					,
-					<req-ref code="rq1">requirement link</req-ref>
+					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 					&lt;b &amp; .
 				</item>
 				<item>
@@ -30,15 +30,15 @@
 							<h:tr>
 								<h:td>
 									Within table cell. A
-									<uc-ref code="RF001">link to another UC</uc-ref>
+									<uc-ref code="RF001">link to another UC &lt;b &amp; " '</uc-ref>
 									, a reference to step
 									<step-ref handle="stepHandle1" />
 									,
-									<attachment-ref code="att1">attachment link</attachment-ref>
+									<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
 									,
-									<data-ref code="dt1">data link</data-ref>
+									<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
 									,
-									<req-ref code="rq1">requirement link</req-ref>
+									<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 									.
 								</h:td>
 							</h:tr>
@@ -70,11 +70,11 @@
 					, a reference to step
 					<step-ref handle="stepHandle1" />
 					,
-					<attachment-ref code="att1">attachment link</attachment-ref>
+					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
 					,
-					<data-ref code="dt1">data link</data-ref>
+					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
 					,
-					<req-ref code="rq1">requirement link</req-ref>
+					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 				</text>
 				<text>
 					References in text in HTML.
@@ -84,15 +84,15 @@
 							<h:tr>
 								<h:td>
 									Within table cell. A
-									<uc-ref code="RF001">link to another UC</uc-ref>
+									<uc-ref code="RF001">link to another UC &lt;b &amp; " '</uc-ref>
 									, a reference to step
 									<step-ref handle="stepHandle1" />
 									,
-									<attachment-ref code="att1">attachment link</attachment-ref>
+									<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
 									,
-									<data-ref code="dt1">data link</data-ref>
+									<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
 									,
-									<req-ref code="rq1">requirement link</req-ref>
+									<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 									.
 								</h:td>
 							</h:tr>

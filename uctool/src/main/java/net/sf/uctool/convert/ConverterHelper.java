@@ -66,7 +66,7 @@ public class ConverterHelper {
 			sb.append("/");
 			sb.append(attachment.getFileName());
 			sb.append("\">");
-			sb.append(attachmentRef.getValue());
+			sb.append(escape(attachmentRef.getValue()));
 			sb.append("</a>");
 		}
 		if (content instanceof DataRef) {
@@ -85,7 +85,7 @@ public class ConverterHelper {
 			sb.append(".html\" title=\"");
 			sb.append(dataStructure.getName());
 			sb.append("\">");
-			sb.append(dataRef.getValue());
+			sb.append(escape(dataRef.getValue()));
 			sb.append("</a>");
 		}
 		if (content instanceof ReqRef) {
@@ -105,7 +105,7 @@ public class ConverterHelper {
 			sb.append(" - ");
 			sb.append(requirement.getName());
 			sb.append("\">");
-			sb.append(reqRef.getValue());
+			sb.append(escape(reqRef.getValue()));
 			sb.append("</a>");
 		}
 		if (content instanceof UcRef) {
@@ -124,7 +124,7 @@ public class ConverterHelper {
 			sb.append(" - ");
 			sb.append(useCase.getGoal());
 			sb.append("\">");
-			sb.append(ucRef.getValue());
+			sb.append(escape(ucRef.getValue()));
 			sb.append("</a>");
 			executionContext.addUcRef(code, referencedFromCode);
 		}
