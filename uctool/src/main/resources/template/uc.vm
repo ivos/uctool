@@ -61,7 +61,7 @@
 </td></tr>
 #end
 #if(!$uc.references.isEmpty())<tr><td><strong>References:</strong>
-#foreach($ref in $uc.references)#ref($ref)
+#foreach($ref in $uc.references)#ref($ref)#if( $foreach.hasNext ),#end
 $newline#end</td></tr>
 #end</table>
 #parse("template/footer.vm")
