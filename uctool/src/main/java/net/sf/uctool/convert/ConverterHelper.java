@@ -110,13 +110,14 @@ public class ConverterHelper {
 		}
 		if (content instanceof UcRef) {
 			UcRef ucRef = (UcRef) content;
-			String code = ucRef.getCode();
-			UseCase useCase = executionContext.getUseCases().get(code);
+			String refcode = ucRef.getCode();
+			UseCase useCase = executionContext.getUseCases().get(refcode);
 			if (null == useCase) {
-				throw new ValidationException("Missing use case with code ["
-						+ code + "] referenced from " + referencedFromType
+				throw new ValidationException("Missing use case with refcode ["
+						+ refcode + "] referenced from " + referencedFromType
 						+ " with code [" + referencedFromCode + "].");
 			}
+			String code = useCase.getCode();
 			sb.append("<a href=\"../uc/");
 			sb.append(code);
 			sb.append(".html\" title=\"");

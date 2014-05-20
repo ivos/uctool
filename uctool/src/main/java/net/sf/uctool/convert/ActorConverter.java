@@ -100,7 +100,7 @@ public class ActorConverter {
 	private List<UseCase> getGoals(Actor actor) {
 		List<UseCase> goals = new ArrayList<UseCase>();
 		for (UseCase useCase : executionContext.getUseCases().values()) {
-			if (executionContext.getUcGroups().get(useCase.getCode())
+			if (executionContext.getUcGroups().get(useCase.getRefcode())
 					.getPrimaryActor().equals(actor.getCode())) {
 				goals.add(useCase);
 			}

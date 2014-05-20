@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://uctool.sf.net/"
-	xmlns:uct="http://uctool.sf.net/" xmlns:html="http://www.w3.org/1999/xhtml">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://uctool.sf.net/" xmlns:uct="http://uctool.sf.net/"
+	xmlns:html="http://www.w3.org/1999/xhtml">
 	<!-- root element -->
 	<xs:element name="uct">
 		<xs:annotation>
@@ -87,6 +87,12 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
+			<xs:attribute name="refcode" type="uct:CodeType">
+				<xs:annotation>
+					<xs:documentation>Reference code of the use case. When defined, uniquely identifies the use case in all use case
+						references.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 			<xs:attribute name="goal" use="required" type="uct:NameType">
 				<xs:annotation>
 					<xs:documentation>Goal of the use case. Unique in the system. Identifies the action
@@ -118,7 +124,8 @@
 	<xs:element name="success-guarantees" type="uct:ItemsType">
 		<xs:annotation>
 			<xs:documentation>Success guarantees of the use case. What must be true, when the use
-				case passes the main success scenario.
+				case passes the main success
+				scenario.
 			</xs:documentation>
 		</xs:annotation>
 	</xs:element>
@@ -449,7 +456,8 @@
 			<xs:attribute name="type">
 				<xs:annotation>
 					<xs:documentation>The data type of the attribute. Either a simple type (one of
-						enumerated options) or code of a data structure (represents relation to that
+						enumerated options) or code of a data
+						structure (represents relation to that
 						structure).
 					</xs:documentation>
 				</xs:annotation>
@@ -483,7 +491,8 @@
 			<xs:attribute name="collection" type="xs:boolean">
 				<xs:annotation>
 					<xs:documentation>Marks attribute with collection value. The data type indicated can
-						be held in multiple instances in the value of the attribute.
+						be held in multiple instances
+						in the value of the attribute.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -497,16 +506,20 @@
 	<xs:element name="attribute-ref">
 		<xs:annotation>
 			<xs:documentation>Data structure attribute reference. Refers to an attribute defined on
-				another data structure. Takes over the properties of the referred attribute as
-				defaults (with the exception of type and collection, which cannot be overridden).
+				another data structure. Takes
+				over the properties of the referred attribute as
+				defaults (with the exception of type and collection, which cannot be
+				overridden).
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="type" type="uct:AttributeRefCodeType" use="required">
 				<xs:annotation>
 					<xs:documentation>Reference to the attribute. Has the form
-						"[data-structure-code].[attribute-code]", where [data-structure-code] is the code of
-						data structure defining the referred attribute and [attribute-code] is the code of
+						"[data-structure-code].[attribute-code]", where
+						[data-structure-code] is the code of
+						data structure defining the referred attribute and [attribute-code] is the
+						code of
 						the referred attribute within that data structure.
 					</xs:documentation>
 				</xs:annotation>
@@ -669,7 +682,8 @@
 	<xs:element name="attachment-group">
 		<xs:annotation>
 			<xs:documentation>Group of attachments. Allows to arrange attached documents and
-				figures into groups. A group corresponds to a subdirectory that contains the
+				figures into groups. A group
+				corresponds to a subdirectory that contains the
 				attachment files.
 			</xs:documentation>
 		</xs:annotation>
@@ -680,8 +694,10 @@
 			<xs:attribute name="directory" use="required" type="uct:CodeType">
 				<xs:annotation>
 					<xs:documentation>Directory of the attachment group. Defines a subdirectory of the
-						main attachments directory, that contains the files of the attachments included in
-						the group. The main attachments directory is by default src/main/attachments.
+						main attachments directory, that
+						contains the files of the attachments included in
+						the group. The main attachments directory is by default
+						src/main/attachments.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -697,7 +713,8 @@
 	<xs:element name="attachment">
 		<xs:annotation>
 			<xs:documentation>Attachment file definition. Attachment is typically a diagram,
-				figure, or document attached to the analytical documentation.
+				figure, or document attached to the
+				analytical documentation.
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
@@ -715,7 +732,8 @@
 			<xs:attribute name="file-name" use="required" type="uct:FileNameType">
 				<xs:annotation>
 					<xs:documentation>Attachment file name. Name of the attachment file. The path is
-						given by the directory defined on the attachment group containing the attachment.
+						given by the directory defined on
+						the attachment group containing the attachment.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>

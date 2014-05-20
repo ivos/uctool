@@ -71,4 +71,13 @@ public class UseCaseTest extends TemplateTestBase {
 		performTest("unit/uc/references.html", "site/out/uc/references.html");
 	}
 
+	@Test
+	public void refcodeReferences() throws IOException {
+		// references to UC with refcode
+		e.execute(new File(inputBaseDir, "uc/refcode-references.xml"),
+				outputDir);
+		performTest("unit/uc/refcode-references.html",
+				"site/out/uc/references.html");
+	}
+
 }

@@ -78,13 +78,21 @@ public class UctoolValidator {
 					UcGroup ucGroup = (UcGroup) object;
 					for (UseCase useCase : ucGroup.getUseCase()) {
 						String code = useCase.getCode();
-						if (executionContext.getUseCases().containsKey(code)) {
-							throw new ValidationException(
-									"Duplicate use case with code [" + code
-											+ "].");
+						String refcode = useCase.getRefcode();
+						for (UseCase previous : executionContext.getUseCases()
+								.values()) {
+							if (previous.getCode().equals(code)) {
+								throw new ValidationException(
+										"Duplicate use case with code [" + code
+												+ "].");
+							}
 						}
-						executionContext.getUseCases().put(code, useCase);
-						executionContext.getUcGroups().put(code, ucGroup);
+						if (null == refcode) {
+							refcode = code;
+							useCase.setRefcode(code);
+						}
+						executionContext.getUseCases().put(refcode, useCase);
+						executionContext.getUcGroups().put(refcode, ucGroup);
 					}
 				}
 			}

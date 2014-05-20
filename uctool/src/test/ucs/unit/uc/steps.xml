@@ -35,6 +35,8 @@
 					<h:hr />
 					Text under hr, a
 					<uc-ref code="RF001">link to another UC &lt;b &amp; " '</uc-ref>
+					,
+					<uc-ref code="rfcd02">link to another UC via refcode</uc-ref>
 					, a reference to step
 					<step-ref handle="stepHandle1" />
 					,
@@ -54,6 +56,8 @@
 								<h:td>
 									Within table cell. A
 									<uc-ref code="RF001">link to another UC &lt;b &amp; " '</uc-ref>
+									,
+									<uc-ref code="rfcd02">link to another UC via refcode</uc-ref>
 									, a reference to step
 									<step-ref handle="stepHandle1" />
 									,
@@ -169,6 +173,8 @@
 					<step>
 						References in condition step,
 						<uc-ref code="RF001">reference to other use case &lt;b &amp; " '</uc-ref>
+						,
+						<uc-ref code="rfcd02">link to another UC via refcode</uc-ref>
 						, a reference to step
 						<step-ref handle="stepHandle1" />
 						,
@@ -196,6 +202,8 @@
 							<step>
 								References in step condition step,
 								<uc-ref code="RF001">reference to other use case &lt;b &amp; " '</uc-ref>
+								,
+								<uc-ref code="rfcd02">link to another UC via refcode</uc-ref>
 								, a reference to step
 								<step-ref handle="stepHandle1" />
 								,
@@ -221,6 +229,7 @@
 	<uc-group primary-actor="a1">
 		<use-case goal="Referenced UC" code="RF001"></use-case>
 		<use-case goal="Referenced UC 2" code="RF002"></use-case>
+		<use-case goal="UC referenced via refcode" code="RF003" refcode="rfcd02"></use-case>
 	</uc-group>
 
 </uct>

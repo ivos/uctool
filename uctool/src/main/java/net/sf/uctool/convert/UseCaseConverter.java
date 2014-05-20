@@ -45,7 +45,7 @@ public class UseCaseConverter {
 		executionContext.setCurrentUseCase(uc);
 		UseCaseOut o = new UseCaseOut();
 		String code = uc.getCode();
-		UcGroup group = executionContext.getUcGroups().get(code);
+		UcGroup group = executionContext.getUcGroups().get(uc.getRefcode());
 		o.setCode(code);
 		o.setGoal(escape(uc.getGoal()));
 
