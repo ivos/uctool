@@ -17,7 +17,7 @@ public class ActorWriter {
 		VelocityContext context = new VelocityContext();
 		context.put("ctx", executionContext);
 		context.put("actor", actor);
-		templateWriter.write("template/actor.vm", "actor/" + actor.getCode(),
+		templateWriter.writeFile("template/actor.vm", "actor/" + actor.getCode(),
 				context);
 	}
 

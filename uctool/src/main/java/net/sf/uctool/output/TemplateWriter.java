@@ -29,8 +29,31 @@ public class TemplateWriter {
 		this.baseDir = baseDir;
 	}
 
-	public void write(String templateName, String outputFileNameCore,
+	public void writeFile(String templateName, String outputFileNameCore,
 			VelocityContext context) {
+		File outputFile = getOutputFile(outputFileNameCore);
+		FileWriter fw = openFile(outputFile);
+		writeFragment(templateName, context, fw, outputFile);
+		closeFile(fw, outputFile);
+	}
+
+	public File getOutputFile(String outputFileNameCore) {
+		File outputFile = new File(baseDir, outputFileNameCore + ".html");
+		return outputFile;
+	}
+
+	public FileWriter openFile(File outputFile) {
+		try {
+			FileWriter fw = new FileWriter(outputFile);
+			logger.trace("Opened file writer for file [{}].", outputFile);
+			return fw;
+		} catch (IOException e) {
+			throw new WriterException("Error opening output file ["
+					+ outputFile.getName() + "].", e);
+		}
+	}
+
+	private Template loadTemplate(String templateName) {
 		Template template = templates.get(templateName);
 		if (null == template) {
 			logger.trace("Loading template by name [{}]...", templateName);
@@ -49,24 +72,25 @@ public class TemplateWriter {
 			templates.put(templateName, template);
 			logger.trace("Loaded template by name [{}].", templateName);
 		}
-		File outputFile = new File(baseDir, outputFileNameCore + ".html");
-		FileWriter fw;
-		try {
-			fw = new FileWriter(outputFile);
-		} catch (IOException e) {
-			throw new WriterException("Error opening output file ["
-					+ outputFile.getName() + "].", e);
-		}
-		logger.trace("Opened file writer for file [{}].", outputFile);
+		return template;
+	}
+
+	public void writeFragment(String templateName, VelocityContext context,
+			FileWriter fw, File outputFile) {
+		Template template = loadTemplate(templateName);
 		template.merge(context, fw);
-		logger.trace("Merged template.");
+		logger.debug("Merged template [{}] to {}.", template.getName(),
+				outputFile);
+	}
+
+	public void closeFile(FileWriter fw, File outputFile) {
 		try {
 			fw.close();
+			logger.debug("Closed {}.", outputFile);
 		} catch (IOException e) {
 			throw new WriterException("Error writing output file ["
 					+ outputFile.getName() + "].", e);
 		}
-		logger.debug("Wrote [{}] to {}.", templateName, outputFile);
 	}
 
 }

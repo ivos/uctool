@@ -60,32 +60,32 @@ public class UctoolWriter {
 	public void writeIndex() {
 		VelocityContext context = new VelocityContext();
 		context.put("ctx", executionContext);
-		templateWriter.write("template/index.vm", "index", context);
+		templateWriter.writeFile("template/index.vm", "index", context);
 	}
 
 	public void writeActorIndex() {
 		VelocityContext context = new VelocityContext();
 		context.put("ctx", executionContext);
-		templateWriter.write("template/actor-index.vm", "actor/index", context);
+		templateWriter.writeFile("template/actor-index.vm", "actor/index", context);
 	}
 
 	public void writeUseCaseIndex() {
 		VelocityContext context = new VelocityContext();
 		context.put("ctx", executionContext);
-		templateWriter.write("template/uc-index.vm", "uc/index", context);
+		templateWriter.writeFile("template/uc-index.vm", "uc/index", context);
 	}
 
 	public void writeSummaryIndex() {
 		VelocityContext context = new VelocityContext();
 		context.put("ctx", executionContext);
-		templateWriter.write("template/summary-index.vm", "summary/index",
+		templateWriter.writeFile("template/summary-index.vm", "summary/index",
 				context);
 	}
 
 	public void writeEntryPointList() {
 		VelocityContext context = new VelocityContext();
 		context.put("ctx", executionContext);
-		templateWriter.write("template/entry-point-list.vm",
+		templateWriter.writeFile("template/entry-point-list.vm",
 				"summary/entry-point-list", context);
 	}
 

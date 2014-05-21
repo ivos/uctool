@@ -17,7 +17,7 @@ public class UseCaseWriter {
 		VelocityContext context = new VelocityContext();
 		context.put("ctx", executionContext);
 		context.put("uc", useCase);
-		templateWriter.write("template/uc.vm", "uc/" + useCase.getCode(),
+		templateWriter.writeFile("template/uc.vm", "uc/" + useCase.getCode(),
 				context);
 	}
 
