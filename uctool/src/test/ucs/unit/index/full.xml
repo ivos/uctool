@@ -12,6 +12,6 @@
 	<requirement name="" code="rq-1"></requirement>
 	<term name=""></term>
 	<uc-group primary-actor="ac-1">
-		<use-case goal="G 1"></use-case>
+		<use-case goal="G 1" code="UC1"></use-case>
 	</uc-group>
 </uct>
