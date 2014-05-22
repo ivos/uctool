@@ -1,7 +1,11 @@
 package template;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.io.IOException;
+
+import net.sf.uctool.exception.ValidationException;
 
 import org.junit.Test;
 
@@ -78,6 +82,64 @@ public class UseCaseTest extends TemplateTestBase {
 				outputDir);
 		performTest("unit/uc/refcode-references.html",
 				"site/out/uc/references.html");
+	}
+
+	@Test
+	public void actorMissing() throws IOException {
+		try {
+			e.execute(new File(inputBaseDir, "uc/actorMissing.xml"), outputDir);
+		} catch (ValidationException e) {
+			assertEquals(
+					"Missing actor with code [missing] referenced from use case with code [UC1].",
+					e.getMessage());
+		}
+	}
+
+	@Test
+	public void ucMissing() throws IOException {
+		try {
+			e.execute(new File(inputBaseDir, "uc/ucMissing.xml"), outputDir);
+		} catch (ValidationException e) {
+			assertEquals(
+					"Missing use case with refcode [missing] referenced from use case with code [UC1].",
+					e.getMessage());
+		}
+	}
+
+	@Test
+	public void stepMissingInStep() throws IOException {
+		try {
+			e.execute(new File(inputBaseDir, "uc/stepMissingInStep.xml"),
+					outputDir);
+		} catch (ValidationException e) {
+			assertEquals(
+					"Missing step with handle [missing] referenced from use case with code [UC1].",
+					e.getMessage());
+		}
+	}
+
+	@Test
+	public void stepMissingInCondition() throws IOException {
+		try {
+			e.execute(new File(inputBaseDir, "uc/stepMissingInCondition.xml"),
+					outputDir);
+		} catch (ValidationException e) {
+			assertEquals(
+					"Missing step with handle [missing] referenced from extension in use case [UC1].",
+					e.getMessage());
+		}
+	}
+
+	@Test
+	public void stepMissingInRange() throws IOException {
+		try {
+			e.execute(new File(inputBaseDir, "uc/stepMissingInRange.xml"),
+					outputDir);
+		} catch (ValidationException e) {
+			assertEquals(
+					"Missing step with handle [missing] referenced from extension in use case [UC1].",
+					e.getMessage());
+		}
 	}
 
 }

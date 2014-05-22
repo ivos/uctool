@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+	<actor name="Actor 1" code="a1"></actor>
+	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
+		<use-case code="UC1" goal="Test">
+			<success>
+				<step>
+					System
+					<uc-ref code="missing">creates a new customer</uc-ref>
+					.
+				</step>
+			</success>
+		</use-case>
+	</uc-group>
+</uct>

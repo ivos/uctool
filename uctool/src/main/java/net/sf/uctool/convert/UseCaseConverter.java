@@ -51,6 +51,11 @@ public class UseCaseConverter {
 
 		ActorOut primaryActor = executionContext.getActorOuts().get(
 				group.getPrimaryActor());
+		if (null == primaryActor) {
+			throw new ValidationException("Missing actor with code ["
+					+ group.getPrimaryActor()
+					+ "] referenced from use case with code [" + code + "].");
+		}
 		o.setPrimaryActor(primaryActor);
 
 		if (null != group.getVisibility() && null != group.getType()) {
@@ -172,8 +177,8 @@ public class UseCaseConverter {
 			for (Condition condition : conditions) {
 				ExtensionOut extensionOut = new ExtensionOut();
 				extensionOut.setIndent("");
-				String conditionNumber = expandStepRef(condition.getStepRef(),
-						stepRefs);
+				String conditionNumber = expandStepRef(code,
+						condition.getStepRef(), stepRefs);
 				extensionOut.setNumber(conditionNumber);
 				String when = condition.getWhenAttribute();
 				if (null == when) {
@@ -279,14 +284,15 @@ public class UseCaseConverter {
 		}
 	}
 
-	private String expandStepRef(String stepRef, Map<String, String> stepRefs) {
+	private String expandStepRef(String ucCode, String stepRef,
+			Map<String, String> stepRefs) {
 		if ("*".equals(stepRef)) {
 			return appendCaseToStepRef("*", stepRefs);
 		}
 		if (stepRef.contains("-")) {
 			String[] split = stepRef.split("-");
-			return appendCaseToStepRef(expandStepRef(split[0], null) + "‑"
-					+ expandStepRef(split[1], null), stepRefs);
+			return appendCaseToStepRef(expandStepRef(ucCode, split[0], null)
+					+ "‑" + expandStepRef(ucCode, split[1], null), stepRefs);
 		}
 		List<Step> steps = executionContext.getCurrentUseCase().getSuccess()
 				.getStep();
@@ -296,7 +302,7 @@ public class UseCaseConverter {
 			}
 		}
 		throw new ValidationException("Missing step with handle [" + stepRef
-				+ "] referenced from extension.");
+				+ "] referenced from extension in use case [" + ucCode + "].");
 	}
 
 	private String appendCaseToStepRef(String stepRef,
