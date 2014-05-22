@@ -54,13 +54,7 @@ public class UctoolExecutor {
 		logger.info("Executing UCTool from reader stream.");
 
 		List<Uct> inputs = readReader(reader);
-		validateInputs(inputs);
-		List<Object> outputs = convertToOutputs();
-		writeOutputs(outputs, outputDir);
-
-		logger.info("Executed UCTool into {} in {}.", outputDir,
-				timeAll.toString());
-		timeAll.stop();
+		executeInternal(inputs, outputDir);
 	}
 
 	public void execute(File inputPath, File outputDir) {
@@ -69,13 +63,20 @@ public class UctoolExecutor {
 
 		List<File> inputFiles = findInputFiles(inputPath);
 		List<Uct> inputs = readInputFiles(inputFiles);
-		validateInputs(inputs);
-		List<Object> outputs = convertToOutputs();
-		writeOutputs(outputs, outputDir);
+		executeInternal(inputs, outputDir);
+	}
 
+	private void executeInternal(List<Uct> inputs, File outputDir) {
+		validateInputs(inputs);
+		convertToOutputs(executionContext.getOutputs());
+		executionContext.setSingle(true);
+		convertToOutputs(executionContext.getOutputsSinglePage());
+		executionContext.setSingle(false);
+		writeOutputs(outputDir);
+
+		timeAll.stop();
 		logger.info("Executed UCTool into {} in {}.", outputDir,
 				timeAll.toString());
-		timeAll.stop();
 	}
 
 	private List<File> findInputFiles(File inputPath) {
@@ -128,10 +129,9 @@ public class UctoolExecutor {
 		time.reset();
 	}
 
-	private List<Object> convertToOutputs() {
+	private void convertToOutputs(List<Object> outputs) {
 		logger.debug("Converting to outputs.");
 		time.start();
-		List<Object> outputs = new ArrayList<Object>();
 		for (Actor actor : executionContext.getActors().values()) {
 			ActorOut actorOut = actorConverter.convert(actor);
 			outputs.add(actorOut);
@@ -152,10 +152,10 @@ public class UctoolExecutor {
 		logger.debug("Converted to {} outputs @ {}.", outputs.size(),
 				time.toString());
 		time.reset();
-		return outputs;
 	}
 
-	private void writeOutputs(List<Object> outputs, File outputDir) {
+	private void writeOutputs(File outputDir) {
+		List<Object> outputs = executionContext.getOutputs();
 		logger.debug("Writing {} outputs.", outputs.size());
 		time.start();
 		uctoolWriter.init(outputDir, executionContext);
@@ -164,6 +164,7 @@ public class UctoolExecutor {
 		uctoolWriter.writeUseCaseIndex();
 		uctoolWriter.writeSummaryIndex();
 		uctoolWriter.writeEntryPointList();
+		uctoolWriter.writeSinglePage();
 		for (Object output : outputs) {
 			uctoolWriter.write(output);
 		}

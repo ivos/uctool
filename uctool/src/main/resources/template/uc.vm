@@ -1,3 +1,5 @@
+#if($ctx.single)
+#else
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -8,6 +10,7 @@
 <body>
 #set($section="uc")
 #parse("template/navbar.vm")
+#end
 <a id="uc_$uc.code"></a>
 <h3><i class="icon-file"></i> <span class="muted">Use case</span> $uc.code - #if($uc.typeImageName)<img src="../resources/${uc.typeImageName}.gif" alt="$uc.visibilityTitle, $uc.typeTitle" title="$uc.visibilityTitle, $uc.typeTitle"/>&nbsp;#end$uc.goal#if($uc.level)&nbsp;<img src="../resources/${uc.level}.gif" alt="$uc.levelTitle" title="$uc.levelTitle"/>#end</h3>
 <table>
@@ -20,7 +23,7 @@
 #end
 #if($uc.levelTitle)<strong>Level:</strong> $uc.levelTitle
 #end</td></tr>
-#end<tr><td><strong>Primary actor:</strong> <a href="../actor/${uc.primaryActor.code}.html" title="${uc.primaryActor.name}">${uc.primaryActor.name}</a></td></tr>
+#end<tr><td><strong>Primary actor:</strong> #ref($uc.primaryActorRef)</td></tr>
 #if(!$uc.descriptions.isEmpty())<tr><td><strong>Description:</strong>
 #foreach($description in $uc.descriptions)<div>$description</div>
 #end</td></tr>
@@ -64,6 +67,8 @@
 #foreach($ref in $uc.references)#ref($ref)#if( $foreach.hasNext ),#end
 $newline#end</td></tr>
 #end</table>
+#if(! $ctx.single)
 #parse("template/footer.vm")
 </body>
 </html>
+#end

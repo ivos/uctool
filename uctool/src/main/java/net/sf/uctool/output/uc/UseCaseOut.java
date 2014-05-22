@@ -52,6 +52,11 @@ public class UseCaseOut {
 		this.primaryActor = primaryActor;
 	}
 
+	public Reference getPrimaryActorRef() {
+		return new Reference("actor", primaryActor.getCode(),
+				primaryActor.getName(), false);
+	}
+
 	public String getTypeImageName() {
 		return typeImageName;
 	}

@@ -19,6 +19,7 @@ public class UctoolWriter {
 	private VelocityEngine ve;
 	private TemplateWriter templateWriter;
 	private ActorWriter actorWriter;
+	private SinglePageWriter singlePageWriter;
 	private UseCaseWriter useCaseWriter;
 	private ExecutionContext executionContext;
 
@@ -33,12 +34,14 @@ public class UctoolWriter {
 		new File(baseDir, "actor").mkdirs();
 		new File(baseDir, "uc").mkdirs();
 		new File(baseDir, "summary").mkdirs();
+		new File(baseDir, "single").mkdirs();
 
 		this.executionContext = executionContext;
 
 		templateWriter = new TemplateWriter(ve, baseDir);
 		actorWriter = new ActorWriter(templateWriter);
 		useCaseWriter = new UseCaseWriter(templateWriter);
+		singlePageWriter = new SinglePageWriter(templateWriter);
 	}
 
 	public void write(Object item) {
@@ -66,7 +69,8 @@ public class UctoolWriter {
 	public void writeActorIndex() {
 		VelocityContext context = new VelocityContext();
 		context.put("ctx", executionContext);
-		templateWriter.writeFile("template/actor-index.vm", "actor/index", context);
+		templateWriter.writeFile("template/actor-index.vm", "actor/index",
+				context);
 	}
 
 	public void writeUseCaseIndex() {
@@ -87,6 +91,10 @@ public class UctoolWriter {
 		context.put("ctx", executionContext);
 		templateWriter.writeFile("template/entry-point-list.vm",
 				"summary/entry-point-list", context);
+	}
+
+	public void writeSinglePage() {
+		singlePageWriter.write(executionContext);
 	}
 
 }

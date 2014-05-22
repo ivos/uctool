@@ -1,3 +1,5 @@
+#if($ctx.single)
+#else
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -9,10 +11,13 @@
 #set($section="actor")
 #set($isSection="true")
 #parse("template/navbar.vm")
+#end
 <h2>Actors overview</h2>
 <ul class="nav nav-tabs nav-stacked">
-#foreach($actor in $ctx.actorOuts.values())<li><a href="../actor/${actor.code}.html" title="$actor.name">$actor.name</a></li>
+#foreach($actor in $ctx.actorOuts.values())<li>#actorRef($actor)</li>
 #end</ul>
+#if(! $ctx.single)
 #parse("template/footer.vm")
 </body>
 </html>
+#end

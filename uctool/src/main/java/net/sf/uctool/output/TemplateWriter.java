@@ -83,6 +83,15 @@ public class TemplateWriter {
 				outputFile);
 	}
 
+	public void writeText(String text, FileWriter fw, File outputFile) {
+		try {
+			fw.write(text);
+		} catch (IOException e) {
+			throw new WriterException("Error writing text to output file ["
+					+ outputFile.getName() + "].", e);
+		}
+	}
+
 	public void closeFile(FileWriter fw, File outputFile) {
 		try {
 			fw.close();

@@ -1,3 +1,5 @@
+#if($ctx.single)
+#else
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -8,6 +10,7 @@
 <body>
 #set($section="actor")
 #parse("template/navbar.vm")
+#end
 <a id="actor_$actor.code"></a>
 <h3><i class="icon-user"></i> <span class="muted">Actor</span> $actor.name</h3>
 #if(!$actor.descriptions.isEmpty())<div><strong>Description:</strong></div>
@@ -44,6 +47,8 @@
 #end
 </ul>
 #end
+#if(! $ctx.single)
 #parse("template/footer.vm")
 </body>
 </html>
+#end

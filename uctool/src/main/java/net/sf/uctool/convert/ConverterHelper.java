@@ -30,6 +30,27 @@ public class ConverterHelper {
 		this.executionContext = executionContext;
 	}
 
+	private String getRefPrefix() {
+		if (executionContext.isSingle()) {
+			return "#";
+		}
+		return "../";
+	}
+
+	private String getRefSeparator() {
+		if (executionContext.isSingle()) {
+			return "_";
+		}
+		return "/";
+	}
+
+	private String getRefSuffix() {
+		if (executionContext.isSingle()) {
+			return "";
+		}
+		return ".html";
+	}
+
 	public void writeDescription(StringBuilder sb, Object content,
 			String referencedFromType, String referencedFromCode) {
 		if (content instanceof String) {
@@ -67,6 +88,15 @@ public class ConverterHelper {
 			sb.append(attachment.getFileName());
 			sb.append("\">");
 			sb.append(escape(attachmentRef.getValue()));
+			if (executionContext.isSingle()) {
+				sb.append(" (");
+				sb.append(attachment.getName());
+				sb.append(" - ");
+				sb.append(attachmentGroup.getDirectory());
+				sb.append("/");
+				sb.append(attachment.getFileName());
+				sb.append(")");
+			}
 			sb.append("</a>");
 		}
 		if (content instanceof DataRef) {
@@ -80,12 +110,18 @@ public class ConverterHelper {
 								+ "] referenced from " + referencedFromType
 								+ " with code [" + referencedFromCode + "].");
 			}
-			sb.append("<a href=\"../data/");
+			sb.append("<a href=\"" + getRefPrefix() + "data"
+					+ getRefSeparator());
 			sb.append(code);
-			sb.append(".html\" title=\"");
+			sb.append(getRefSuffix() + "\" title=\"");
 			sb.append(dataStructure.getName());
 			sb.append("\">");
 			sb.append(escape(dataRef.getValue()));
+			if (executionContext.isSingle()) {
+				sb.append(" (");
+				sb.append(dataStructure.getName());
+				sb.append(")");
+			}
 			sb.append("</a>");
 		}
 		if (content instanceof ReqRef) {
@@ -98,14 +134,21 @@ public class ConverterHelper {
 						+ code + "] referenced from " + referencedFromType
 						+ " with code [" + referencedFromCode + "].");
 			}
-			sb.append("<a href=\"../req/");
+			sb.append("<a href=\"" + getRefPrefix() + "req" + getRefSeparator());
 			sb.append(code);
-			sb.append(".html\" title=\"");
+			sb.append(getRefSuffix() + "\" title=\"");
 			sb.append(code);
 			sb.append(" - ");
 			sb.append(requirement.getName());
 			sb.append("\">");
 			sb.append(escape(reqRef.getValue()));
+			if (executionContext.isSingle()) {
+				sb.append(" (");
+				sb.append(code);
+				sb.append(" - ");
+				sb.append(requirement.getName());
+				sb.append(")");
+			}
 			sb.append("</a>");
 		}
 		if (content instanceof UcRef) {
@@ -118,14 +161,21 @@ public class ConverterHelper {
 						+ " with code [" + referencedFromCode + "].");
 			}
 			String code = useCase.getCode();
-			sb.append("<a href=\"../uc/");
+			sb.append("<a href=\"" + getRefPrefix() + "uc" + getRefSeparator());
 			sb.append(code);
-			sb.append(".html\" title=\"");
+			sb.append(getRefSuffix() + "\" title=\"");
 			sb.append(code);
 			sb.append(" - ");
 			sb.append(useCase.getGoal());
 			sb.append("\">");
 			sb.append(escape(ucRef.getValue()));
+			if (executionContext.isSingle()) {
+				sb.append(" (");
+				sb.append(code);
+				sb.append(" - ");
+				sb.append(useCase.getGoal());
+				sb.append(")");
+			}
 			sb.append("</a>");
 			executionContext.addUcRef(code, referencedFromCode);
 		}

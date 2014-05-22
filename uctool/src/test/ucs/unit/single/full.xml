@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+	<actor name="Name 1 &lt;b &amp; " code="a1">
+		<description>Description 1.</description>
+		<description>
+			Contains
+			<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
+			,
+			<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
+			,
+			<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
+			.
+		</description>
+		<extends-actor code="exed1" />
+	</actor>
+	<actor name="Extended 1 &lt;b &amp; " code="exed1">
+	</actor>
+
+	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1 &lt;b &amp; ">
+		<use-case code="UC1" goal="Full UC goal &lt;b &amp; " level="sea">
+			<description>Some description.</description>
+			<description>
+				Contains
+				<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
+				,
+				<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
+				,
+				<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
+				.
+			</description>
+			<stakeholders-interests>
+				<interest stakeholder="Stakeholder 1">Interest of stakeholder 1.</interest>
+				<interest stakeholder="Stakeholder 2">
+					Interest of stakeholder 2.
+					<h:li>Bullet 1 in interest.</h:li>
+					<h:li>Bullet 2 in interest.</h:li>
+					<h:hr />
+					Text under hr, a
+					<uc-ref code="RF001">link to another UC</uc-ref>
+					,
+					<uc-ref code="rfcd02">link to another UC via refcode</uc-ref>
+					, a reference to step
+					<step-ref handle="stepHandle1" />
+					,
+					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
+					,
+					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
+					,
+					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
+					&lt;b &amp; .
+				</interest>
+			</stakeholders-interests>
+			<preconditions>
+				<item>Precondition 1.</item>
+				<item>
+					Item 2, and a
+					<uc-ref code="RF001">reference to other use case &lt;b &amp; " '</uc-ref>
+					,
+					<uc-ref code="rfcd02">link to another UC via refcode</uc-ref>
+					, a reference to step
+					<step-ref handle="stepHandle1" />
+					,
+					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
+					,
+					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
+					,
+					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
+					&lt;b &amp; .
+				</item>
+			</preconditions>
+			<minimal-guarantees>
+				<item>Min guarantee 1.</item>
+				<item>
+					Item 2, and a
+					<uc-ref code="RF001">reference to other use case</uc-ref>
+					, a reference to step
+					<step-ref handle="stepHandle1" />
+					,
+					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
+					,
+					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
+					,
+					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
+					&lt;b &amp; .
+				</item>
+			</minimal-guarantees>
+			<success-guarantees>
+				<item>Success guarantee 1.</item>
+				<item>
+					Item 2, and a
+					<uc-ref code="RF001">reference to other use case &lt;b &amp; " '</uc-ref>
+					,
+					<uc-ref code="rfcd02">link to another UC via refcode</uc-ref>
+					, a reference to step
+					<step-ref handle="stepHandle1" />
+					,
+					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
+					,
+					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
+					,
+					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
+					&lt;b &amp; .
+				</item>
+			</success-guarantees>
+			<trigger>Trigger 1 &lt;b &amp; .</trigger>
+			<success>
+				<step handle="stepHandle1">Step 1.</step>
+				<step handle="goto">
+					Go to step
+					<step-ref handle="end" />
+					.
+				</step>
+				<step>
+					System
+					<uc-ref code="RF001">creates a new customer</uc-ref>
+					.
+				</step>
+				<step handle="end">Step 3.</step>
+			</success>
+			<extensions>
+				<condition step-ref="*" />
+				<condition step-ref="*" when="Ref to star, inline when" inline-step="Inline step." />
+				<condition step-ref="goto" when="Ref to step, inline when">
+					<step>Explicit step 1.</step>
+					<step>Explicit step 2.</step>
+					<step>Explicit step 3.</step>
+				</condition>
+			</extensions>
+			<notes>
+				References,
+				<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
+				,
+				<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
+				,
+				<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
+				&lt;b &amp; .
+			</notes>
+		</use-case>
+	</uc-group>
+	<uc-group primary-actor="a1">
+		<use-case goal="Referenced UC" code="RF001"></use-case>
+		<use-case goal="UC referenced via refcode" code="RF003" refcode="rfcd02"></use-case>
+	</uc-group>
+
+	<attachment-group directory="att-dir1" name="">
+		<attachment name="Att 1 name" code="att1" file-name="att1-file-name" />
+	</attachment-group>
+	<data-structure name="Dt 1 name" code="dt1"></data-structure>
+	<requirement name="Rq 1 name" code="rq1"></requirement>
+
+</uct>

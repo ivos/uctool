@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Analytical Documentation</title>
+#set($rel-path="../")
+#parse("template/head.vm")
+</head>
+<body>
+<div class="container">
+<h1>Analytical Documentation</h1>
+<p class="lead">Name: test-name<br/>
+Version: test-version</p>
+<p class="lead">test-description</p>

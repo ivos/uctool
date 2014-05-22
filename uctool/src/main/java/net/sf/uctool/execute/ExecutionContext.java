@@ -1,7 +1,9 @@
 package net.sf.uctool.execute;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -31,10 +33,14 @@ public class ExecutionContext {
 	private final Map<String, UcGroup> ucGroups;
 	private final Map<String, Set<String>> ucReferences;
 
+	private final List<Object> outputs;
+	private final List<Object> outputsSinglePage;
+
 	private final Map<String, UseCaseOut> useCaseOuts;
 	private final Map<String, ActorOut> actorOuts;
 
 	private UseCase currentUseCase;
+	private boolean single = false;
 
 	public ExecutionContext(ResourceBundle labels, Project project) {
 		this.labels = labels;
@@ -48,6 +54,9 @@ public class ExecutionContext {
 		useCases = new LinkedHashMap<String, UseCase>();
 		ucGroups = new LinkedHashMap<String, UcGroup>();
 		ucReferences = new LinkedHashMap<String, Set<String>>();
+
+		outputs = new ArrayList<Object>();
+		outputsSinglePage = new ArrayList<Object>();
 
 		useCaseOuts = new LinkedHashMap<String, UseCaseOut>();
 		actorOuts = new LinkedHashMap<String, ActorOut>();
@@ -105,6 +114,14 @@ public class ExecutionContext {
 		return ucReferences;
 	}
 
+	public List<Object> getOutputs() {
+		return outputs;
+	}
+
+	public List<Object> getOutputsSinglePage() {
+		return outputsSinglePage;
+	}
+
 	public Map<String, UseCaseOut> getUseCaseOuts() {
 		return useCaseOuts;
 	}
@@ -120,6 +137,14 @@ public class ExecutionContext {
 			ucReferences.put(codeUcReferenced, references);
 		}
 		references.add(codeUcReferencing);
+	}
+
+	public boolean isSingle() {
+		return single;
+	}
+
+	public void setSingle(boolean single) {
+		this.single = single;
 	}
 
 }

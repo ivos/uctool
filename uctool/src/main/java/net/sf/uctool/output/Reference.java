@@ -7,9 +7,13 @@ public class Reference {
 	private final String type, code, label;
 
 	public Reference(String type, String code, String label) {
+		this(type, code, label, true);
+	}
+
+	public Reference(String type, String code, String label, boolean escapeLabel) {
 		this.type = type;
 		this.code = code;
-		this.label = escape(label);
+		this.label = escapeLabel ? escape(label) : label;
 	}
 
 	public String getType() {

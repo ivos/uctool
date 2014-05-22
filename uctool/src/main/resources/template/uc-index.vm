@@ -1,3 +1,5 @@
+#if($ctx.single)
+#else
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -9,6 +11,7 @@
 #set($section="uc")
 #set($isSection="true")
 #parse("template/navbar.vm")
+#end
 <h2>Use Cases overview</h2>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
@@ -22,7 +25,7 @@
 #foreach($uc in $ctx.useCaseOuts.values())
 <tr>
 <td>$uc.primaryActor.name</td>
-<td><a href="../uc/${uc.code}.html" title="$uc.code - $uc.goal">$uc.code - $uc.goal</a></td>
+<td>#ucRef($uc)</td>
 <td align="center">
 #if($uc.levelTitle)<img src="../resources/${uc.level}.gif" alt="$uc.levelTitle" title="$uc.levelTitle"/>
 #else&nbsp;
@@ -32,6 +35,8 @@
 #end
 </tbody>
 </table>
+#if(! $ctx.single)
 #parse("template/footer.vm")
 </body>
 </html>
+#end
