@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd">
+	xsi:schemaLocation="http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd">
 	<uc-group primary-actor="primary-actor-2-for-use-cases" type="organization"
 		visibility="white" scope="Scope 2">
 		<use-case goal="Referenced use case 1" code="CD100" level="fish">

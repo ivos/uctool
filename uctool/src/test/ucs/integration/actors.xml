@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd">
+	xsi:schemaLocation="http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd">
 	<actor name="Primary actor for Use cases" code="primary-actor-for-use-cases">
 		<extends-actor code="primary-actor-with-goals" />
 		<extends-actor code="no-ucs-primary-actor" />
