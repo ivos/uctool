@@ -3,6 +3,23 @@
 <html>
 <head></head>
 <body>
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-51374622-1', 'sourceforge.net');
+		ga('send', 'pageview');
+	</script>
+
 	<h2>Use Case Tool</h2>
 
 	<blockquote>
@@ -11,70 +28,90 @@
 
 	<h3>Overview</h3>
 	<p style="font-size: 115%">
-		Write use cases in <strong>XML</strong> with support from a <strong>provided
-			XSD</strong>. The structure promotes the Use Case format described by <a
-			href="http://alistair.cockburn.us/">Alistair Cockburn</a>. The tool
-		then <strong>generates</strong> use case documentation in <strong>HTML
+		Write use cases in <strong>XML</strong> with support from a <strong>provided XSD</strong>. The
+		structure promotes the Use Case format described by <a href="http://alistair.cockburn.us/">Alistair
+			Cockburn</a>. The tool then <strong>generates</strong> use case documentation in <strong>HTML
 			format</strong> with pretty links in-between the pages.
 	</p>
 	<p style="font-size: 115%">
-		The XML sources are treated as a <strong>Maven project</strong>, so
-		you can easily <strong>deploy</strong> them to a web server, <strong>version</strong>
-		the source files, manage <strong>history</strong> of changes, and <strong>collaborate</strong>
-		in a team.
+		The XML sources are treated as a <strong>Maven project</strong>, so you can easily <strong>deploy</strong>
+		them to a web server, <strong>version</strong> the source files, manage <strong>history</strong>
+		of changes, and <strong>collaborate</strong> in a team.
 	</p>
 	<p>
-		UCTool is <strong>free, open source</strong> product licensed under
-		the business-friendly Apache 2 license.
+		UCTool is <strong>free, open source</strong> product licensed under the business-friendly Apache 2
+		license.
 	</p>
 
 	<h3>Highlights</h3>
 	<ul>
-		<li><span class="icon-share"></span> Clickable <strong>HTML
-				links</strong>, that <strong>unfold references to sub-use cases</strong>,
-			data structure definitions, etc. This is the single most important
+		<li>
+			<span class="icon-share"></span> Clickable <strong>HTML links</strong>, that <strong>unfold
+				references to sub-use cases</strong>, data structure definitions, etc. This is the single most important
 			benefit. It makes the use cases very comprehensible and easy to read.
 		</li>
-		<li><span class="icon-list"></span> <strong>Automatic
-				numbering</strong> of the <strong>use case steps</strong> and related <strong>extensions</strong>.
-			The extension numbers and references to steps remain consistent even
-			after creating or removing use case steps.</li>
-		<li><span class="icon-check"></span> Well-organized,
-			comprehensible and <strong>consistent look</strong> of the analytical
-			outputs, as each item is generated to a common template.</li>
-		<li><span class="icon-globe"></span> <strong>Localization</strong>
-			of the templates is easily supported, currently English and Czech are
-			available out-of-the-box.</li>
-		<li><span class="icon-refresh"></span> UCTool can be integrated
-			into enterprise software development processes using its <strong>XSD
-				import and export</strong> featues.</li>
+		<li>
+			<span class="icon-list"></span> <strong>Automatic numbering</strong> of the <strong>use
+				case steps</strong> and related <strong>extensions</strong>. The extension numbers and references to
+			steps remain consistent even after creating or removing use case steps.
+		</li>
+		<li>
+			<span class="icon-check"></span> Well-organized, comprehensible and <strong>consistent
+				look</strong> of the analytical outputs, as each item is generated to a common template.
+		</li>
+		<li>
+			<span class="icon-globe"></span> <strong>Localization</strong> of the templates is easily
+			supported, currently English and Czech are available out-of-the-box.
+		</li>
+		<li>
+			<span class="icon-refresh"></span> UCTool can be integrated into enterprise software development
+			processes using its <strong>XSD import and export</strong> featues.
+		</li>
 	</ul>
-	<p>Using standard development tools like Maven and Eclipse also
-		gives you the following:</p>
+	<p>Using standard development tools like Maven and Eclipse also gives you the following:</p>
 	<ul>
-		<li><span class="icon-user"></span> <strong>Source code
-				control</strong> on the XML source files of the use cases (e.g using Git or
-			Subversion). Apart from excellent visibility of <strong>change
-				history</strong> of the use cases this effectively enables a <strong>team
-				of analysts</strong> to work on the <strong>same use cases</strong> at the <strong>same
-				time</strong>, merging the individual modifications, if necessary.</li>
-		<li><span class="icon-tags"></span> <strong>Versioning
-				and releasing</strong> of use cases using standard Maven capabilities.</li>
-		<li><span class="icon-arrow-up"></span> <strong>Deployment</strong>
-			of use cases <strong>to a web server</strong> using standard Maven
-			capabilities.</li>
+		<li>
+			<span class="icon-user"></span> <strong>Source code control</strong> on the XML source files of
+			the use cases (e.g using Git or Subversion). Apart from excellent visibility of <strong>change
+				history</strong> of the use cases this effectively enables a <strong>team of analysts</strong> to work on
+			the <strong>same use cases</strong> at the <strong>same time</strong>, merging the individual
+			modifications, if necessary.
+		</li>
+		<li>
+			<span class="icon-tags"></span> <strong>Versioning and releasing</strong> of use cases using
+			standard Maven capabilities.
+		</li>
+		<li>
+			<span class="icon-arrow-up"></span> <strong>Deployment</strong> of use cases <strong>to
+				a web server</strong> using standard Maven capabilities.
+		</li>
 	</ul>
+
+	<h3>CaseFu - UCTool as a service</h3>
+	<p>CaseFu is a service that builds on UCTool and makes it very easy to be used. It let's you:</p>
+	<ul>
+		<li>
+			<strong>Edit</strong> use cases <strong>easily</strong> in an intuitive web app.
+		</li>
+		<li>
+			<strong>Generate output</strong> web site using UCTool under-the-covers on a push of a button.
+		</li>
+		<li>
+			<strong>Publish</strong> this web site for the readers on a public server.
+		</li>
+	</ul>
+	<p>
+		<a class="btn btn-success btn-large" href="http://casefu.com/">Go to CaseFu.com &raquo;</a>
+	</p>
 
 	<h3>Sample</h3>
 	<p>
-		Have a look at the <strong>generated use case documentation</strong>
-		for yourself in a sample analysis project <strong>created in
-			UCTool</strong>:
+		Have a look at the <strong>generated use case documentation</strong> for yourself in a sample
+		analysis project <strong>created in UCTool</strong>:
 	</p>
 	<p>
-		<a class="btn btn-success btn-large"
-			href="http://uctool.sf.net/uctool-sample/">Go to sample analysis
-			&raquo;</a>
+		<a class="btn btn-default btn-large" href="http://uctool.sf.net/uctool-sample/">Go to sample
+			analysis &raquo;</a>
 	</p>
 
 	<h3>Tutorial</h3>
@@ -82,25 +119,13 @@
 		Read the UCTool <strong>tutorial</strong>:
 	</p>
 	<p>
-		<a class="btn btn-success btn-large" href="./tutorial/index.html">Start
-			tutorial &raquo;</a>
+		<a class="btn btn-default btn-large" href="./tutorial/index.html">Start tutorial &raquo;</a>
 	</p>
-
-	<h3>Demo videos</h3>
-	<p>Watch three videos demonstrating writing use cases using UCTool
-		in the Eclipse environment:</p>
-	<ol>
-		<li><a href="http://youtu.be/hX6IaPB6aLc">Type in a use case</a>.</li>
-		<li><a href="http://youtu.be/MJQ5dz2m-0c">Create an extension
-				to a use case step</a>.</li>
-		<li><a href="http://youtu.be/zzEy4ft-Pog">Link two use cases</a>.</li>
-	</ol>
 
 	<hr />
 	<p>
 		UCTool is hosted by Sourceforge.net, see <a class="externalLink"
-			href="http://sourceforge.net/projects/uctool/">UCTool at
-			Sourceforge.net</a>.
+			href="http://sourceforge.net/projects/uctool/">UCTool at Sourceforge.net</a>.
 	</p>
 </body>
 </html>
