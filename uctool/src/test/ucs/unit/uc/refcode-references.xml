@@ -16,10 +16,24 @@
 				</step>
 			</success>
 		</use-case>
+		<use-case goal="Ref from uc A with refcode" code="ref-from-uc-a-with-refcode" refcode="rfc2">
+			<success>
+				<step>
+					<uc-ref code="rfc1"></uc-ref>
+				</step>
+			</success>
+		</use-case>
 	</uc-group>
 
 	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
 		<use-case goal="Ref from other uc group &lt;b &amp; " code="ref-from-other-ucg">
+			<success>
+				<step>
+					<uc-ref code="rfc1"></uc-ref>
+				</step>
+			</success>
+		</use-case>
+		<use-case goal="Ref from uc B with refcode" code="ref-from-uc-b-with-refcode" refcode="rfc3">
 			<success>
 				<step>
 					<uc-ref code="rfc1"></uc-ref>

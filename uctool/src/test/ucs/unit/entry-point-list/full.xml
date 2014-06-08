@@ -25,6 +25,46 @@
 		</use-case>
 		<use-case code="UC003" goal="UC 003 goal" level="sea" />
 	</uc-group>
+	<uc-group primary-actor="a1" type="system" visibility="black" scope="Full refcodes">
+		<use-case code="UC101" refcode="rfc101" goal="UC 101 goal" level="cloud" />
+		<use-case code="UC102" refcode="rfc102" goal="UC 102 goal" level="kite">
+			<success>
+				<step>
+					Call
+					<uc-ref code="rfc101">UC001</uc-ref>
+					.
+				</step>
+				<step>
+					Call
+					<uc-ref code="rfc103">UC003</uc-ref>
+					.
+				</step>
+			</success>
+		</use-case>
+		<use-case code="UC103" refcode="rfc103" goal="UC 103 goal" level="sea" />
+	</uc-group>
+	<uc-group primary-actor="a1" type="system" visibility="black" scope="Partial refcodes">
+		<use-case code="UC201" goal="Non-refcode uc ref'ing refcode uc" level="sea">
+			<success>
+				<step>
+					Call
+					<uc-ref code="rfc202">UC202</uc-ref>
+					.
+				</step>
+			</success>
+		</use-case>
+		<use-case code="UC202" refcode="rfc202" goal="Refcode uc ref'ed from non-refcode uc" level="sea" />
+		<use-case code="UC203" refcode="rfc203" goal="Refcode uc ref'ing non-refcode uc" level="sea">
+			<success>
+				<step>
+					Call
+					<uc-ref code="UC204">UC204</uc-ref>
+					.
+				</step>
+			</success>
+		</use-case>
+		<use-case code="UC204" goal="Non-refcode uc ref'ed from refcode uc" level="sea" />
+	</uc-group>
 	<uc-group primary-actor="a2" type="design" visibility="white" scope="Scope 2">
 		<use-case code="UC004" goal="UC 004 goal" level="sea">
 			<success>

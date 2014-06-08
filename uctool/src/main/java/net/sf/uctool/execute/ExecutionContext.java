@@ -130,13 +130,13 @@ public class ExecutionContext {
 		return actorOuts;
 	}
 
-	public void addUcRef(String codeUcReferenced, String codeUcReferencing) {
-		Set<String> references = ucReferences.get(codeUcReferenced);
+	public void addUcRef(String refcodeUcReferenced, String refcodeUcReferencing) {
+		Set<String> references = ucReferences.get(refcodeUcReferenced);
 		if (null == references) {
 			references = new LinkedHashSet<String>();
-			ucReferences.put(codeUcReferenced, references);
+			ucReferences.put(refcodeUcReferenced, references);
 		}
-		references.add(codeUcReferencing);
+		references.add(refcodeUcReferencing);
 	}
 
 	public boolean isSingle() {

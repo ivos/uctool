@@ -20,7 +20,7 @@
 </thead>
 <tbody>
 #foreach($uc in $ctx.useCaseOuts.values())
-#if(!$ctx.ucReferences.containsKey($uc.code))
+#if(!$ctx.ucReferences.containsKey($uc.refcode))
 <tr>
 <td>$uc.primaryActor.name</td>
 <td><a href="../uc/${uc.code}.html" title="$uc.code - $uc.goal">$uc.code - $uc.goal</a></td>

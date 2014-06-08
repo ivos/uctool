@@ -28,4 +28,10 @@ public class Reference {
 		return label;
 	}
 
+	@Override
+	public String toString() {
+		return "Reference [type=" + type + ", code=" + code + ", label="
+				+ label + "]";
+	}
+
 }

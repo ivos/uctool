@@ -31,7 +31,12 @@ import net.sf.uctool.xsd.UcGroup;
 import net.sf.uctool.xsd.UseCase;
 import net.sf.uctool.xsd.When;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class UseCaseConverter {
+
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private final ExecutionContext executionContext;
 	private final ConverterHelper converterHelper;
@@ -42,11 +47,14 @@ public class UseCaseConverter {
 	}
 
 	public UseCaseOut convert(UseCase uc) {
+		logger.debug("Converting use case {}.", uc);
 		executionContext.setCurrentUseCase(uc);
 		UseCaseOut o = new UseCaseOut();
 		String code = uc.getCode();
-		UcGroup group = executionContext.getUcGroups().get(uc.getRefcode());
+		String refcode = uc.getRefcode();
+		UcGroup group = executionContext.getUcGroups().get(refcode);
 		o.setCode(code);
+		o.setRefcode(refcode);
 		o.setGoal(escape(uc.getGoal()));
 
 		ActorOut primaryActor = executionContext.getActorOuts().get(
@@ -79,7 +87,8 @@ public class UseCaseConverter {
 		for (DescriptionType descriptionType : uc.getDescription()) {
 			StringBuilder sb = new StringBuilder();
 			for (Object content : descriptionType.getContent()) {
-				converterHelper.writeDescription(sb, content, "use case", code);
+				converterHelper.writeDescription(sb, content, "use case", code,
+						refcode);
 			}
 			o.getDescriptions().add(sb.toString().trim());
 		}
@@ -93,7 +102,7 @@ public class UseCaseConverter {
 				StringBuilder sb = new StringBuilder();
 				for (Object content : interest.getContent()) {
 					converterHelper.writeDescription(sb, content, "use case",
-							code);
+							code, refcode);
 				}
 				interestOut.setContent(sb.toString().trim());
 				o.getInterests().add(interestOut);
@@ -107,7 +116,7 @@ public class UseCaseConverter {
 				StringBuilder sb = new StringBuilder();
 				for (Object content : itemOrText.getValue().getContent()) {
 					converterHelper.writeDescription(sb, content, "use case",
-							code);
+							code, refcode);
 				}
 				String out = sb.toString().trim();
 				if ("item".equals(itemOrText.getName().getLocalPart())) {
@@ -124,7 +133,7 @@ public class UseCaseConverter {
 				StringBuilder sb = new StringBuilder();
 				for (Object content : itemOrText.getValue().getContent()) {
 					converterHelper.writeDescription(sb, content, "use case",
-							code);
+							code, refcode);
 				}
 				String out = sb.toString().trim();
 				if ("item".equals(itemOrText.getName().getLocalPart())) {
@@ -141,7 +150,7 @@ public class UseCaseConverter {
 				StringBuilder sb = new StringBuilder();
 				for (Object content : itemOrText.getValue().getContent()) {
 					converterHelper.writeDescription(sb, content, "use case",
-							code);
+							code, refcode);
 				}
 				String out = sb.toString().trim();
 				if ("item".equals(itemOrText.getName().getLocalPart())) {
@@ -161,7 +170,7 @@ public class UseCaseConverter {
 				StringBuilder sb = new StringBuilder();
 				for (Object content : step.getContent()) {
 					converterHelper.writeDescription(sb, content, "use case",
-							code);
+							code, refcode);
 				}
 				StepOut stepOut = new StepOut();
 				stepOut.setNumber("" + (i + 1));
@@ -187,7 +196,7 @@ public class UseCaseConverter {
 						StringBuilder sb = new StringBuilder();
 						for (Object content : whenElement.getContent()) {
 							converterHelper.writeDescription(sb, content,
-									"use case", code);
+									"use case", code, refcode);
 						}
 						when = sb.toString();
 					} else {
@@ -201,7 +210,7 @@ public class UseCaseConverter {
 				extensionOut.setContent(content);
 				o.getExtensions().add(extensionOut);
 
-				processConditionSteps(code, o, conditionNumber,
+				processConditionSteps(code, refcode, o, conditionNumber,
 						"&nbsp;&nbsp;&nbsp;&nbsp;",
 						condition.getStepOrStepExtensions(), stepRefs);
 			}
@@ -211,7 +220,8 @@ public class UseCaseConverter {
 		if (null != notes) {
 			StringBuilder sb = new StringBuilder();
 			for (Object content : notes.getContent()) {
-				converterHelper.writeDescription(sb, content, "use case", code);
+				converterHelper.writeDescription(sb, content, "use case", code,
+						refcode);
 			}
 			o.setNotes(sb.toString().trim());
 		}
@@ -220,8 +230,8 @@ public class UseCaseConverter {
 		return o;
 	}
 
-	private void processConditionSteps(String ucCode, UseCaseOut o,
-			String conditionNumber, String indent,
+	private void processConditionSteps(String ucCode, String ucRefcode,
+			UseCaseOut o, String conditionNumber, String indent,
 			List<Object> stepOrStepExtensionsList, Map<String, String> stepRefs) {
 		int i = 0;
 		String stepNumber = null;
@@ -236,7 +246,7 @@ public class UseCaseConverter {
 				StringBuilder sb = new StringBuilder();
 				for (Object stepContent : step.getContent()) {
 					converterHelper.writeDescription(sb, stepContent,
-							"use case", ucCode);
+							"use case", ucCode, ucRefcode);
 				}
 				extensionOut.setContent(sb.toString().trim());
 				o.getExtensions().add(extensionOut);
@@ -260,7 +270,8 @@ public class UseCaseConverter {
 							for (Object stepContent : stepWhenElement
 									.getContent()) {
 								converterHelper.writeDescription(sb,
-										stepContent, "use case", ucCode);
+										stepContent, "use case", ucCode,
+										ucRefcode);
 							}
 							stepWhen = sb.toString();
 						} else {
@@ -275,8 +286,9 @@ public class UseCaseConverter {
 					extensionOut.setContent(stepContent);
 					o.getExtensions().add(extensionOut);
 
-					processConditionSteps(ucCode, o, stepConditionNumber,
-							indent + "&nbsp;&nbsp;&nbsp;&nbsp;"
+					processConditionSteps(ucCode, ucRefcode, o,
+							stepConditionNumber, indent
+									+ "&nbsp;&nbsp;&nbsp;&nbsp;"
 									+ "&nbsp;&nbsp;&nbsp;&nbsp;",
 							stepCondition.getStepOrStepExtensions(), stepRefs);
 				}
@@ -321,15 +333,18 @@ public class UseCaseConverter {
 	}
 
 	public void addReferences(UseCaseOut o) {
+		logger.debug("Adding references to use case {}.", o);
 		Set<String> references = executionContext.getUcReferences().get(
-				o.getCode());
+				o.getRefcode());
 		if (null != references) {
-			for (String referencingCode : references) {
+			for (String referencingRefcode : references) {
 				UseCase referencingUseCase = executionContext.getUseCases()
-						.get(referencingCode);
-				o.getReferences().add(
-						new Reference("uc", referencingCode, referencingCode
-								+ " - " + referencingUseCase.getGoal()));
+						.get(referencingRefcode);
+				String referencingCode = referencingUseCase.getCode();
+				Reference reference = new Reference("uc", referencingCode,
+						referencingCode + " - " + referencingUseCase.getGoal());
+				o.getReferences().add(reference);
+				logger.debug("Added reference {}.", reference);
 			}
 		}
 	}

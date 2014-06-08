@@ -16,7 +16,12 @@ import net.sf.uctool.xsd.DescriptionType;
 import net.sf.uctool.xsd.ExtendsActor;
 import net.sf.uctool.xsd.UseCase;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ActorConverter {
+
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private final ExecutionContext executionContext;
 	private final ConverterHelper converterHelper;
@@ -27,6 +32,7 @@ public class ActorConverter {
 	}
 
 	public ActorOut convert(Actor actor) {
+		logger.debug("Converting actor {}.", actor);
 		ActorOut o = new ActorOut();
 		String code = actor.getCode();
 		o.setCode(code);
@@ -35,7 +41,8 @@ public class ActorConverter {
 		for (DescriptionType descriptionType : actor.getDescription()) {
 			StringBuilder sb = new StringBuilder();
 			for (Object content : descriptionType.getContent()) {
-				converterHelper.writeDescription(sb, content, "actor", code);
+				converterHelper.writeDescription(sb, content, "actor", code,
+						code);
 			}
 			o.getDescriptions().add(sb.toString().trim());
 		}

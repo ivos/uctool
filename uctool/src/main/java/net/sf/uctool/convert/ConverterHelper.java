@@ -52,7 +52,8 @@ public class ConverterHelper {
 	}
 
 	public void writeDescription(StringBuilder sb, Object content,
-			String referencedFromType, String referencedFromCode) {
+			String referencedFromType, String referencedFromCode,
+			String referencedFromRefcode) {
 		if (content instanceof String) {
 			String string = (String) content;
 			sb.append(escape(string));
@@ -177,7 +178,7 @@ public class ConverterHelper {
 				sb.append(")");
 			}
 			sb.append("</a>");
-			executionContext.addUcRef(code, referencedFromCode);
+			executionContext.addUcRef(refcode, referencedFromRefcode);
 		}
 		if (content instanceof StepRef) {
 			StepRef stepRef = (StepRef) content;
@@ -208,7 +209,7 @@ public class ConverterHelper {
 				ref.setCode(element.getAttribute("code"));
 				ref.setValue(element.getTextContent());
 				writeDescription(sb, ref, referencedFromType,
-						referencedFromCode);
+						referencedFromCode, referencedFromRefcode);
 				return;
 			}
 			if ("data-ref".equals(name)) {
@@ -216,7 +217,7 @@ public class ConverterHelper {
 				ref.setCode(element.getAttribute("code"));
 				ref.setValue(element.getTextContent());
 				writeDescription(sb, ref, referencedFromType,
-						referencedFromCode);
+						referencedFromCode, referencedFromRefcode);
 				return;
 			}
 			if ("req-ref".equals(name)) {
@@ -224,7 +225,7 @@ public class ConverterHelper {
 				ref.setCode(element.getAttribute("code"));
 				ref.setValue(element.getTextContent());
 				writeDescription(sb, ref, referencedFromType,
-						referencedFromCode);
+						referencedFromCode, referencedFromRefcode);
 				return;
 			}
 			if ("uc-ref".equals(name)) {
@@ -232,14 +233,14 @@ public class ConverterHelper {
 				ref.setCode(element.getAttribute("code"));
 				ref.setValue(element.getTextContent());
 				writeDescription(sb, ref, referencedFromType,
-						referencedFromCode);
+						referencedFromCode, referencedFromRefcode);
 				return;
 			}
 			if ("step-ref".equals(name)) {
 				StepRef ref = new StepRef();
 				ref.setHandle(element.getAttribute("handle"));
 				writeDescription(sb, ref, referencedFromType,
-						referencedFromCode);
+						referencedFromCode, referencedFromRefcode);
 				return;
 			}
 			sb.append("<");
@@ -264,7 +265,7 @@ public class ConverterHelper {
 				for (int i = 0; i < childNodes.getLength(); i++) {
 					Node child = childNodes.item(i);
 					writeDescription(sb, child, referencedFromType,
-							referencedFromCode);
+							referencedFromCode, referencedFromRefcode);
 				}
 				sb.append("</");
 				sb.append(name);

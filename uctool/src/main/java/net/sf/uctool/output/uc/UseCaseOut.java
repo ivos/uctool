@@ -9,6 +9,7 @@ import net.sf.uctool.output.actor.ActorOut;
 public class UseCaseOut {
 
 	private String code;
+	private String refcode;
 	private String goal;
 	private ActorOut primaryActor;
 	private String typeImageName;
@@ -34,6 +35,14 @@ public class UseCaseOut {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getRefcode() {
+		return refcode;
+	}
+
+	public void setRefcode(String refcode) {
+		this.refcode = refcode;
 	}
 
 	public String getGoal() {
@@ -151,6 +160,12 @@ public class UseCaseOut {
 
 	public List<Reference> getReferences() {
 		return references;
+	}
+
+	@Override
+	public String toString() {
+		return "UseCaseOut [code=" + code + ", refcode=" + refcode + ", goal="
+				+ goal + "]";
 	}
 
 }
