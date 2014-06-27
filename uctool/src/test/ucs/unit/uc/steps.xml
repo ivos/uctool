@@ -38,7 +38,7 @@
 					,
 					<uc-ref code="rfcd02">link to another UC via refcode</uc-ref>
 					, a reference to step
-					<step-ref handle="stepHandle1" />
+					<step-ref handle="stepHandle1"></step-ref>
 					,
 					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
 					,
