@@ -1,6 +1,6 @@
 package net.sf.uctool.exception;
 
-public class ValidationException extends RuntimeException {
+public class ValidationException extends UctoolBaseException {
 
 	public ValidationException(String message) {
 		super(message);

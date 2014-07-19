@@ -1,8 +1,13 @@
 package net.sf.uctool.execute;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
@@ -10,6 +15,7 @@ import java.util.ResourceBundle;
 import net.sf.uctool.convert.ActorConverter;
 import net.sf.uctool.convert.UseCaseConverter;
 import net.sf.uctool.exception.ReaderException;
+import net.sf.uctool.exception.ResourcesException;
 import net.sf.uctool.input.UctoolReader;
 import net.sf.uctool.output.UctoolWriter;
 import net.sf.uctool.output.actor.ActorOut;
@@ -19,6 +25,7 @@ import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Uct;
 import net.sf.uctool.xsd.UseCase;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.time.StopWatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,6 +80,8 @@ public class UctoolExecutor {
 		convertToOutputs(executionContext.getOutputsSinglePage());
 		executionContext.setSingle(false);
 		writeOutputs(outputDir);
+
+		extractResources(outputDir);
 
 		timeAll.stop();
 		logger.info("Executed UCTool into {} in {}.", outputDir,
@@ -173,6 +182,42 @@ public class UctoolExecutor {
 			uctoolWriter.write(output);
 		}
 		logger.debug("Wrote outputs @ {}.", time.toString());
+		time.reset();
+	}
+
+	private void extractResources(File outputDir) {
+		logger.debug("Extracting resources...");
+		time.start();
+
+		ClassLoader classLoader = Thread.currentThread()
+				.getContextClassLoader();
+		String base = "uctool-resources/";
+		List<String> names = Arrays.asList("black-design.gif",
+				"black-organization.gif", "black-system.gif", "clam.gif",
+				"cloud.gif", "favicon.ico", "fish.gif", "kite.gif", "sea.gif",
+				"white-design.gif", "white-organization.gif",
+				"white-system.gif", "css/styles.css",
+				"font/fontawesome-webfont.eot", "font/fontawesome-webfont.svg",
+				"font/fontawesome-webfont.ttf",
+				"font/fontawesome-webfont.woff", "js/scripts.js");
+		File outputBaseDir = new File(outputDir, "resources");
+
+		try {
+			for (String name : names) {
+				InputStream inputStream = classLoader.getResourceAsStream(base
+						+ name);
+				File outputFile = new File(outputBaseDir, name);
+				outputFile.getParentFile().mkdirs();
+				OutputStream outputStream = new FileOutputStream(outputFile);
+				logger.debug("Extracting resource {} into {}.", name,
+						outputFile);
+				IOUtils.copy(inputStream, outputStream);
+			}
+		} catch (IOException e) {
+			throw new ResourcesException("Cannot extract resources.", e);
+		}
+
+		logger.debug("Extracted resources @ {}.", time.toString());
 		time.reset();
 	}
 

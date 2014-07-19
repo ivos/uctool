@@ -1,6 +1,6 @@
 package net.sf.uctool.exception;
 
-public class ReaderException extends RuntimeException {
+public class ReaderException extends UctoolBaseException {
 
 	public ReaderException(String message, Throwable cause) {
 		super(message, cause);

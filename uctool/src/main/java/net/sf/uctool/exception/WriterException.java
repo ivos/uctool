@@ -1,6 +1,6 @@
 package net.sf.uctool.exception;
 
-public class WriterException extends RuntimeException {
+public class WriterException extends UctoolBaseException {
 
 	public WriterException(String message, Throwable cause) {
 		super(message, cause);
