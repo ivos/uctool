@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.xml.bind.JAXBElement;
-
 import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.output.Reference;
@@ -111,52 +109,76 @@ public class UseCaseConverter {
 
 		ItemsType preconditions = uc.getPreconditions();
 		if (null != preconditions) {
-			for (JAXBElement<TextType> itemOrText : preconditions
-					.getItemOrText()) {
+			TextType text = preconditions.getText();
+			if (null != text) {
 				StringBuilder sb = new StringBuilder();
-				for (Object content : itemOrText.getValue().getContent()) {
+				for (Object content : text.getContent()) {
 					converterHelper.writeDescription(sb, content, "use case",
 							code, refcode);
 				}
 				String out = sb.toString().trim();
-				if ("item".equals(itemOrText.getName().getLocalPart())) {
+				o.setPreconditionsText(out);
+			} else {
+				for (TextType item : preconditions.getItem()) {
+					StringBuilder sb = new StringBuilder();
+					for (Object content : item.getContent()) {
+						converterHelper.writeDescription(sb, content,
+								"use case", code, refcode);
+					}
+					String out = sb.toString().trim();
 					out = "<li>" + out + "</li>";
+					o.getPreconditions().add(out);
 				}
-				o.getPreconditions().add(out);
 			}
 		}
 
 		ItemsType minimalGuarantees = uc.getMinimalGuarantees();
 		if (null != minimalGuarantees) {
-			for (JAXBElement<TextType> itemOrText : minimalGuarantees
-					.getItemOrText()) {
+			TextType text = minimalGuarantees.getText();
+			if (null != text) {
 				StringBuilder sb = new StringBuilder();
-				for (Object content : itemOrText.getValue().getContent()) {
+				for (Object content : text.getContent()) {
 					converterHelper.writeDescription(sb, content, "use case",
 							code, refcode);
 				}
 				String out = sb.toString().trim();
-				if ("item".equals(itemOrText.getName().getLocalPart())) {
+				o.setMinimalGuaranteesText(out);
+			} else {
+				for (TextType item : minimalGuarantees.getItem()) {
+					StringBuilder sb = new StringBuilder();
+					for (Object content : item.getContent()) {
+						converterHelper.writeDescription(sb, content,
+								"use case", code, refcode);
+					}
+					String out = sb.toString().trim();
 					out = "<li>" + out + "</li>";
+					o.getMinimalGuarantees().add(out);
 				}
-				o.getMinimalGuarantees().add(out);
 			}
 		}
 
 		ItemsType successGuarantees = uc.getSuccessGuarantees();
 		if (null != successGuarantees) {
-			for (JAXBElement<TextType> itemOrText : successGuarantees
-					.getItemOrText()) {
+			TextType text = successGuarantees.getText();
+			if (null != text) {
 				StringBuilder sb = new StringBuilder();
-				for (Object content : itemOrText.getValue().getContent()) {
+				for (Object content : text.getContent()) {
 					converterHelper.writeDescription(sb, content, "use case",
 							code, refcode);
 				}
 				String out = sb.toString().trim();
-				if ("item".equals(itemOrText.getName().getLocalPart())) {
+				o.setSuccessGuaranteesText(out);
+			} else {
+				for (TextType item : successGuarantees.getItem()) {
+					StringBuilder sb = new StringBuilder();
+					for (Object content : item.getContent()) {
+						converterHelper.writeDescription(sb, content,
+								"use case", code, refcode);
+					}
+					String out = sb.toString().trim();
 					out = "<li>" + out + "</li>";
+					o.getSuccessGuarantees().add(out);
 				}
-				o.getSuccessGuarantees().add(out);
 			}
 		}
 

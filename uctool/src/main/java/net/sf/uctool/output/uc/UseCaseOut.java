@@ -21,8 +21,11 @@ public class UseCaseOut {
 	private final List<String> descriptions = new ArrayList<String>();
 	private final List<InterestOut> interests = new ArrayList<InterestOut>();
 	private final List<String> preconditions = new ArrayList<String>();
+	private String preconditionsText;
 	private final List<String> minimalGuarantees = new ArrayList<String>();
+	private String minimalGuaranteesText;
 	private final List<String> successGuarantees = new ArrayList<String>();
+	private String successGuaranteesText;
 	private String trigger;
 	private final List<StepOut> steps = new ArrayList<StepOut>();
 	private final List<ExtensionOut> extensions = new ArrayList<ExtensionOut>();
@@ -126,12 +129,36 @@ public class UseCaseOut {
 		return preconditions;
 	}
 
+	public String getPreconditionsText() {
+		return preconditionsText;
+	}
+
+	public void setPreconditionsText(String preconditionsText) {
+		this.preconditionsText = preconditionsText;
+	}
+
 	public List<String> getMinimalGuarantees() {
 		return minimalGuarantees;
 	}
 
+	public String getMinimalGuaranteesText() {
+		return minimalGuaranteesText;
+	}
+
+	public void setMinimalGuaranteesText(String minimalGuaranteesText) {
+		this.minimalGuaranteesText = minimalGuaranteesText;
+	}
+
 	public List<String> getSuccessGuarantees() {
 		return successGuarantees;
+	}
+
+	public String getSuccessGuaranteesText() {
+		return successGuaranteesText;
+	}
+
+	public void setSuccessGuaranteesText(String successGuaranteesText) {
+		this.successGuaranteesText = successGuaranteesText;
 	}
 
 	public String getTrigger() {

@@ -90,7 +90,8 @@
 			<xs:attribute name="refcode" type="uct:CodeType">
 				<xs:annotation>
 					<xs:documentation>Reference code of the use case. When defined, uniquely identifies the use case in all use case
-						references.</xs:documentation>
+						references.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="goal" use="required" type="uct:NameType">
@@ -761,8 +762,10 @@
 	<xs:element name="notes" type="uct:DescriptionType" />
 	<xs:element name="text" type="uct:TextType" />
 	<xs:complexType name="ItemsType">
-		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element ref="uct:item" />
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="uct:item" />
+			</xs:choice>
 			<xs:element ref="uct:text" />
 		</xs:choice>
 	</xs:complexType>

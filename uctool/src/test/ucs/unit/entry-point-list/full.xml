@@ -93,11 +93,11 @@
 					<uc-ref code="UC007">UC007</uc-ref>
 					.
 				</item>
-				<text>
+				<item>
 					Speak about
 					<uc-ref code="UC008">UC008</uc-ref>
 					.
-				</text>
+				</item>
 			</minimal-guarantees>
 		</use-case>
 	</uc-group>

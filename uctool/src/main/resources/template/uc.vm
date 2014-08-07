@@ -32,20 +32,35 @@
 #foreach($interest in $uc.interests)<tr><td>$interest.stakeholder: $interest.content</td></tr>
 #end
 #end
+#if($uc.preconditionsText)<tr><td><strong>Preconditions:</strong>
+$uc.preconditionsText
+</td></tr>
+#end
 #if(!$uc.preconditions.isEmpty())<tr><td><strong>Preconditions:</strong>
 <ul>
 #foreach($precondition in $uc.preconditions)$precondition
-#end</ul></td></tr>
+#end</ul>
+</td></tr>
+#end
+#if($uc.minimalGuaranteesText)<tr><td><strong>Minimal guarantees:</strong>
+$uc.minimalGuaranteesText
+</td></tr>
 #end
 #if(!$uc.minimalGuarantees.isEmpty())<tr><td><strong>Minimal guarantees:</strong>
 <ul>
 #foreach($minimalGuarantee in $uc.minimalGuarantees)$minimalGuarantee
-#end</ul></td></tr>
+#end</ul>
+</td></tr>
+#end
+#if($uc.successGuaranteesText)<tr><td><strong>Success guarantees:</strong>
+$uc.successGuaranteesText
+</td></tr>
 #end
 #if(!$uc.successGuarantees.isEmpty())<tr><td><strong>Success guarantees:</strong>
 <ul>
 #foreach($successGuarantee in $uc.successGuarantees)$successGuarantee
-#end</ul></td></tr>
+#end</ul>
+</td></tr>
 #end
 #if($uc.trigger)<tr><td><strong>Trigger:</strong> $uc.trigger</td></tr>
 #end

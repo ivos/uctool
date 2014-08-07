@@ -49,64 +49,6 @@
 						</h:table>
 					</h:div>
 				</item>
-				<text>
-					<h:p>text not under bullet</h:p>
-					<h:hr />
-					<h:li>text under manual bullet</h:li>
-					<h:li>more text</h:li>
-					<h:table border="1">
-						<h:tr>
-							<h:td>row 1 cell 1</h:td>
-						</h:tr>
-						<h:tr>
-							<h:td align="right">r2c1</h:td>
-						</h:tr>
-						<h:ol>
-							<h:li>One</h:li>
-							<h:li>Two</h:li>
-							<h:li>Three</h:li>
-						</h:ol>
-					</h:table>
-				</text>
-				<text>
-					References within text.
-					<uc-ref code="RF001">reference to other use case &lt;b &amp; " '</uc-ref>
-					,
-					<uc-ref code="rfcd02">link to another UC via refcode</uc-ref>
-					, a reference to step
-					<step-ref handle="stepHandle1" />
-					,
-					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-					,
-					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-					,
-					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
-				</text>
-				<text>
-					References in text in HTML.
-					<h:div class="custom-class">
-						Within div.
-						<h:table>
-							<h:tr>
-								<h:td>
-									Within table cell. A
-									<uc-ref code="RF001">link to another UC</uc-ref>
-									,
-									<uc-ref code="rfcd02">link to another UC via refcode</uc-ref>
-									, a reference to step
-									<step-ref handle="stepHandle1" />
-									,
-									<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-									,
-									<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-									,
-									<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
-									.
-								</h:td>
-							</h:tr>
-						</h:table>
-					</h:div>
-				</text>
 			</success-guarantees>
 			<success>
 				<step>Step 1.</step>

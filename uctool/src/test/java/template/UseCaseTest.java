@@ -43,10 +43,26 @@ public class UseCaseTest extends TemplateTestBase {
 	}
 
 	@Test
+	public void preconditionsText() throws IOException {
+		e.execute(new File(inputBaseDir, "uc/preconditions-text.xml"),
+				outputDir);
+		performTest("unit/uc/preconditions-text.html",
+				"site/out/uc/preconditions-text.html");
+	}
+
+	@Test
 	public void minGuarantees() throws IOException {
 		e.execute(new File(inputBaseDir, "uc/min-guarantees.xml"), outputDir);
 		performTest("unit/uc/min-guarantees.html",
 				"site/out/uc/min-guarantees.html");
+	}
+
+	@Test
+	public void minGuaranteesText() throws IOException {
+		e.execute(new File(inputBaseDir, "uc/min-guarantees-text.xml"),
+				outputDir);
+		performTest("unit/uc/min-guarantees-text.html",
+				"site/out/uc/min-guarantees-text.html");
 	}
 
 	@Test
@@ -55,6 +71,14 @@ public class UseCaseTest extends TemplateTestBase {
 				outputDir);
 		performTest("unit/uc/success-guarantees.html",
 				"site/out/uc/success-guarantees.html");
+	}
+
+	@Test
+	public void successGuaranteesText() throws IOException {
+		e.execute(new File(inputBaseDir, "uc/success-guarantees-text.xml"),
+				outputDir);
+		performTest("unit/uc/success-guarantees-text.html",
+				"site/out/uc/success-guarantees-text.html");
 	}
 
 	@Test
