@@ -1,42 +1,42 @@
  ---
- Data structures
+ Data
  ---
  Ivo Maixner
  ---
  2010-11-24
  ---
 
-Data structures
+Data
 
- In a data structure you can define data attributes in the level of detail required
+ In a data you can define data attributes in the level of detail required
  and then use it from all the appropriate places in the analysis.
 
-* Define data structure
+* Define data
  
- To define a data structure use the <<<data-structure>>> element:
+ To define a data use the <<<data>>> element:
  
 +--
 <uct ...>
-	<data-structure name="Account number" code="AccountNumber"></data-structure>
+	<data name="Account number" code="AccountNumber"></data>
 </uct>
 +--
 
- Attributes of <<<data-structure>>>:
+ Attributes of <<<data>>>:
  
 *--*--*
 ||Name||Description|
 *--*--+
-|name|Name of the data structure, as displayed to the reader of the use cases.|
+|name|Name of the data, as displayed to the reader of the use cases.|
 *--*--+
-|code|Unique code of the data structure, used to reference the data structure. \ |
-|    |If the data structure corresponds to a future entity/table of the system, |
+|code|Unique code of the data, used to reference the data. \ |
+|    |If the data corresponds to a future entity/table of the system, |
 |    |you may consider using the proposed name of the entity/table as the code.|
 *--*--+
-|category|Category of the data structure. A choice described below.|
+|category|Category of the data. A choice described below.|
 *--*--+
-|expand|Should the attributes of the data structure be expanded when |
-|      |referenced within other data structure? See |
-|      |{{{../write/data-expand.html}Sharing attributes between data structures >>}}|
+|expand|Should the attributes of the data be expanded when |
+|      |referenced within other data? See |
+|      |{{{../write/data-expand.html}Sharing attributes between data >>}}|
 *--*--+
 
  Attribute <<<category>>> values:
@@ -61,26 +61,26 @@ Data structures
 |interface-response|Response on interface with other system.|
 *--*--+
 
-* Data structure description
+* Data description
 
- To describe data structure use the <<<description>>> sub-element:
+ To describe data use the <<<description>>> sub-element:
 
 +--
-<data-structure name="Account number" code="AccountNumber">
+<data name="Account number" code="AccountNumber">
 	<description>Structure of a domestic account number.</description>
-</data-structure>
+</data>
 +--
 
 * Define attributes
 
- To define attributes of a data structure use the <<<attribute>>> sub-element:
+ To define attributes of a data use the <<<attribute>>> sub-element:
 
 +--
-<data-structure name="Account number" code="AccountNumber">
+<data name="Account number" code="AccountNumber">
 	<attribute name="Prefix" />
 	<attribute name="Number" />
 	<attribute name="Bank code" />
-</data-structure>
+</data>
 +--
 
 *--:

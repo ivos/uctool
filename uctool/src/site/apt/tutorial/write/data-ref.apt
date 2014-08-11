@@ -8,9 +8,9 @@
 
 Data references
 
-* Referring to data structures from use cases
+* Referring to data from use cases
 
- Use the <<<data-ref>>> element to refer to a data structure from use case:
+ Use the <<<data-ref>>> element to refer to a data from use case:
  
 +--
 <uc-group ...>
@@ -22,16 +22,16 @@ Data references
 		</success>
 	</use-case>
 </uc-group>
-<data-structure name="Account number" code="AccountNumber">
+<data name="Account number" code="AccountNumber">
 	<attribute name="Prefix" />
 	<attribute name="Number" />
 	<attribute name="Bank code" />
-</data-structure>
+</data>
 +--
 
  In the above example, the content of the <<<data-ref>>> element 
  (that is "account number") will become an HTML link to 
- the account number data structure.
+ the account number data.
 
 *--:
  {{{../write/requirements.html}Next >>}}

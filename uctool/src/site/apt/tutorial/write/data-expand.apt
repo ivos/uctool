@@ -1,55 +1,55 @@
  ---
- Sharing attributes between data structures
+ Sharing attributes between data
  ---
  Ivo Maixner
  ---
  2010-11-24
  ---
 
-Sharing attributes between data structures
+Sharing attributes between data
 
- When multiple data structures share the same set of attributes, use this technique
+ When multiple data share the same set of attributes, use this technique
  to eliminate copy&paste and maintain the shared attributes in one place.
  
- [[1.]] Create a new data structure to hold the shared attributes. 
+ [[1.]] Create a new data to hold the shared attributes. 
  
- [[1.]] Set the <<<expand>>> attribute of the new structure to "true".
+ [[1.]] Set the <<<expand>>> attribute of the new data to "true".
 
- [[1.]] Add a placeholder attribute referring to this new data structure to all structures
+ [[1.]] Add a placeholder attribute referring to this new data to all data
  that should share the attributes.
  
  []
  
  For example, assume all code tables should have Label, Valid from and Valid until attributes.
- To facilitate this, create a Code table data structure to hold these attributes,
+ To facilitate this, create a Code table data to hold these attributes,
  set it to expand its attributes
- and refer to it from each data structure that represents a code table:
+ and refer to it from each data that represents a code table:
  
 +--
-<data-structure name="Code table" code="CodeTable" expand="true">
+<data name="Code table" code="CodeTable" expand="true">
 	<description>A base entity for all code tables.</description>
 	<attribute name="Label" />
 	<attribute name="Valid from" />
 	<attribute name="Valid until" />
-</data-structure>
-<data-structure name="Code table Country" code="Country">
+</data>
+<data name="Code table Country" code="Country">
 	<attribute name="Code" code="code" status="mandatory" type="string" length="2"
 		description="The ISO standard country code." />
 	<attribute name="Shared attributes of all code tables" type="CodeTable" />
-</data-structure>
-<data-structure name="Code table Currency" code="Currency">
+</data>
+<data name="Code table Currency" code="Currency">
 	<attribute name="Code" code="code" status="mandatory" type="string" length="3"
 		description="The ISO standard currency code." />
 	<attribute name="Shared attributes of all code tables" type="CodeTable" />
-</data-structure>
-<data-structure name="Code table Gender" code="Gender">
+</data>
+<data name="Code table Gender" code="Gender">
 	<attribute name="Code" code="code" status="mandatory" type="string" length="1" />
 	<attribute name="Shared attributes of all code tables" type="CodeTable" />
-</data-structure>
+</data>
 +--
 
  Now the Label, Valid from and Valid until attributes are propagated to the
- Country, Currency and Gender data structures.
+ Country, Currency and Gender data.
 
 *--:
  {{{../write/data-ref.html}Next >>}}

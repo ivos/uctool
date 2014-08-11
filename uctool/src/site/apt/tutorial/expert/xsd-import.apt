@@ -1,14 +1,14 @@
  ---
- Import data structures from XSD files
+ Import data from XSD files
  ---
  Ivo Maixner
  ---
  2013-11-02
  ---
 
-Import data structures from XSD files
+Import data from XSD files
 
- You can import data definitions from existing XSD files into UCTool data structures format.
+ You can import data definitions from existing XSD files into UCTool data format.
  
  Use the {{{http://uctool.sourceforge.net/uctool-maven-plugin/import-xsd-mojo.html}<<<import-xsd>>> goal}}
  of the {{{http://uctool.sourceforge.net/uctool-maven-plugin/}UCTool Maven plugin}}.

@@ -4,8 +4,8 @@
 	xsi:schemaLocation="
 		http://uctool.sf.net/ ../../main/resources/generator/uctool/xsd/uct.xsd
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
-	<data-structure name="Empty" code="Empty" />
-	<data-structure name="A master" code="Master">
+	<data name="Empty" code="Empty" />
+	<data name="A master" code="Master">
 		<description>
 			This is the master entity.
 			<h:li>HTML tags.</h:li>
@@ -38,23 +38,23 @@
 		<attribute name="Collection of other structures" code="collectionOfDataStructures" type="DetailN" collection="true" />
 		<attribute name="Collection of other structures with length" code="collectionOfDataStructuresWithLength" type="DetailN" collection="true" length="5" description="Collection of max 5 instances of DetailN." />
 		<attribute name="Selected detail N" code="selectedDetailN" type="DetailN" />
-	</data-structure>
-	<data-structure name="Detail 1" code="MasterDetail1">
+	</data>
+	<data name="Detail 1" code="MasterDetail1">
 		<attribute name="Some integer" code="someInteger" status="optional" type="integer" />
-	</data-structure>
-	<data-structure name="Detail N" code="DetailN" />
-	<data-structure name="Another master" code="AnotherMaster">
+	</data>
+	<data name="Detail N" code="DetailN" />
+	<data name="Another master" code="AnotherMaster">
 		<description>
 			Reference to
 			<data-ref code="MasterDetail1">
 			another structure</data-ref>
-			in a data structure description.
+			in a data description.
 		</description>
 		<attribute name="A detail N" code="detailN" type="DetailN" />
-	</data-structure>
-	<data-structure name="Description data" code="description-data">
+	</data>
+	<data name="Description data" code="description-data">
 		<description>First description.</description>
 		<description>Second description.</description>
 		<description>Third description.</description>
-	</data-structure>
+	</data>
 </uct>

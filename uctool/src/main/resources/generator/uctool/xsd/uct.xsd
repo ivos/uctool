@@ -12,7 +12,7 @@
 				<xs:element ref="uct:requirement" />
 				<xs:element ref="uct:uc-group" />
 				<xs:element ref="uct:actor" />
-				<xs:element ref="uct:data-structure" />
+				<xs:element ref="uct:data" />
 				<xs:element ref="uct:attachment-group" />
 			</xs:choice>
 		</xs:complexType>
@@ -343,10 +343,10 @@
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!-- data structures -->
-	<xs:element name="data-structure">
+	<!-- data -->
+	<xs:element name="data">
 		<xs:annotation>
-			<xs:documentation>Data structure definition.</xs:documentation>
+			<xs:documentation>Data definition.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -358,17 +358,17 @@
 			</xs:sequence>
 			<xs:attribute name="code" use="required" type="uct:CodeType">
 				<xs:annotation>
-					<xs:documentation>Code of the data structure.</xs:documentation>
+					<xs:documentation>Code of the data.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="name" use="required" type="xs:string">
 				<xs:annotation>
-					<xs:documentation>Name of the data structure.</xs:documentation>
+					<xs:documentation>Name of the data.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="category">
 				<xs:annotation>
-					<xs:documentation>Category of the data structure.</xs:documentation>
+					<xs:documentation>Category of the data.</xs:documentation>
 					<xs:documentation>persistence-entity - Persistence layer. Generic business entity.
 					</xs:documentation>
 					<xs:documentation>persistence-code-table - Persistence layer. Code table,
@@ -405,10 +405,10 @@
 			</xs:attribute>
 			<xs:attribute name="expand" type="xs:boolean">
 				<xs:annotation>
-					<xs:documentation>Set to true on data structures that group attributes for re-use in
-						multiple other data structures.
+					<xs:documentation>Set to true on data that group attributes for re-use in
+						multiple other data.
 					</xs:documentation>
-					<xs:documentation>When set, the attributes are expanded in the other data structures,
+					<xs:documentation>When set, the attributes are expanded in the other data,
 						on which this one is used.
 					</xs:documentation>
 				</xs:annotation>
@@ -417,7 +417,7 @@
 	</xs:element>
 	<xs:element name="attribute">
 		<xs:annotation>
-			<xs:documentation>Attribute of data structure.</xs:documentation>
+			<xs:documentation>Attribute of data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:attribute name="name" use="required" type="xs:string">
@@ -449,7 +449,7 @@
 			<xs:attribute name="type">
 				<xs:annotation>
 					<xs:documentation>The data type of the attribute. Either a simple type (one of
-						enumerated options) or code of a data structure (represents relation to that
+						enumerated options) or code of a data (represents relation to that
 						structure).
 					</xs:documentation>
 				</xs:annotation>
@@ -496,8 +496,8 @@
 	</xs:element>
 	<xs:element name="attribute-ref">
 		<xs:annotation>
-			<xs:documentation>Data structure attribute reference. Refers to an attribute defined on
-				another data structure. Takes over the properties of the referred attribute as
+			<xs:documentation>Data attribute reference. Refers to an attribute defined on
+				another data. Takes over the properties of the referred attribute as
 				defaults (with the exception of type and collection, which cannot be overridden).
 			</xs:documentation>
 		</xs:annotation>
@@ -505,9 +505,9 @@
 			<xs:attribute name="type" type="uct:AttributeRefCodeType" use="required">
 				<xs:annotation>
 					<xs:documentation>Reference to the attribute. Has the form
-						"[data-structure-code].[attribute-code]", where [data-structure-code] is the code of
-						data structure defining the referred attribute and [attribute-code] is the code of
-						the referred attribute within that data structure.
+						"[data-code].[attribute-code]", where [data-code] is the code of
+						data defining the referred attribute and [attribute-code] is the code of
+						the referred attribute within that data.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -561,14 +561,14 @@
 	</xs:element>
 	<xs:element name="data-ref">
 		<xs:annotation>
-			<xs:documentation>Reference to a data structure.</xs:documentation>
+			<xs:documentation>Reference to a data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:simpleContent>
 				<xs:extension base="xs:string">
 					<xs:attribute name="code" type="uct:CodeType" use="required">
 						<xs:annotation>
-							<xs:documentation>Code of the referenced data structure.</xs:documentation>
+							<xs:documentation>Code of the referenced data.</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
 				</xs:extension>

@@ -1,38 +1,38 @@
  ---
- Data structure relations
+ Data relations
  ---
  Ivo Maixner
  ---
  2010-11-24
  ---
 
-Data structure relations
+Data relations
 
- You can compose data structures from other data structures.
+ You can compose data from other data.
  
- For example, imagine an Account details data structure contains an Account number attribute,
- which is itself typed as a data structure. 
- In such a case, use the code of the embedded data structure as the type of the
+ For example, imagine an Account details data contains an Account number attribute,
+ which is itself typed as a data. 
+ In such a case, use the code of the embedded data as the type of the
  corresponding attribute:
  
 +--
-<data-structure name="Account number" code="AccountNumber">
+<data name="Account number" code="AccountNumber">
 	<attribute name="Prefix" />
 	<attribute name="Number" />
 	<attribute name="Bank code" />
-</data-structure>
-<data-structure name="Code table Currency" code="Currency">
+</data>
+<data name="Code table Currency" code="Currency">
 	<attribute name="Code" />
-</data-structure>
-<data-structure name="Account details" code="AccountDetails">
+</data>
+<data name="Account details" code="AccountDetails">
 	<attribute name="Account number" type="AccountNumber" />
 	<attribute name="Currency" type="Currency" />
 	<attribute name="Name" type="string" />
 	<attribute name="Available balance" type="decimal" />
-</data-structure>
+</data>
 +--
 
- Similarly, the Currency attribute is of type Currency, which is another data structure.
+ Similarly, the Currency attribute is of type Currency, which is another data.
 
 *--:
  {{{../write/data-att-references.html}Next >>}}

@@ -2,7 +2,7 @@
 <uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:h="http://www.w3.org/1999/xhtml"
 	xsi:schemaLocation="
-		http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd
+		http://uctool.sf.net/ ../../../main/resources/xsd/uct.xsd
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
 	<attachment-group directory="forms" name="Forms design">
 		<attachment name="Login form" code="login-form" file-name="login-form.txt" />
@@ -35,11 +35,6 @@
 					<attachment-ref code="new-customer-form">attachment ref</attachment-ref>
 					.
 				</item>
-				<text>
-					Precondition text with
-					<attachment-ref code="best-customers-report">attachment ref</attachment-ref>
-					.
-				</text>
 			</preconditions>
 			<minimal-guarantees>
 				<item>
@@ -47,11 +42,6 @@
 					<attachment-ref code="new-customer-form">attachment ref</attachment-ref>
 					.
 				</item>
-				<text>
-					Minimal guarantee text with
-					<attachment-ref code="best-customers-report">attachment ref</attachment-ref>
-					.
-				</text>
 			</minimal-guarantees>
 			<success-guarantees>
 				<item>
@@ -59,11 +49,6 @@
 					<attachment-ref code="new-customer-form">attachment ref</attachment-ref>
 					.
 				</item>
-				<text>
-					Success guarantee text with
-					<attachment-ref code="best-customers-report">attachment ref</attachment-ref>
-					.
-				</text>
 			</success-guarantees>
 			<success>
 				<step handle="1">
@@ -87,6 +72,29 @@
 				</condition>
 			</extensions>
 		</use-case>
+		<use-case code="attachment-ref-02" goal="UC references to attachments from text">
+			<preconditions>
+				<text>
+					Precondition text with
+					<attachment-ref code="best-customers-report">attachment ref</attachment-ref>
+					.
+				</text>
+			</preconditions>
+			<minimal-guarantees>
+				<text>
+					Minimal guarantee text with
+					<attachment-ref code="best-customers-report">attachment ref</attachment-ref>
+					.
+				</text>
+			</minimal-guarantees>
+			<success-guarantees>
+				<text>
+					Success guarantee text with
+					<attachment-ref code="best-customers-report">attachment ref</attachment-ref>
+					.
+				</text>
+			</success-guarantees>
+		</use-case>
 	</uc-group>
 	<actor name="Attachment actor" code="attachment-actor">
 		<description>
@@ -95,13 +103,13 @@
 			in actor description.
 		</description>
 	</actor>
-	<data-structure name="Attachment data structure" code="attachment-data-structure">
+	<data name="Attachment data" code="attachment-data-structure">
 		<description>
 			Ref to
 			<attachment-ref code="best-customers-report">attachment</attachment-ref>
-			in data structure description.
+			in data description.
 		</description>
-	</data-structure>
+	</data>
 	<requirement name="Attachment requirement" code="attachment-requirement">
 		<description>
 			Ref to

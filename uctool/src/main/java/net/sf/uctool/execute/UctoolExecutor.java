@@ -134,11 +134,10 @@ public class UctoolExecutor {
 		time.start();
 		uctoolValidator.validate(inputs);
 		logger.debug("Validated inputs @ {}.", time.toString());
-		logger.debug(
-				"Loaded {} actor(s), {} use case(s), {} data structure(s).",
+		logger.debug("Loaded {} actor(s), {} use case(s), {} data(s).",
 				executionContext.getActors().size(), executionContext
-						.getUseCases().size(), executionContext
-						.getDatas().size());
+						.getUseCases().size(), executionContext.getDatas()
+						.size());
 		time.reset();
 	}
 

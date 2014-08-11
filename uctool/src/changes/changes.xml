@@ -21,7 +21,7 @@
 				Add data attribute status conditional.
 			</action>
 			<action type="add" dev="imaixner">
-				Add data structure categories.
+				Add data categories.
 			</action>
 			<action type="add" dev="imaixner">
 				Add use case type for design use cases,
@@ -32,7 +32,7 @@
 				before preconditions.
 			</action>
 			<action type="add" dev="imaixner">
-				Add export of data structures into XSD
+				Add export of data into XSD
 				files.
 			</action>
 			<action type="add" dev="imaixner">
@@ -51,7 +51,7 @@
 				Bootstrap.
 			</action>
 			<action type="add" dev="imaixner">
-				Add data structure attribute
+				Add data attribute
 				references.
 			</action>
 			<action type="add" dev="imaixner">

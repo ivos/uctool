@@ -54,11 +54,9 @@ public class UctoolValidator {
 					String code = data.getCode();
 					if (executionContext.getAttachments().containsKey(code)) {
 						throw new ValidationException(
-								"Duplicate data structure with code [" + code
-										+ "].");
+								"Duplicate data with code [" + code + "].");
 					}
-					executionContext.getDatas().put(code,
-							data);
+					executionContext.getDatas().put(code, data);
 				}
 				if (object instanceof Requirement) {
 					Requirement requirement = (Requirement) object;

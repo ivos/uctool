@@ -12,18 +12,18 @@
 <variable name="merged-file" select="document($merged-file-name)" />
 <variable name="link-type" select="'multi'" />
 
-<template match="//uct:data-structure">
+<template match="//uct:data">
 	<variable name="file-name" select="@code" />
 <result-document href="{$file-name}.html">
 
 <value-of select="uct:page-start(concat('#data.structure.page.title# ',@name),$ucs-name,'../','data',false())" />
-<call-template name="data-structure-template" />
+<call-template name="data-template" />
 <value-of select="uct:page-end('../')" />
 
 </result-document>
 </template>
 
-<template name="data-structure-template">
+<template name="data-template">
 &lt;a id="data_<value-of select="@code"/>">&lt;/a>
 &lt;h3>&lt;i class="icon-table">&lt;/i> &lt;span class="muted">#data.structure#&lt;/span> <text />
 	<value-of select="@name"/>&lt;/h3>
@@ -42,11 +42,11 @@
 </if>
 <if test="uct:attribute | uct:attribute-ref">
 &lt;div>&lt;strong>#data.attributes#:&lt;/strong>&lt;/div><text />
-<call-template name="data-structure-att-table-template" />
+<call-template name="data-att-table-template" />
 </if>
 <value-of select="uct:data-references-data($merged-file,@code,$link-type)"/>
 <value-of select="uct:data-references-uc($merged-file,@code,$link-type)"/>
-<call-template name="data-structure-expansion-template" />
+<call-template name="data-expansion-template" />
 </template>
 
 <template match="uct:attribute">
@@ -85,9 +85,9 @@
 <template match="uct:attribute | uct:attribute-ref" mode="expand">
 	<variable name="type" select="@type" />
 	<choose>
-	<when test="$merged-file//uct:data-structure[@code=$type and @expand=true()]">
+	<when test="$merged-file//uct:data[@code=$type and @expand=true()]">
 		<apply-templates 
-			select="$merged-file//uct:data-structure[@code=$type]/(uct:attribute | uct:attribute-ref)" 
+			select="$merged-file//uct:data[@code=$type]/(uct:attribute | uct:attribute-ref)" 
 			mode="expand" />
 	</when>
 	<otherwise>
@@ -96,7 +96,7 @@
 	</choose>
 </template>
 
-<template name="data-structure-att-table-template">
+<template name="data-att-table-template">
 <param name="mode" />
 &lt;table class="table table-striped table-bordered table-hover table-condensed">
 &lt;thead>
@@ -117,12 +117,12 @@
 &lt;/table><text />
 </template>
 
-<template name="data-structure-expansion-template">
+<template name="data-expansion-template">
 	<if test="for $att in(uct:attribute) return 
-		$merged-file//uct:data-structure[@code=$att/@type and @expand=true()]">
+		$merged-file//uct:data[@code=$att/@type and @expand=true()]">
 &lt;br/>
 &lt;div>&lt;strong>#data.structure.expansion#:&lt;/strong><text />
-		<call-template name="data-structure-att-table-template">
+		<call-template name="data-att-table-template">
 			<with-param name="mode" select="'expand'" />
 		</call-template>
 &lt;/div><text />

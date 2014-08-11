@@ -20,7 +20,7 @@
 &lt;h2>#unused.data.list.page.title#&lt;/h2><text />
 
 <call-template name="data-index-start-template" />
-<for-each select="//uct:data-structure">
+<for-each select="//uct:data">
 	<variable name="code" select="@code" />
 	<variable name="ref-codes" 
 		select="uct:data-references-data-codes($code,$merged-file)" />

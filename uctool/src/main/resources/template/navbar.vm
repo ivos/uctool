@@ -22,7 +22,7 @@
 #end
 #if($ctx.useCases.size()>0)							<li#if($section=="uc") class="active"#end><a href="${rel-path}uc/index.html"><i class="icon-file"></i> Use cases</a></li>
 #end
-#if($ctx.datas.size()>0)							<li><a href="${rel-path}data/index.html"><i class="icon-table"></i> Data structures</a></li>
+#if($ctx.datas.size()>0)							<li><a href="${rel-path}data/index.html"><i class="icon-table"></i> Data</a></li>
 #end
 #if($ctx.requirements.size()>0)							<li><a href="${rel-path}req/index.html"><i class="icon-list"></i> Requirements</a></li>
 #end

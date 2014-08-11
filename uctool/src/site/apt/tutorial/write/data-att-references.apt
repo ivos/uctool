@@ -9,48 +9,48 @@
 Attribute references
 
  When you find yourself creating a new attribute 
- that have already been defined on another data structure, 
+ that have already been defined on another data, 
  use attribute reference to avoid copy&paste.
 
- For example, suppose there are data structures defining account number and account details:
+ For example, suppose there are data defining account number and account details:
 
 +--
-<data-structure name="Account number" code="AccountNumber">
+<data name="Account number" code="AccountNumber">
 	<attribute name="Prefix" code="prefix" status="optional" type="integer"
 		length="6" description="Account number prefix." />
 	<attribute name="Number" code="number" status="mandatory" type="integer"
 		length="10" description="The account number itself." />
 	...
-</data-structure>
-<data-structure name="Account details" code="AccountDetails">
+</data>
+<data name="Account details" code="AccountDetails">
 	<attribute name="Currency" code="currency" status="mandatory" type="Currency" />
 	<attribute name="Name" code="name" status="mandatory" type="string"
 		description="Name of the primary account holder." />
 	...
-</data-structure>
+</data>
 +--
 
- Now, you want to create a new data structure that will define a query form to find accounts.
+ Now, you want to create a new data that will define a query form to find accounts.
  You want to be able to find accounts by account number prefix and number, 
  and by account currency, name and balance.
  
  Apart from balance, all four remaining attributes are already defined 
- on the previous data structures, so instead of copy&pasting them, 
+ on the previous data, so instead of copy&pasting them, 
  we just refer to them using the <<<attribute-ref>>> element:
  
 +--
-<data-structure name="Account query form" code="account-query-form">
+<data name="Account query form" code="account-query-form">
 	<description>A form to find accounts.</description>
 	<attribute-ref type="AccountNumber.prefix" />
 	<attribute-ref type="AccountNumber.number" status="optional" />
 	<attribute-ref type="AccountDetails.currency" status="optional" />
 	<attribute-ref type="AccountDetails.name" status="optional" />
 	<attribute name="Available balance" type="decimal" />
-</data-structure>
+</data>
 +--
 
  The <<<type>>> of <<<attribute-ref>>> contains a reference to an attribute 
- defined on (another) data structure.
+ defined on (another) data.
  The <<<attribute-ref>>> defines an attribute which takes over all the properties
  of the referred attribute.
  You can also override some properties, as described in table below.
@@ -61,13 +61,13 @@ Attribute references
 *--*--*
 ||Name||Description|
 *--*--+
-|type|Reference to an attribute defined on (another) data structure. \ |
-|    |Has the form "[data-structure-code].[attribute-code]",|
-|    |where [data-structure-code] is the code of data structure|
+|type|Reference to an attribute defined on (another) data. \ |
+|    |Has the form "[data-code].[attribute-code]",|
+|    |where [data-code] is the code of data|
 |    |defining the referred attribute and [attribute-code] is|
-|    |the code of the referred attribute within that data structure. \ |
+|    |the code of the referred attribute within that data. \ |
 |    |Example: code="AccountDetails.name" refers to name attribute|
-|    |of AccountDetails data structure.|
+|    |of AccountDetails data.|
 *--*--+
 |name|Override name of the attribute.|
 |    |If not specified, defaults from referred attribute.|
@@ -88,7 +88,7 @@ Attribute references
 
  This approach is particularly suitable in situation, 
  when you have the entities / domain objects defined (and relatively fixed).
- You can then construct other data structures, like UI forms, interface transfer objects, etc.
+ You can then construct other data, like UI forms, interface transfer objects, etc.
  by putting together attributes from the entities / domain objects
  using attribute references.
 

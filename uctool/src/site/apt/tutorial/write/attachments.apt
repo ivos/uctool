@@ -86,17 +86,17 @@ Attachments
 </step>
 +--
 
- Referring from a description of a data structure:
+ Referring from a description of a data:
 
 +--
-<data-structure name="Withdrawal receipt" code="WithdrawalReceipt">
+<data name="Withdrawal receipt" code="WithdrawalReceipt">
 	<description>Data printed on withdrawal receipt.</description>
 	<description>
 		Conforms to
 		<attachment-ref code="withdrawal-receipt-template">printing template</attachment-ref>.
 	</description>
 	...
-</data-structure>
+</data>
 +--
 
 

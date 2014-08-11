@@ -71,8 +71,8 @@
 <call-template name="data-index-template" />
 
 &lt;h2>#data.structure.details.section#&lt;/h2><text />
-<for-each select="//uct:data-structure">
-<call-template name="data-structure-template" />
+<for-each select="//uct:data">
+<call-template name="data-template" />
 </for-each>
 
 <call-template name="attachment-index-template" />

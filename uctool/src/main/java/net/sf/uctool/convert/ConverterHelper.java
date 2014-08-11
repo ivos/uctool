@@ -105,10 +105,9 @@ public class ConverterHelper {
 			String code = dataRef.getCode();
 			Data data = executionContext.getDatas().get(code);
 			if (null == data) {
-				throw new ValidationException(
-						"Missing data structure with code [" + code
-								+ "] referenced from " + referencedFromType
-								+ " with code [" + referencedFromCode + "].");
+				throw new ValidationException("Missing data with code [" + code
+						+ "] referenced from " + referencedFromType
+						+ " with code [" + referencedFromCode + "].");
 			}
 			sb.append("<a href=\"" + getRefPrefix() + "data"
 					+ getRefSeparator());

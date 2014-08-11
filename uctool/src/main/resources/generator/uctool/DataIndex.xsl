@@ -20,7 +20,7 @@
 
 &lt;h2>#data.index.page.title#&lt;/h2><text />
 <call-template name="data-index-start-template" />
-<for-each select="$merged-file//uct:data-structure">
+<for-each select="$merged-file//uct:data">
 	<call-template name="data-index-data-template" />
 </for-each>
 <call-template name="data-index-end-template" />

@@ -354,19 +354,19 @@
 	<function name="uct:data-references-data-codes" as="xs:string*">
 		<param name="data-code" as="xs:string*" />
 		<param name="merged" as="node()*" />
-		<variable name="atts-with-type" select="$merged//uct:data-structure
+		<variable name="atts-with-type" select="$merged//uct:data
 			[uct:attribute/@type=$data-code]/@code" />
-		<variable name="data-refs" select="$merged//uct:data-structure
+		<variable name="data-refs" select="$merged//uct:data
 			[.//uct:data-ref/@code=$data-code]/@code" />
 		<variable name="expanded-att-types" 
 			select="uct:structure-codes-with-expanded-att-type($data-code,$merged,())" />
-		<variable name="direct-att-refs" select="$merged//uct:data-structure/
+		<variable name="direct-att-refs" select="$merged//uct:data/
 			uct:attribute-ref[substring-before(@type,'.')=$data-code]
-			/ancestor::uct:data-structure/@code" />
+			/ancestor::uct:data/@code" />
 		<variable name="att-refs-referring-to-att-with-type" 
-			select="$merged//uct:data-structure/
+			select="$merged//uct:data/
 				uct:attribute-ref[uct:data-att-ref(@type,$merged)/@type=$data-code]
-				/ancestor::uct:data-structure/@code" />
+				/ancestor::uct:data/@code" />
 		<variable name="expanded-att-types-referring-to-att-with-type" 
 			select="for $code in($att-refs-referring-to-att-with-type) return
 				uct:structure-codes-with-expanded-att-type($code,$merged,())" />
@@ -381,7 +381,7 @@
 		<param name="merged" as="node()*" />
 		<param name="having-already" as="xs:string*" />
 		<variable name="structures-with-att-type" 
-			select="$merged//uct:data-structure[uct:attribute/@type=$att-type]/@code" />
+			select="$merged//uct:data[uct:attribute/@type=$att-type]/@code" />
 		<variable name="recursives" select="for $code in($structures-with-att-type) 
 			return if(exists(index-of($having-already,$code))) then ()
 				else uct:structure-codes-with-expanded-att-type($code,$merged,($having-already,$structures-with-att-type))" />
@@ -485,11 +485,11 @@
 		<param name="merged-file" as="node()" />
 		<param name="link-type" as="xs:string*" />
 		<call-template name="verify-count-1-template">
-			<with-param name="name" select="'data structure'" />
+			<with-param name="name" select="'data'" />
 			<with-param name="code" select="$code" />
-			<with-param name="items" select="$merged-file//uct:data-structure[@code=$code]" />
+			<with-param name="items" select="$merged-file//uct:data[@code=$code]" />
 		</call-template>
-		<variable name="name" select="$merged-file//uct:data-structure[@code=$code]/@name" />
+		<variable name="name" select="$merged-file//uct:data[@code=$code]/@name" />
 		<value-of select="uct:ref-base('data',$code,$name,$text,$link-type,$link-type)" />
 	</function>
 
@@ -638,12 +638,12 @@
 		<param name="req-code" as="xs:string*" />
 		<param name="link-type" as="xs:string*" />
 		<variable name="result">
-			<if test="$merged//uct:data-structure//uct:req-ref[@code=$req-code]">
+			<if test="$merged//uct:data//uct:req-ref[@code=$req-code]">
 				<text>
 &lt;tr>&lt;td>&lt;strong>#req.references.data#:&lt;/strong></text>
 				<value-of select="uct:list-data-references(distinct-values(
-					$merged//uct:data-structure//uct:req-ref[@code=$req-code]/
-					ancestor::uct:data-structure/@code),$merged,$link-type)" />
+					$merged//uct:data//uct:req-ref[@code=$req-code]/
+					ancestor::uct:data/@code),$merged,$link-type)" />
 				<text>
 &lt;/td>&lt;/tr></text>
 			</if>
@@ -697,7 +697,7 @@
 		<param name="type" as="xs:string" />
 		<param name="merged-file" as="node()" />
 		<variable name="ref-structure-code" select="substring-before($type,'.')" />
-		<copy-of select="$merged-file//uct:data-structure[@code=$ref-structure-code]" />
+		<copy-of select="$merged-file//uct:data[@code=$ref-structure-code]" />
 	</function>
 
 	<function name="uct:data-att-ref" as="node()">

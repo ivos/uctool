@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd">
-	<data-structure name="Data attribute reference entity 1" code="DARE1">
+	xsi:schemaLocation="http://uctool.sf.net/ ../../../main/resources/xsd/uct.xsd">
+	<data name="Data attribute reference entity 1" code="DARE1">
 		<attribute name="Full string inherited attribute" code="fullStringInherited"
 			status="natural-key" type="string" length="123"
 			description="Full string inherited attribute description." />
@@ -13,8 +13,8 @@
 		<attribute name="Integer collection attribute" code="integerCollection"
 			status="optional" type="integer" collection="true" length="123"
 			description="Integer collection attribute description." />
-	</data-structure>
-	<data-structure name="Data attribute reference entity 2" code="DARE2">
+	</data>
+	<data name="Data attribute reference entity 2" code="DARE2">
 		<attribute name="Date attribute" code="date" status="display-only" type="date"
 			description="Date attribute description." />
 		<attribute name="Structure attribute" code="dare1Ref" status="mandatory" type="DARE1"
@@ -22,15 +22,15 @@
 		<attribute name="Structure collection attribute" code="dare1List" status="optional"
 			type="DARE1" collection="true" length="10" description="Structure collection attribute description." />
 		<attribute name="Other structure att" code="dare3Ref" type="DARE3" />
-	</data-structure>
-	<data-structure name="Indirectly referenced entity" code="DARE3">
-		<description>Is data type of an attribute on data structure (DARE2), that is then
-			referred to from another data structure (DARF1). DARF1 is then listed as referring to
-			this data structure.
+	</data>
+	<data name="Indirectly referenced entity" code="DARE3">
+		<description>Is data type of an attribute on data (DARE2), that is then
+			referred to from another data (DARF1). DARF1 is then listed as referring to
+			this data.
 		</description>
 		<attribute name="Att 1 of DARE3" />
-	</data-structure>
-	<data-structure name="Data attribute referring form 1" code="DARF1">
+	</data>
+	<data name="Data attribute referring form 1" code="DARF1">
 		<attribute name="Own attribute 1" code="own1" status="optional" type="string"
 			description="Own attribute description." />
 		<attribute-ref type="DARE1.fullStringInherited" />
@@ -43,8 +43,8 @@
 		<attribute-ref type="DARE2.dare1Ref" status="optional" />
 		<attribute-ref type="DARE2.dare1List" />
 		<attribute-ref type="DARE2.dare3Ref" />
-	</data-structure>
-	<data-structure name="Expanded structure with att ref" code="expand-att-ref"
+	</data>
+	<data name="Expanded structure with att ref" code="expand-att-ref"
 		expand="true">
 		<attribute name="Expanded own attribute" code="exp-own" status="unique" type="string"
 			description="Expanded own attribute description." />
@@ -54,20 +54,20 @@
 			description="Expanded overridden attribute description." />
 		<attribute-ref type="DARE2.dare1List" name="Expanded structure list" />
 		<attribute-ref type="DARE2.dare3Ref" />
-	</data-structure>
-	<data-structure name="Expansion of att ref" code="att-ref-expansion"
+	</data>
+	<data name="Expansion of att ref" code="att-ref-expansion"
 		expand="true">
 		<attribute name="Some expansion own attribute" code="expansion-own-attribute"
 			status="primary-key" type="integer" />
 		<attribute name="Expansion itself" type="expand-att-ref" />
-	</data-structure>
-	<data-structure name="Second level expansion of att ref" code="att-ref-expansion-2">
+	</data>
+	<data name="Second level expansion of att ref" code="att-ref-expansion-2">
 		<attribute name="Some 2nd level own attribute" code="expansion-2-own-attribute"
 			status="natural-key" type="timestamp" />
 		<attribute name="Expansion of 1st level" type="att-ref-expansion" />
 		<attribute-ref type="DARE2.dare1Ref" name="Additional ref att" />
-	</data-structure>
-	<data-structure name="Direct ref expansion" code="direct-ref-expansion">
+	</data>
+	<data name="Direct ref expansion" code="direct-ref-expansion">
 		<attribute-ref type="DARE1.emptyEmpty" />
-	</data-structure>
+	</data>
 </uct>

@@ -32,7 +32,7 @@
 <if test="//uct:use-case">
 &lt;li>&lt;a href="uc/index.html">&lt;i class="icon-file">&lt;/i> #use.cases#&lt;/a>&lt;/li><text/>
 </if>
-<if test="//uct:data-structure">
+<if test="//uct:data">
 &lt;li>&lt;a href="data/index.html">&lt;i class="icon-table">&lt;/i> #data.structures#&lt;/a>&lt;/li><text/>
 </if>
 <if test="//uct:requirement">

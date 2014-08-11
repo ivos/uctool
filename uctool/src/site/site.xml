@@ -20,13 +20,13 @@
 					<item name="Use case details" href="tutorial/write/uc-details.html" />
 					<item name="Step references" href="tutorial/write/step-ref.html" />
 					<item name="Use case composition" href="tutorial/write/uc-composition.html" />
-					<item name="Data structures" href="tutorial/write/data.html" />
+					<item name="Data" href="tutorial/write/data.html" />
 					<item name="Data attributes" href="tutorial/write/data-attributes.html" />
 					<item name="Data composition" href="tutorial/write/data-composition.html"
 						collapse="true">
-						<item name="Data structure relations" href="tutorial/write/data-relations.html" />
+						<item name="Data relations" href="tutorial/write/data-relations.html" />
 						<item name="Attribute references" href="tutorial/write/data-att-references.html" />
-						<item name="Sharing attributes between data structures" href="tutorial/write/data-expand.html" />
+						<item name="Sharing attributes between data" href="tutorial/write/data-expand.html" />
 					</item>
 					<item name="Data references" href="tutorial/write/data-ref.html" />
 					<item name="Requirements" href="tutorial/write/requirements.html" />

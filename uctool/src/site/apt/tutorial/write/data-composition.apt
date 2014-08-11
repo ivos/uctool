@@ -1,20 +1,20 @@
  ---
- Data structure composition
+ Data composition
  ---
  Ivo Maixner
  ---
  2010-11-24
  ---
 
-Data structure composition
+Data composition
 
- There are three distinct techniques to build data structures from other data structures:
+ There are three distinct techniques to build data from other data:
  
- * {{{./data-relations.html}Data structure relations}}
+ * {{{./data-relations.html}Data relations}}
 
  * {{{./data-att-references.html}Attribute references}}
 
- * {{{./data-expand.html}Sharing attributes between data structures}}
+ * {{{./data-expand.html}Sharing attributes between data}}
 
  []
 

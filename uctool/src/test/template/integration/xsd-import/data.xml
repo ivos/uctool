@@ -4,21 +4,21 @@
 	xsi:schemaLocation="
 		http://uctool.sf.net/ http://uctool.sf.net/xsd/VERSION/uct.xsd
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
-	<data-structure name="simpleTypeDoesNotEndWith" code="simpleTypeDoesNotEndWith">
+	<data name="simpleTypeDoesNotEndWith" code="simpleTypeDoesNotEndWith">
 		<description>Type: date.</description>
-	</data-structure>
-	<data-structure name="String based simple type" code="stringBasedSimple">
+	</data>
+	<data name="String based simple type" code="stringBasedSimple">
 		<description>Type: string.</description>
-	</data-structure>
-	<data-structure name="Integer based simple type" code="integerBasedSimple">
+	</data>
+	<data name="Integer based simple type" code="integerBasedSimple">
 		<description>Type: integer.</description>
-	</data-structure>
-	<data-structure name="String based simple type with enum" code="stringWithEnumSimple">
+	</data>
+	<data name="String based simple type with enum" code="stringWithEnumSimple">
 		<description>Type: string.</description>
 		<description>Enumeration value: enumValue1.</description>
 		<description>Enumeration value: enumValue2.</description>
-	</data-structure>
-	<data-structure name="String based simple type with enum and docs" code="stringWithEnumDocsSimple">
+	</data>
+	<data name="String based simple type with enum and docs" code="stringWithEnumDocsSimple">
 		<description>More documentation.
 				Next line simple type doc.
 			</description>
@@ -26,39 +26,39 @@
 		<description>Type: string.</description>
 		<description>Enumeration value: enumValue1.</description>
 		<description>Enumeration value: enumValue2. Enum value 2. Next line. Next documentation.</description>
-	</data-structure>
-	<data-structure name="String based simple type with length" code="stringWithLengthSimple">
+	</data>
+	<data name="String based simple type with length" code="stringWithLengthSimple">
 		<description>Type: string.</description>
 		<description>Length: 123.</description>
-	</data-structure>
-	<data-structure name="String based simple type with length and docs" code="stringWithLengthDocsSimple">
+	</data>
+	<data name="String based simple type with length and docs" code="stringWithLengthDocsSimple">
 		<description>Type: string.</description>
 		<description>Length: 123. Length doc.</description>
-	</data-structure>
-	<data-structure name="String based simple type with min and max length" code="stringWithMinMaxLengthSimple">
+	</data>
+	<data name="String based simple type with min and max length" code="stringWithMinMaxLengthSimple">
 		<description>Type: string.</description>
 		<description>Minimal length: 100.</description>
 		<description>Maximal length: 200.</description>
-	</data-structure>
-	<data-structure name="String based simple type with min and max length and docs" code="stringWithMinMaxLengthDocsSimple">
+	</data>
+	<data name="String based simple type with min and max length and docs" code="stringWithMinMaxLengthDocsSimple">
 		<description>Type: string.</description>
 		<description>Minimal length: 100. Min length doc.</description>
 		<description>Maximal length: 200. Max length doc.</description>
-	</data-structure>
-	<data-structure name="String based simple type with pattern" code="stringWithPatternSimple">
+	</data>
+	<data name="String based simple type with pattern" code="stringWithPatternSimple">
 		<description>Type: string.</description>
 		<description>Pattern: pattern value 1.</description>
-	</data-structure>
-	<data-structure name="String based simple type with other specs and docs" code="stringWithPatternDocsSimple">
+	</data>
+	<data name="String based simple type with other specs and docs" code="stringWithPatternDocsSimple">
 		<description>Type: string.</description>
 		<description>Pattern: pattern value 1. Pattern doc.</description>
-	</data-structure>
-	<data-structure name="First line. Second line. Third line." code="withMultilineName">
+	</data>
+	<data name="First line. Second line. Third line." code="withMultilineName">
 		<description>Type: byte.</description>
-	</data-structure>
-	<data-structure name="Empty" code="Empty">
-	</data-structure>
-	<data-structure name="A master" code="Master">
+	</data>
+	<data name="Empty" code="Empty">
+	</data>
+	<data name="A master" code="Master">
 		<description>
 			This is the master entity.
 			HTML tags.
@@ -113,32 +113,32 @@
 		<attribute name="xsunsignedInt" code="xsunsignedInt" status="mandatory" type="integer" />
 		<attribute name="xsunsignedLong" code="xsunsignedLong" status="mandatory" type="integer" />
 		<attribute name="xsunsignedShort" code="xsunsignedShort" status="mandatory" type="integer" />
-	</data-structure>
-	<data-structure name="Detail 1" code="MasterDetail1">
+	</data>
+	<data name="Detail 1" code="MasterDetail1">
 		<attribute name="Some integer" code="someInteger" status="optional" type="integer" />
-	</data-structure>
-	<data-structure name="Detail N" code="DetailN">
-	</data-structure>
-	<data-structure name="Another master" code="AnotherMaster">
+	</data>
+	<data name="Detail N" code="DetailN">
+	</data>
+	<data name="Another master" code="AnotherMaster">
 		<description>
 			Reference to
 			
 			another structure
-			in a data structure description.
+			in a data description.
 		</description>
 		<attribute name="A detail N" code="detailN" status="optional" type="DetailN" />
-	</data-structure>
-	<data-structure name="Description data" code="description-data">
+	</data>
+	<data name="Description data" code="description-data">
 		<description>First description.</description>
 		<description>Second description.</description>
 		<description>Third description.</description>
-	</data-structure>
-	<data-structure name="complexTypeDoesNotEndWith" code="complexTypeDoesNotEndWith">
-	</data-structure>
-	<data-structure name="withImportedTypes" code="withImportedTypes">
+	</data>
+	<data name="complexTypeDoesNotEndWith" code="complexTypeDoesNotEndWith">
+	</data>
+	<data name="withImportedTypes" code="withImportedTypes">
 		<attribute name="importedSimple" code="importedSimple" status="mandatory" type="importedSimpleString" />
 		<attribute name="importedComplex" code="importedComplex" status="mandatory" type="importedComplex" />
-	</data-structure>
-	<data-structure name="Complex first line. Second line. Third line." code="complexMultilineName">
-	</data-structure>
+	</data>
+	<data name="Complex first line. Second line. Third line." code="complexMultilineName">
+	</data>
 </uct>

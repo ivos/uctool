@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd">
+	xsi:schemaLocation="http://uctool.sf.net/ ../../../main/resources/xsd/uct.xsd">
 	<requirement code="req01" name="User defined reports" type="functional"
 		priority="high" status="accepted" origin="Workshop 2011-03-18" level="sea" area="Reporting">
 		<description>The system allows users to define their own reports.</description>
@@ -82,18 +82,18 @@
 			.
 		</description>
 	</actor>
-	<data-structure name="Req data structure 1" code="req-data-structure-01">
+	<data name="Req data 1" code="req-data-structure-01">
 		<description>
 			Ref to
 			<req-ref code="req02">requirement</req-ref>
 			.
 		</description>
-	</data-structure>
-	<data-structure name="Req data structure 2" code="req-data-structure-02">
+	</data>
+	<data name="Req data 2" code="req-data-structure-02">
 		<description>
 			Ref to
 			<req-ref code="req02">requirement</req-ref>
 			.
 		</description>
-	</data-structure>
+	</data>
 </uct>

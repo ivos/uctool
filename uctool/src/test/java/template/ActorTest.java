@@ -64,7 +64,7 @@ public class ActorTest extends TemplateTestBase {
 					outputDir);
 		} catch (ValidationException e) {
 			assertEquals(
-					"Missing data structure with code [missing] referenced from actor with code [a1].",
+					"Missing data with code [missing] referenced from actor with code [a1].",
 					e.getMessage());
 		}
 	}

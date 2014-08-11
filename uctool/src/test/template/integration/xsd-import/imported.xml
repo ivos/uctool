@@ -4,10 +4,10 @@
 	xsi:schemaLocation="
 		http://uctool.sf.net/ http://uctool.sf.net/xsd/VERSION/uct.xsd
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
-	<data-structure name="importedSimpleString" code="importedSimpleString">
+	<data name="importedSimpleString" code="importedSimpleString">
 		<description>Type: string.</description>
-	</data-structure>
-	<data-structure name="importedComplex" code="importedComplex">
+	</data>
+	<data name="importedComplex" code="importedComplex">
 		<attribute name="someElement" code="someElement" status="mandatory" type="string" />
-	</data-structure>
+	</data>
 </uct>

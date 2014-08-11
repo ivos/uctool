@@ -23,7 +23,7 @@
 <template match="xs:simpleType">
 	<variable name="name" select="uct:name(.)" />
 	<variable name="code" select="uct:code(@name)" />
-	&lt;data-structure name="<value-of select="$name" />" code="<value-of select="$code" />"><text />
+	&lt;data name="<value-of select="$name" />" code="<value-of select="$code" />"><text />
 	<for-each select="xs:annotation/xs:documentation">
 		<if test="not(position()=1)">
 		&lt;description><value-of select="." />&lt;/description><text />
@@ -73,20 +73,20 @@
 			<text>&lt;/description></text>
 		</for-each>
 	</if>
-	&lt;/data-structure><text />
+	&lt;/data><text />
 </template>
 
 <template match="xs:complexType">
 	<variable name="name" select="uct:name(.)" />
 	<variable name="code" select="uct:code(@name)" />
-	&lt;data-structure name="<value-of select="$name" />" code="<value-of select="$code" />"><text />
+	&lt;data name="<value-of select="$name" />" code="<value-of select="$code" />"><text />
 <for-each select="xs:annotation/xs:documentation">
 	<if test="not(position()=1)">
 		&lt;description><value-of select="." />&lt;/description><text />
 	</if>
 </for-each>
 		<apply-templates select=".//xs:element" />
-	&lt;/data-structure><text />
+	&lt;/data><text />
 </template>
 
 <template match="xs:element">

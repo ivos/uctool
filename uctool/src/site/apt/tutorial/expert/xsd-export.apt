@@ -1,14 +1,14 @@
  ---
- Export data structures to XSD file
+ Export data to XSD file
  ---
  Ivo Maixner
  ---
  2013-11-02
  ---
 
-Export data structures to XSD file
+Export data to XSD file
 
- You can export the data structures defined in the UCTool project into an XSD file
+ You can export the data defined in the UCTool project into an XSD file
  to be subsequently used for automated processing in other tools.
  
  Use the {{{http://uctool.sourceforge.net/uctool-maven-plugin/export-xsd-mojo.html}<<<export-xsd>>> goal}}
@@ -41,7 +41,7 @@ mvn uctool:export-xsd
 
  You can define the export execution multiple times in pom.xml with different parameters
  to export multiple XSD files in different way. 
- For example, you can export database entities, interface data structures and UI forms separately,
+ For example, you can export database entities, interface data and UI forms separately,
  each into its own XSD file.\
  Use {{{http://maven.apache.org/guides/introduction/introduction-to-profiles.html}Maven profiles}} 
  for this purpose.

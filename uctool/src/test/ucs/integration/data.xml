@@ -2,10 +2,10 @@
 <uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:h="http://www.w3.org/1999/xhtml"
 	xsi:schemaLocation="
-		http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd
+		http://uctool.sf.net/ ../../../main/resources/xsd/uct.xsd
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
-	<data-structure name="Empty" code="Empty" />
-	<data-structure name="A master" code="Master">
+	<data name="Empty" code="Empty" />
+	<data name="A master" code="Master">
 		<description>
 			This is the master entity.
 			<h:li>HTML tags work here.</h:li>
@@ -43,53 +43,53 @@
 		<attribute name="Collection of other structures with length" type="DetailN"
 			collection="true" length="5" description="Collection of max 5 instances of DetailN." />
 		<attribute name="Selected detail N" type="DetailN" />
-	</data-structure>
-	<data-structure name="Detail 1" code="MasterDetail1" />
-	<data-structure name="Detail N" code="DetailN" />
-	<data-structure name="Another master" code="AnotherMaster">
+	</data>
+	<data name="Detail 1" code="MasterDetail1" />
+	<data name="Detail N" code="DetailN" />
+	<data name="Another master" code="AnotherMaster">
 		<description>
 			Reference to
 			<data-ref code="AnotherStructure">
 			another structure</data-ref>
-			in a data structure description
+			in a data description
 		</description>
 		<attribute name="A detail N" type="DetailN" />
-	</data-structure>
-	<data-structure name="Another structure" code="AnotherStructure" />
-	<data-structure name="Unreferenced data structure" code="UnreferencedDataStructure" />
-	<data-structure name="Description data" code="description-data">
+	</data>
+	<data name="Another structure" code="AnotherStructure" />
+	<data name="Unreferenced data" code="UnreferencedDataStructure" />
+	<data name="Description data" code="description-data">
 		<description>First description.</description>
 		<description>Second description.</description>
 		<description>Third description.</description>
-	</data-structure>
-	<data-structure name="Tree via master" code="TreeViaMaster">
+	</data>
+	<data name="Tree via master" code="TreeViaMaster">
 		<attribute name="Name" code="name" type="string" />
 		<attribute name="Master" code="master" type="TreeViaMaster" />
-	</data-structure>
-	<data-structure name="Tree via subordinates" code="TreeViaSubordinates">
+	</data>
+	<data name="Tree via subordinates" code="TreeViaSubordinates">
 		<attribute name="Name" code="name" type="string" />
 		<attribute name="Subordinates" code="subordinates" type="TreeViaSubordinates"
 			collection="true" />
-	</data-structure>
-	<data-structure name="Recursive reference entity 1" code="Recursive1">
+	</data>
+	<data name="Recursive reference entity 1" code="Recursive1">
 		<attribute name="refTo2" code="refTo2" type="Recursive2" />
-	</data-structure>
-	<data-structure name="Recursive reference entity 2" code="Recursive2">
+	</data>
+	<data name="Recursive reference entity 2" code="Recursive2">
 		<attribute name="refTo1" code="refTo1" type="Recursive1" />
-	</data-structure>
-	<data-structure name="Persistent entity" code="PersistentEntity" category="persistence-entity">
+	</data>
+	<data name="Persistent entity" code="PersistentEntity" category="persistence-entity">
 		<description>A generic business entity.</description>
 		<attribute name="Some attribute" />
-	</data-structure>
-	<data-structure name="Persistent code table" code="PersistentCodeTable"
+	</data>
+	<data name="Persistent code table" code="PersistentCodeTable"
 		category="persistence-code-table" />
-	<data-structure name="Persistent enumeration" code="PersistentEnumeration"
+	<data name="Persistent enumeration" code="PersistentEnumeration"
 		category="persistence-enumeration" />
-	<data-structure name="UI list" code="UiList" category="ui-list" />
-	<data-structure name="UI form" code="UiForm" category="ui-form" />
-	<data-structure name="Interface" code="Interface" category="interface" />
-	<data-structure name="Interface request" code="InterfaceRequest" category="interface-request" />
-	<data-structure name="Interface response" code="InterfaceResponse"
+	<data name="UI list" code="UiList" category="ui-list" />
+	<data name="UI form" code="UiForm" category="ui-form" />
+	<data name="Interface" code="Interface" category="interface" />
+	<data name="Interface request" code="InterfaceRequest" category="interface-request" />
+	<data name="Interface response" code="InterfaceResponse"
 		category="interface-response" />
 	<uc-group primary-actor="data-actor">
 		<use-case goal="Maintain masters" code="mas-001">

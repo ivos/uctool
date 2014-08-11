@@ -12,11 +12,11 @@
 <text />&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="<value-of select="$target-namespace-url" />"
 	xmlns="<value-of select="$target-namespace-url" />" elementFormDefault="qualified"><text />
-	<apply-templates select="//uct:data-structure"/>
+	<apply-templates select="//uct:data"/>
 &lt;/xs:schema>
 </template>
 
-<template match="uct:data-structure">
+<template match="uct:data">
 	&lt;xs:element name="<value-of select="@code" />" type="<value-of select="@code" />Type" />
 	&lt;xs:complexType name="<value-of select="@code" />Type">
 		&lt;xs:annotation>

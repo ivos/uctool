@@ -15,7 +15,7 @@
 #end
 #if($ctx.actors.size()>0)<li><a href="actor-goal-list.html">Actor-goal list</a></li>
 #end
-#if($ctx.datas.size()>0)<li><a href="unused-data-list.html">Unused data structure list</a></li>
+#if($ctx.datas.size()>0)<li><a href="unused-data-list.html">Unused data list</a></li>
 #end
 </ul>
 #parse("template/footer.vm")
