@@ -138,7 +138,7 @@ public class UctoolExecutor {
 				"Loaded {} actor(s), {} use case(s), {} data structure(s).",
 				executionContext.getActors().size(), executionContext
 						.getUseCases().size(), executionContext
-						.getDataStructures().size());
+						.getDatas().size());
 		time.reset();
 	}
 

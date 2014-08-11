@@ -6,8 +6,8 @@ import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.xsd.Attachment;
 import net.sf.uctool.xsd.AttachmentGroup;
 import net.sf.uctool.xsd.AttachmentRef;
+import net.sf.uctool.xsd.Data;
 import net.sf.uctool.xsd.DataRef;
-import net.sf.uctool.xsd.DataStructure;
 import net.sf.uctool.xsd.ReqRef;
 import net.sf.uctool.xsd.Requirement;
 import net.sf.uctool.xsd.StepRef;
@@ -103,9 +103,8 @@ public class ConverterHelper {
 		if (content instanceof DataRef) {
 			DataRef dataRef = (DataRef) content;
 			String code = dataRef.getCode();
-			DataStructure dataStructure = executionContext.getDataStructures()
-					.get(code);
-			if (null == dataStructure) {
+			Data data = executionContext.getDatas().get(code);
+			if (null == data) {
 				throw new ValidationException(
 						"Missing data structure with code [" + code
 								+ "] referenced from " + referencedFromType
@@ -115,12 +114,12 @@ public class ConverterHelper {
 					+ getRefSeparator());
 			sb.append(code);
 			sb.append(getRefSuffix() + "\" title=\"");
-			sb.append(dataStructure.getName());
+			sb.append(data.getName());
 			sb.append("\">");
 			sb.append(escape(dataRef.getValue()));
 			if (executionContext.isSingle()) {
 				sb.append(" (");
-				sb.append(dataStructure.getName());
+				sb.append(data.getName());
 				sb.append(")");
 			}
 			sb.append("</a>");

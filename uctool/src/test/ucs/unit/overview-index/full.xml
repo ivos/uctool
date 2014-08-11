@@ -8,5 +8,5 @@
 	<uc-group primary-actor="a1">
 		<use-case code="UC001" goal="UC 001 goal" />
 	</uc-group>
-	<data-structure name="Data 1" code="dt1" />
+	<data name="Data 1" code="dt1" />
 </uct>

@@ -8,7 +8,7 @@
 	<attachment-group directory="att-dir" name="">
 		<attachment name="" code="att-1" file-name="att-file-1" />
 	</attachment-group>
-	<data-structure name="" code="dt-1"></data-structure>
+	<data name="" code="dt-1"></data>
 	<requirement name="" code="rq-1"></requirement>
 	<term name=""></term>
 	<uc-group primary-actor="ac-1">

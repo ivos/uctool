@@ -209,7 +209,7 @@ public class IntegrationTest extends TemplatingTestBase implements
 	}
 
 	@Test
-	public void attachmentDataStructure() throws IOException {
+	public void attachmentData() throws IOException {
 		performTest("data/attachment-data-structure.html");
 	}
 

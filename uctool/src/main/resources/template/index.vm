@@ -23,7 +23,7 @@ Version: $ctx.project.version</p>
 #end
 #if($ctx.useCases.size()>0)<li><a href="uc/index.html"><i class="icon-file"></i> Use cases</a></li>
 #end
-#if($ctx.dataStructures.size()>0)<li><a href="data/index.html"><i class="icon-table"></i> Data structures</a></li>
+#if($ctx.datas.size()>0)<li><a href="data/index.html"><i class="icon-table"></i> Data structures</a></li>
 #end
 #if($ctx.requirements.size()>0)<li><a href="req/index.html"><i class="icon-list"></i> Requirements</a></li>
 #end

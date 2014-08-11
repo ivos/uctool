@@ -13,7 +13,7 @@ import net.sf.uctool.output.uc.UseCaseOut;
 import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Attachment;
 import net.sf.uctool.xsd.AttachmentGroup;
-import net.sf.uctool.xsd.DataStructure;
+import net.sf.uctool.xsd.Data;
 import net.sf.uctool.xsd.Requirement;
 import net.sf.uctool.xsd.Term;
 import net.sf.uctool.xsd.UcGroup;
@@ -26,7 +26,7 @@ public class ExecutionContext {
 	private final Map<String, Actor> actors;
 	private final Map<String, Attachment> attachments;
 	private final Map<String, AttachmentGroup> attachmentGroups;
-	private final Map<String, DataStructure> dataStructures;
+	private final Map<String, Data> datas;
 	private final Map<String, Requirement> requirements;
 	private final Set<Term> terms;
 	private final Map<String, UseCase> useCases;
@@ -48,7 +48,7 @@ public class ExecutionContext {
 		actors = new LinkedHashMap<String, Actor>();
 		attachments = new LinkedHashMap<String, Attachment>();
 		attachmentGroups = new LinkedHashMap<String, AttachmentGroup>();
-		dataStructures = new LinkedHashMap<String, DataStructure>();
+		datas = new LinkedHashMap<String, Data>();
 		requirements = new LinkedHashMap<String, Requirement>();
 		terms = new LinkedHashSet<Term>();
 		useCases = new LinkedHashMap<String, UseCase>();
@@ -82,8 +82,8 @@ public class ExecutionContext {
 		return attachmentGroups;
 	}
 
-	public Map<String, DataStructure> getDataStructures() {
-		return dataStructures;
+	public Map<String, Data> getDatas() {
+		return datas;
 	}
 
 	public Map<String, Requirement> getRequirements() {

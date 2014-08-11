@@ -7,7 +7,7 @@ import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Attachment;
 import net.sf.uctool.xsd.AttachmentGroup;
-import net.sf.uctool.xsd.DataStructure;
+import net.sf.uctool.xsd.Data;
 import net.sf.uctool.xsd.Requirement;
 import net.sf.uctool.xsd.Term;
 import net.sf.uctool.xsd.UcGroup;
@@ -49,16 +49,16 @@ public class UctoolValidator {
 								attachmentGroup);
 					}
 				}
-				if (object instanceof DataStructure) {
-					DataStructure dataStructure = (DataStructure) object;
-					String code = dataStructure.getCode();
+				if (object instanceof Data) {
+					Data data = (Data) object;
+					String code = data.getCode();
 					if (executionContext.getAttachments().containsKey(code)) {
 						throw new ValidationException(
 								"Duplicate data structure with code [" + code
 										+ "].");
 					}
-					executionContext.getDataStructures().put(code,
-							dataStructure);
+					executionContext.getDatas().put(code,
+							data);
 				}
 				if (object instanceof Requirement) {
 					Requirement requirement = (Requirement) object;
