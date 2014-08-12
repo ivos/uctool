@@ -1,0 +1,36 @@
+#if($ctx.single)
+#else
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Data $data.name</title>
+#set($rel-path="../")
+#parse("template/head.vm")
+</head>
+<body>
+#set($section="data")
+#parse("template/navbar.vm")
+#end
+<a id="data_$data.code"></a>
+<h3><i class="icon-table"></i> <span class="muted">Data</span> $data.name</h3>
+<strong>Code:</strong> $data.code
+#if($data.category)<div><strong>Category:</strong> $data.category</div>
+#end
+#if(!$data.descriptions.isEmpty())<div><strong>Description:</strong></div>
+#foreach($description in $data.descriptions)<div>$description</div>
+#end
+#end
+#if(!$data.attributes.isEmpty())<div><strong>Attributes:</strong></div>
+<table class="table table-striped table-bordered table-hover table-condensed">
+<thead>
+<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+</thead><tbody>
+#foreach($attribute in $data.attributes)<tr><td>$attribute.name</td><td>$attribute.code</td><td#if($attribute.statusHint) title="$attribute.statusHint"#end>$attribute.status</td><td>$attribute.type</td><td>$attribute.description</td></tr>
+#end</tbody>
+</table>
+#end
+#if(! $ctx.single)
+#parse("template/footer.vm")
+</body>
+</html>
+#end

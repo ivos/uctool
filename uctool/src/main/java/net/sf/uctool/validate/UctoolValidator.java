@@ -52,11 +52,18 @@ public class UctoolValidator {
 				if (object instanceof Data) {
 					Data data = (Data) object;
 					String code = data.getCode();
-					if (executionContext.getAttachments().containsKey(code)) {
-						throw new ValidationException(
-								"Duplicate data with code [" + code + "].");
+					String refcode = data.getRefcode();
+					for (Data previous : executionContext.getDatas().values()) {
+						if (previous.getCode().equals(code)) {
+							throw new ValidationException(
+									"Duplicate data with code [" + code + "].");
+						}
 					}
-					executionContext.getDatas().put(code, data);
+					if (null == refcode) {
+						refcode = code;
+						data.setRefcode(code);
+					}
+					executionContext.getDatas().put(refcode, data);
 				}
 				if (object instanceof Requirement) {
 					Requirement requirement = (Requirement) object;

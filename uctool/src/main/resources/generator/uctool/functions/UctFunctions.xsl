@@ -410,8 +410,8 @@
 			<when test="$status='conditional'">#status.conditional#</when>
 			<when test="$status='mandatory'">#status.mandatory#</when>
 			<when test="$status='unique'">#status.unique#</when>
-			<when test="$status='natural-key'">#status.natural.key#</when>
-			<when test="$status='primary-key'">#status.primary.key#</when>
+			<when test="$status='natural-key'">#status.natural-key#</when>
+			<when test="$status='primary-key'">#status.primary-key#</when>
 		</choose>
 	</function>
 
@@ -423,8 +423,8 @@
 			<when test="$status='conditional'"> title="#status.hint.conditional#"</when>
 			<when test="$status='mandatory'"> title="#status.hint.mandatory#"</when>
 			<when test="$status='unique'"> title="#status.hint.unique#"</when>
-			<when test="$status='natural-key'"> title="#status.hint.natural.key#"</when>
-			<when test="$status='primary-key'"> title="#status.hint.primary.key#"</when>
+			<when test="$status='natural-key'"> title="#status.hint.natural-key#"</when>
+			<when test="$status='primary-key'"> title="#status.hint.primary-key#"</when>
 		</choose>
 	</function>
 
@@ -443,7 +443,7 @@
 			<when test="$type='boolean'">#data.type.boolean#</when>
 			<when test="$type='date'">#data.type.date#</when>
 			<when test="$type='time'">#data.type.time#</when>
-			<when test="$type='date-time'">#data.type.date.time#</when>
+			<when test="$type='date-time'">#data.type.date-time#</when>
 			<when test="$type='timestamp'">#data.type.timestamp#</when>
 			<when test="$type='string'">#data.type.string#</when>
 			<when test="$type='binary'">#data.type.binary#</when>

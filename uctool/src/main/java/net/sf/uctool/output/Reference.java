@@ -28,6 +28,11 @@ public class Reference {
 		return label;
 	}
 
+	public String toHtml() {
+		return "<a href=\"../" + type + "/" + code + ".html\" title=\"" + label
+				+ "\">" + label + "</a>";
+	}
+
 	@Override
 	public String toString() {
 		return "Reference [type=" + type + ", code=" + code + ", label="

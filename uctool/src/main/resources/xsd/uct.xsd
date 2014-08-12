@@ -349,12 +349,17 @@
 				<xs:element ref="uct:description" minOccurs="0" maxOccurs="unbounded" />
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
 					<xs:element ref="uct:attribute" />
-					<xs:element ref="uct:attribute-ref" />
 				</xs:choice>
 			</xs:sequence>
 			<xs:attribute name="code" use="required" type="uct:CodeType">
 				<xs:annotation>
 					<xs:documentation>Code of the data.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="refcode" type="uct:CodeType">
+				<xs:annotation>
+					<xs:documentation>Reference code of the data. When defined, uniquely identifies the data in all data references.
+					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="name" use="required" type="xs:string">
@@ -406,6 +411,9 @@
 			<xs:documentation>Attribute of data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="uct:description" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
 			<xs:attribute name="name" use="required" type="xs:string">
 				<xs:annotation>
 					<xs:documentation>Name of the attribute.</xs:documentation>
@@ -469,65 +477,6 @@
 				<xs:annotation>
 					<xs:documentation>Marks attribute with collection value. The data type indicated can be held in multiple instances
 						in the value of the attribute.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="description">
-				<xs:annotation>
-					<xs:documentation>Simple description of the attribute.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="attribute-ref">
-		<xs:annotation>
-			<xs:documentation>Data attribute reference. Refers to an attribute defined on another data. Takes over the properties
-				of the referred attribute as defaults (with the exception of type and collection, which cannot be overridden).
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="type" type="uct:AttributeRefCodeType" use="required">
-				<xs:annotation>
-					<xs:documentation>Reference to the attribute. Has the form "[data-code].[attribute-code]", where [data-code] is the
-						code of data defining the referred attribute and [attribute-code] is the code of the referred attribute within
-						that data.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="name" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Name of the attribute. If not specified, defaults from referred attribute.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="code" type="uct:CodeType">
-				<xs:annotation>
-					<xs:documentation>Code of the attribute. If not specified, defaults from referred attribute.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="status">
-				<xs:annotation>
-					<xs:documentation>Status of the attribute. If not specified, defaults from referred attribute.</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="display-only" />
-						<xs:enumeration value="optional" />
-						<xs:enumeration value="conditional" />
-						<xs:enumeration value="mandatory" />
-						<xs:enumeration value="unique" />
-						<xs:enumeration value="natural-key" />
-						<xs:enumeration value="primary-key" />
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:attribute>
-			<xs:attribute name="length">
-				<xs:annotation>
-					<xs:documentation>Length of the attribute. If not specified, defaults from referred attribute.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="description">
-				<xs:annotation>
-					<xs:documentation>Simple description of the attribute. If not specified, defaults from referred attribute.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>

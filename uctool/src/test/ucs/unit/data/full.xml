@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+	<data name="Name of the data" code="full" refcode="data_refcode_1" category="persistence-entity">
+		<description>Description 1.</description>
+		<description>Description 2.</description>
+		<description>
+			Contains
+			<h:strong class="class-1 class-2" title="A title">
+				some
+				<h:em class="class-3">HTML code</h:em>
+			</h:strong>
+			and entities: &lt;b &amp; &amp;nbsp; .
+		</description>
+		<description>
+			Contains
+			<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
+			,
+			<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
+			,
+			<data-ref code="dtrfcode2">data refcode link &lt;b &amp; " '</data-ref>
+			,
+			<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
+			.
+		</description>
+		<description>
+			Here
+			<h:strong>
+				is
+				<h:em>
+					some
+					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
+					,
+					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
+					,
+					<data-ref code="dtrfcode2">data refcode link &lt;b &amp; " '</data-ref>
+					,
+					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
+					within
+				</h:em>
+				HTML
+			</h:strong>
+			.
+		</description>
+		<attribute name="" />
+		<attribute name="Empty" />
+		<attribute name="With code" code="withCode" />
+		<attribute name="With all" code="withAll" status="optional" type="string" length="123">
+			<description>Attribute with all options set up.</description>
+		</attribute>
+		<attribute name="Display only" status="display-only" />
+		<attribute name="Optional" status="optional" />
+		<attribute name="Conditional" status="conditional" />
+		<attribute name="Mandatory" status="mandatory" />
+		<attribute name="Unique" status="unique" />
+		<attribute name="Natural key" status="natural-key" />
+		<attribute name="Primary key" status="primary-key" />
+		<attribute name="Integer" type="integer" />
+		<attribute name="Float" type="float" />
+		<attribute name="Decimal" type="decimal" />
+		<attribute name="Boolean" type="boolean" />
+		<attribute name="Date" type="date" />
+		<attribute name="Time" type="time" />
+		<attribute name="Date time" type="date-time" />
+		<attribute name="Timestamp" type="timestamp" />
+		<attribute name="Binary" type="binary" length="4098" />
+		<attribute name="String without length" type="string" />
+		<attribute name="Binary without length" type="binary" />
+		<attribute name="Reference to other structure" type="MasterDetail1" />
+		<attribute name="Collection of integers" type="integer" collection="true" />
+		<attribute name="Integer with length" type="integer" length="3">
+			<description>Three digits.</description>
+		</attribute>
+		<attribute name="Collection of integers with length" type="integer" collection="true" length="10">
+			<description>Collection of max 10 integers.</description>
+		</attribute>
+		<attribute name="Collection of strings with length" type="string" collection="true" length="12">
+			<description>Collection of max 12 strings.</description>
+		</attribute>
+		<attribute name="Collection of other structures" type="DetailN" collection="true" />
+		<attribute name="Collection of other structures with length" type="DetailN" collection="true" length="5">
+			<description>Collection of max 5 instances of DetailN.</description>
+		</attribute>
+		<attribute name="Selected detail N" type="DetailN" />
+	</data>
+
+	<attachment-group directory="att-dir1" name="">
+		<attachment name="Att 1 name" code="att1" file-name="att1-file-name" />
+	</attachment-group>
+	<data name="Dt 1 name" code="dt1"></data>
+	<data name="Dt 2 name" code="dt2" refcode="dtrfcode2"></data>
+	<requirement name="Rq 1 name" code="rq1"></requirement>
+
+	<data name="Detail 1" code="MasterDetail1" />
+	<data name="Detail N" code="DetailN" />
+
+</uct>

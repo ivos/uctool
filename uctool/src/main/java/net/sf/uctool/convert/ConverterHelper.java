@@ -102,13 +102,14 @@ public class ConverterHelper {
 		}
 		if (content instanceof DataRef) {
 			DataRef dataRef = (DataRef) content;
-			String code = dataRef.getCode();
-			Data data = executionContext.getDatas().get(code);
+			String refcode = dataRef.getCode();
+			Data data = executionContext.getDatas().get(refcode);
 			if (null == data) {
-				throw new ValidationException("Missing data with code [" + code
-						+ "] referenced from " + referencedFromType
+				throw new ValidationException("Missing data with refcode ["
+						+ refcode + "] referenced from " + referencedFromType
 						+ " with code [" + referencedFromCode + "].");
 			}
+			String code = data.getCode();
 			sb.append("<a href=\"" + getRefPrefix() + "data"
 					+ getRefSeparator());
 			sb.append(code);
