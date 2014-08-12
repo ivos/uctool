@@ -51,7 +51,7 @@ public class DataTest extends TemplateTestBase {
 			e.execute(new File(inputBaseDir, "data/dataMissing.xml"), outputDir);
 		} catch (ValidationException e) {
 			assertEquals(
-					"Missing data with code [missing] referenced from data with code [d1].",
+					"Missing data with refcode [missing] referenced from data with code [d1].",
 					e.getMessage());
 		}
 	}
@@ -64,6 +64,18 @@ public class DataTest extends TemplateTestBase {
 		} catch (ValidationException e) {
 			assertEquals(
 					"Missing requirement with code [missing] referenced from data with code [d1].",
+					e.getMessage());
+		}
+	}
+
+	@Test
+	public void val_Attribute_DataMissing() {
+		try {
+			e.execute(new File(inputBaseDir, "data/attributeDataMissing.xml"),
+					outputDir);
+		} catch (ValidationException e) {
+			assertEquals(
+					"Missing data with refcode [missing] referenced from data with code [d1].",
 					e.getMessage());
 		}
 	}

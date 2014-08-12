@@ -5,6 +5,7 @@ import static net.sf.uctool.util.Escape.*;
 import java.util.Arrays;
 import java.util.List;
 
+import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.output.Reference;
 import net.sf.uctool.output.data.AttributeOut;
@@ -83,8 +84,14 @@ public class DataConverter {
 							"data.type." + type));
 				} else {
 					Data referenced = executionContext.getDatas().get(type);
-					outType.append(new Reference("data", type, referenced
-							.getName()).toHtml());
+					if (null == referenced) {
+						throw new ValidationException(
+								"Missing data with refcode [" + type
+										+ "] referenced from data with code ["
+										+ code + "].");
+					}
+					outType.append(new Reference("data", referenced.getCode(),
+							referenced.getName()).toHtml());
 				}
 			}
 			if (collection) {
