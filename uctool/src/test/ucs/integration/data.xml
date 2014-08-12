@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:h="http://www.w3.org/1999/xhtml"
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
 	xsi:schemaLocation="
 		http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
@@ -12,8 +11,9 @@
 		</description>
 		<attribute name="Empty" />
 		<attribute name="With code" code="withCode" />
-		<attribute name="With all" code="withAll" status="optional" type="string"
-			length="123" description="Attribute with all options set up." />
+		<attribute name="With all" code="withAll" status="optional" type="string" length="123">
+			<description>Attribute with all options set up.</description>
+		</attribute>
 		<attribute name="Display only" status="display-only" />
 		<attribute name="Optional" status="optional" />
 		<attribute name="Conditional" status="conditional" />
@@ -34,14 +34,19 @@
 		<attribute name="Binary without length" type="binary" />
 		<attribute name="Reference to other structure" type="MasterDetail1" />
 		<attribute name="Collection of integers" type="integer" collection="true" />
-		<attribute name="Integer with length" type="integer" length="3" description="Three digits." />
-		<attribute name="Collection of integers with length" type="integer"
-			collection="true" length="10" description="Collection of max 10 integers." />
-		<attribute name="Collection of strings with length" type="string" collection="true"
-			length="12" description="Collection of max 12 strings." />
+		<attribute name="Integer with length" type="integer" length="3">
+			<description>Three digits.</description>
+		</attribute>
+		<attribute name="Collection of integers with length" type="integer" collection="true" length="10">
+			<description>Collection of max 10 integers.</description>
+		</attribute>
+		<attribute name="Collection of strings with length" type="string" collection="true" length="12">
+			<description>Collection of max 12 strings.</description>
+		</attribute>
 		<attribute name="Collection of other structures" type="DetailN" collection="true" />
-		<attribute name="Collection of other structures with length" type="DetailN"
-			collection="true" length="5" description="Collection of max 5 instances of DetailN." />
+		<attribute name="Collection of other structures with length" type="DetailN" collection="true" length="5">
+			<description>Collection of max 5 instances of DetailN.</description>
+		</attribute>
 		<attribute name="Selected detail N" type="DetailN" />
 	</data>
 	<data name="Detail 1" code="MasterDetail1" />
@@ -68,8 +73,7 @@
 	</data>
 	<data name="Tree via subordinates" code="TreeViaSubordinates">
 		<attribute name="Name" code="name" type="string" />
-		<attribute name="Subordinates" code="subordinates" type="TreeViaSubordinates"
-			collection="true" />
+		<attribute name="Subordinates" code="subordinates" type="TreeViaSubordinates" collection="true" />
 	</data>
 	<data name="Recursive reference entity 1" code="Recursive1">
 		<attribute name="refTo2" code="refTo2" type="Recursive2" />
@@ -81,16 +85,13 @@
 		<description>A generic business entity.</description>
 		<attribute name="Some attribute" />
 	</data>
-	<data name="Persistent code table" code="PersistentCodeTable"
-		category="persistence-code-table" />
-	<data name="Persistent enumeration" code="PersistentEnumeration"
-		category="persistence-enumeration" />
+	<data name="Persistent code table" code="PersistentCodeTable" category="persistence-code-table" />
+	<data name="Persistent enumeration" code="PersistentEnumeration" category="persistence-enumeration" />
 	<data name="UI list" code="UiList" category="ui-list" />
 	<data name="UI form" code="UiForm" category="ui-form" />
 	<data name="Interface" code="Interface" category="interface" />
 	<data name="Interface request" code="InterfaceRequest" category="interface-request" />
-	<data name="Interface response" code="InterfaceResponse"
-		category="interface-response" />
+	<data name="Interface response" code="InterfaceResponse" category="interface-response" />
 	<uc-group primary-actor="data-actor">
 		<use-case goal="Maintain masters" code="mas-001">
 			<stakeholders-interests>

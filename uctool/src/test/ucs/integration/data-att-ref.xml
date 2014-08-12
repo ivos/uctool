@@ -2,68 +2,73 @@
 <uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd">
 	<data name="Data attribute reference entity 1" code="DARE1">
-		<attribute name="Full string inherited attribute" code="fullStringInherited"
-			status="natural-key" type="string" length="123"
-			description="Full string inherited attribute description." />
-		<attribute name="Full string overridden attribute" code="fullStringOverridden"
-			status="natural-key" type="string" length="123"
-			description="Full string overridden attribute description." />
+		<attribute name="Full string inherited attribute" code="fullStringInherited" status="natural-key" type="string"
+			length="123">
+			<description>Full string inherited attribute description.</description>
+		</attribute>
+		<attribute name="Full string overridden attribute" code="fullStringOverridden" status="natural-key" type="string"
+			length="123">
+			<description>Full string overridden attribute description.</description>
+		</attribute>
 		<attribute name="Empty attribute kept empty" code="emptyEmpty" />
 		<attribute name="Empty attribute overridden" code="emptyOverridden" />
-		<attribute name="Integer collection attribute" code="integerCollection"
-			status="optional" type="integer" collection="true" length="123"
-			description="Integer collection attribute description." />
+		<attribute name="Integer collection attribute" code="integerCollection" status="optional" type="integer"
+			collection="true" length="123">
+			<description>Integer collection attribute description.</description>
+		</attribute>
 	</data>
 	<data name="Data attribute reference entity 2" code="DARE2">
-		<attribute name="Date attribute" code="date" status="display-only" type="date"
-			description="Date attribute description." />
-		<attribute name="Structure attribute" code="dare1Ref" status="mandatory" type="DARE1"
-			description="Structure attribute description." />
-		<attribute name="Structure collection attribute" code="dare1List" status="optional"
-			type="DARE1" collection="true" length="10" description="Structure collection attribute description." />
+		<attribute name="Date attribute" code="date" status="display-only" type="date">
+			<description>Date attribute description.</description>
+		</attribute>
+		<attribute name="Structure attribute" code="dare1Ref" status="mandatory" type="DARE1">
+			<description>Structure attribute description.</description>
+		</attribute>
+		<attribute name="Structure collection attribute" code="dare1List" status="optional" type="DARE1" collection="true"
+			length="10">
+			<description>Structure collection attribute description.</description>
+		</attribute>
 		<attribute name="Other structure att" code="dare3Ref" type="DARE3" />
 	</data>
 	<data name="Indirectly referenced entity" code="DARE3">
 		<description>Is data type of an attribute on data (DARE2), that is then
-			referred to from another data (DARF1). DARF1 is then listed as referring to
+			referred to from another data (DARF1). DARF1 is
+			then listed as referring to
 			this data.
 		</description>
 		<attribute name="Att 1 of DARE3" />
 	</data>
 	<data name="Data attribute referring form 1" code="DARF1">
-		<attribute name="Own attribute 1" code="own1" status="optional" type="string"
-			description="Own attribute description." />
+		<attribute name="Own attribute 1" code="own1" status="optional" type="string">
+			<description>Own attribute description.</description>
+		</attribute>
 		<attribute-ref type="DARE1.fullStringInherited" />
-		<attribute-ref type="DARE1.fullStringOverridden" name="Custom full string name"
-			code="customFullStringCode" status="optional" length="321" description="Custom full string description." />
+		<attribute-ref type="DARE1.fullStringOverridden" name="Custom full string name" code="customFullStringCode"
+			status="optional" length="321" description="Custom full string description." />
 		<attribute-ref type="DARE1.emptyEmpty" />
-		<attribute-ref type="DARE1.emptyOverridden" name="Empty attribute name"
-			code="customEmptyCode" status="mandatory" length="56" description="Empty attribute description." />
+		<attribute-ref type="DARE1.emptyOverridden" name="Empty attribute name" code="customEmptyCode" status="mandatory"
+			length="56" description="Empty attribute description." />
 		<attribute-ref type="DARE2.date" />
 		<attribute-ref type="DARE2.dare1Ref" status="optional" />
 		<attribute-ref type="DARE2.dare1List" />
 		<attribute-ref type="DARE2.dare3Ref" />
 	</data>
-	<data name="Expanded structure with att ref" code="expand-att-ref"
-		expand="true">
-		<attribute name="Expanded own attribute" code="exp-own" status="unique" type="string"
-			description="Expanded own attribute description." />
+	<data name="Expanded structure with att ref" code="expand-att-ref" expand="true">
+		<attribute name="Expanded own attribute" code="exp-own" status="unique" type="string">
+			<description>Expanded own attribute description.</description>
+		</attribute>
 		<attribute-ref type="DARE1.fullStringInherited" />
-		<attribute-ref type="DARE1.fullStringOverridden" name="Expanded overridden attribute"
-			code="expandedOverriddenCode" status="display-only" length="45"
-			description="Expanded overridden attribute description." />
+		<attribute-ref type="DARE1.fullStringOverridden" name="Expanded overridden attribute" code="expandedOverriddenCode"
+			status="display-only" length="45" description="Expanded overridden attribute description." />
 		<attribute-ref type="DARE2.dare1List" name="Expanded structure list" />
 		<attribute-ref type="DARE2.dare3Ref" />
 	</data>
-	<data name="Expansion of att ref" code="att-ref-expansion"
-		expand="true">
-		<attribute name="Some expansion own attribute" code="expansion-own-attribute"
-			status="primary-key" type="integer" />
+	<data name="Expansion of att ref" code="att-ref-expansion" expand="true">
+		<attribute name="Some expansion own attribute" code="expansion-own-attribute" status="primary-key" type="integer" />
 		<attribute name="Expansion itself" type="expand-att-ref" />
 	</data>
 	<data name="Second level expansion of att ref" code="att-ref-expansion-2">
-		<attribute name="Some 2nd level own attribute" code="expansion-2-own-attribute"
-			status="natural-key" type="timestamp" />
+		<attribute name="Some 2nd level own attribute" code="expansion-2-own-attribute" status="natural-key" type="timestamp" />
 		<attribute name="Expansion of 1st level" type="att-ref-expansion" />
 		<attribute-ref type="DARE2.dare1Ref" name="Additional ref att" />
 	</data>
