@@ -169,6 +169,8 @@ public class UctoolExecutor {
 		for (Object output : outputs) {
 			if (output instanceof UseCaseOut) {
 				useCaseConverter.addReferences((UseCaseOut) output);
+			} else if (output instanceof DataOut) {
+				dataConverter.addReferences((DataOut) output);
 			}
 		}
 		logger.debug("Converted to {} outputs @ {}.", outputs.size(),

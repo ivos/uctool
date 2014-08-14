@@ -33,6 +33,8 @@ public class ExecutionContext {
 	private final Map<String, UseCase> useCases;
 	private final Map<String, UcGroup> ucGroups;
 	private final Map<String, Set<String>> ucReferences;
+	private final Map<String, Set<String>> dataReferencesData;
+	private final Map<String, Set<String>> dataReferencesUc;
 
 	private final List<Object> outputs;
 	private final List<Object> outputsSinglePage;
@@ -56,6 +58,8 @@ public class ExecutionContext {
 		useCases = new LinkedHashMap<String, UseCase>();
 		ucGroups = new LinkedHashMap<String, UcGroup>();
 		ucReferences = new LinkedHashMap<String, Set<String>>();
+		dataReferencesData = new LinkedHashMap<String, Set<String>>();
+		dataReferencesUc = new LinkedHashMap<String, Set<String>>();
 
 		outputs = new ArrayList<Object>();
 		outputsSinglePage = new ArrayList<Object>();
@@ -117,6 +121,14 @@ public class ExecutionContext {
 		return ucReferences;
 	}
 
+	public Map<String, Set<String>> getDataReferencesData() {
+		return dataReferencesData;
+	}
+
+	public Map<String, Set<String>> getDataReferencesUc() {
+		return dataReferencesUc;
+	}
+
 	public List<Object> getOutputs() {
 		return outputs;
 	}
@@ -137,13 +149,31 @@ public class ExecutionContext {
 		return dataOuts;
 	}
 
-	public void addUcRef(String refcodeUcReferenced, String refcodeUcReferencing) {
-		Set<String> references = ucReferences.get(refcodeUcReferenced);
+	public void addUcRef(String refcodeReferenced, String refcodeReferencing) {
+		Set<String> references = ucReferences.get(refcodeReferenced);
 		if (null == references) {
 			references = new LinkedHashSet<String>();
-			ucReferences.put(refcodeUcReferenced, references);
+			ucReferences.put(refcodeReferenced, references);
 		}
-		references.add(refcodeUcReferencing);
+		references.add(refcodeReferencing);
+	}
+
+	public void addDataRef(String refcodeReferenced, String refcodeReferencing,
+			String referencingType) {
+		Map<String, Set<String>> refs;
+		if ("data".equals(referencingType)) {
+			refs = dataReferencesData;
+		} else if ("use case".equals(referencingType)) {
+			refs = dataReferencesUc;
+		} else {
+			return;
+		}
+		Set<String> references = refs.get(refcodeReferenced);
+		if (null == references) {
+			references = new LinkedHashSet<String>();
+			refs.put(refcodeReferenced, references);
+		}
+		references.add(refcodeReferencing);
 	}
 
 	public boolean isSingle() {

@@ -123,6 +123,8 @@ public class ConverterHelper {
 				sb.append(")");
 			}
 			sb.append("</a>");
+			executionContext.addDataRef(refcode, referencedFromRefcode,
+					referencedFromType);
 		}
 		if (content instanceof ReqRef) {
 			ReqRef reqRef = (ReqRef) content;

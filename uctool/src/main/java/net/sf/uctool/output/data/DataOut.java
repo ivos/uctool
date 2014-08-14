@@ -3,6 +3,8 @@ package net.sf.uctool.output.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.uctool.output.Reference;
+
 public class DataOut {
 
 	private String code;
@@ -11,6 +13,8 @@ public class DataOut {
 	private String category;
 	private final List<String> descriptions = new ArrayList<String>();
 	private final List<AttributeOut> attributes = new ArrayList<AttributeOut>();
+	private final List<Reference> referencesData = new ArrayList<Reference>();
+	private final List<Reference> referencesUcs = new ArrayList<Reference>();
 
 	public String getCode() {
 		return code;
@@ -50,6 +54,14 @@ public class DataOut {
 
 	public List<AttributeOut> getAttributes() {
 		return attributes;
+	}
+
+	public List<Reference> getReferencesData() {
+		return referencesData;
+	}
+
+	public List<Reference> getReferencesUcs() {
+		return referencesUcs;
 	}
 
 	@Override

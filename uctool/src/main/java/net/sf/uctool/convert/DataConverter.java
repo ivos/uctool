@@ -4,6 +4,7 @@ import static net.sf.uctool.util.Escape.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.ExecutionContext;
@@ -13,6 +14,7 @@ import net.sf.uctool.output.data.DataOut;
 import net.sf.uctool.xsd.Attribute;
 import net.sf.uctool.xsd.Data;
 import net.sf.uctool.xsd.DescriptionType;
+import net.sf.uctool.xsd.UseCase;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -92,6 +94,8 @@ public class DataConverter {
 					}
 					outType.append(new Reference("data", referenced.getCode(),
 							referenced.getName()).toHtml());
+					executionContext.addDataRef(referenced.getCode(), refcode,
+							"data");
 				}
 			}
 			if (collection) {
@@ -114,7 +118,7 @@ public class DataConverter {
 				StringBuilder sb = new StringBuilder();
 				for (Object content : descriptionType.getContent()) {
 					converterHelper.writeDescription(sb, content, "attribute",
-							code + "." + attributeCode, null);
+							code + "." + attributeCode, refcode);
 				}
 				ao.setDescription(sb.toString().trim());
 			}
@@ -124,4 +128,37 @@ public class DataConverter {
 
 		return o;
 	}
+
+	public void addReferences(DataOut o) {
+		logger.debug("Adding references to data {}.", o);
+		String refcode = o.getRefcode();
+		Set<String> references;
+
+		references = executionContext.getDataReferencesData().get(refcode);
+		if (null != references) {
+			for (String referencingRefcode : references) {
+				Data referencing = executionContext.getDatas().get(
+						referencingRefcode);
+				String referencingCode = referencing.getCode();
+				Reference reference = new Reference("data", referencingCode,
+						referencing.getName());
+				o.getReferencesData().add(reference);
+				logger.debug("Added reference {}.", reference);
+			}
+		}
+
+		references = executionContext.getDataReferencesUc().get(refcode);
+		if (null != references) {
+			for (String referencingRefcode : references) {
+				UseCase referencing = executionContext.getUseCases().get(
+						referencingRefcode);
+				String referencingCode = referencing.getCode();
+				Reference reference = new Reference("uc", referencingCode,
+						referencing.getCode() + " - " + referencing.getGoal());
+				o.getReferencesUcs().add(reference);
+				logger.debug("Added reference {}.", reference);
+			}
+		}
+	}
+
 }

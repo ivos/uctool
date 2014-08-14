@@ -8,10 +8,9 @@ import net.sf.uctool.execute.Project;
 import net.sf.uctool.execute.UctoolExecutor;
 
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
+//@Ignore
 public class IntegrationTest extends TemplatingTestBase implements
 		TemplateTestConstants {
 

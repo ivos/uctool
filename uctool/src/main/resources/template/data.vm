@@ -29,6 +29,14 @@
 #end</tbody>
 </table>
 #end
+#if(!$data.referencesData.isEmpty())<div><strong>References in data:</strong>
+#foreach($ref in $data.referencesData)#ref($ref)#if( $foreach.hasNext ),#end
+$newline#end</div>
+#end
+#if(!$data.referencesUcs.isEmpty())<div><strong>References in use cases:</strong>
+#foreach($ref in $data.referencesUcs)#ref($ref)#if( $foreach.hasNext ),#end
+$newline#end</div>
+#end
 #if(! $ctx.single)
 #parse("template/footer.vm")
 </body>

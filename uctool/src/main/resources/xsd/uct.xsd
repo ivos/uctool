@@ -234,6 +234,7 @@
 		<xs:complexType mixed="true">
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
 				<xs:any namespace="http://www.w3.org/1999/xhtml" processContents="skip" />
+				<xs:element ref="uct:uc-ref" />
 				<xs:element ref="uct:step-ref" />
 				<xs:element ref="uct:data-ref" />
 				<xs:element ref="uct:req-ref" />

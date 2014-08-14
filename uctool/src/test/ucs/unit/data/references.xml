@@ -4,14 +4,39 @@
 		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
 	">
-	<actor name="Actor 1" code="a1"></actor>
+	<data name="References" code="references"></data>
+
+	<data name="Reference from data description" code="reference_from_data_description">
+		<description>
+			<data-ref code="references"></data-ref>
+		</description>
+	</data>
+	<data name="Reference from attribute description" code="reference_from_attribute_description">
+		<attribute name="Some attribute">
+			<description>
+				<data-ref code="references"></data-ref>
+			</description>
+		</attribute>
+	</data>
+	<data name="Reference from attribute type" code="reference_from_attribute_type">
+		<attribute name="Some attribute" type="references"></attribute>
+	</data>
+
+	<actor name="Actor 1" code="a1">
+		<description>
+			<data-ref code="references"></data-ref>
+		</description>
+	</actor>
+	<actor name="Actor 2" code="a2">
+		<description>
+			<data-ref code="references"></data-ref>
+		</description>
+	</actor>
 	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
-		<use-case code="references" goal="References UC goal" level="sea">
-		</use-case>
 		<use-case goal="Ref from same uc group" code="ref-from-same-ucg">
 			<success>
 				<step>
-					<uc-ref code="references"></uc-ref>
+					<data-ref code="references"></data-ref>
 				</step>
 			</success>
 		</use-case>
@@ -21,7 +46,7 @@
 		<use-case goal="Ref from other uc group &lt;b &amp; " code="ref-from-other-ucg">
 			<success>
 				<step>
-					<uc-ref code="references"></uc-ref>
+					<data-ref code="references"></data-ref>
 				</step>
 			</success>
 		</use-case>
@@ -30,7 +55,7 @@
 				<step>
 					<h:div>
 						<h:strong>
-							<uc-ref code="references"></uc-ref>
+							<data-ref code="references"></data-ref>
 						</h:strong>
 					</h:div>
 				</step>
@@ -40,7 +65,7 @@
 		<use-case goal="Ref from interest" code="ref-from-interest">
 			<stakeholders-interests>
 				<interest stakeholder="S1">
-					<uc-ref code="references"></uc-ref>
+					<data-ref code="references"></data-ref>
 				</interest>
 			</stakeholders-interests>
 		</use-case>
@@ -49,7 +74,7 @@
 				<interest stakeholder="S1">
 					<h:div>
 						<h:strong>
-							<uc-ref code="references"></uc-ref>
+							<data-ref code="references"></data-ref>
 						</h:strong>
 					</h:div>
 				</interest>
@@ -59,7 +84,7 @@
 		<use-case goal="Ref from min guarantees item" code="ref-from-ming-item">
 			<minimal-guarantees>
 				<item>
-					<uc-ref code="references"></uc-ref>
+					<data-ref code="references"></data-ref>
 				</item>
 			</minimal-guarantees>
 		</use-case>
@@ -68,7 +93,7 @@
 				<item>
 					<h:div>
 						<h:strong>
-							<uc-ref code="references"></uc-ref>
+							<data-ref code="references"></data-ref>
 						</h:strong>
 					</h:div>
 				</item>
@@ -77,7 +102,7 @@
 		<use-case goal="Ref from min guarantees text" code="ref-from-ming-text">
 			<minimal-guarantees>
 				<text>
-					<uc-ref code="references"></uc-ref>
+					<data-ref code="references"></data-ref>
 				</text>
 			</minimal-guarantees>
 		</use-case>
@@ -86,7 +111,7 @@
 				<text>
 					<h:div>
 						<h:strong>
-							<uc-ref code="references"></uc-ref>
+							<data-ref code="references"></data-ref>
 						</h:strong>
 					</h:div>
 				</text>
@@ -96,7 +121,7 @@
 		<use-case goal="Ref from suc guarantees item" code="ref-from-sucg-item">
 			<success-guarantees>
 				<item>
-					<uc-ref code="references"></uc-ref>
+					<data-ref code="references"></data-ref>
 				</item>
 			</success-guarantees>
 		</use-case>
@@ -105,7 +130,7 @@
 				<item>
 					<h:div>
 						<h:strong>
-							<uc-ref code="references"></uc-ref>
+							<data-ref code="references"></data-ref>
 						</h:strong>
 					</h:div>
 				</item>
@@ -114,7 +139,7 @@
 		<use-case goal="Ref from suc guarantees text" code="ref-from-sucg-text">
 			<success-guarantees>
 				<text>
-					<uc-ref code="references"></uc-ref>
+					<data-ref code="references"></data-ref>
 				</text>
 			</success-guarantees>
 		</use-case>
@@ -123,25 +148,13 @@
 				<text>
 					<h:div>
 						<h:strong>
-							<uc-ref code="references"></uc-ref>
+							<data-ref code="references"></data-ref>
 						</h:strong>
 					</h:div>
 				</text>
 			</success-guarantees>
 		</use-case>
 
-		<use-case goal="Ref from condition" code="ref-from-condition">
-			<success>
-				<step handle="s1"></step>
-			</success>
-			<extensions>
-				<condition step-ref="s1">
-					<when>
-						<uc-ref code="references"></uc-ref>
-					</when>
-				</condition>
-			</extensions>
-		</use-case>
 		<use-case goal="Ref from condition step" code="ref-from-condition-step">
 			<success>
 				<step handle="s1"></step>
@@ -149,7 +162,7 @@
 			<extensions>
 				<condition step-ref="s1">
 					<step>
-						<uc-ref code="references"></uc-ref>
+						<data-ref code="references"></data-ref>
 					</step>
 				</condition>
 			</extensions>
@@ -163,7 +176,7 @@
 					<step>
 						<h:div>
 							<h:strong>
-								<uc-ref code="references"></uc-ref>
+								<data-ref code="references"></data-ref>
 							</h:strong>
 						</h:div>
 					</step>
@@ -171,23 +184,6 @@
 			</extensions>
 		</use-case>
 
-		<use-case goal="Ref from step condition" code="ref-from-step-condition">
-			<success>
-				<step handle="s1"></step>
-			</success>
-			<extensions>
-				<condition step-ref="s1">
-					<step></step>
-					<step-extensions>
-						<step-condition>
-							<when>
-								<uc-ref code="references"></uc-ref>
-							</when>
-						</step-condition>
-					</step-extensions>
-				</condition>
-			</extensions>
-		</use-case>
 		<use-case goal="Ref from step condition step" code="ref-from-step-condition-step">
 			<success>
 				<step handle="s1"></step>
@@ -198,7 +194,7 @@
 					<step-extensions>
 						<step-condition>
 							<step>
-								<uc-ref code="references"></uc-ref>
+								<data-ref code="references"></data-ref>
 							</step>
 						</step-condition>
 					</step-extensions>
@@ -217,7 +213,7 @@
 							<step>
 								<h:div>
 									<h:strong>
-										<uc-ref code="references"></uc-ref>
+										<data-ref code="references"></data-ref>
 									</h:strong>
 								</h:div>
 							</step>
@@ -226,7 +222,12 @@
 				</condition>
 			</extensions>
 		</use-case>
-
 	</uc-group>
+
+	<requirement name="Rq 1 name" code="rq1">
+		<description>
+			<data-ref code="references"></data-ref>
+		</description>
+	</requirement>
 
 </uct>
