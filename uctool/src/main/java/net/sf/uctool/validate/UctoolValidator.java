@@ -1,18 +1,23 @@
 package net.sf.uctool.validate;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Attachment;
 import net.sf.uctool.xsd.AttachmentGroup;
+import net.sf.uctool.xsd.Attribute;
 import net.sf.uctool.xsd.Data;
+import net.sf.uctool.xsd.Instance;
 import net.sf.uctool.xsd.Requirement;
 import net.sf.uctool.xsd.Term;
 import net.sf.uctool.xsd.UcGroup;
 import net.sf.uctool.xsd.Uct;
 import net.sf.uctool.xsd.UseCase;
+import net.sf.uctool.xsd.Value;
 
 public class UctoolValidator {
 
@@ -53,17 +58,71 @@ public class UctoolValidator {
 					Data data = (Data) object;
 					String code = data.getCode();
 					String refcode = data.getRefcode();
-					for (Data previous : executionContext.getDatas().values()) {
-						if (previous.getCode().equals(code)) {
-							throw new ValidationException(
-									"Duplicate data with code [" + code + "].");
-						}
-					}
 					if (null == refcode) {
 						refcode = code;
 						data.setRefcode(code);
 					}
+					if (executionContext.getDataCodes().contains(refcode)
+							|| executionContext.getDataCodes().contains(code)) {
+						throw new ValidationException(
+								"Duplicate data or instance with code [" + code
+										+ "], refcode [" + refcode + "].");
+					}
+					executionContext.getDataCodes().add(refcode);
+					executionContext.getDataCodes().add(code);
+
+					Set<String> attributeCodes = new HashSet<String>();
+					Set<String> attributeRefcodes = new HashSet<String>();
+					for (Attribute attribute : data.getAttribute()) {
+						String attributeCode = attribute.getCode();
+						String attributeRefcode = attribute.getRefcode();
+						if (null == attributeRefcode) {
+							attributeRefcode = attributeCode;
+							attribute.setRefcode(attributeCode);
+						}
+						if (attributeCodes.contains(attributeCode)
+								|| attributeRefcodes.contains(attributeRefcode)) {
+							throw new ValidationException(
+									"Duplicate attribute with code [" + code
+											+ "] on data with code [" + code
+											+ "].");
+						}
+						attributeCodes.add(attributeCode);
+						attributeRefcodes.add(attributeRefcode);
+					}
+
 					executionContext.getDatas().put(refcode, data);
+				}
+				if (object instanceof Instance) {
+					Instance instance = (Instance) object;
+					String code = instance.getCode();
+					String refcode = instance.getRefcode();
+					if (null == refcode) {
+						refcode = code;
+						instance.setRefcode(code);
+					}
+					if (executionContext.getDataCodes().contains(refcode)
+							|| executionContext.getDataCodes().contains(code)) {
+						throw new ValidationException(
+								"Duplicate data or instance with code [" + code
+										+ "], refcode [" + refcode + "].");
+					}
+					executionContext.getDataCodes().add(refcode);
+					executionContext.getDataCodes().add(code);
+
+					Set<String> valueCodes = new HashSet<String>();
+					for (Value value : instance.getValue()) {
+						String valueCode = value.getOf();
+						if (valueCodes.contains(valueCode)) {
+							throw new ValidationException(
+									"Duplicate value of [" + code
+											+ "] on instance with code ["
+											+ code + "].");
+						}
+						valueCodes.add(valueCode);
+					}
+
+					executionContext.getInstances().put(refcode, instance);
 				}
 				if (object instanceof Requirement) {
 					Requirement requirement = (Requirement) object;
@@ -84,17 +143,18 @@ public class UctoolValidator {
 					for (UseCase useCase : ucGroup.getUseCase()) {
 						String code = useCase.getCode();
 						String refcode = useCase.getRefcode();
+						if (null == refcode) {
+							refcode = code;
+							useCase.setRefcode(code);
+						}
 						for (UseCase previous : executionContext.getUseCases()
 								.values()) {
-							if (previous.getCode().equals(code)) {
+							if (previous.getCode().equals(code)
+									|| previous.getRefcode().equals(refcode)) {
 								throw new ValidationException(
 										"Duplicate use case with code [" + code
 												+ "].");
 							}
-						}
-						if (null == refcode) {
-							refcode = code;
-							useCase.setRefcode(code);
 						}
 						executionContext.getUseCases().put(refcode, useCase);
 						executionContext.getUcGroups().put(refcode, ucGroup);

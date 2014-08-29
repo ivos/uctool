@@ -1,6 +1,7 @@
 package net.sf.uctool.execute;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -10,11 +11,13 @@ import java.util.Set;
 
 import net.sf.uctool.output.actor.ActorOut;
 import net.sf.uctool.output.data.DataOut;
+import net.sf.uctool.output.data.InstanceOut;
 import net.sf.uctool.output.uc.UseCaseOut;
 import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Attachment;
 import net.sf.uctool.xsd.AttachmentGroup;
 import net.sf.uctool.xsd.Data;
+import net.sf.uctool.xsd.Instance;
 import net.sf.uctool.xsd.Requirement;
 import net.sf.uctool.xsd.Term;
 import net.sf.uctool.xsd.UcGroup;
@@ -28,6 +31,7 @@ public class ExecutionContext {
 	private final Map<String, Attachment> attachments;
 	private final Map<String, AttachmentGroup> attachmentGroups;
 	private final Map<String, Data> datas;
+	private final Map<String, Instance> instances;
 	private final Map<String, Requirement> requirements;
 	private final Set<Term> terms;
 	private final Map<String, UseCase> useCases;
@@ -36,12 +40,15 @@ public class ExecutionContext {
 	private final Map<String, Set<String>> dataReferencesData;
 	private final Map<String, Set<String>> dataReferencesUc;
 
+	private final Set<String> dataCodes;
+
 	private final List<Object> outputs;
 	private final List<Object> outputsSinglePage;
 
 	private final Map<String, UseCaseOut> useCaseOuts;
 	private final Map<String, ActorOut> actorOuts;
 	private final Map<String, DataOut> dataOuts;
+	private final Map<String, InstanceOut> instanceOuts;
 
 	private UseCase currentUseCase;
 	private boolean single = false;
@@ -53,6 +60,7 @@ public class ExecutionContext {
 		attachments = new LinkedHashMap<String, Attachment>();
 		attachmentGroups = new LinkedHashMap<String, AttachmentGroup>();
 		datas = new LinkedHashMap<String, Data>();
+		instances = new LinkedHashMap<String, Instance>();
 		requirements = new LinkedHashMap<String, Requirement>();
 		terms = new LinkedHashSet<Term>();
 		useCases = new LinkedHashMap<String, UseCase>();
@@ -61,12 +69,15 @@ public class ExecutionContext {
 		dataReferencesData = new LinkedHashMap<String, Set<String>>();
 		dataReferencesUc = new LinkedHashMap<String, Set<String>>();
 
+		dataCodes = new HashSet<String>();
+
 		outputs = new ArrayList<Object>();
 		outputsSinglePage = new ArrayList<Object>();
 
 		useCaseOuts = new LinkedHashMap<String, UseCaseOut>();
 		actorOuts = new LinkedHashMap<String, ActorOut>();
 		dataOuts = new LinkedHashMap<String, DataOut>();
+		instanceOuts = new LinkedHashMap<String, InstanceOut>();
 	}
 
 	public ResourceBundle getLabels() {
@@ -91,6 +102,10 @@ public class ExecutionContext {
 
 	public Map<String, Data> getDatas() {
 		return datas;
+	}
+
+	public Map<String, Instance> getInstances() {
+		return instances;
 	}
 
 	public Map<String, Requirement> getRequirements() {
@@ -129,6 +144,10 @@ public class ExecutionContext {
 		return dataReferencesUc;
 	}
 
+	public Set<String> getDataCodes() {
+		return dataCodes;
+	}
+
 	public List<Object> getOutputs() {
 		return outputs;
 	}
@@ -149,6 +168,10 @@ public class ExecutionContext {
 		return dataOuts;
 	}
 
+	public Map<String, InstanceOut> getInstanceOuts() {
+		return instanceOuts;
+	}
+
 	public void addUcRef(String refcodeReferenced, String refcodeReferencing) {
 		Set<String> references = ucReferences.get(refcodeReferenced);
 		if (null == references) {
@@ -161,7 +184,10 @@ public class ExecutionContext {
 	public void addDataRef(String refcodeReferenced, String refcodeReferencing,
 			String referencingType) {
 		Map<String, Set<String>> refs;
-		if ("data".equals(referencingType)) {
+		if ("data".equals(referencingType)
+				|| "instance".equals(referencingType)
+				|| "attribute".equals(referencingType)
+				|| "value".equals(referencingType)) {
 			refs = dataReferencesData;
 		} else if ("use case".equals(referencingType)) {
 			refs = dataReferencesUc;

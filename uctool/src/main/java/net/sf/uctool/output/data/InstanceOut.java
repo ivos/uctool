@@ -5,14 +5,14 @@ import java.util.List;
 
 import net.sf.uctool.output.Reference;
 
-public class DataOut {
+public class InstanceOut {
 
 	private String code;
 	private String refcode;
 	private String name;
-	private String category;
+	private DataOut of;
 	private final List<String> descriptions = new ArrayList<String>();
-	private final List<AttributeOut> attributes = new ArrayList<AttributeOut>();
+	private final List<ValueOut> values = new ArrayList<ValueOut>();
 	private final List<Reference> referencesData = new ArrayList<Reference>();
 	private final List<Reference> referencesUcs = new ArrayList<Reference>();
 
@@ -40,30 +40,24 @@ public class DataOut {
 		this.name = name;
 	}
 
-	public String getCategory() {
-		return category;
+	public DataOut getOf() {
+		return of;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setOf(DataOut of) {
+		this.of = of;
+	}
+
+	public Reference getOfRef() {
+		return new Reference("data", of.getCode(), of.getName());
 	}
 
 	public List<String> getDescriptions() {
 		return descriptions;
 	}
 
-	public List<AttributeOut> getAttributes() {
-		return attributes;
-	}
-
-	public AttributeOut getAttribute(String refcode) {
-		for (AttributeOut iteratedAttributeOut : attributes) {
-			String attributeRefcode = iteratedAttributeOut.getRefcode();
-			if (attributeRefcode.equals(refcode)) {
-				return iteratedAttributeOut;
-			}
-		}
-		return null;
+	public List<ValueOut> getValues() {
+		return values;
 	}
 
 	public List<Reference> getReferencesData() {
@@ -76,16 +70,8 @@ public class DataOut {
 
 	@Override
 	public String toString() {
-		return "DataOut [code=" + code + ", refcode=" + refcode + ", name="
+		return "InstanceOut [code=" + code + ", refcode=" + refcode + ", name="
 				+ name + "]";
-	}
-
-	public static final DataOut SAFE_EMPTY;
-
-	static {
-		SAFE_EMPTY = new DataOut();
-		SAFE_EMPTY.setName("");
-		SAFE_EMPTY.setCode("");
 	}
 
 }

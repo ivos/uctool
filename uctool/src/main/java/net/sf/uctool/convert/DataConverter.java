@@ -2,11 +2,8 @@ package net.sf.uctool.convert;
 
 import static net.sf.uctool.util.Escape.*;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 
-import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.output.Reference;
 import net.sf.uctool.output.data.AttributeOut;
@@ -14,6 +11,7 @@ import net.sf.uctool.output.data.DataOut;
 import net.sf.uctool.xsd.Attribute;
 import net.sf.uctool.xsd.Data;
 import net.sf.uctool.xsd.DescriptionType;
+import net.sf.uctool.xsd.Instance;
 import net.sf.uctool.xsd.UseCase;
 
 import org.slf4j.Logger;
@@ -25,15 +23,12 @@ public class DataConverter {
 
 	private final ExecutionContext executionContext;
 	private final ConverterHelper converterHelper;
+	private final AttributeConverter attributeConverter;
 
-	private static final List<String> DATA_TYPES = Arrays.asList("string",
-			"integer", "float", "decimal", "boolean", "date", "time",
-			"date-time", "timestamp", "binary");
-	private static final List<String> VAR_DATA_TYPES = Arrays.asList("string",
-			"binary");
-
-	public DataConverter(ExecutionContext executionContext) {
+	public DataConverter(ExecutionContext executionContext,
+			AttributeConverter attributeConverter) {
 		this.executionContext = executionContext;
+		this.attributeConverter = attributeConverter;
 		this.converterHelper = new ConverterHelper(executionContext);
 	}
 
@@ -60,69 +55,8 @@ public class DataConverter {
 		}
 
 		for (Attribute attribute : data.getAttribute()) {
-			AttributeOut ao = new AttributeOut();
-			ao.setName(attribute.getName());
-			String attributeCode = attribute.getCode();
-			ao.setCode(attributeCode);
-			ao.setStatus(attribute.getStatus());
-			if (null != attribute.getStatus()) {
-				ao.setStatus(executionContext.getLabels().getString(
-						"status." + attribute.getStatus()));
-				ao.setStatusHint(executionContext.getLabels().getString(
-						"status.hint." + attribute.getStatus()));
-			}
-			StringBuffer outType = new StringBuffer();
-			boolean collection = (null == attribute.isCollection()) ? false
-					: attribute.isCollection();
-			if (collection) {
-				outType.append(executionContext.getLabels().getString(
-						"data.collection"));
-				outType.append(" [");
-			}
-			String type = attribute.getType();
-			if (null != type) {
-				if (DATA_TYPES.contains(type)) {
-					outType.append(executionContext.getLabels().getString(
-							"data.type." + type));
-				} else {
-					Data referenced = executionContext.getDatas().get(type);
-					if (null == referenced) {
-						throw new ValidationException(
-								"Missing data with refcode [" + type
-										+ "] referenced from data with code ["
-										+ code + "].");
-					}
-					outType.append(new Reference("data", referenced.getCode(),
-							referenced.getName()).toHtml());
-					executionContext.addDataRef(referenced.getCode(), refcode,
-							"data");
-				}
-			}
-			if (collection) {
-				outType.append("]");
-			}
-			String length = attribute.getLength();
-			if (null != length || VAR_DATA_TYPES.contains(type)) {
-				outType.append(" [");
-				if (null != length) {
-					outType.append(length);
-				} else {
-					outType.append(" ");
-				}
-				outType.append("]");
-			}
-			ao.setType(outType.toString());
-
-			DescriptionType descriptionType = attribute.getDescription();
-			if (null != descriptionType) {
-				StringBuilder sb = new StringBuilder();
-				for (Object content : descriptionType.getContent()) {
-					converterHelper.writeDescription(sb, content, "attribute",
-							code + "." + attributeCode, refcode);
-				}
-				ao.setDescription(sb.toString().trim());
-			}
-
+			AttributeOut ao = attributeConverter.convert(code, refcode,
+					attribute);
 			o.getAttributes().add(ao);
 		}
 
@@ -137,11 +71,22 @@ public class DataConverter {
 		references = executionContext.getDataReferencesData().get(refcode);
 		if (null != references) {
 			for (String referencingRefcode : references) {
-				Data referencing = executionContext.getDatas().get(
+				String referencingCode, referencingName, type;
+				Data referencingData = executionContext.getDatas().get(
 						referencingRefcode);
-				String referencingCode = referencing.getCode();
-				Reference reference = new Reference("data", referencingCode,
-						referencing.getName());
+				if (null != referencingData) {
+					referencingCode = referencingData.getCode();
+					referencingName = referencingData.getName();
+					type = "data";
+				} else {
+					Instance referencingInstance = executionContext
+							.getInstances().get(referencingRefcode);
+					referencingCode = referencingInstance.getCode();
+					referencingName = referencingInstance.getName();
+					type = "instance";
+				}
+				Reference reference = new Reference(type, referencingCode,
+						referencingName);
 				o.getReferencesData().add(reference);
 				logger.debug("Added reference {}.", reference);
 			}

@@ -13,6 +13,7 @@
 				<xs:element ref="uct:uc-group" />
 				<xs:element ref="uct:actor" />
 				<xs:element ref="uct:data" />
+				<xs:element ref="uct:instance" />
 				<xs:element ref="uct:attachment-group" />
 			</xs:choice>
 		</xs:complexType>
@@ -425,6 +426,13 @@
 					<xs:documentation>Code of the attribute.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
+			<xs:attribute name="refcode" type="uct:CodeType">
+				<xs:annotation>
+					<xs:documentation>Reference code of the attribute. When defined, uniquely identifies the attribute in all
+						references.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 			<xs:attribute name="status">
 				<xs:annotation>
 					<xs:documentation>Status of the attribute.</xs:documentation>
@@ -497,6 +505,63 @@
 					</xs:attribute>
 				</xs:extension>
 			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<!-- instance -->
+	<xs:element name="instance">
+		<xs:annotation>
+			<xs:documentation>Instance definition.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="uct:description" minOccurs="0" maxOccurs="unbounded" />
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="uct:value" />
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="of" use="required" type="uct:CodeType">
+				<xs:annotation>
+					<xs:documentation>Code of data that this is an instance of.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="code" use="required" type="uct:CodeType">
+				<xs:annotation>
+					<xs:documentation>Code of the instance.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="refcode" type="uct:CodeType">
+				<xs:annotation>
+					<xs:documentation>Reference code of the instance. When defined, uniquely identifies the instance in all data
+						references.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="name" use="required" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Name of the instance.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="value">
+		<xs:annotation>
+			<xs:documentation>Value of instance. A value of a data attribute on an instance.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="uct:description" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+			<xs:attribute name="of" type="uct:CodeType" use="required">
+				<xs:annotation>
+					<xs:documentation>Code of the data attribute which value is being specified.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="from" type="uct:AttributeRefCodeType">
+				<xs:annotation>
+					<xs:documentation>Code of data, data attribute, instance or instance value from which this value is set.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<!-- terms -->

@@ -9,6 +9,8 @@ import net.sf.uctool.output.actor.ActorOut;
 import net.sf.uctool.output.actor.ActorWriter;
 import net.sf.uctool.output.data.DataOut;
 import net.sf.uctool.output.data.DataWriter;
+import net.sf.uctool.output.data.InstanceOut;
+import net.sf.uctool.output.data.InstanceWriter;
 import net.sf.uctool.output.uc.UseCaseOut;
 import net.sf.uctool.output.uc.UseCaseWriter;
 
@@ -24,6 +26,7 @@ public class UctoolWriter {
 	private SinglePageWriter singlePageWriter;
 	private UseCaseWriter useCaseWriter;
 	private DataWriter dataWriter;
+	private InstanceWriter instanceWriter;
 	private ExecutionContext executionContext;
 
 	public void init(File baseDir, ExecutionContext executionContext) {
@@ -37,6 +40,7 @@ public class UctoolWriter {
 		new File(baseDir, "actor").mkdirs();
 		new File(baseDir, "uc").mkdirs();
 		new File(baseDir, "data").mkdirs();
+		new File(baseDir, "instance").mkdirs();
 		new File(baseDir, "summary").mkdirs();
 		new File(baseDir, "single").mkdirs();
 
@@ -46,6 +50,7 @@ public class UctoolWriter {
 		actorWriter = new ActorWriter(templateWriter);
 		useCaseWriter = new UseCaseWriter(templateWriter);
 		dataWriter = new DataWriter(templateWriter);
+		instanceWriter = new InstanceWriter(templateWriter);
 		singlePageWriter = new SinglePageWriter(templateWriter);
 	}
 
@@ -63,6 +68,10 @@ public class UctoolWriter {
 		}
 		if (item instanceof DataOut) {
 			dataWriter.write((DataOut) item, executionContext);
+			return;
+		}
+		if (item instanceof InstanceOut) {
+			instanceWriter.write((InstanceOut) item, executionContext);
 			return;
 		}
 		throw new WriterException("Unknown item class ["

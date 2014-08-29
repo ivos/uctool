@@ -13,7 +13,9 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 import net.sf.uctool.convert.ActorConverter;
+import net.sf.uctool.convert.AttributeConverter;
 import net.sf.uctool.convert.DataConverter;
+import net.sf.uctool.convert.InstanceConverter;
 import net.sf.uctool.convert.UseCaseConverter;
 import net.sf.uctool.exception.ReaderException;
 import net.sf.uctool.exception.ResourcesException;
@@ -21,10 +23,12 @@ import net.sf.uctool.input.UctoolReader;
 import net.sf.uctool.output.UctoolWriter;
 import net.sf.uctool.output.actor.ActorOut;
 import net.sf.uctool.output.data.DataOut;
+import net.sf.uctool.output.data.InstanceOut;
 import net.sf.uctool.output.uc.UseCaseOut;
 import net.sf.uctool.validate.UctoolValidator;
 import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Data;
+import net.sf.uctool.xsd.Instance;
 import net.sf.uctool.xsd.Uct;
 import net.sf.uctool.xsd.UseCase;
 
@@ -44,6 +48,8 @@ public class UctoolExecutor {
 	private final ActorConverter actorConverter;
 	private final UseCaseConverter useCaseConverter;
 	private final DataConverter dataConverter;
+	private final AttributeConverter attributeConverter;
+	private final InstanceConverter instanceConverter;
 	private final UctoolWriter uctoolWriter;
 	private final UctoolValidator uctoolValidator;
 
@@ -57,7 +63,9 @@ public class UctoolExecutor {
 		uctoolValidator = new UctoolValidator(executionContext);
 		actorConverter = new ActorConverter(executionContext);
 		useCaseConverter = new UseCaseConverter(executionContext);
-		dataConverter = new DataConverter(executionContext);
+		attributeConverter = new AttributeConverter(executionContext);
+		dataConverter = new DataConverter(executionContext, attributeConverter);
+		instanceConverter = new InstanceConverter(executionContext);
 		uctoolWriter = new UctoolWriter();
 	}
 
@@ -139,10 +147,11 @@ public class UctoolExecutor {
 		time.start();
 		uctoolValidator.validate(inputs);
 		logger.debug("Validated inputs @ {}.", time.toString());
-		logger.debug("Loaded {} actor(s), {} use case(s), {} data(s).",
+		logger.debug(
+				"Loaded {} actor(s), {} use case(s), {} data(s), {} instance(s).",
 				executionContext.getActors().size(), executionContext
 						.getUseCases().size(), executionContext.getDatas()
-						.size());
+						.size(), executionContext.getInstances().size());
 		time.reset();
 	}
 
@@ -157,13 +166,19 @@ public class UctoolExecutor {
 		for (UseCase useCase : executionContext.getUseCases().values()) {
 			UseCaseOut useCaseOut = useCaseConverter.convert(useCase);
 			outputs.add(useCaseOut);
-			executionContext.getUseCaseOuts().put(useCaseOut.getCode(),
+			executionContext.getUseCaseOuts().put(useCaseOut.getRefcode(),
 					useCaseOut);
 		}
 		for (Data data : executionContext.getDatas().values()) {
 			DataOut dataOut = dataConverter.convert(data);
 			outputs.add(dataOut);
-			executionContext.getDataOuts().put(dataOut.getCode(), dataOut);
+			executionContext.getDataOuts().put(dataOut.getRefcode(), dataOut);
+		}
+		for (Instance instance : executionContext.getInstances().values()) {
+			InstanceOut instanceOut = instanceConverter.convert(instance);
+			outputs.add(instanceOut);
+			executionContext.getInstanceOuts().put(instanceOut.getRefcode(),
+					instanceOut);
 		}
 
 		for (Object output : outputs) {
@@ -171,6 +186,8 @@ public class UctoolExecutor {
 				useCaseConverter.addReferences((UseCaseOut) output);
 			} else if (output instanceof DataOut) {
 				dataConverter.addReferences((DataOut) output);
+			} else if (output instanceof InstanceOut) {
+				instanceConverter.addReferences((InstanceOut) output);
 			}
 		}
 		logger.debug("Converted to {} outputs @ {}.", outputs.size(),

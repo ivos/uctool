@@ -6,6 +6,7 @@ public class AttributeOut {
 
 	private String name;
 	private String code;
+	private String refcode;
 	private String status;
 	private String statusHint;
 	private String type;
@@ -25,6 +26,14 @@ public class AttributeOut {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getRefcode() {
+		return refcode;
+	}
+
+	public void setRefcode(String refcode) {
+		this.refcode = refcode;
 	}
 
 	public String getStatus() {
@@ -61,7 +70,8 @@ public class AttributeOut {
 
 	@Override
 	public String toString() {
-		return "AttributeOut [name=" + name + ", code=" + code + "]";
+		return "AttributeOut [name=" + name + ", code=" + code + ", refcode="
+				+ refcode + "]";
 	}
 
 }

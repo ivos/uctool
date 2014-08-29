@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+
+	<instance name="Name of instance" code="full" of="refc_full_data" refcode="inst_refcode_1">
+		<description>Description 1.</description>
+		<description>Description 2.</description>
+		<description>
+			Contains
+			<h:strong class="class-1 class-2" title="A title">
+				some
+				<h:em class="class-3">HTML code</h:em>
+			</h:strong>
+			and entities: &lt;b &amp; &amp;nbsp; .
+		</description>
+		<description>
+			Contains
+			<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
+			,
+			<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
+			,
+			<data-ref code="the-referenced-refcode">data refcode link &lt;b &amp; " '</data-ref>
+			,
+			<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
+			.
+		</description>
+		<description>
+			Here
+			<h:strong>
+				is
+				<h:em>
+					some
+					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
+					,
+					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
+					,
+					<data-ref code="the-referenced-refcode">data refcode link &lt;b &amp; " '</data-ref>
+					,
+					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
+					within
+				</h:em>
+				HTML
+			</h:strong>
+			.
+		</description>
+		<value of="fullAttRefc" from="refc_dtFullF.refc_attFullF">
+			<description>Full atts mapping description.</description>
+		</value>
+		<value of="fullAttCustomTypes" from="dtFullCustomTypesF.attFullCustomTypesF">
+			<description>Full att custom types mapping description.</description>
+		</value>
+		<value of="attMinimal"></value>
+		<value of="attDesc">
+			<description>With description only.</description>
+		</value>
+		<value of="refc_attRfc">
+			<description>Referring to of attribute via refcode.</description>
+		</value>
+		<value of="attDtAtt" from="dtDtAttF.attDtAttF">
+			<description>From data attribute.</description>
+		</value>
+		<value of="attRfcdtAtt" from="refc_dtRfcdtAttF.attRfcdtAttF">
+			<description>From data via refcode attribute.</description>
+		</value>
+		<value of="attDtRfcatt" from="dtDtRfcattF.refc_attDtRfcattF">
+			<description>From data attribute via refcode.</description>
+		</value>
+		<value of="attRfcdtRfcatt" from="refc_dtRfcdtRfcattF.refc_attRfcdtRfcattF">
+			<description>From data via refcode and attribute via refcode.</description>
+		</value>
+	</instance>
+
+	<attachment-group directory="att-dir1" name="">
+		<attachment name="Att 1 name" code="att1" file-name="att1-file-name" />
+	</attachment-group>
+	<data name="Dt 1 name" code="dt1"></data>
+	<data name="Referenced via refcode" code="a-non-referenced-code" refcode="the-referenced-refcode" />
+	<requirement name="Rq 1 name" code="rq1"></requirement>
+
+	<data name="Name of instance data" code="full_data" refcode="refc_full_data" category="persistence-entity">
+		<attribute name="Full att" code="fullAtt" refcode="fullAttRefc" status="mandatory" type="string" length="23"
+			collection="true">
+			<description>Full att description.</description>
+		</attribute>
+		<attribute name="Full att custom types" code="fullAttCustomTypes" status="primary-key" type="refc_CustomTypeTarget"
+			length="98" collection="true">
+			<description>Full att custom types description.</description>
+		</attribute>
+		<attribute name="" code="attMinimal"></attribute>
+		<attribute name="Attribute description only" code="attDesc"></attribute>
+		<attribute name="Attribute with refc" code="attRfc" refcode="refc_attRfc"></attribute>
+		<attribute name="Attribute data att" code="attDtAtt"></attribute>
+		<attribute name="Attribute rfcdata att" code="attRfcdtAtt"></attribute>
+		<attribute name="Attribute data rfcatt" code="attDtRfcatt"></attribute>
+		<attribute name="Attribute rfcdata rfcatt" code="attRfcdtRfcatt"></attribute>
+	</data>
+
+	<data name="From dt dt att" code="dtDtAttF">
+		<attribute name="From att of dt att" code="attDtAttF"></attribute>
+	</data>
+	<data name="From dt rfc dt att" code="dtRfcdtAttF" refcode="refc_dtRfcdtAttF">
+		<attribute name="From att rfc dt att" code="attRfcdtAttF"></attribute>
+	</data>
+	<data name="From dt dt rfc att" code="dtDtRfcattF">
+		<attribute name="From att dt rfc att" code="attDtRfcattF" refcode="refc_attDtRfcattF"></attribute>
+	</data>
+	<data name="From dt rfc dt rfc att" code="dtRfcdtRfcattF" refcode="refc_dtRfcdtRfcattF">
+		<attribute name="From att rfc dt rfc att" code="attRfcdtRfcattF" refcode="refc_attRfcdtRfcattF"></attribute>
+	</data>
+
+	<data name="From dt full" code="dtFullF" refcode="refc_dtFullF">
+		<attribute name="From att full" code="attFullF" refcode="refc_attFullF" status="optional" type="integer"
+			length="45" collection="true"></attribute>
+	</data>
+	<data name="From dt full custom types" code="dtFullCustomTypesF">
+		<attribute name="From att custom types full" code="attFullCustomTypesF" status="unique" type="refc_CustomTypeSource"
+			length="76" collection="true"></attribute>
+	</data>
+
+	<data name="Custom type target" code="CustomTypeTarget" refcode="refc_CustomTypeTarget"></data>
+	<data name="Custom type source" code="CustomTypeSource" refcode="refc_CustomTypeSource"></data>
+
+</uct>
