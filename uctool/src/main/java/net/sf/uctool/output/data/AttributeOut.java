@@ -28,6 +28,20 @@ public class AttributeOut {
 		this.code = code;
 	}
 
+	public String getNameAndCodeLabel() {
+		StringBuffer sb = new StringBuffer();
+		sb.append(getName());
+		if (getCode().length() > 0) {
+			if (getName().length() > 0) {
+				sb.append(", ");
+			}
+			sb.append("<code>");
+			sb.append(getCode());
+			sb.append("</code>");
+		}
+		return sb.toString();
+	}
+
 	public String getRefcode() {
 		return refcode;
 	}
