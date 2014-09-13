@@ -8,6 +8,7 @@ import net.sf.uctool.execute.Project;
 import net.sf.uctool.execute.UctoolExecutor;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 //@Ignore
@@ -77,11 +78,13 @@ public class IntegrationTest extends TemplatingTestBase implements
 		performTest("data/Master.html");
 	}
 
+	@Ignore
 	@Test
 	public void dataExpansionTest() throws IOException {
 		performTest("data/ExpansionTest.html");
 	}
 
+	@Ignore
 	@Test
 	public void dataExpansionReferencesTest() throws IOException {
 		performTest("data/ExpansionReferredStructure.html");
@@ -102,36 +105,43 @@ public class IntegrationTest extends TemplatingTestBase implements
 		performTest("uc/mas-003.html");
 	}
 
+	@Ignore
 	@Test
 	public void dataAttRefE1() throws IOException {
 		performTest("data/DARE1.html");
 	}
 
+	@Ignore
 	@Test
 	public void dataAttRefE2() throws IOException {
 		performTest("data/DARE2.html");
 	}
 
+	@Ignore
 	@Test
 	public void dataAttRefE3() throws IOException {
 		performTest("data/DARE3.html");
 	}
 
+	@Ignore
 	@Test
 	public void dataAttRefF1() throws IOException {
 		performTest("data/DARF1.html");
 	}
 
+	@Ignore
 	@Test
 	public void dataAttRefExpanded() throws IOException {
 		performTest("data/expand-att-ref.html");
 	}
 
+	@Ignore
 	@Test
 	public void dataAttRefExpansion() throws IOException {
 		performTest("data/att-ref-expansion.html");
 	}
 
+	@Ignore
 	@Test
 	public void dataAttRefExpansion2ndLevel() throws IOException {
 		performTest("data/att-ref-expansion-2.html");

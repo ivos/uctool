@@ -36,7 +36,9 @@ public class DataTest extends TemplateTestBase {
 			e.execute(new File(inputBaseDir, "data/duplicateData.xml"),
 					outputDir);
 		} catch (ValidationException e) {
-			assertEquals("Duplicate data with code [d1].", e.getMessage());
+			assertEquals(
+					"Duplicate data or instance with code [d1], refcode [d1].",
+					e.getMessage());
 		}
 	}
 
