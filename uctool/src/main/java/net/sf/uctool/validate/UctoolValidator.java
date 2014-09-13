@@ -80,10 +80,12 @@ public class UctoolValidator {
 							attributeRefcode = attributeCode;
 							attribute.setRefcode(attributeCode);
 						}
-						if (attributeCodes.contains(attributeCode)
-								|| attributeRefcodes.contains(attributeRefcode)) {
+						if ((null != attributeRefcode)
+								&& (attributeCodes.contains(attributeCode) || attributeRefcodes
+										.contains(attributeRefcode))) {
 							throw new ValidationException(
-									"Duplicate attribute with code [" + code
+									"Duplicate attribute with code ["
+											+ attributeCode
 											+ "] on data with code [" + code
 											+ "].");
 						}
