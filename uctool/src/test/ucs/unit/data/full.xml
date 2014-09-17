@@ -48,7 +48,7 @@
 		<attribute name="" />
 		<attribute name="Empty" />
 		<attribute name="With code" code="withCode" />
-		<attribute name="With all" code="withAll" status="optional" type="string" length="123">
+		<attribute name="With all" code="withAll" refcode="witAll_refcode" status="optional" type="string" length="123">
 			<description>Attribute with all options set up.</description>
 		</attribute>
 		<attribute name="Display only" status="display-only" />
@@ -86,6 +86,12 @@
 		</attribute>
 		<attribute name="Selected detail N" type="DetailN" />
 		<attribute name="Reference to data via refcode" type="the-referenced-refcode"></attribute>
+		<attribute name="Refcode and no code 1" refcode="rfc_no_code_1_refcode">
+			<description>Multiple attributes with refcode and no code 1.</description>
+		</attribute>
+		<attribute name="Refcode and no code 2" refcode="rfc_no_code_2_refcode">
+			<description>Multiple attributes with refcode and no code 2.</description>
+		</attribute>
 	</data>
 
 	<attachment-group directory="att-dir1" name="">
