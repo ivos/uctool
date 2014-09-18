@@ -5,6 +5,7 @@ import java.io.FileWriter;
 
 import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.output.actor.ActorOut;
+import net.sf.uctool.output.data.DataOut;
 import net.sf.uctool.output.uc.UseCaseOut;
 
 import org.apache.velocity.VelocityContext;
@@ -57,6 +58,23 @@ public class SinglePageWriter {
 				templateWriter.writeText("\n", fw, outputFile);
 				context.put("uc", useCase);
 				templateWriter.writeFragment("template/uc.vm", context, fw,
+						outputFile);
+			}
+		}
+
+		if (!executionContext.getDataOuts().isEmpty()) {
+			// data index
+			templateWriter.writeText("\n", fw, outputFile);
+			templateWriter.writeFragment("template/data-index.vm", context, fw,
+					outputFile);
+
+			// data
+			templateWriter.writeText("\n<h2>Data details</h2>\n", fw,
+					outputFile);
+			for (DataOut data : executionContext.getDataOuts().values()) {
+				templateWriter.writeText("\n", fw, outputFile);
+				context.put("data", data);
+				templateWriter.writeFragment("template/data.vm", context, fw,
 						outputFile);
 			}
 		}

@@ -5,6 +5,8 @@ import java.util.List;
 
 import net.sf.uctool.output.Reference;
 
+import org.apache.commons.lang.StringUtils;
+
 public class DataOut {
 
 	private String code;
@@ -41,7 +43,11 @@ public class DataOut {
 	}
 
 	public String getCategory() {
-		return category;
+		return StringUtils.defaultString(category);
+	}
+
+	public boolean hasCategory() {
+		return getCategory().length() > 0;
 	}
 
 	public void setCategory(String category) {

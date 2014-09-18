@@ -203,6 +203,7 @@ public class UctoolExecutor {
 		uctoolWriter.writeIndex();
 		uctoolWriter.writeActorIndex();
 		uctoolWriter.writeUseCaseIndex();
+		uctoolWriter.writeDataIndex();
 		uctoolWriter.writeSummaryIndex();
 		uctoolWriter.writeEntryPointList();
 		uctoolWriter.writeSinglePage();

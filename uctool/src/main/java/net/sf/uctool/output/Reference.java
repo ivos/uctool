@@ -28,7 +28,11 @@ public class Reference {
 		return label;
 	}
 
-	public String toHtml() {
+	public String toHtml(boolean single) {
+		if (single) {
+			return "<a href=\"#" + type + "_" + code + "\" title=\"" + label
+					+ "\">" + label + "</a>";
+		}
 		return "<a href=\"../" + type + "/" + code + ".html\" title=\"" + label
 				+ "\">" + label + "</a>";
 	}

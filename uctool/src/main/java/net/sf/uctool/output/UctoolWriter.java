@@ -97,6 +97,13 @@ public class UctoolWriter {
 		templateWriter.writeFile("template/uc-index.vm", "uc/index", context);
 	}
 
+	public void writeDataIndex() {
+		VelocityContext context = new VelocityContext();
+		context.put("ctx", executionContext);
+		templateWriter.writeFile("template/data-index.vm", "data/index",
+				context);
+	}
+
 	public void writeSummaryIndex() {
 		VelocityContext context = new VelocityContext();
 		context.put("ctx", executionContext);

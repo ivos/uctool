@@ -69,7 +69,8 @@ public class AttributeConverter {
 							+ dataCode + "].");
 				}
 				outType.append(new Reference("data", referenced.getCode(),
-						referenced.getName()).toHtml());
+						referenced.getName()).toHtml(executionContext
+						.isSingle()));
 				executionContext.addDataRef(referenced.getCode(), dataRefcode,
 						"data");
 			}

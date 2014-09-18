@@ -14,7 +14,7 @@
 <a id="data_$data.code"></a>
 <h3><i class="icon-table"></i> <span class="muted">Data</span> $data.name</h3>
 <strong>Code:</strong> $data.code
-#if($data.category)<div><strong>Category:</strong> $data.category</div>
+#if($data.hasCategory())<div><strong>Category:</strong> $data.category</div>
 #end
 #if(!$data.descriptions.isEmpty())<div><strong>Description:</strong></div>
 #foreach($description in $data.descriptions)<div>$description</div>

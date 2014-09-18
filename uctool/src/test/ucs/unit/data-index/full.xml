@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+	<data name="" code="minimal"></data>
+	<data name="With name" code="with_name"></data>
+	<data name="Full no refcode" code="full_no_refc" category="persistence-entity"></data>
+	<data name="Full with refcode" code="full_with_refc" refcode="full_with_refc_refcode" category="persistence-entity"></data>
+	<data name="Category interface-request" code="category_interface-request" category="interface-request"></data>
+	<data name="Category interface-response" code="category_interface-response" category="interface-response"></data>
+	<data name="Category interface" code="category_interface" category="interface"></data>
+	<data name="Category persistence-code-table" code="category_persistence-code-table" category="persistence-code-table"></data>
+	<data name="Category persistence-entity" code="category_persistence-entity" category="persistence-entity"></data>
+	<data name="Category persistence-enumeration" code="category_persistence-enumeration" category="persistence-enumeration"></data>
+	<data name="Category ui-form" code="category_ui-form" category="ui-form"></data>
+	<data name="Category ui-list" code="category_ui-list" category="ui-list"></data>
+</uct>
