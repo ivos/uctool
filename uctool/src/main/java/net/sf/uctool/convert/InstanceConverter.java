@@ -48,7 +48,7 @@ public class InstanceConverter {
 					+ "] refers to unknown data [" + of + "].");
 		}
 		o.setOf(dataOut);
-		executionContext.addDataRef(dataOut.getCode(), refcode, "instance");
+		executionContext.addDataRef(dataOut.getRefcode(), refcode, "instance");
 
 		for (DescriptionType descriptionType : instance.getDescription()) {
 			StringBuilder sb = new StringBuilder();
@@ -86,7 +86,7 @@ public class InstanceConverter {
 							+ "] in from [" + from + "].");
 				}
 				vo.setFromData(fromData);
-				executionContext.addDataRef(fromData.getCode(), refcode,
+				executionContext.addDataRef(fromData.getRefcode(), refcode,
 						"instance");
 
 				AttributeOut fromAttribute = fromData.getAttribute(parts[1]);

@@ -31,6 +31,13 @@ public class DataTest extends TemplateTestBase {
 	}
 
 	@Test
+	public void references_refc() throws IOException {
+		e.execute(new File(inputBaseDir, "data/references_refc.xml"), outputDir);
+		performTest("unit/data/references_refc.html",
+				"site/out/data/dt_code.html");
+	}
+
+	@Test
 	public void val_DuplicateData() {
 		try {
 			e.execute(new File(inputBaseDir, "data/duplicateData.xml"),
