@@ -204,8 +204,10 @@ public class UctoolExecutor {
 		uctoolWriter.writeActorIndex();
 		uctoolWriter.writeUseCaseIndex();
 		uctoolWriter.writeDataIndex();
+		uctoolWriter.writeInstanceIndex();
 		uctoolWriter.writeSummaryIndex();
 		uctoolWriter.writeEntryPointList();
+		uctoolWriter.writeActorGoalList();
 		uctoolWriter.writeSinglePage();
 		for (Object output : outputs) {
 			uctoolWriter.write(output);

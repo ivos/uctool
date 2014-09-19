@@ -17,7 +17,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections <b class="caret"></b> </a>
 						<ul class="dropdown-menu">
-							<li#if($section=="summary" || $section=="entry") class="active"#end><a href="${rel-path}summary/index.html"><i class="icon-sitemap"></i> Overview pages</a></li>
+							<li#if($section=="summary" || $section=="entry" || $section=="actorgoal") class="active"#end><a href="${rel-path}summary/index.html"><i class="icon-sitemap"></i> Overview pages</a></li>
 #if($ctx.actors.size()>0)							<li#if($section=="actor") class="active"#end><a href="${rel-path}actor/index.html"><i class="icon-user"></i> Actors</a></li>
 #end
 #if($ctx.useCases.size()>0)							<li#if($section=="uc") class="active"#end><a href="${rel-path}uc/index.html"><i class="icon-file"></i> Use cases</a></li>

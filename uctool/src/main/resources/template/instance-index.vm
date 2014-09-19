@@ -1,0 +1,38 @@
+#if($ctx.single)
+#else
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Instances overview</title>
+#set($rel-path="../")
+#parse("template/head.vm")
+</head>
+<body>
+#set($section="instance")
+#set($isSection="true")
+#parse("template/navbar.vm")
+#end
+<h2>Instances overview</h2>
+<table class="table table-striped table-bordered table-hover table-condensed">
+<thead>
+<tr>
+<th><i class="icon-table"></i> Instance</th>
+<th>Code</th>
+<th>Instance of</th>
+</tr>
+</thead>
+<tbody>
+#foreach($instance in $ctx.instanceOuts.values())
+<tr>
+<td>#instanceRef($instance)</td>
+<td>$instance.code</td>
+<td>#dataRef($instance.of)</td>
+</tr>
+#end
+</tbody>
+</table>
+#if(! $ctx.single)
+#parse("template/footer.vm")
+</body>
+</html>
+#end

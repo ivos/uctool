@@ -25,6 +25,8 @@ Version: $ctx.project.version</p>
 #end
 #if($ctx.datas.size()>0)<li><a href="data/index.html"><i class="icon-table"></i> Data</a></li>
 #end
+#if($ctx.instances.size()>0)<li><a href="instance/index.html"><i class="icon-table"></i> Instances</a></li>
+#end
 #if($ctx.requirements.size()>0)<li><a href="req/index.html"><i class="icon-list"></i> Requirements</a></li>
 #end
 #if($ctx.attachments.size()>0)<li><a href="attachment/index.html"><i class="icon-picture"></i> Attachments</a></li>

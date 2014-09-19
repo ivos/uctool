@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+
+	<data name="" code="dt_minimal"></data>
+	<instance name="" code="minimal" of="dt_minimal"></instance>
+
+	<data name="Data with name" code="dt_with_name"></data>
+	<instance name="Instance with name" code="with_name" of="dt_with_name"></instance>
+
+	<data name="Data full no refcode" code="dt_full_no_rfc" category="persistence-entity"></data>
+	<instance name="Instance full no refcode" code="full_no_rfc" of="dt_full_no_rfc"></instance>
+
+	<data name="Data full with refcode" code="dt_full_with_rfc" refcode="dt_full_with_rfc_refc" category="persistence-entity"></data>
+	<instance name="Instance full with refcode" code="full_with_rfc" refcode="full_with_rfc_refc" of="dt_full_with_rfc_refc"></instance>
+
+</uct>

@@ -150,6 +150,9 @@
 		<attachment name="Att 1 name" code="att1" file-name="att1-file-name" />
 	</attachment-group>
 	<data name="Dt 1 name" code="dt1"></data>
+	<data name="Dt 2 name" code="dt2" refcode="dt2_refc"></data>
+	<instance name="Instance 1 name" code="in1" of="dt1"></instance>
+	<instance name="Instance 2 name" code="in2" of="dt2_refc"></instance>
 	<requirement name="Rq 1 name" code="rq1"></requirement>
 
 </uct>

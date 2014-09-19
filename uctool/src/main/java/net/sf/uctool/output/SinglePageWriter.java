@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.output.actor.ActorOut;
 import net.sf.uctool.output.data.DataOut;
+import net.sf.uctool.output.data.InstanceOut;
 import net.sf.uctool.output.uc.UseCaseOut;
 
 import org.apache.velocity.VelocityContext;
@@ -76,6 +77,24 @@ public class SinglePageWriter {
 				context.put("data", data);
 				templateWriter.writeFragment("template/data.vm", context, fw,
 						outputFile);
+			}
+		}
+
+		if (!executionContext.getInstanceOuts().isEmpty()) {
+			// instance index
+			templateWriter.writeText("\n", fw, outputFile);
+			templateWriter.writeFragment("template/instance-index.vm", context,
+					fw, outputFile);
+
+			// instances
+			templateWriter.writeText("\n<h2>Instances details</h2>\n", fw,
+					outputFile);
+			for (InstanceOut instance : executionContext.getInstanceOuts()
+					.values()) {
+				templateWriter.writeText("\n", fw, outputFile);
+				context.put("instance", instance);
+				templateWriter.writeFragment("template/instance.vm", context,
+						fw, outputFile);
 			}
 		}
 

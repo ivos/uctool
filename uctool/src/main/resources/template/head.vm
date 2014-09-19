@@ -14,6 +14,10 @@
 #if( $ctx.single)<a href="#data_${data.code}" title="$data.name">$data.name</a>#end
 #if(!$ctx.single)<a href="../data/${data.code}.html" title="$data.name">$data.name</a>#end
 #end
+#macro(instanceRef $instance)
+#if( $ctx.single)<a href="#instance_${instance.code}" title="$instance.name">$instance.name</a>#end
+#if(!$ctx.single)<a href="../instance/${instance.code}.html" title="$instance.name">$instance.name</a>#end
+#end
 #set($newline="
 ")
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

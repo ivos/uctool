@@ -9,6 +9,7 @@
 		<attachment name="" code="att-1" file-name="att-file-1" />
 	</attachment-group>
 	<data name="" code="dt-1"></data>
+	<instance name="" code="in-1" of="dt-1"></instance>
 	<requirement name="" code="rq-1"></requirement>
 	<term name=""></term>
 	<uc-group primary-actor="ac-1">

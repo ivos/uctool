@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Actor-goal list</title>
+#set($rel-path="../")
+#parse("template/head.vm")
+</head>
+<body>
+#set($section="actorgoal")
+#set($isSection="false")
+#parse("template/navbar.vm")
+<h2>Actor-goal list</h2>
+#foreach($actor in $ctx.actorOuts.values())
+
+<h3><i class="icon-user"></i> <span class="muted">Primary actor</span> $actor.name</h3>
+#if(!$actor.goals.isEmpty())<div><strong>Goals:</strong></div>
+<ul>
+#foreach($goal in $actor.goals)<li>#ref($goal)</li>
+#end
+</ul>
+#end
+#end
+#parse("template/footer.vm")
+</body>
+</html>
