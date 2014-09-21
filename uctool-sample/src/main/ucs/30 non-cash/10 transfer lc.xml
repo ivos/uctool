@@ -3,6 +3,15 @@
 	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
 	<uc-group primary-actor="non-cash" scope="New Branch System" type="system" visibility="black">
 		<use-case goal="Transfer funds in local currency" code="NCA-100" level="sea">
+			<stakeholders-interests>
+				<interest stakeholder="Client">Credit the amount to credit account.</interest>
+				<interest stakeholder="Bank's retail department">Charge the fee.</interest>
+				<interest stakeholder="Bank's audit department">Have all successful transactions posted into
+					transaction log.
+				</interest>
+				<interest stakeholder="Bank's audit department">Have all failed transactions posted into audit log.
+				</interest>
+			</stakeholders-interests>
 			<preconditions>
 				<item>User is logged in.</item>
 				<item>Client is present at the branch office.</item>
@@ -72,15 +81,6 @@
 					</step>
 				</condition>
 			</extensions>
-			<stakeholders-interests>
-				<interest stakeholder="Client">Credit the amount to credit account.</interest>
-				<interest stakeholder="Bank's retail department">Charge the fee.</interest>
-				<interest stakeholder="Bank's audit department">Have all successful transactions posted into
-					transaction log.
-				</interest>
-				<interest stakeholder="Bank's audit department">Have all failed transactions posted into audit log.
-				</interest>
-			</stakeholders-interests>
 		</use-case>
 	</uc-group>
 </uct>
