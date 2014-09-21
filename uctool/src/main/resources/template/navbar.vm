@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="${rel-path}index.html">test-name</a>
+			<a class="brand" href="${rel-path}index.html">$ctx.project.name</a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
 					<li#if($section=="home") class="active"#end><a href="${rel-path}index.html"><i class="icon-home"></i> Home</a></li>
