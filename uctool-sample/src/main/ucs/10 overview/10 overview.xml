@@ -2,7 +2,7 @@
 <uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:h="http://www.w3.org/1999/xhtml"
 	xsi:schemaLocation="
-		http://uctool.sf.net/ http://uctool.sf.net/xsd/3.0.0/uct.xsd
+		http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
 	<uc-group primary-actor="client" scope="New Branch System" type="organization"
 		visibility="white">
