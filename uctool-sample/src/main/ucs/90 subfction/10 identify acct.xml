@@ -18,8 +18,7 @@
 				</step>
 			</success>
 			<extensions>
-				<condition step-ref="retrieves" when="Not own account 
-						(bank code of the account number has Own bank flag unset)">
+				<condition step-ref="retrieves" when="Not own account        (bank code of the account number has Own bank flag unset)">
 					<step>System does not retrieve account details.</step>
 				</condition>
 				<condition step-ref="retrieves" when="Account not found" inline-step="System displays error message." />

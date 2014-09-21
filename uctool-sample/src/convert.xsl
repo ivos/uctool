@@ -7,8 +7,12 @@
 			<apply-templates select="@*|node()|text()" />
 		</copy>
 	</template>
-	
-	<template match="//uct:data-structure"></template>
+
+	<template match="//uct:data-structure">
+		<copy>
+			<apply-templates select="@*|node()|text()" />
+		</copy>
+	</template>
 
 	<!-- <template match="@*|node()|text()"> <copy> <apply-templates select="@*|node()|text()" mode="copy" /> </copy> </template> 
 		<template match="@*|node()|text()" mode="copy"> < ! - - Copy template - - > <copy> <apply-templates select="@*|node()|text()" 

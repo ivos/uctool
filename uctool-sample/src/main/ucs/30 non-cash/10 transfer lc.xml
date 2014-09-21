@@ -45,8 +45,7 @@
 			</success>
 			<extensions>
 				<condition step-ref="type"
-					when="Transfer type is Express 
-						and current time is past cut-off time for express transfers">
+					when="Transfer type is Express        and current time is past cut-off time for express transfers">
 					<step>System displays error message and does not proceed.</step>
 				</condition>
 				<condition step-ref="debit" when="User decides to verify signature">
