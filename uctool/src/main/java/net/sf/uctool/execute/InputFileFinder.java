@@ -10,24 +10,33 @@ import java.util.List;
 import net.sf.uctool.exception.ReaderException;
 
 import org.apache.commons.io.DirectoryWalker;
-import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOCase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class InputFileFinder extends DirectoryWalker<File> {
 
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	private final File baseDir;
+	private final String fileFilter;
 
-	public InputFileFinder(File baseDir, String filter) {
-		super(new WildcardFileFilter(filter), -1);
+	public InputFileFinder(File baseDir, String fileFilter) {
 		this.baseDir = baseDir;
+		this.fileFilter = fileFilter;
 	}
 
 	public List<File> getInputFiles() {
 		List<File> results = new ArrayList<File>();
 		if (baseDir.isFile()) {
+			logger.debug(
+					"The base directory is a file. Returning the file as a single input file {}.",
+					baseDir);
 			results.add(baseDir);
 			return results;
 		}
 		try {
+			logger.debug("Walking diretory {}.", baseDir);
 			walk(baseDir, results);
 			return results;
 		} catch (IOException e) {
@@ -38,7 +47,13 @@ public class InputFileFinder extends DirectoryWalker<File> {
 	@Override
 	protected void handleFile(File file, int depth, Collection<File> results)
 			throws IOException {
-		results.add(file);
+		if (FilenameUtils.wildcardMatch(file.getName(), fileFilter,
+				IOCase.INSENSITIVE)) {
+			logger.debug("Adding input file {}.", file);
+			results.add(file);
+		} else {
+			logger.debug("Skipping input file {}.", file);
+		}
 	}
 
 	@Override

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ http://uctool.sf.net/xsd/3.0.0/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<uc-group primary-actor="client" scope="New Branch System" type="organization"
+		visibility="white">
+		<use-case goal="Use services of bank's branch" code="OVR-010" level="cloud">
+			<success>
+				<step>Client comes to a branch.</step>
+				<step>
+					Client approaches a counter and uses services relevant to the counter (
+					<req-ref code="RQ-001" />
+					):
+					<h:ul>
+						<h:li>
+							On cash counter
+							<uc-ref code="OVR-100">uses cash services</uc-ref>
+							.
+						</h:li>
+						<h:li>
+							On non-cash counter
+							<uc-ref code="OVR-110">uses non-cash services</uc-ref>
+							.
+						</h:li>
+					</h:ul>
+				</step>
+			</success>
+		</use-case>
+		<use-case goal="Use cash services of bank's branch" code="OVR-100" level="kite">
+			<success>
+				<step>
+					Client asks the cash teller to perform cash services:
+					<h:ul>
+						<h:li>
+							<uc-ref code="CAS-100">Withdraw cash in local currency</uc-ref>
+						</h:li>
+						<h:li>
+							<uc-ref code="CAS-200">Deposit cash in local currency</uc-ref>
+						</h:li>
+					</h:ul>
+				</step>
+			</success>
+		</use-case>
+		<use-case goal="Use non-cash services of bank's branch" code="OVR-110" level="kite">
+			<success>
+				<step>
+					Client asks the cash teller to perform non-cash services:
+					<h:ul>
+						<h:li>
+							<uc-ref code="NCA-100">Transfer funds in local currency</uc-ref>
+						</h:li>
+						<h:li>
+							<uc-ref code="NCA-200">Perform direct debit in local currency</uc-ref>
+						</h:li>
+					</h:ul>
+				</step>
+			</success>
+		</use-case>
+	</uc-group>
+</uct>

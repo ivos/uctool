@@ -1,0 +1,182 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>net.sf.uctool</groupId>
+		<artifactId>uctool-reactor</artifactId>
+		<version>4.0.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<artifactId>uctool-sample</artifactId>
+	<packaging>jar</packaging>
+
+	<name>UCTool Sample</name>
+	<description>Sample analysis of a bank branch system demonstrating the Use case tool.</description>
+	<url>http://uctool.sf.net/${project.artifactId}/</url>
+	<inceptionYear>2009</inceptionYear>
+	<organization>
+		<name>Lastware, sro.</name>
+		<url>http://www.lastware.cz/</url>
+	</organization>
+	<developers>
+		<developer>
+			<id>imaixner</id>
+			<name>Ivo Maixner</name>
+			<email>ivo (.) maixner (at) gmail (.) com</email>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly Open Source license</comments>
+		</license>
+	</licenses>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<distributionManagement>
+		<site>
+			<id>uctool.sf.net</id>
+			<url>scp://shell.sourceforge.net/home/project-web/uctool/htdocs/${project.artifactId}</url>
+		</site>
+	</distributionManagement>
+
+	<build>
+		<defaultGoal>clean generate-resources</defaultGoal>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>net.sf.uctool</groupId>
+					<artifactId>uctool-maven-plugin</artifactId>
+					<version>4.0.0-SNAPSHOT</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+						<chmod>false</chmod>
+					</configuration>
+					<dependencies>
+						<!-- Add support for scp:// in distributionManagement/site/url -->
+						<dependency>
+							<groupId>org.apache.maven.wagon</groupId>
+							<artifactId>wagon-ssh</artifactId>
+							<version>1.0</version>
+						</dependency>
+						<!-- Enable markdown syntax when writing site pages -->
+						<dependency>
+							<groupId>org.apache.maven.doxia</groupId>
+							<artifactId>doxia-module-markdown</artifactId>
+							<version>1.4</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.4.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>net.sf.uctool</groupId>
+										<artifactId>uctool-maven-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>use-cases</goal>
+											<goal>extract-resources</goal>
+											<goal>import-xsd</goal>
+											<goal>export-xsd</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>true</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>net.sf.uctool</groupId>
+				<artifactId>uctool-maven-plugin</artifactId>
+				<configuration>
+					<bundleLanguage>en</bundleLanguage>
+				</configuration>
+				<executions>
+					<execution>
+						<id>use-cases</id>
+						<goals>
+							<goal>use-cases</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/assembly/zip.xml</descriptor>
+					</descriptors>
+					<outputDirectory>${project.build.directory}/site</outputDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>pack-site-as-zip</id>
+						<phase>site</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.7</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>summary</report>
+							<report>project-team</report>
+							<report>scm</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+
+</project>

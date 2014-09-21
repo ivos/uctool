@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ http://uctool.sf.net/xsd/3.0.0/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<uc-group primary-actor="cash" scope="New Branch System" type="system"
+		visibility="black">
+		<use-case goal="Withdraw cash in local currency" code="CAS-100" level="sea">
+			<description>
+				Based on
+				<req-ref code="RQ-100">requirement</req-ref>
+				.
+			</description>
+			<success>
+				<step>
+					User
+					<uc-ref code="SYS-100">identifies account</uc-ref>
+					.
+				</step>
+				<step>
+					User
+					<uc-ref code="SYS-110">identifies client</uc-ref>
+					based on the account number.
+				</step>
+				<step>User verifies client's signature.</step>
+				<step handle="amount">User enters amount.</step>
+				<step>
+					System
+					<uc-ref code="FEE-100">calculates fee</uc-ref>
+					and total amount.
+				</step>
+				<step>User submits the transaction.</step>
+				<step>
+					System prints
+					<data-ref code="WithdrawalReceipt">withdrawal receipt</data-ref>
+					using
+					<attachment-ref code="withdrawal-receipt-template">printing template</attachment-ref>
+					.
+				</step>
+			</success>
+			<extensions>
+				<condition step-ref="amount" when="User decides to enter cash denomination">
+					<step>User enters cash denomination.</step>
+				</condition>
+			</extensions>
+		</use-case>
+	</uc-group>
+	<data-structure name="Withdrawal receipt" code="WithdrawalReceipt">
+		<description>Data printed on withdrawal receipt.</description>
+		<description>
+			Conforms to
+			<attachment-ref code="withdrawal-receipt-template">printing template</attachment-ref>
+			.
+		</description>
+		<attribute name="Account number" type="AccountNumber"
+			description="Client account number, debited for withdrawal amount and fee." />
+		<attribute name="Name" type="string" description="Name of the primary account holder." />
+		<attribute name="Amount withdrawn" type="decimal" description="Amount withdrawn by client." />
+		<attribute name="Date and time" type="timestamp" description="Current system date and time" />
+	</data-structure>
+</uct>

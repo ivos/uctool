@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ http://uctool.sf.net/xsd/3.0.0/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<data-structure name="Enumeration Transaction type" code="TransactionType">
+		<description>
+			Transaction types are:
+			<h:ul>
+				<h:li>Withdraw cash in local currency.</h:li>
+				<h:li>Deposit cash in local currency.</h:li>
+				<h:li>Transfer funds in local currency.</h:li>
+				<h:li>Perform direct debit in local currency.</h:li>
+			</h:ul>
+		</description>
+	</data-structure>
+	<data-structure name="Enumeration Transfer type" code="TransferType">
+		<description>
+			Transfer types are:
+			<h:ul>
+				<h:li>Normal: performed over-night.</h:li>
+				<h:li>Express: performed on the day of entry.</h:li>
+			</h:ul>
+		</description>
+	</data-structure>
+</uct>

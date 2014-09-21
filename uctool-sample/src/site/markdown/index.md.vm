@@ -1,0 +1,22 @@
+Introduction
+============
+
+Welcome to ${project.name}, a sample analysis of a bank branch system.
+This project demonstrates the [Use case tool](http://uctool.sf.net)
+by providing a couple of meaningful use cases adapted from analysis
+of a branch teller system of a bank.
+ 
+This is the Maven wrapper site providing the basic information on the project.
+ 
+Please, proceed to the use cases and have a look on the "Withdraw cash", "Deposit cash" 
+and "Transfer funds" use cases.
+
+* Go to [the use case web pages](./ucs/index.html).
+* Download analytical web pages as a [package](./${project.artifactId}-${project.version}-site.zip).
+* See [the source files](https://sourceforge.net/p/uctool/svn/HEAD/tree/trunk/uctool-reactor/uctool-sample/)
+  for this UC Tool sample project.
+
+------------
+
+This project is part of [Use Case Tool](http://uctool.sf.net),
+which is hosted by Sourceforge.net.

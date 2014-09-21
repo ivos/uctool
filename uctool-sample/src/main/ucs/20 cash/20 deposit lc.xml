@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ http://uctool.sf.net/xsd/3.0.0/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<uc-group primary-actor="cash" scope="New Branch System" type="system"
+		visibility="black">
+		<use-case goal="Deposit cash in local currency" code="CAS-200" level="sea">
+			<success>
+				<step handle="account">
+					User
+					<uc-ref code="SYS-100">identifies account</uc-ref>
+					.
+				</step>
+				<step handle="amount">User enters amount.</step>
+				<step>
+					System
+					<uc-ref code="FEE-100">calculates fee</uc-ref>
+					and amount to collect.
+				</step>
+				<step handle="submits">User submits the transaction.</step>
+			</success>
+			<extensions>
+				<condition step-ref="account" when="User decides to identify client">
+					<step>
+						User also
+						<uc-ref code="SYS-110">identifies client</uc-ref>
+						based on the account number.
+					</step>
+				</condition>
+				<condition step-ref="amount" when="User decides to enter cash denomination">
+					<step>User enters cash denomination.</step>
+				</condition>
+				<condition step-ref="submits">
+					<when>Amount to collect is above 5000 and client was not identified</when>
+					<step>
+						System displays error message and returns to step
+						<step-ref handle="account" />
+						.
+					</step>
+				</condition>
+			</extensions>
+		</use-case>
+	</uc-group>
+</uct>

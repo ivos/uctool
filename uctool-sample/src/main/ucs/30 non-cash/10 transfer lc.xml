@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ http://uctool.sf.net/xsd/3.0.0/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<uc-group primary-actor="non-cash" scope="New Branch System" type="system"
+		visibility="black">
+		<use-case goal="Transfer funds in local currency" code="NCA-100" level="sea">
+			<preconditions>
+				<item>User is logged in.</item>
+				<item>Client is present at the branch office.</item>
+			</preconditions>
+			<minimal-guarantees>
+				<item>Transfer failure and its reason logged in audit log.</item>
+				<item>Error message displayed to user.</item>
+				<item>No changes made to accounts.</item>
+			</minimal-guarantees>
+			<success-guarantees>
+				<item>Amount and fee debited from the debit account.</item>
+				<item>Amount credited to the credit account.</item>
+				<item>Fee credited to proper general ledger account.</item>
+				<item>Transfer logged in transaction log.</item>
+			</success-guarantees>
+			<trigger>Client asks to transfer funds.</trigger>
+			<success>
+				<step handle="type">
+					User selects
+					<data-ref code="TransferType">transfer type</data-ref>
+					.
+				</step>
+				<step handle="debit">
+					User
+					<uc-ref code="SYS-100">identifies debit account</uc-ref>
+					limiting the bank code to own bank.
+				</step>
+				<step handle="credit">
+					User
+					<uc-ref code="SYS-100">identifies credit account</uc-ref>
+					.
+				</step>
+				<step handle="data">User enters amount and effective date.</step>
+				<step>
+					System
+					<uc-ref code="FEE-100">calculates fee</uc-ref>
+					.
+				</step>
+				<step handle="submits">User submits the transaction.</step>
+			</success>
+			<extensions>
+				<condition step-ref="type"
+					when="Transfer type is Express 
+						and current time is past cut-off time for express transfers">
+					<step>System displays error message and does not proceed.</step>
+				</condition>
+				<condition step-ref="debit" when="User decides to verify signature">
+					<step>User verifies client's signature for the debit account.</step>
+				</condition>
+				<condition step-ref="credit" when="Debit and credit accounts are the same">
+					<step>System displays error message
+						and lets the user identify other accounts.</step>
+				</condition>
+				<condition step-ref="submits">
+					<when>Amount is above 5000 and client's signature was not verified</when>
+					<step>
+						System displays error message and returns to step
+						<step-ref handle="debit" />
+						.
+					</step>
+				</condition>
+				<condition step-ref="submits"
+					when="Effective date is in past or more than one year in future">
+					<step>
+						System displays error message and returns to step
+						<step-ref handle="data" />
+						.
+					</step>
+				</condition>
+			</extensions>
+			<stakeholders-interests>
+				<interest stakeholder="Client">Credit the amount to credit account.</interest>
+				<interest stakeholder="Bank's retail department">Charge the fee.</interest>
+				<interest stakeholder="Bank's audit department">Have all successful transactions posted into
+					transaction log.</interest>
+				<interest stakeholder="Bank's audit department">Have all failed transactions posted into audit log.
+				</interest>
+			</stakeholders-interests>
+		</use-case>
+	</uc-group>
+</uct>

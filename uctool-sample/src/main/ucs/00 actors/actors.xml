@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ http://uctool.sf.net/xsd/3.0.0/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<!-- Real actors: -->
+	<actor name="Cash teller" code="cash">
+		<extends-actor code="teller" />
+	</actor>
+	<actor name="Non-cash teller" code="non-cash">
+		<extends-actor code="teller" />
+	</actor>
+	<!-- Supplementary actors: -->
+	<actor name="Teller" code="teller" />
+	<actor name="System" code="system" />
+	<actor name="Client" code="client" />
+	<!-- Actors of other systems: -->
+</uct>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ http://uctool.sf.net/xsd/3.0.0/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<uc-group primary-actor="teller" scope="New Branch System" type="system"
+		visibility="black">
+		<use-case goal="Identify account" code="SYS-100" level="fish">
+			<success>
+				<step>
+					User enters
+					<data-ref code="AccountNumber">account number</data-ref>
+					.
+				</step>
+				<step>System validates account number.</step>
+				<step>User searches for the account.</step>
+				<step handle="retrieves">
+					System retrieves
+					<data-ref code="AccountDetails">account details</data-ref>
+					by account number.
+				</step>
+			</success>
+			<extensions>
+				<condition step-ref="retrieves"
+					when="Not own account 
+						(bank code of the account number has Own bank flag unset)">
+					<step>System does not retrieve account details.</step>
+				</condition>
+				<condition step-ref="retrieves" when="Account not found" inline-step="System displays error message." />
+			</extensions>
+		</use-case>
+	</uc-group>
+	<data-structure name="Account number" code="AccountNumber">
+		<description>Structure of a domestic account number.</description>
+		<attribute name="Prefix" code="prefix" status="optional" type="integer"
+			length="6" description="Account number prefix." />
+		<attribute name="Number" code="number" status="mandatory" type="integer"
+			length="10" description="The account number itself." />
+		<attribute name="Bank code" code="bankCode" status="mandatory" type="BankCode"
+			description="Code of the bank keeping the account." />
+	</data-structure>
+	<data-structure name="Account details" code="AccountDetails">
+		<attribute name="Currency" type="Currency" />
+		<attribute name="Name" type="string" description="Name of the primary account holder." />
+		<attribute name="Available balance" type="decimal" />
+	</data-structure>
+</uct>
