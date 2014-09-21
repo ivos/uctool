@@ -129,7 +129,13 @@
 				<configuration>
 					<bundleLanguage>en</bundleLanguage>
 				</configuration>
-				<executions><!-- <execution> <id>use-cases</id> <goals> <goal>use-cases</goal> </goals> </execution> -->
+				<executions>
+					<execution>
+						<id>use-cases</id>
+						<goals>
+							<goal>use-cases</goal>
+						</goals>
+					</execution>
 				</executions>
 			</plugin>
 			<plugin>
