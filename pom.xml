@@ -17,10 +17,4 @@
 		<!-- <module>uctool-archetype</module> -->
 		<module>uctool-sample</module>
 	</modules>
-
-	<scm>
-		<connection>scm:git:git@github.com:ivos/uctool.git</connection>
-		<developerConnection>scm:git:git@github.com:ivos/uctool.git</developerConnection>
-		<url>https://github.com/ivos/uctool</url>
-	</scm>
 </project>

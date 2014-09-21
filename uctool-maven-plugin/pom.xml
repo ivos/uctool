@@ -2,14 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>net.sf.uctool</groupId>
-		<artifactId>uctool-reactor</artifactId>
-		<version>4.0.0-SNAPSHOT</version>
-		<relativePath>..</relativePath>
-	</parent>
-
+	<groupId>net.sf.uctool</groupId>
 	<artifactId>uctool-maven-plugin</artifactId>
+	<version>4.0.0-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>Use Case Tool Maven plugin</name>
@@ -50,8 +45,13 @@
 		<maven.compiler.target>1.5</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<currentVersion>${project.version}</currentVersion>
 	</properties>
+
+	<scm>
+		<connection>scm:git:git@github.com:ivos/uctool.git</connection>
+		<developerConnection>scm:git:git@github.com:ivos/uctool.git</developerConnection>
+		<url>https://github.com/ivos/uctool</url>
+	</scm>
 
 	<distributionManagement>
 		<snapshotRepository>
@@ -70,6 +70,19 @@
 			<url>scp://shell.sourceforge.net/home/project-web/uctool/htdocs/${project.artifactId}</url>
 		</site>
 	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>sonatype-nexus-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<dependency>
