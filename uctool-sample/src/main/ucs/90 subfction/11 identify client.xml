@@ -51,30 +51,30 @@
 			</extensions>
 		</use-case>
 	</uc-group>
-	<data-structure name="Personal id number" code="PersonalId">
+	<data name="Personal id number" code="PersonalId">
 		<attribute name="Number" status="mandatory" type="integer" length="10" />
-	</data-structure>
-	<data-structure name="Client details" code="ClientDetails">
+	</data>
+	<data name="Client details" code="ClientDetails">
 		<attribute name="Personal data" type="PersonalData" />
 		<attribute name="Document identification" type="DocumentIdentification" />
 		<attribute name="Address" type="Address" />
-	</data-structure>
-	<data-structure name="Personal data" code="PersonalData" expand="true">
+	</data>
+	<data name="Personal data" code="PersonalData" expand="true">
 		<attribute name="Date of birth" status="mandatory" type="date" />
 		<attribute name="First names" status="mandatory" type="string" length="50" />
 		<attribute name="Last name" status="mandatory" type="string" length="50" />
 		<attribute name="Gender" status="mandatory" type="Gender" />
-	</data-structure>
-	<data-structure name="Document identification" code="DocumentIdentification" expand="true">
+	</data>
+	<data name="Document identification" code="DocumentIdentification" expand="true">
 		<attribute name="Type" status="mandatory" type="DocumentType" />
 		<attribute name="Number" status="mandatory" type="string" length="50" />
 		<attribute name="Country of issue" status="mandatory" type="Country" />
 		<attribute name="Valid until" status="mandatory" type="date" />
-	</data-structure>
-	<data-structure name="Address" code="Address" expand="true">
+	</data>
+	<data name="Address" code="Address" expand="true">
 		<attribute name="Street" status="mandatory" type="string" />
 		<attribute name="City" status="mandatory" type="string" />
 		<attribute name="ZIP" status="mandatory" type="string" />
 		<attribute name="Country" status="mandatory" type="Country" />
-	</data-structure>
+	</data>
 </uct>

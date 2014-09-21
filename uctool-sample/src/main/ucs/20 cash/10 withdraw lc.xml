@@ -42,16 +42,24 @@
 			</extensions>
 		</use-case>
 	</uc-group>
-	<data-structure name="Withdrawal receipt" code="WithdrawalReceipt">
+	<data name="Withdrawal receipt" code="WithdrawalReceipt">
 		<description>Data printed on withdrawal receipt.</description>
 		<description>
 			Conforms to
 			<attachment-ref code="withdrawal-receipt-template">printing template</attachment-ref>
 			.
 		</description>
-		<attribute name="Account number" type="AccountNumber" description="Client account number, debited for withdrawal amount and fee." />
-		<attribute name="Name" type="string" description="Name of the primary account holder." />
-		<attribute name="Amount withdrawn" type="decimal" description="Amount withdrawn by client." />
-		<attribute name="Date and time" type="timestamp" description="Current system date and time" />
-	</data-structure>
+		<attribute name="Account number" type="AccountNumber">
+			<description>Client account number, debited for withdrawal amount and fee.</description>
+		</attribute>
+		<attribute name="Name" type="string">
+			<description>Name of the primary account holder.</description>
+		</attribute>
+		<attribute name="Amount withdrawn" type="decimal">
+			<description>Amount withdrawn by client.</description>
+		</attribute>
+		<attribute name="Date and time" type="timestamp">
+			<description>Current system date and time</description>
+		</attribute>
+	</data>
 </uct>

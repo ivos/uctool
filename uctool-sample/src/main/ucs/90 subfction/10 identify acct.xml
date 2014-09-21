@@ -25,15 +25,23 @@
 			</extensions>
 		</use-case>
 	</uc-group>
-	<data-structure name="Account number" code="AccountNumber">
+	<data name="Account number" code="AccountNumber">
 		<description>Structure of a domestic account number.</description>
-		<attribute name="Prefix" code="prefix" status="optional" type="integer" length="6" description="Account number prefix." />
-		<attribute name="Number" code="number" status="mandatory" type="integer" length="10" description="The account number itself." />
-		<attribute name="Bank code" code="bankCode" status="mandatory" type="BankCode" description="Code of the bank keeping the account." />
-	</data-structure>
-	<data-structure name="Account details" code="AccountDetails">
+		<attribute name="Prefix" code="prefix" status="optional" type="integer" length="6">
+			<description>Account number prefix.</description>
+		</attribute>
+		<attribute name="Number" code="number" status="mandatory" type="integer" length="10">
+			<description>The account number itself.</description>
+		</attribute>
+		<attribute name="Bank code" code="bankCode" status="mandatory" type="BankCode">
+			<description>Code of the bank keeping the account.</description>
+		</attribute>
+	</data>
+	<data name="Account details" code="AccountDetails">
 		<attribute name="Currency" type="Currency" />
-		<attribute name="Name" type="string" description="Name of the primary account holder." />
+		<attribute name="Name" type="string">
+			<description>Name of the primary account holder.</description>
+		</attribute>
 		<attribute name="Available balance" type="decimal" />
-	</data-structure>
+	</data>
 </uct>

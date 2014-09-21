@@ -15,15 +15,20 @@
 			</success>
 		</use-case>
 	</uc-group>
-	<data-structure name="Input to calculateFee" code="calculateFee_in">
+	<data name="Input to calculateFee" code="calculateFee_in">
 		<attribute name="Transaction type" status="mandatory" type="TransactionType" />
-		<attribute name="Amount" status="optional" type="decimal"
-			description="Transaction amount equivalent in local currency, if relevant." />
-		<attribute name="Account number" status="optional" type="AccountNumber" description="Account number of the transaction, if relevant." />
-	</data-structure>
-	<data-structure name="Output from calculateFee" code="calculateFee_out">
-		<attribute name="Fee" status="mandatory" type="decimal" description="Fee in local currency." />
+		<attribute name="Amount" status="optional" type="decimal">
+			<description>Transaction amount equivalent in local currency, if relevant.</description>
+		</attribute>
+		<attribute name="Account number" status="optional" type="AccountNumber">
+			<description>Account number of the transaction, if relevant.</description>
+		</attribute>
+	</data>
+	<data name="Output from calculateFee" code="calculateFee_out">
+		<attribute name="Fee" status="mandatory" type="decimal">
+			<description>Fee in local currency.</description>
+		</attribute>
 		<attribute name="Fee description" status="mandatory" type="string" length="1024" />
 		<attribute name="Revenue account for fee" status="mandatory" type="AccountNumber" />
-	</data-structure>
+	</data>
 </uct>

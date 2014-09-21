@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
 	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
-	<data-structure name="Enumeration Transaction type" code="TransactionType">
+	<data name="Enumeration Transaction type" code="TransactionType">
 		<description>
 			Transaction types are:
 			<h:ul>
@@ -11,8 +11,8 @@
 				<h:li>Perform direct debit in local currency.</h:li>
 			</h:ul>
 		</description>
-	</data-structure>
-	<data-structure name="Enumeration Transfer type" code="TransferType">
+	</data>
+	<data name="Enumeration Transfer type" code="TransferType">
 		<description>
 			Transfer types are:
 			<h:ul>
@@ -20,5 +20,5 @@
 				<h:li>Express: performed on the day of entry.</h:li>
 			</h:ul>
 		</description>
-	</data-structure>
+	</data>
 </uct>

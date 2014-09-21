@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<stylesheet xmlns="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:uct="http://uctool.sf.net/" version="2.0">
+<xsl:stylesheet xmlns="http://uctool.sf.net/" xmlns:uct="http://uctool.sf.net/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
 
-	<template match="@*|node()|text()">
-		<copy>
-			<apply-templates select="@*|node()|text()" />
-		</copy>
-	</template>
+	<xsl:template match="@*|node()|text()">
+		<xsl:copy>
+			<xsl:apply-templates select="@*|node()|text()" />
+		</xsl:copy>
+	</xsl:template>
 
-	<template match="//uct:data-structure">
-		<copy>
-			<apply-templates select="@*|node()|text()" />
-		</copy>
-	</template>
+	<!-- data-structure to data -->
+	<xsl:template match="uct:data-structure">
+		<xsl:element name="data">
+			<xsl:apply-templates select="@*|node()|text()" />
+		</xsl:element>
+	</xsl:template>
 
-	<!-- <template match="@*|node()|text()"> <copy> <apply-templates select="@*|node()|text()" mode="copy" /> </copy> </template> 
-		<template match="@*|node()|text()" mode="copy"> < ! - - Copy template - - > <copy> <apply-templates select="@*|node()|text()" 
-		mode="copy" /> </copy> </template> -->
+	<!-- attribute/@description to sub-element -->
+	<xsl:template match="uct:attribute/@description">
+		<xsl:element name="{name()}">
+			<xsl:value-of select="." />
+		</xsl:element>
+	</xsl:template>
 
-</stylesheet>
+</xsl:stylesheet>
