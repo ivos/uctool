@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Analytical Documentation</title>
+<title>$ctx.project.name - Analytical Documentation</title>
 #set($rel-path="")
 #parse("template/head.vm")
 </head>
