@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:h="http://www.w3.org/1999/xhtml"
-	xsi:schemaLocation="
-		http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd
-		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
-	<uc-group primary-actor="system" scope="New Branch System" type="system"
-		visibility="black">
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<uc-group primary-actor="system" scope="New Branch System" type="system" visibility="black">
 		<use-case goal="Calculate fee" code="FEE-100" level="fish">
 			<success>
 				<step>
@@ -23,8 +19,7 @@
 		<attribute name="Transaction type" status="mandatory" type="TransactionType" />
 		<attribute name="Amount" status="optional" type="decimal"
 			description="Transaction amount equivalent in local currency, if relevant." />
-		<attribute name="Account number" status="optional" type="AccountNumber"
-			description="Account number of the transaction, if relevant." />
+		<attribute name="Account number" status="optional" type="AccountNumber" description="Account number of the transaction, if relevant." />
 	</data-structure>
 	<data-structure name="Output from calculateFee" code="calculateFee_out">
 		<attribute name="Fee" status="mandatory" type="decimal" description="Fee in local currency." />

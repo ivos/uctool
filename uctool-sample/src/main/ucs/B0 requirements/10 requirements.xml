@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:h="http://www.w3.org/1999/xhtml"
-	xsi:schemaLocation="
-		http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd
-		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
-	<requirement name="Provide bank services" code="RQ-001" status="accepted"
-		priority="normal" level="cloud" type="functional" area="General" origin="Workshop 2011-03-18" />
-	<requirement name="Withdrawal" code="RQ-100" status="accepted" priority="high"
-		level="sea" type="functional" area="Cash">
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<requirement name="Provide bank services" code="RQ-001" status="accepted" priority="normal" level="cloud"
+		type="functional" area="General" origin="Workshop 2011-03-18" />
+	<requirement name="Withdrawal" code="RQ-100" status="accepted" priority="high" level="sea" type="functional"
+		area="Cash">
 		<description>Cash teller withdraws cash for the client.</description>
 	</requirement>
 </uct>

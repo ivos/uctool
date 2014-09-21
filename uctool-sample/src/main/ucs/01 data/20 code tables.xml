@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:h="http://www.w3.org/1999/xhtml"
-	xsi:schemaLocation="
-		http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd
-		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
 	<data-structure name="Code table" code="CodeTable" expand="true">
 		<description>A base entity for all code tables.</description>
 		<attribute name="Label" code="label" status="mandatory" type="string" length="1024" />
@@ -14,21 +11,18 @@
 		<description>Identifies a domestic bank. Each bank has its own bank code assigned by the
 			national central bank.
 		</description>
-		<attribute name="Code" code="code" status="mandatory" type="integer" length="4"
-			description="A four-digit code of the bank." />
+		<attribute name="Code" code="code" status="mandatory" type="integer" length="4" description="A four-digit code of the bank." />
 		<attribute name="Own bank" code="ownBank" status="mandatory" type="boolean"
 			description="Flag indicating the bank operating the teller system. 
 				Exactly one bank code must have the flag set." />
 		<attribute name="Common attributes" type="CodeTable" />
 	</data-structure>
 	<data-structure name="Code table Country" code="Country">
-		<attribute name="Code" code="code" status="mandatory" type="string" length="2"
-			description="The ISO standard country code." />
+		<attribute name="Code" code="code" status="mandatory" type="string" length="2" description="The ISO standard country code." />
 		<attribute name="Common attributes" type="CodeTable" />
 	</data-structure>
 	<data-structure name="Code table Currency" code="Currency">
-		<attribute name="Code" code="code" status="mandatory" type="string" length="3"
-			description="The ISO standard currency code." />
+		<attribute name="Code" code="code" status="mandatory" type="string" length="3" description="The ISO standard currency code." />
 		<attribute name="Common attributes" type="CodeTable" />
 	</data-structure>
 	<data-structure name="Code table Gender" code="Gender">

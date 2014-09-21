@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:h="http://www.w3.org/1999/xhtml"
-	xsi:schemaLocation="
-		http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd
-		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
-	<uc-group primary-actor="teller" scope="New Branch System" type="system"
-		visibility="black">
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<uc-group primary-actor="teller" scope="New Branch System" type="system" visibility="black">
 		<use-case goal="Identify account" code="SYS-100" level="fish">
 			<success>
 				<step>
@@ -22,8 +18,7 @@
 				</step>
 			</success>
 			<extensions>
-				<condition step-ref="retrieves"
-					when="Not own account 
+				<condition step-ref="retrieves" when="Not own account 
 						(bank code of the account number has Own bank flag unset)">
 					<step>System does not retrieve account details.</step>
 				</condition>
@@ -33,12 +28,9 @@
 	</uc-group>
 	<data-structure name="Account number" code="AccountNumber">
 		<description>Structure of a domestic account number.</description>
-		<attribute name="Prefix" code="prefix" status="optional" type="integer"
-			length="6" description="Account number prefix." />
-		<attribute name="Number" code="number" status="mandatory" type="integer"
-			length="10" description="The account number itself." />
-		<attribute name="Bank code" code="bankCode" status="mandatory" type="BankCode"
-			description="Code of the bank keeping the account." />
+		<attribute name="Prefix" code="prefix" status="optional" type="integer" length="6" description="Account number prefix." />
+		<attribute name="Number" code="number" status="mandatory" type="integer" length="10" description="The account number itself." />
+		<attribute name="Bank code" code="bankCode" status="mandatory" type="BankCode" description="Code of the bank keeping the account." />
 	</data-structure>
 	<data-structure name="Account details" code="AccountDetails">
 		<attribute name="Currency" type="Currency" />

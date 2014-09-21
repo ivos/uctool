@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:h="http://www.w3.org/1999/xhtml"
-	xsi:schemaLocation="
-		http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd
-		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
-	<uc-group primary-actor="cash" scope="New Branch System" type="system"
-		visibility="black">
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<uc-group primary-actor="cash" scope="New Branch System" type="system" visibility="black">
 		<use-case goal="Withdraw cash in local currency" code="CAS-100" level="sea">
 			<description>
 				Based on
@@ -53,8 +49,7 @@
 			<attachment-ref code="withdrawal-receipt-template">printing template</attachment-ref>
 			.
 		</description>
-		<attribute name="Account number" type="AccountNumber"
-			description="Client account number, debited for withdrawal amount and fee." />
+		<attribute name="Account number" type="AccountNumber" description="Client account number, debited for withdrawal amount and fee." />
 		<attribute name="Name" type="string" description="Name of the primary account holder." />
 		<attribute name="Amount withdrawn" type="decimal" description="Amount withdrawn by client." />
 		<attribute name="Date and time" type="timestamp" description="Current system date and time" />
