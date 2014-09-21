@@ -81,7 +81,8 @@ public class UseCasesMojo extends AbstractMojo {
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		UctoolExecutor uctoolExecutor = new UctoolExecutor(new Project(
-				useCasesName, useCasesVersion, useCasesDescription));
+				useCasesName, useCasesVersion, useCasesDescription,
+				bundleLanguage));
 		uctoolExecutor.execute(useCasesDirectory, outputDirectory);
 	}
 

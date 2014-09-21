@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Actor $actor.name</title>
+<title>$ctx.label("actor") $actor.name</title>
 #set($rel-path="../")
 #parse("template/head.vm")
 </head>
@@ -12,36 +12,36 @@
 #parse("template/navbar.vm")
 #end
 <a id="actor_$actor.code"></a>
-<h3><i class="icon-user"></i> <span class="muted">Actor</span> $actor.name</h3>
-#if(!$actor.descriptions.isEmpty())<div><strong>Description:</strong></div>
+<h3><i class="icon-user"></i> <span class="muted">$ctx.label("actor")</span> $actor.name</h3>
+#if(!$actor.descriptions.isEmpty())<div><strong>$ctx.label("description"):</strong></div>
 #foreach($description in $actor.descriptions)<div>$description</div>
 #end
 #end
-#if(!$actor.extendsActors.isEmpty())<div><strong>Extends actors:</strong></div>
+#if(!$actor.extendsActors.isEmpty())<div><strong>$ctx.label("extends.actors"):</strong></div>
 <ul>
 #foreach($ref in $actor.extendsActors)<li>#ref($ref)</li>
 #end
 </ul>
 #end
-#if(!$actor.extendedByActors.isEmpty())<div><strong>Extended by actors:</strong></div>
+#if(!$actor.extendedByActors.isEmpty())<div><strong>$ctx.label("extended.by.actors"):</strong></div>
 <ul>
 #foreach($ref in $actor.extendedByActors)<li>#ref($ref)</li>
 #end
 </ul>
 #end
-#if(!$actor.goals.isEmpty())<div><strong>Goals:</strong></div>
+#if(!$actor.goals.isEmpty())<div><strong>$ctx.label("goals"):</strong></div>
 <ul>
 #foreach($ref in $actor.goals)<li>#ref($ref)</li>
 #end
 </ul>
 #end
-#if(!$actor.inheritedActors.isEmpty())<div><strong>Inherited actors:</strong></div>
+#if(!$actor.inheritedActors.isEmpty())<div><strong>$ctx.label("inherited.actors"):</strong></div>
 <ul>
 #foreach($ref in $actor.inheritedActors)<li>#ref($ref)</li>
 #end
 </ul>
 #end
-#if(!$actor.inheritedGoals.isEmpty())<div><strong>Inherited goals:</strong></div>
+#if(!$actor.inheritedGoals.isEmpty())<div><strong>$ctx.label("inherited.goals"):</strong></div>
 <ul>
 #foreach($ref in $actor.inheritedGoals)<li>#ref($ref)</li>
 #end

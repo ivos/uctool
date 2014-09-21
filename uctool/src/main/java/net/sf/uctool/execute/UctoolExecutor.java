@@ -9,6 +9,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
@@ -56,8 +57,8 @@ public class UctoolExecutor {
 	public UctoolExecutor(Project project) {
 		time = new StopWatch();
 		timeAll = new StopWatch();
-		labels = PropertyResourceBundle
-				.getBundle("generator/uctool/translations/Resource");
+		labels = PropertyResourceBundle.getBundle("translations/Resource",
+				new Locale(project.getLanguage()));
 		uctoolReader = new UctoolReader().init();
 		executionContext = new ExecutionContext(labels, project);
 		uctoolValidator = new UctoolValidator(executionContext);

@@ -127,7 +127,7 @@
 				<groupId>net.sf.uctool</groupId>
 				<artifactId>uctool-maven-plugin</artifactId>
 				<configuration>
-					<bundleLanguage>en</bundleLanguage>
+					<bundleLanguage>cs</bundleLanguage>
 				</configuration>
 				<executions>
 					<execution>

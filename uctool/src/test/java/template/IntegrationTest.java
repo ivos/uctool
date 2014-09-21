@@ -22,7 +22,7 @@ public class IntegrationTest extends TemplatingTestBase implements
 	@BeforeClass
 	public static void execute() {
 		Project project = new Project("test-name", "test-version",
-				"test-description");
+				"test-description", "en");
 		new UctoolExecutor(project).execute(
 				new File("src/test/ucs/integration"), new File(
 						"target/site/out"));

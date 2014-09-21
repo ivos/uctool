@@ -41,8 +41,8 @@ public class DataConverter {
 		o.setRefcode(refcode);
 		o.setName(escape(data.getName()));
 		if (null != data.getCategory()) {
-			o.setCategory(executionContext.getLabels().getString(
-					"category." + data.getCategory()));
+			o.setCategory(executionContext.label("category."
+					+ data.getCategory()));
 		}
 
 		for (DescriptionType descriptionType : data.getDescription()) {

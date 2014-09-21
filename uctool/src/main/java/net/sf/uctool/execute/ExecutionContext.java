@@ -80,8 +80,8 @@ public class ExecutionContext {
 		instanceOuts = new LinkedHashMap<String, InstanceOut>();
 	}
 
-	public ResourceBundle getLabels() {
-		return labels;
+	public String label(String key) {
+		return labels.getString(key);
 	}
 
 	public Project getProject() {

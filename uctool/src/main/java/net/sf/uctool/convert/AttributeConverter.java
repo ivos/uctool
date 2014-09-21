@@ -43,24 +43,22 @@ public class AttributeConverter {
 		ao.setRefcode(refcode);
 		ao.setStatus(attribute.getStatus());
 		if (null != attribute.getStatus()) {
-			ao.setStatus(executionContext.getLabels().getString(
-					"status." + attribute.getStatus()));
-			ao.setStatusHint(executionContext.getLabels().getString(
-					"status.hint." + attribute.getStatus()));
+			ao.setStatus(executionContext.label("status."
+					+ attribute.getStatus()));
+			ao.setStatusHint(executionContext.label("status.hint."
+					+ attribute.getStatus()));
 		}
 		StringBuffer outType = new StringBuffer();
 		boolean collection = (null == attribute.isCollection()) ? false
 				: attribute.isCollection();
 		if (collection) {
-			outType.append(executionContext.getLabels().getString(
-					"data.collection"));
+			outType.append(executionContext.label("data.collection"));
 			outType.append(" [");
 		}
 		String type = attribute.getType();
 		if (null != type) {
 			if (DATA_TYPES.contains(type)) {
-				outType.append(executionContext.getLabels().getString(
-						"data.type." + type));
+				outType.append(executionContext.label("data.type." + type));
 			} else {
 				Data referenced = executionContext.getDatas().get(type);
 				if (null == referenced) {

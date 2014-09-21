@@ -68,17 +68,17 @@ public class UseCaseConverter {
 			o.setTypeImageName(group.getVisibility() + "-" + group.getType());
 		}
 		if (null != group.getType()) {
-			o.setTypeTitle(executionContext.getLabels().getString(
-					"uc.type." + group.getType()));
+			o.setTypeTitle(executionContext.label("uc.type."
+					+ group.getType()));
 		}
 		if (null != group.getVisibility()) {
-			o.setVisibilityTitle(executionContext.getLabels().getString(
-					"visibility." + group.getVisibility()));
+			o.setVisibilityTitle(executionContext.label("visibility."
+					+ group.getVisibility()));
 		}
 		if (null != uc.getLevel()) {
 			o.setLevel(uc.getLevel().value());
-			o.setLevelTitle(executionContext.getLabels().getString(
-					"level." + uc.getLevel().value()));
+			o.setLevelTitle(executionContext.label("level."
+					+ uc.getLevel().value()));
 		}
 		o.setScope(escape(group.getScope()));
 
