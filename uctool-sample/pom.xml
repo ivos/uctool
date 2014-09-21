@@ -129,13 +129,7 @@
 				<configuration>
 					<bundleLanguage>en</bundleLanguage>
 				</configuration>
-				<executions>
-					<execution>
-						<id>use-cases</id>
-						<goals>
-							<goal>use-cases</goal>
-						</goals>
-					</execution>
+				<executions><!-- <execution> <id>use-cases</id> <goals> <goal>use-cases</goal> </goals> </execution> -->
 				</executions>
 			</plugin>
 			<plugin>
@@ -178,5 +172,57 @@
 			</plugin>
 		</plugins>
 	</reporting>
+
+	<profiles>
+		<profile>
+			<id>convert</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>net.sf.xsltmp</groupId>
+						<artifactId>xslt-generator-maven-plugin</artifactId>
+						<version>1.8</version>
+						<executions>
+							<execution>
+								<id>convert-to-target</id>
+								<goals>
+									<goal>many-to-many</goal>
+								</goals>
+								<phase>generate-sources</phase>
+								<configuration>
+									<xslTemplate>src/convert.xsl</xslTemplate>
+									<srcDir>src/main/ucs</srcDir>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- <plugin> <artifactId>maven-clean-plugin</artifactId> <executions> <execution> <id>delete-in-src</id> <phase>generate-sources</phase> 
+						<configuration> <filesets> <fileset> <directory>${basedir}/src/main/ucs</directory> </fileset> </filesets> </configuration> 
+						</execution> </executions> </plugin> -->
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>2.6</version>
+						<executions>
+							<execution>
+								<id>copy-back-to-src</id>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<phase>generate-sources</phase>
+								<configuration>
+									<outputDirectory>${basedir}/src/main/ucs</outputDirectory>
+									<resources>
+										<resource>
+											<directory>target/generated-xml/xslt-generator</directory>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
