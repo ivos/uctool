@@ -19,19 +19,26 @@ Version: $ctx.project.version</p>
 <h3>Sections</h3>
 <ul class="nav nav-tabs nav-stacked">
 <li><a href="summary/index.html"><i class="icon-sitemap"></i> Overview pages</a></li>
-#if($ctx.actors.size()>0)<li><a href="actor/index.html"><i class="icon-user"></i> Actors</a></li>
+#if($ctx.actors.size()>0)<li><a href="actor/index.html"><i class="icon-user"></i> Actors
+	<span class="badge">$ctx.actors.size()</span></a></li>
 #end
-#if($ctx.useCases.size()>0)<li><a href="uc/index.html"><i class="icon-file"></i> Use cases</a></li>
+#if($ctx.useCases.size()>0)<li><a href="uc/index.html"><i class="icon-file"></i> Use cases
+	<span class="badge">$ctx.useCases.size()</span></a></li>
 #end
-#if($ctx.datas.size()>0)<li><a href="data/index.html"><i class="icon-table"></i> Data</a></li>
+#if($ctx.datas.size()>0)<li><a href="data/index.html"><i class="icon-table"></i> Data
+	<span class="badge">$ctx.datas.size()</span></a></li>
 #end
-#if($ctx.instances.size()>0)<li><a href="instance/index.html"><i class="icon-table"></i> Instances</a></li>
+#if($ctx.instances.size()>0)<li><a href="instance/index.html"><i class="icon-table"></i> Instances
+	<span class="badge">$ctx.instances.size()</span></a></li>
 #end
-#if($ctx.requirements.size()>0)<li><a href="req/index.html"><i class="icon-list"></i> Requirements</a></li>
+#if($ctx.requirements.size()>0)<li><a href="req/index.html"><i class="icon-list"></i> Requirements
+	<span class="badge">$ctx.requirements.size()</span></a></li>
 #end
-#if($ctx.attachments.size()>0)<li><a href="attachment/index.html"><i class="icon-picture"></i> Attachments</a></li>
+#if($ctx.attachments.size()>0)<li><a href="attachment/index.html"><i class="icon-picture"></i> Attachments
+	<span class="badge">$ctx.attachments.size()</span></a></li>
 #end
-#if($ctx.terms.size()>0)<li><a href="glossary/index.html"><i class="icon-search"></i> Glossary</a></li>
+#if($ctx.terms.size()>0)<li><a href="glossary/index.html"><i class="icon-search"></i> Glossary
+	<span class="badge">$ctx.terms.size()</span></a></li>
 #end
 </ul>
 <div><a class="btn" href="single/index.html"><i class="icon-print"></i> Whole documentation on single page (print format)</a></div>
