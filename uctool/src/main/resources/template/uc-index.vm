@@ -16,8 +16,8 @@
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
 <tr>
-<th><i class="icon-user"></i> Primary actor</th>
-<th><i class="icon-bolt"></i> Goal</th>
+<th><i class="fa fa-user"></i> Primary actor</th>
+<th><i class="fa fa-bolt"></i> Goal</th>
 <th>Level</th>
 </tr>
 </thead>

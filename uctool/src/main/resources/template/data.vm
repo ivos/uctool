@@ -12,7 +12,7 @@
 #parse("template/navbar.vm")
 #end
 <a id="data_$data.code"></a>
-<h3><i class="icon-table"></i> <span class="muted">$ctx.label("data")</span> $data.name</h3>
+<h3><i class="fa fa-table"></i> <span class="text-muted">$ctx.label("data")</span> $data.name</h3>
 <strong>$ctx.label("code"):</strong> $data.code
 #if($data.hasCategory())<div><strong>$ctx.label("category"):</strong> $data.category</div>
 #end

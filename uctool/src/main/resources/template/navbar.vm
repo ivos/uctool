@@ -1,43 +1,44 @@
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container">
-			<a class="btn btn-navbar" data-toggle="collapse"
-				data-target=".nav-collapse">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+				data-target="#app-navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
-			</a>
-			<a class="brand" href="${rel-path}index.html">$ctx.project.name</a>
-			<div class="nav-collapse collapse">
-				<ul class="nav">
-					<li#if($section=="home") class="active"#end><a href="${rel-path}index.html"><i class="icon-home"></i> Home</a></li>
-					<li#if($isSection=="true") class="active"#end><a href="index.html"><i class="icon-chevron-left"></i> Section</a></li>
-#if($ctx.useCases.size()>0)					<li#if($section=="entry") class="active"#end><a href="${rel-path}summary/entry-point-list.html">Entry point list <i class="icon-chevron-right"></i></a></li>
+			</button>
+			<a class="navbar-brand" href="${rel-path}index.html">$ctx.project.name</a>
+		</div>
+		<div class="collapse navbar-collapse" id="app-navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li#if($section=="home") class="active"#end><a href="${rel-path}index.html"><i class="fa fa-home"></i> Home</a></li>
+				<li#if($isSection=="true") class="active"#end><a href="index.html"><i class="fa fa-chevron-left"></i> Section</a></li>
+#if($ctx.useCases.size()>0)					<li#if($section=="entry") class="active"#end><a href="${rel-path}summary/entry-point-list.html">Entry point list <i class="fa fa-chevron-right"></i></a></li>
 #end
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections <b class="caret"></b> </a>
-						<ul class="dropdown-menu">
-							<li#if($section=="summary" || $section=="entry" || $section=="actorgoal") class="active"#end><a href="${rel-path}summary/index.html"><i class="icon-sitemap"></i> Overview pages</a></li>
-#if($ctx.actors.size()>0)							<li#if($section=="actor") class="active"#end><a href="${rel-path}actor/index.html"><i class="icon-user"></i> Actors</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections <b class="caret"></b> </a>
+					<ul class="dropdown-menu">
+						<li#if($section=="summary" || $section=="entry" || $section=="actorgoal") class="active"#end><a href="${rel-path}summary/index.html"><i class="fa fa-sitemap"></i> Overview pages</a></li>
+#if($ctx.actors.size()>0)							<li#if($section=="actor") class="active"#end><a href="${rel-path}actor/index.html"><i class="fa fa-user"></i> Actors</a></li>
 #end
-#if($ctx.useCases.size()>0)							<li#if($section=="uc") class="active"#end><a href="${rel-path}uc/index.html"><i class="icon-file"></i> Use cases</a></li>
+#if($ctx.useCases.size()>0)							<li#if($section=="uc") class="active"#end><a href="${rel-path}uc/index.html"><i class="fa fa-file-text-o"></i> Use cases</a></li>
 #end
-#if($ctx.datas.size()>0)							<li#if($section=="data") class="active"#end><a href="${rel-path}data/index.html"><i class="icon-table"></i> Data</a></li>
+#if($ctx.datas.size()>0)							<li#if($section=="data") class="active"#end><a href="${rel-path}data/index.html"><i class="fa fa-table"></i> Data</a></li>
 #end
-#if($ctx.instances.size()>0)							<li#if($section=="instance") class="active"#end><a href="${rel-path}instance/index.html"><i class="icon-table"></i> Instances</a></li>
+#if($ctx.instances.size()>0)							<li#if($section=="instance") class="active"#end><a href="${rel-path}instance/index.html"><i class="fa fa-table"></i> Instances</a></li>
 #end
-#if($ctx.requirements.size()>0)							<li><a href="${rel-path}req/index.html"><i class="icon-list"></i> Requirements</a></li>
+#if($ctx.requirements.size()>0)							<li><a href="${rel-path}req/index.html"><i class="fa fa-list"></i> Requirements</a></li>
 #end
-#if($ctx.attachments.size()>0)							<li><a href="${rel-path}attachment/index.html"><i class="icon-picture"></i> Attachments</a></li>
+#if($ctx.attachments.size()>0)							<li><a href="${rel-path}attachment/index.html"><i class="fa fa-picture-o"></i> Attachments</a></li>
 #end
-#if($ctx.terms.size()>0)							<li><a href="${rel-path}glossary/index.html"><i class="icon-search"></i> Glossary</a></li>
+#if($ctx.terms.size()>0)							<li><a href="${rel-path}glossary/index.html"><i class="fa fa-search"></i> Glossary</a></li>
 #end
-						</ul>
-					</li>
-					<li><a href="${rel-path}single/index.html"><i class="icon-print"></i> Single page</a></li>
-				</ul>
-			</div>
+					</ul>
+				</li>
+				<li><a href="${rel-path}single/index.html"><i class="fa fa-print"></i> Single page</a></li>
+			</ul>
 		</div>
 	</div>
-</div>
-<div class="container">
+</nav>
+<div class="container-fluid">

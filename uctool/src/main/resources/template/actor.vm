@@ -12,7 +12,7 @@
 #parse("template/navbar.vm")
 #end
 <a id="actor_$actor.code"></a>
-<h3><i class="icon-user"></i> <span class="muted">$ctx.label("actor")</span> $actor.name</h3>
+<h3><i class="fa fa-user"></i> <span class="text-muted">$ctx.label("actor")</span> $actor.name</h3>
 #if(!$actor.descriptions.isEmpty())<div><strong>$ctx.label("description"):</strong></div>
 #foreach($description in $actor.descriptions)<div>$description</div>
 #end

@@ -12,7 +12,7 @@
 #parse("template/navbar.vm")
 #end
 <a id="uc_$uc.code"></a>
-<h3><i class="icon-file"></i> <span class="muted">$ctx.label("use.case")</span> $uc.code - #if($uc.typeImageName)<img src="../resources/${uc.typeImageName}.gif" alt="$uc.visibilityTitle, $uc.typeTitle" title="$uc.visibilityTitle, $uc.typeTitle"/>&nbsp;#end$uc.goal#if($uc.level)&nbsp;<img src="../resources/${uc.level}.gif" alt="$uc.levelTitle" title="$uc.levelTitle"/>#end</h3>
+<h3><i class="fa fa-file-text-o"></i> <span class="text-muted">$ctx.label("use.case")</span> $uc.code - #if($uc.typeImageName)<img src="../resources/${uc.typeImageName}.gif" alt="$uc.visibilityTitle, $uc.typeTitle" title="$uc.visibilityTitle, $uc.typeTitle"/>&nbsp;#end$uc.goal#if($uc.level)&nbsp;<img src="../resources/${uc.level}.gif" alt="$uc.levelTitle" title="$uc.levelTitle"/>#end</h3>
 <table>
 #if($uc.scope)<tr><td><strong>$ctx.label("scope"):</strong> $uc.scope</td></tr>
 #end
@@ -65,13 +65,13 @@ $uc.successGuaranteesText
 #if($uc.trigger)<tr><td><strong>$ctx.label("trigger"):</strong> $uc.trigger</td></tr>
 #end
 #if(!$uc.steps.isEmpty())<tr><td><strong>$ctx.label("main.success.scenario"):</strong></td></tr>
-<tr><td class="layout">
-#foreach($step in $uc.steps)<table><tr><td class="layout">${step.number}.&nbsp;</td><td class="layout">$step.content</td></tr></table>
+<tr><td style="vertical-align: text-top;">
+#foreach($step in $uc.steps)<table><tr><td style="vertical-align: text-top;">${step.number}.&nbsp;</td><td style="vertical-align: text-top;">$step.content</td></tr></table>
 #end</td></tr>
 #end
 #if(!$uc.extensions.isEmpty())<tr><td><strong>$ctx.label("extensions"):</strong></td></tr>
-<tr><td class="layout">
-#foreach($extension in $uc.extensions)<table><tr><td class="layout">$extension.indent$extension.number.&nbsp;</td><td class="layout">$extension.content</td></tr></table>
+<tr><td style="vertical-align: text-top;">
+#foreach($extension in $uc.extensions)<table><tr><td style="vertical-align: text-top;">$extension.indent$extension.number.&nbsp;</td><td style="vertical-align: text-top;">$extension.content</td></tr></table>
 #end</td></tr>
 #end
 #if($uc.notes)<tr><td><strong>$ctx.label("notes"):</strong>
