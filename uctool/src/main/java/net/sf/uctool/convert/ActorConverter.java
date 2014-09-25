@@ -32,7 +32,7 @@ public class ActorConverter {
 	}
 
 	public ActorOut convert(Actor actor) {
-		logger.debug("Converting actor {}.", actor);
+		logger.debug("Converting actor {}.", actor.getCode());
 		ActorOut o = new ActorOut();
 		String code = actor.getCode();
 		o.setCode(code);

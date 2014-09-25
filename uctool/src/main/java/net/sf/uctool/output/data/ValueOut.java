@@ -69,7 +69,8 @@ public class ValueOut {
 	public String toString() {
 		return "ValueOut [of=" + of + ", fromAttribute=" + fromAttribute
 				+ ", fromData=" + fromData + ", fromInstance="
-				+ fromInstance.getCode() + "]";
+				+ ((null == fromInstance) ? null : fromInstance.getCode())
+				+ "]";
 	}
 
 }

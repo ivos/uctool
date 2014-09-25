@@ -45,7 +45,7 @@ public class UseCaseConverter {
 	}
 
 	public UseCaseOut convert(UseCase uc) {
-		logger.debug("Converting use case {}.", uc);
+		logger.debug("Converting use case {}.", uc.getCode());
 		executionContext.setCurrentUseCase(uc);
 		UseCaseOut o = new UseCaseOut();
 		String code = uc.getCode();
@@ -68,8 +68,7 @@ public class UseCaseConverter {
 			o.setTypeImageName(group.getVisibility() + "-" + group.getType());
 		}
 		if (null != group.getType()) {
-			o.setTypeTitle(executionContext.label("uc.type."
-					+ group.getType()));
+			o.setTypeTitle(executionContext.label("uc.type." + group.getType()));
 		}
 		if (null != group.getVisibility()) {
 			o.setVisibilityTitle(executionContext.label("visibility."

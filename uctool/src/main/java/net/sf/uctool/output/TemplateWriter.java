@@ -8,6 +8,7 @@ import java.util.Map;
 
 import net.sf.uctool.exception.WriterException;
 
+import org.apache.commons.lang.time.StopWatch;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -23,10 +24,12 @@ public class TemplateWriter {
 
 	private final VelocityEngine ve;
 	private final File baseDir;
+	private final StopWatch time;
 
 	public TemplateWriter(VelocityEngine ve, File baseDir) {
 		this.ve = ve;
 		this.baseDir = baseDir;
+		time = new StopWatch();
 	}
 
 	public void writeFile(String templateName, String outputFileNameCore,
@@ -77,10 +80,12 @@ public class TemplateWriter {
 
 	public void writeFragment(String templateName, VelocityContext context,
 			FileWriter fw, File outputFile) {
+		time.start();
 		Template template = loadTemplate(templateName);
 		template.merge(context, fw);
-		logger.debug("Merged template [{}] to {}.", template.getName(),
-				outputFile);
+		logger.debug("Merged template [{}] to {} @ {}.", template.getName(),
+				outputFile, time.toString());
+		time.reset();
 	}
 
 	public void writeText(String text, FileWriter fw, File outputFile) {

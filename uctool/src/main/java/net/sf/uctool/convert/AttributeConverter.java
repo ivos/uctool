@@ -34,7 +34,8 @@ public class AttributeConverter {
 
 	public AttributeOut convert(String dataCode, String dataRefcode,
 			Attribute attribute) {
-		logger.debug("Converting attribute {}.", attribute);
+		logger.debug("Converting attribute [{}.{}].", dataCode,
+				attribute.getCode());
 		AttributeOut ao = new AttributeOut();
 		ao.setName(attribute.getName());
 		String attributeCode = attribute.getCode();

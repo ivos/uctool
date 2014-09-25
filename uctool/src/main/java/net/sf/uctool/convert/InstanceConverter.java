@@ -33,7 +33,7 @@ public class InstanceConverter {
 	}
 
 	public InstanceOut convert(Instance instance) {
-		logger.debug("Converting instance {}.", instance);
+		logger.debug("Converting instance {}.", instance.getCode());
 		InstanceOut o = new InstanceOut();
 		String code = instance.getCode();
 		String refcode = instance.getRefcode();
@@ -132,6 +132,24 @@ public class InstanceConverter {
 			}
 
 			o.getValues().add(vo);
+		}
+
+		for (AttributeOut attribute : dataOut.getAttributes()) {
+			boolean mapped = false;
+			for (ValueOut value : o.getValues()) {
+				AttributeOut ofAttribute = value.getOf();
+				if (null != ofAttribute) {
+					String ofAttRefcode = ofAttribute.getRefcode();
+					if (null != ofAttRefcode
+							&& ofAttRefcode.equals(attribute.getRefcode())) {
+						mapped = true;
+						break;
+					}
+				}
+			}
+			if (!mapped) {
+				o.getUnmapped().add(attribute);
+			}
 		}
 
 		return o;

@@ -33,7 +33,7 @@ public class DataConverter {
 	}
 
 	public DataOut convert(Data data) {
-		logger.debug("Converting data {}.", data);
+		logger.debug("Converting data {}.", data.getCode());
 		DataOut o = new DataOut();
 		String code = data.getCode();
 		String refcode = data.getRefcode();
