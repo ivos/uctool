@@ -2,9 +2,9 @@
 #if( $ctx.single && $ref)<a href="#${ref.type}_${ref.code}" title="$ref.label">$ref.label</a>#end
 #if(!$ctx.single && $ref)<a href="../$ref.type/${ref.code}.html" title="$ref.label">$ref.label</a>#end
 #end
-#macro(actorRef $actor)
-#if( $ctx.single)<a href="#actor_${actor.code}" title="$actor.name">$actor.name</a>#end
-#if(!$ctx.single)<a href="../actor/${actor.code}.html" title="$actor.name">$actor.name</a>#end
+#macro(actorRef $actor $class)
+#if( $ctx.single)<a href="#actor_${actor.code}" title="$actor.name" class="$!class">$actor.name</a>#end
+#if(!$ctx.single)<a href="../actor/${actor.code}.html" title="$actor.name" class="$!class">$actor.name</a>#end
 #end
 #macro(ucRef $uc)
 #if( $ctx.single)<a href="#uc_${uc.code}" title="$uc.code - $uc.goal">$uc.code - $uc.goal</a>#end

@@ -17,9 +17,9 @@
 #if($ctx.useCases.size()>0)					<li#if($section=="entry") class="active"#end><a href="${rel-path}summary/entry-point-list.html">Entry point list <i class="fa fa-chevron-right"></i></a></li>
 #end
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections <b class="caret"></b> </a>
-					<ul class="dropdown-menu">
-						<li#if($section=="summary" || $section=="entry" || $section=="actorgoal") class="active"#end><a href="${rel-path}summary/index.html"><i class="fa fa-sitemap"></i> Overview pages</a></li>
+					<a id="sections-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Sections <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="sections-dropdown">
+						<li role="presentation"#if($section=="summary" || $section=="entry" || $section=="actorgoal") class="active"#end><a role="menuitem" tabindex="-1" href="${rel-path}summary/index.html"><i class="fa fa-sitemap"></i> Overview pages</a></li>
 #if($ctx.actors.size()>0)							<li#if($section=="actor") class="active"#end><a href="${rel-path}actor/index.html"><i class="fa fa-user"></i> Actors</a></li>
 #end
 #if($ctx.useCases.size()>0)							<li#if($section=="uc") class="active"#end><a href="${rel-path}uc/index.html"><i class="fa fa-file-text-o"></i> Use cases</a></li>

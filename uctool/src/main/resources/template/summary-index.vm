@@ -10,14 +10,14 @@
 #set($isSection="true")
 #parse("template/navbar.vm")
 <h2>Overview pages list</h2>
-<ul class="nav nav-tabs nav-stacked">
-#if($ctx.useCases.size()>0)<li><a href="entry-point-list.html">Entry point list</a></li>
+<div class="list-group">
+#if($ctx.useCases.size()>0)<a href="entry-point-list.html" class="list-group-item">Entry point list</a>
 #end
-#if($ctx.actors.size()>0)<li><a href="actor-goal-list.html">Actor-goal list</a></li>
+#if($ctx.actors.size()>0)<a href="actor-goal-list.html" class="list-group-item">Actor-goal list</a>
 #end
-#if($ctx.datas.size()>0)<li><a href="unused-data-list.html">Unused data list</a></li>
+#if($ctx.datas.size()>0)<a href="unused-data-list.html" class="list-group-item">Unused data list</a>
 #end
-</ul>
+</div>
 #parse("template/footer.vm")
 </body>
 </html>

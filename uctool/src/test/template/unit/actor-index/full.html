@@ -39,9 +39,9 @@
 				<li><a href="../index.html"><i class="fa fa-home"></i> Home</a></li>
 				<li class="active"><a href="index.html"><i class="fa fa-chevron-left"></i> Section</a></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sections <b class="caret"></b> </a>
-					<ul class="dropdown-menu">
-						<li><a href="../summary/index.html"><i class="fa fa-sitemap"></i> Overview pages</a></li>
+					<a id="sections-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Sections <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="sections-dropdown">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="../summary/index.html"><i class="fa fa-sitemap"></i> Overview pages</a></li>
 							<li class="active"><a href="../actor/index.html"><i class="fa fa-user"></i> Actors</a></li>
 					</ul>
 				</li>
@@ -52,14 +52,12 @@
 </nav>
 <div class="container-fluid">
 <h2>Actors overview</h2>
-<ul class="nav nav-tabs nav-stacked">
-<li><a href="../actor/ac-1.html" title="Actor name 1 &lt;b &amp; ">Actor name 1 &lt;b &amp; </a></li>
-<li><a href="../actor/ac-2.html" title="Actor name 2">Actor name 2</a></li>
-<li><a href="../actor/ac-3.html" title="Actor name 3">Actor name 3</a></li>
-</ul>
+<div class="list-group">
+<a href="../actor/ac-1.html" title="Actor name 1 &lt;b &amp; " class="list-group-item">Actor name 1 &lt;b &amp; </a><a href="../actor/ac-2.html" title="Actor name 2" class="list-group-item">Actor name 2</a><a href="../actor/ac-3.html" title="Actor name 3" class="list-group-item">Actor name 3</a></div>
 <hr/>
 <small>Created in <a href="http://uctool.sf.net">uctool.sf.net</a>.</small>
 </div>
-<script src="../resources/js/scripts.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>

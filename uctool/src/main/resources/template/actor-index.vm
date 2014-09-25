@@ -13,9 +13,9 @@
 #parse("template/navbar.vm")
 #end
 <h2>Actors overview</h2>
-<ul class="nav nav-tabs nav-stacked">
-#foreach($actor in $ctx.actorOuts.values())<li>#actorRef($actor)</li>
-#end</ul>
+<div class="list-group">
+#foreach($actor in $ctx.actorOuts.values())#actorRef($actor,"list-group-item")
+#end</div>
 #if(! $ctx.single)
 #parse("template/footer.vm")
 </body>

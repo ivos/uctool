@@ -14,8 +14,6 @@ public class ResourcesTest extends TemplateTestBase {
 		e.execute(new File(inputBaseDir, "empty.xml"), outputDir);
 		assertTrue("File in base resources/ dir exists", new File(outputDir,
 				"resources/sea.gif").exists());
-		assertTrue("File in subdir of resources/ exists", new File(outputDir,
-				"resources/css/styles.css").exists());
 	}
 
 }

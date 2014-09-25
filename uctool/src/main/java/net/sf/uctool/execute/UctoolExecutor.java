@@ -228,10 +228,7 @@ public class UctoolExecutor {
 				"black-organization.gif", "black-system.gif", "clam.gif",
 				"cloud.gif", "favicon.ico", "fish.gif", "kite.gif", "sea.gif",
 				"white-design.gif", "white-organization.gif",
-				"white-system.gif", "css/styles.css",
-				"font/fontawesome-webfont.eot", "font/fontawesome-webfont.svg",
-				"font/fontawesome-webfont.ttf",
-				"font/fontawesome-webfont.woff", "js/scripts.js");
+				"white-system.gif");
 		File outputBaseDir = new File(outputDir, "resources");
 
 		try {
