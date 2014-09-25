@@ -28,7 +28,10 @@
 #foreach($value in $instance.values)<tr>
 <td>$value.of.nameAndCodeLabel</code></td><td#if($value.of.statusHint) title="$value.of.statusHint"#end>$value.of.status</td><td>$value.of.type</td>
  <td>$value.description</td>
-  <td>#ref($value.fromDataRef)</td><td>$value.fromAttribute.nameAndCodeLabel</td><td#if($value.fromAttribute.statusHint) title="$value.fromAttribute.statusHint"#end>$value.fromAttribute.status</td><td>$value.fromAttribute.type</td>
+#if($value.isFromDataAttribute())<td>#ref($value.fromDataRef)</td><td>$!value.fromAttribute.nameAndCodeLabel</td><td#if($value.fromAttribute.statusHint) title="$value.fromAttribute.statusHint"#end>$!value.fromAttribute.status</td><td>$!value.fromAttribute.type</td>
+#end
+#if(!$value.isFromDataAttribute())<td colspan="4">#ref($value.fromDataRef)</td>
+#end
 </tr>
 #end</tbody>
 </table>

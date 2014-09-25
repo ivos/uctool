@@ -74,29 +74,48 @@ public class InstanceConverter {
 
 			if (null != from) {
 				String[] parts = from.split("\\.");
-				if (parts.length != 2) {
-					throw new ValidationException("Invalid 'from' [" + from
-							+ "] on instance [" + code + "], value of ["
-							+ attributeOf + "].");
-				}
-				DataOut fromData = executionContext.getDataOuts().get(parts[0]);
-				if (null == fromData) {
-					throw new ValidationException("Value on instance [" + code
-							+ "] refers to unknown data [" + parts[0]
-							+ "] in from [" + from + "].");
-				}
-				vo.setFromData(fromData);
-				executionContext.addDataRef(fromData.getRefcode(), refcode,
-						"instance");
+				if (2 == parts.length) {
+					// data attribute
+					DataOut fromData = executionContext.getDataOuts().get(
+							parts[0]);
+					if (null == fromData) {
+						throw new ValidationException("Value on instance ["
+								+ code + "." + attributeOf
+								+ "] refers to unknown data [" + parts[0]
+								+ "] in from [" + from + "].");
+					}
+					vo.setFromData(fromData);
+					executionContext.addDataRef(fromData.getRefcode(), refcode,
+							"instance");
 
-				AttributeOut fromAttribute = fromData.getAttribute(parts[1]);
-				if (null == fromAttribute) {
-					throw new ValidationException("Value on instance [" + code
-							+ "] refers to unknown attribute of data ["
-							+ parts[0] + "] via code [" + parts[1]
-							+ "] using 'from' [" + from + "].");
+					AttributeOut fromAttribute = fromData
+							.getAttribute(parts[1]);
+					if (null == fromAttribute) {
+						throw new ValidationException("Value on instance ["
+								+ code + "." + attributeOf
+								+ "] refers to unknown attribute of data ["
+								+ parts[0] + "] via code [" + parts[1]
+								+ "] using 'from' [" + from + "].");
+					}
+					vo.setFromAttribute(fromAttribute);
+				} else if (1 == parts.length) {
+					// instance
+					Instance fromInstance = executionContext.getInstances()
+							.get(parts[0]);
+					if (null == fromInstance) {
+						throw new ValidationException("Value on instance ["
+								+ code + "." + attributeOf
+								+ "] refers to unknown instance [" + parts[0]
+								+ "].");
+					}
+					vo.setFromInstance(fromInstance);
+					executionContext.addDataRef(fromInstance.getRefcode(),
+							refcode, "instance");
+				} else {
+					throw new ValidationException("Invalid 'from' [" + from
+							+ "] on instance [" + code + "." + attributeOf
+							+ "].");
 				}
-				vo.setFromAttribute(fromAttribute);
 			} else {
 				vo.setFromData(DataOut.SAFE_EMPTY);
 				vo.setFromAttribute(new AttributeOut());

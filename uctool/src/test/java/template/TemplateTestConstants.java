@@ -2,6 +2,6 @@ package template;
 
 public interface TemplateTestConstants {
 
-	boolean REPLACE_TEMPLATE = true;
+	boolean REPLACE_TEMPLATE = false;
 
 }

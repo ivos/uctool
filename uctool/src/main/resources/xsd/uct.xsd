@@ -556,9 +556,9 @@
 					<xs:documentation>Code of the data attribute which value is being specified.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="from" type="uct:AttributeRefCodeType">
+			<xs:attribute name="from" type="uct:ValueRefCodeType">
 				<xs:annotation>
-					<xs:documentation>Code of data, data attribute, instance or instance value from which this value is set.
+					<xs:documentation>Code of data attribute or instance from which this value is set.
 					</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
@@ -780,6 +780,11 @@
 	<xs:simpleType name="AttributeRefCodeType">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="[a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ValueRefCodeType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z0-9_\-]+(\.[a-zA-Z0-9_\-]+)?" />
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="RequirementPriorityType">

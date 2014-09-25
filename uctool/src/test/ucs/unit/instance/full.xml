@@ -71,6 +71,9 @@
 		<value of="attRfcdtRfcatt" from="refc_dtRfcdtRfcattF.refc_attRfcdtRfcattF">
 			<description>From data via refcode and attribute via refcode.</description>
 		</value>
+		<value of="attInst" from="dtAttInstFInst">
+			<description>From instance.</description>
+		</value>
 	</instance>
 
 	<attachment-group directory="att-dir1" name="">
@@ -90,12 +93,16 @@
 			<description>Full att custom types description.</description>
 		</attribute>
 		<attribute name="" code="attMinimal"></attribute>
+		<attribute name="Unmapped" code="unmapped" status="mandatory" type="string" length="256" collection="true">
+			<description>This attribute is not mapped by the instance.</description>
+		</attribute>
 		<attribute name="Attribute description only" code="attDesc"></attribute>
 		<attribute name="Attribute with refc" code="attRfc" refcode="refc_attRfc"></attribute>
 		<attribute name="Attribute data att" code="attDtAtt"></attribute>
 		<attribute name="Attribute rfcdata att" code="attRfcdtAtt"></attribute>
 		<attribute name="Attribute data rfcatt" code="attDtRfcatt"></attribute>
 		<attribute name="Attribute rfcdata rfcatt" code="attRfcdtRfcatt"></attribute>
+		<attribute name="Attribute instance" code="attInst"></attribute>
 	</data>
 
 	<data name="From dt dt att" code="dtDtAttF">
@@ -119,6 +126,8 @@
 		<attribute name="From att custom types full" code="attFullCustomTypesF" status="unique" type="refc_CustomTypeSource"
 			length="76" collection="true"></attribute>
 	</data>
+	<data name="From dt inst dt" code="dtAttInstFDt"></data>
+	<instance name="From dt inst inst" code="dtAttInstFInst" of="dtAttInstFDt"></instance>
 
 	<data name="Custom type target" code="CustomTypeTarget" refcode="refc_CustomTypeTarget"></data>
 	<data name="Custom type source" code="CustomTypeSource" refcode="refc_CustomTypeSource"></data>
