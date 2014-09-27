@@ -80,12 +80,16 @@ public class TemplateWriter {
 
 	public void writeFragment(String templateName, VelocityContext context,
 			FileWriter fw, File outputFile) {
-		time.start();
+		if (logger.isDebugEnabled()) {
+			time.start();
+		}
 		Template template = loadTemplate(templateName);
 		template.merge(context, fw);
-		logger.debug("Merged template [{}] to {} @ {}.", template.getName(),
-				outputFile, time.toString());
-		time.reset();
+		if (logger.isDebugEnabled()) {
+			logger.debug("Merged template [{}] to {} @ {}.",
+					template.getName(), outputFile, time.toString());
+			time.reset();
+		}
 	}
 
 	public void writeText(String text, FileWriter fw, File outputFile) {
