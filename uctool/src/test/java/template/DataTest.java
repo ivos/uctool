@@ -67,7 +67,7 @@ public class DataTest extends TemplateTestBase {
 			e.execute(new File(inputBaseDir, "data/dataMissing.xml"), outputDir);
 		} catch (ValidationException e) {
 			assertEquals(
-					"Missing data with refcode [missing] referenced from data with code [d1].",
+					"Missing data or instance with refcode [missing] referenced from data with code [d1].",
 					e.getMessage());
 		}
 	}
