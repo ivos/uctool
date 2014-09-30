@@ -5,7 +5,7 @@
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
 	">
 
-	<instance name="Name of instance" code="full" of="refc_full_data" refcode="inst_refcode_1">
+	<instance name="Name of instance &lt;b &amp; &amp;nbsp; " code="full" of="refc_full_data" refcode="inst_refcode_1">
 		<description>Description 1.</description>
 		<description>Description 2.</description>
 		<description>
@@ -47,7 +47,15 @@
 			.
 		</description>
 		<value of="fullAttRefc" from="refc_dtFullF.refc_attFullF">
-			<description>Full atts mapping description.</description>
+			<description>
+				Full atts mapping description.
+				Contains
+				<h:strong class="class-1 class-2" title="A title">
+					some
+					<h:em class="class-3">HTML code</h:em>
+				</h:strong>
+				and entities: &lt;b &amp; &amp;nbsp; .
+			</description>
 		</value>
 		<value of="fullAttCustomTypes" from="dtFullCustomTypesF.attFullCustomTypesF">
 			<description>Full att custom types mapping description.</description>
@@ -83,7 +91,7 @@
 	<data name="Referenced via refcode" code="a-non-referenced-code" refcode="the-referenced-refcode" />
 	<requirement name="Rq 1 name" code="rq1"></requirement>
 
-	<data name="Name of instance data" code="full_data" refcode="refc_full_data" category="persistence-entity">
+	<data name="Name of instance data &lt;b &amp; &amp;nbsp; " code="full_data" refcode="refc_full_data" category="persistence-entity">
 		<attribute name="Full att" code="fullAtt" refcode="fullAttRefc" status="mandatory" type="string" length="23"
 			collection="true">
 			<description>Full att description.</description>

@@ -50,7 +50,7 @@ public class InstanceOut {
 	}
 
 	public Reference getOfRef() {
-		return new Reference("data", of.getCode(), of.getName());
+		return new Reference("data", of.getCode(), of.getName(), false);
 	}
 
 	public List<String> getDescriptions() {
