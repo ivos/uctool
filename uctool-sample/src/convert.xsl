@@ -22,4 +22,25 @@
 		</xsl:element>
 	</xsl:template>
 
+	<!-- attribute-ref to value -->
+	<xsl:template match="uct:attribute-ref">
+		<xsl:element name="value">
+			<xsl:apply-templates select="@*|node()|text()" />
+		</xsl:element>
+	</xsl:template>
+
+	<!-- attribute-ref/@type to of -->
+	<xsl:template match="uct:attribute-ref/@type">
+		<xsl:attribute name="of">
+		<xsl:value-of select="." />
+		</xsl:attribute>
+	</xsl:template>
+
+	<!-- attribute-ref/@description to sub-element -->
+	<xsl:template match="uct:attribute-ref/@description">
+		<xsl:element name="{name()}">
+			<xsl:value-of select="." />
+		</xsl:element>
+	</xsl:template>
+
 </xsl:stylesheet>
