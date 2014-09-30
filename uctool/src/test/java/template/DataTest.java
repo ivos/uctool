@@ -50,6 +50,18 @@ public class DataTest extends TemplateTestBase {
 	}
 
 	@Test
+	public void val_DuplicateAttribute() {
+		try {
+			e.execute(new File(inputBaseDir, "data/duplicateAttribute.xml"),
+					outputDir);
+		} catch (ValidationException e) {
+			assertEquals(
+					"Duplicate attribute with code [at1] on data with code [d1].",
+					e.getMessage());
+		}
+	}
+
+	@Test
 	public void val_AttachmentMissing() {
 		try {
 			e.execute(new File(inputBaseDir, "data/attachmentMissing.xml"),

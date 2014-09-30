@@ -120,7 +120,7 @@ public class UctoolValidator {
 						String valueCode = value.getOf();
 						if (valueCodes.contains(valueCode)) {
 							throw new ValidationException(
-									"Duplicate value of [" + code
+									"Duplicate value of [" + valueCode
 											+ "] on instance with code ["
 											+ code + "].");
 						}
