@@ -32,12 +32,9 @@ public class AttributeOut {
 		StringBuffer sb = new StringBuffer();
 		sb.append(getName());
 		if (getCode().length() > 0) {
-			if (getName().length() > 0) {
-				sb.append(", ");
-			}
-			sb.append("<code>");
+			sb.append(" <span class=\"pull-right\"><code>");
 			sb.append(getCode());
-			sb.append("</code>");
+			sb.append("</code></span>");
 		}
 		return sb.toString();
 	}
