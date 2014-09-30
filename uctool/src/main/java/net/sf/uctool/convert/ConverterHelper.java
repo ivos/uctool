@@ -8,6 +8,7 @@ import net.sf.uctool.xsd.AttachmentGroup;
 import net.sf.uctool.xsd.AttachmentRef;
 import net.sf.uctool.xsd.Data;
 import net.sf.uctool.xsd.DataRef;
+import net.sf.uctool.xsd.Instance;
 import net.sf.uctool.xsd.ReqRef;
 import net.sf.uctool.xsd.Requirement;
 import net.sf.uctool.xsd.StepRef;
@@ -103,23 +104,35 @@ public class ConverterHelper {
 		if (content instanceof DataRef) {
 			DataRef dataRef = (DataRef) content;
 			String refcode = dataRef.getCode();
-			Data data = executionContext.getDatas().get(refcode);
-			if (null == data) {
-				throw new ValidationException("Missing data with refcode ["
-						+ refcode + "] referenced from " + referencedFromType
-						+ " with code [" + referencedFromCode + "].");
+			String referencingCode, referencingName, type;
+			Data referencingData = executionContext.getDatas().get(refcode);
+			if (null != referencingData) {
+				referencingCode = referencingData.getCode();
+				referencingName = referencingData.getName();
+				type = "data";
+			} else {
+				Instance referencingInstance = executionContext.getInstances()
+						.get(refcode);
+				if (null == referencingInstance) {
+					throw new ValidationException(
+							"Missing data or instance with refcode [" + refcode
+									+ "] referenced from " + referencedFromType
+									+ " with code [" + referencedFromCode
+									+ "].");
+				}
+				referencingCode = referencingInstance.getCode();
+				referencingName = referencingInstance.getName();
+				type = "instance";
 			}
-			String code = data.getCode();
-			sb.append("<a href=\"" + getRefPrefix() + "data"
-					+ getRefSeparator());
-			sb.append(code);
+			sb.append("<a href=\"" + getRefPrefix() + type + getRefSeparator());
+			sb.append(referencingCode);
 			sb.append(getRefSuffix() + "\" title=\"");
-			sb.append(data.getName());
+			sb.append(referencingName);
 			sb.append("\">");
 			sb.append(escape(dataRef.getValue()));
 			if (executionContext.isSingle()) {
 				sb.append(" (");
-				sb.append(data.getName());
+				sb.append(referencingName);
 				sb.append(")");
 			}
 			sb.append("</a>");

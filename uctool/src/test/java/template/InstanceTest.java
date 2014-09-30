@@ -20,4 +20,11 @@ public class InstanceTest extends TemplateTestBase {
 		performTest("unit/instance/full.html", "site/out/instance/full.html");
 	}
 
+	@Test
+	public void references() throws IOException {
+		e.execute(new File(inputBaseDir, "instance/references.xml"), outputDir);
+		performTest("unit/instance/references.html",
+				"site/out/instance/references.html");
+	}
+
 }
