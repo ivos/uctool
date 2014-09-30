@@ -12,6 +12,11 @@
 			<h:strong class="class-1 class-2" title="A title">
 				some
 				<h:em class="class-3">HTML code</h:em>
+				with
+				<h:i class="icon-1"></h:i>
+				and line break
+				<h:br></h:br>
+				.
 			</h:strong>
 			and entities: &lt;b &amp; &amp;nbsp; .
 		</description>

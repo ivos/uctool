@@ -1,6 +1,10 @@
 package net.sf.uctool.convert;
 
 import static net.sf.uctool.util.Escape.*;
+
+import java.util.Arrays;
+import java.util.List;
+
 import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.xsd.Attachment;
@@ -272,7 +276,8 @@ public class ConverterHelper {
 				}
 			}
 			NodeList childNodes = element.getChildNodes();
-			if (0 == childNodes.getLength()) {
+			if (0 == childNodes.getLength()
+					&& COLLAPSED_ELEMENTS.contains(name.toLowerCase())) {
 				sb.append(" />");
 			} else {
 				sb.append(">");
@@ -291,5 +296,8 @@ public class ConverterHelper {
 			sb.append(escape(text.getTextContent()));
 		}
 	}
+
+	private static final List<String> COLLAPSED_ELEMENTS = Arrays.asList("br",
+			"hr");
 
 }
