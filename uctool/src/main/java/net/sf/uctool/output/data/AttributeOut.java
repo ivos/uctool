@@ -59,6 +59,31 @@ public class AttributeOut {
 		return statusHint;
 	}
 
+	public String getStatusLabelType() {
+		if ("PK".equals(status)) {
+			return "danger";
+		} else if ("NK".equals(status)) {
+			return "warning";
+		} else if ("U".equals(status)) {
+			return "warning";
+		} else if ("M".equals(status)) {
+			return "primary";
+		} else if ("C".equals(status)) {
+			return "info";
+		} else if ("O".equals(status)) {
+			return "success";
+		}
+		return "default";
+	}
+
+	public String getStatusLabel() {
+		if (getStatus().length() == 0) {
+			return "";
+		}
+		return "<span class=\"label label-" + getStatusLabelType() + "\">"
+				+ getStatus() + "</span>";
+	}
+
 	public void setStatusHint(String statusHint) {
 		this.statusHint = statusHint;
 	}
