@@ -65,7 +65,7 @@ public class DataOut {
 	public AttributeOut getAttribute(String refcode) {
 		for (AttributeOut iteratedAttributeOut : attributes) {
 			String attributeRefcode = iteratedAttributeOut.getRefcode();
-			if (attributeRefcode.equals(refcode)) {
+			if (null != attributeRefcode && attributeRefcode.equals(refcode)) {
 				return iteratedAttributeOut;
 			}
 		}
