@@ -51,7 +51,8 @@ public class ValueOut {
 
 	public Reference getFromDataRef() {
 		if (null != fromData) {
-			return new Reference("data", fromData.getCode(), fromData.getName());
+			return new Reference("data", fromData.getCode(),
+					fromData.getName(), false);
 		}
 		return new Reference("instance", fromInstance.getCode(),
 				fromInstance.getName());

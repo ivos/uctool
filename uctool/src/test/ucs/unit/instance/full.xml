@@ -80,7 +80,7 @@
 			<description>From data via refcode and attribute via refcode.</description>
 		</value>
 		<value of="attInst" from="dtAttInstFInst">
-			<description>From instance.</description>
+			<description>From instance. &lt;b &amp; &amp;nbsp; </description>
 		</value>
 	</instance>
 
@@ -92,17 +92,18 @@
 	<requirement name="Rq 1 name" code="rq1"></requirement>
 
 	<data name="Name of instance data &lt;b &amp; &amp;nbsp; " code="full_data" refcode="refc_full_data" category="persistence-entity">
-		<attribute name="Full att" code="fullAtt" refcode="fullAttRefc" status="mandatory" type="string" length="23"
-			collection="true">
-			<description>Full att description.</description>
+		<attribute name="Full att &lt;b &amp; &amp;nbsp; " code="fullAtt" refcode="fullAttRefc" status="mandatory"
+			type="string" length="23" collection="true">
+			<description>Full att description. &lt;b &amp; &amp;nbsp; </description>
 		</attribute>
 		<attribute name="Full att custom types" code="fullAttCustomTypes" status="primary-key" type="refc_CustomTypeTarget"
 			length="98" collection="true">
 			<description>Full att custom types description.</description>
 		</attribute>
 		<attribute name="" code="attMinimal"></attribute>
-		<attribute name="Unmapped" code="unmapped" status="mandatory" type="string" length="256" collection="true">
-			<description>This attribute is not mapped by the instance.</description>
+		<attribute name="Unmapped &lt;b &amp; &amp;nbsp; " code="unmapped" status="mandatory" type="string" length="256"
+			collection="true">
+			<description>This attribute is not mapped by the instance. &lt;b &amp; &amp;nbsp; </description>
 		</attribute>
 		<attribute name="Attribute description only" code="attDesc"></attribute>
 		<attribute name="Attribute with refc" code="attRfc" refcode="refc_attRfc"></attribute>
@@ -126,16 +127,16 @@
 		<attribute name="From att rfc dt rfc att" code="attRfcdtRfcattF" refcode="refc_attRfcdtRfcattF"></attribute>
 	</data>
 
-	<data name="From dt full" code="dtFullF" refcode="refc_dtFullF">
-		<attribute name="From att full" code="attFullF" refcode="refc_attFullF" status="optional" type="integer"
-			length="45" collection="true"></attribute>
+	<data name="From dt full &lt;b &amp; &amp;nbsp; " code="dtFullF" refcode="refc_dtFullF">
+		<attribute name="From att full &lt;b &amp; &amp;nbsp; " code="attFullF" refcode="refc_attFullF" status="optional"
+			type="integer" length="45" collection="true"></attribute>
 	</data>
 	<data name="From dt full custom types" code="dtFullCustomTypesF">
 		<attribute name="From att custom types full" code="attFullCustomTypesF" status="unique" type="refc_CustomTypeSource"
 			length="76" collection="true"></attribute>
 	</data>
-	<data name="From dt inst dt" code="dtAttInstFDt"></data>
-	<instance name="From dt inst inst" code="dtAttInstFInst" of="dtAttInstFDt"></instance>
+	<data name="From dt inst dt &lt;b &amp; &amp;nbsp; " code="dtAttInstFDt"></data>
+	<instance name="From dt inst inst &lt;b &amp; &amp;nbsp; " code="dtAttInstFInst" of="dtAttInstFDt"></instance>
 
 	<data name="Custom type target" code="CustomTypeTarget" refcode="refc_CustomTypeTarget"></data>
 	<data name="Custom type source" code="CustomTypeSource" refcode="refc_CustomTypeSource"></data>

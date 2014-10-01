@@ -1,5 +1,7 @@
 package net.sf.uctool.output.data;
 
+import static net.sf.uctool.util.Escape.*;
+
 import org.apache.commons.lang.StringUtils;
 
 public class AttributeOut {
@@ -30,7 +32,7 @@ public class AttributeOut {
 
 	public String getNameAndCodeLabel() {
 		StringBuffer sb = new StringBuffer();
-		sb.append(getName());
+		sb.append(escape(getName()));
 		if (getCode().length() > 0) {
 			sb.append(" <span class=\"pull-right\"><code>");
 			sb.append(getCode());
