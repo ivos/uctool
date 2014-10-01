@@ -116,9 +116,6 @@ public class InstanceConverter {
 							+ "] on instance [" + code + "." + attributeOf
 							+ "].");
 				}
-			} else {
-				vo.setFromData(DataOut.SAFE_EMPTY);
-				vo.setFromAttribute(new AttributeOut());
 			}
 
 			DescriptionType descriptionType = value.getDescription();

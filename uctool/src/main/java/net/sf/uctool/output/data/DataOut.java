@@ -86,12 +86,4 @@ public class DataOut {
 				+ name + "]";
 	}
 
-	public static final DataOut SAFE_EMPTY;
-
-	static {
-		SAFE_EMPTY = new DataOut();
-		SAFE_EMPTY.setName("");
-		SAFE_EMPTY.setCode("");
-	}
-
 }

@@ -54,8 +54,11 @@ public class ValueOut {
 			return new Reference("data", fromData.getCode(),
 					fromData.getName(), false);
 		}
-		return new Reference("instance", fromInstance.getCode(),
-				fromInstance.getName());
+		if (null != fromInstance) {
+			return new Reference("instance", fromInstance.getCode(),
+					fromInstance.getName());
+		}
+		return null;
 	}
 
 	public String getDescription() {
