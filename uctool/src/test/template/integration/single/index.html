@@ -974,7 +974,7 @@ Records of
 
 <a id="data_attachment-data-structure"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Attachment data</h3>
-<strong>Code:</strong> attachment-data-structure
+<strong>Code:</strong> <code>attachment-data-structure</code>
 <div><strong>Description:</strong></div>
 <div>Ref to
 			<a href="../attachment/reports/report-01.txt" title="Best customers report - reports/report-01.txt">attachment (Best customers report - reports/report-01.txt)</a>
@@ -982,17 +982,17 @@ Records of
 
 <a id="data_DARE1"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Data attribute reference entity 1</h3>
-<strong>Code:</strong> DARE1
+<strong>Code:</strong> <code>DARE1</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Full string inherited attribute</td><td>fullStringInherited</td><td title="Natural key">NK</td><td>String [123]</td><td>Full string inherited attribute description.</td></tr>
-<tr><td>Full string overridden attribute</td><td>fullStringOverridden</td><td title="Natural key">NK</td><td>String [123]</td><td>Full string overridden attribute description.</td></tr>
-<tr><td>Empty attribute kept empty</td><td>emptyEmpty</td><td></td><td></td><td></td></tr>
-<tr><td>Empty attribute overridden</td><td>emptyOverridden</td><td></td><td></td><td></td></tr>
-<tr><td>Integer collection attribute</td><td>integerCollection</td><td title="Optional">O</td><td>Collection [Integer] [123]</td><td>Integer collection attribute description.</td></tr>
+<tr><td>Full string inherited attribute <span class="pull-right"><code>fullStringInherited</code></span></td><td title="Natural key"><span class="label label-warning">NK</span></td><td>String [123]</td><td>Full string inherited attribute description.</td></tr>
+<tr><td>Full string overridden attribute <span class="pull-right"><code>fullStringOverridden</code></span></td><td title="Natural key"><span class="label label-warning">NK</span></td><td>String [123]</td><td>Full string overridden attribute description.</td></tr>
+<tr><td>Empty attribute kept empty <span class="pull-right"><code>emptyEmpty</code></span></td><td></td><td></td><td></td></tr>
+<tr><td>Empty attribute overridden <span class="pull-right"><code>emptyOverridden</code></span></td><td></td><td></td><td></td></tr>
+<tr><td>Integer collection attribute <span class="pull-right"><code>integerCollection</code></span></td><td title="Optional"><span class="label label-success">O</span></td><td>Collection [Integer] [123]</td><td>Integer collection attribute description.</td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1001,22 +1001,22 @@ Records of
 
 <a id="data_DARE2"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Data attribute reference entity 2</h3>
-<strong>Code:</strong> DARE2
+<strong>Code:</strong> <code>DARE2</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Date attribute</td><td>date</td><td title="Display only">D/O</td><td>Date</td><td>Date attribute description.</td></tr>
-<tr><td>Structure attribute</td><td>dare1Ref</td><td title="Mandatory">M</td><td><a href="#data_DARE1" title="Data attribute reference entity 1">Data attribute reference entity 1</a></td><td>Structure attribute description.</td></tr>
-<tr><td>Structure collection attribute</td><td>dare1List</td><td title="Optional">O</td><td>Collection [<a href="#data_DARE1" title="Data attribute reference entity 1">Data attribute reference entity 1</a>] [10]</td><td>Structure collection attribute description.</td></tr>
-<tr><td>Other structure att</td><td>dare3Ref</td><td></td><td><a href="#data_DARE3" title="Indirectly referenced entity">Indirectly referenced entity</a></td><td></td></tr>
+<tr><td>Date attribute <span class="pull-right"><code>date</code></span></td><td title="Display only"><span class="label label-default">D/O</span></td><td>Date</td><td>Date attribute description.</td></tr>
+<tr><td>Structure attribute <span class="pull-right"><code>dare1Ref</code></span></td><td title="Mandatory"><span class="label label-primary">M</span></td><td><a href="#data_DARE1" title="Data attribute reference entity 1">Data attribute reference entity 1</a></td><td>Structure attribute description.</td></tr>
+<tr><td>Structure collection attribute <span class="pull-right"><code>dare1List</code></span></td><td title="Optional"><span class="label label-success">O</span></td><td>Collection [<a href="#data_DARE1" title="Data attribute reference entity 1">Data attribute reference entity 1</a>] [10]</td><td>Structure collection attribute description.</td></tr>
+<tr><td>Other structure att <span class="pull-right"><code>dare3Ref</code></span></td><td></td><td><a href="#data_DARE3" title="Indirectly referenced entity">Indirectly referenced entity</a></td><td></td></tr>
 </tbody>
 </table>
 
 <a id="data_DARE3"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Indirectly referenced entity</h3>
-<strong>Code:</strong> DARE3
+<strong>Code:</strong> <code>DARE3</code>
 <div><strong>Description:</strong></div>
 <div>Is data type of an attribute on data (DARE2), that is then
 			referred to from another data (DARF1). DARF1 is
@@ -1025,9 +1025,9 @@ Records of
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Att 1 of DARE3</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Att 1 of DARE3</td><td></td><td></td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1036,25 +1036,25 @@ Records of
 
 <a id="data_DARF1"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Data attribute referring form 1</h3>
-<strong>Code:</strong> DARF1
+<strong>Code:</strong> <code>DARF1</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Own attribute 1</td><td>own1</td><td title="Optional">O</td><td>String [ ]</td><td>Own attribute description.</td></tr>
+<tr><td>Own attribute 1 <span class="pull-right"><code>own1</code></span></td><td title="Optional"><span class="label label-success">O</span></td><td>String [ ]</td><td>Own attribute description.</td></tr>
 </tbody>
 </table>
 
 <a id="data_expand-att-ref"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Expanded structure with att ref</h3>
-<strong>Code:</strong> expand-att-ref
+<strong>Code:</strong> <code>expand-att-ref</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Expanded own attribute</td><td>exp-own</td><td title="Unique">U</td><td>String [ ]</td><td>Expanded own attribute description.</td></tr>
+<tr><td>Expanded own attribute <span class="pull-right"><code>exp-own</code></span></td><td title="Unique"><span class="label label-warning">U</span></td><td>String [ ]</td><td>Expanded own attribute description.</td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1063,14 +1063,14 @@ Records of
 
 <a id="data_att-ref-expansion"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Expansion of att ref</h3>
-<strong>Code:</strong> att-ref-expansion
+<strong>Code:</strong> <code>att-ref-expansion</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Some expansion own attribute</td><td>expansion-own-attribute</td><td title="Primary key">PK</td><td>Integer</td><td></td></tr>
-<tr><td>Expansion itself</td><td></td><td></td><td><a href="#data_expand-att-ref" title="Expanded structure with att ref">Expanded structure with att ref</a></td><td></td></tr>
+<tr><td>Some expansion own attribute <span class="pull-right"><code>expansion-own-attribute</code></span></td><td title="Primary key"><span class="label label-danger">PK</span></td><td>Integer</td><td></td></tr>
+<tr><td>Expansion itself</td><td></td><td><a href="#data_expand-att-ref" title="Expanded structure with att ref">Expanded structure with att ref</a></td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1079,30 +1079,30 @@ Records of
 
 <a id="data_att-ref-expansion-2"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Second level expansion of att ref</h3>
-<strong>Code:</strong> att-ref-expansion-2
+<strong>Code:</strong> <code>att-ref-expansion-2</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Some 2nd level own attribute</td><td>expansion-2-own-attribute</td><td title="Natural key">NK</td><td>Timestamp</td><td></td></tr>
-<tr><td>Expansion of 1st level</td><td></td><td></td><td><a href="#data_att-ref-expansion" title="Expansion of att ref">Expansion of att ref</a></td><td></td></tr>
+<tr><td>Some 2nd level own attribute <span class="pull-right"><code>expansion-2-own-attribute</code></span></td><td title="Natural key"><span class="label label-warning">NK</span></td><td>Timestamp</td><td></td></tr>
+<tr><td>Expansion of 1st level</td><td></td><td><a href="#data_att-ref-expansion" title="Expansion of att ref">Expansion of att ref</a></td><td></td></tr>
 </tbody>
 </table>
 
 <a id="data_direct-ref-expansion"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Direct ref expansion</h3>
-<strong>Code:</strong> direct-ref-expansion
+<strong>Code:</strong> <code>direct-ref-expansion</code>
 
 <a id="data_ExpansionReferredStructure"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Expansion referred structure</h3>
-<strong>Code:</strong> ExpansionReferredStructure
+<strong>Code:</strong> <code>ExpansionReferredStructure</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Some att</td><td>some-att</td><td></td><td></td><td></td></tr>
+<tr><td>Some att <span class="pull-right"><code>some-att</code></span></td><td></td><td></td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1111,14 +1111,14 @@ Records of
 
 <a id="data_ExpandedOne"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Expanded one</h3>
-<strong>Code:</strong> ExpandedOne
+<strong>Code:</strong> <code>ExpandedOne</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Exp One att 1</td><td>expOneAtt1</td><td title="Mandatory">M</td><td>String [123]</td><td></td></tr>
-<tr><td>Exp One att 2</td><td>expOneAtt2</td><td title="Unique">U</td><td>Collection [Integer]</td><td></td></tr>
+<tr><td>Exp One att 1 <span class="pull-right"><code>expOneAtt1</code></span></td><td title="Mandatory"><span class="label label-primary">M</span></td><td>String [123]</td><td></td></tr>
+<tr><td>Exp One att 2 <span class="pull-right"><code>expOneAtt2</code></span></td><td title="Unique"><span class="label label-warning">U</span></td><td>Collection [Integer]</td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1127,15 +1127,15 @@ Records of
 
 <a id="data_ExpandedTwo"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Expanded two</h3>
-<strong>Code:</strong> ExpandedTwo
+<strong>Code:</strong> <code>ExpandedTwo</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Expanded atts two one</td><td></td><td></td><td><a href="#data_ExpandedTwoOne" title="Expanded two-one">Expanded two-one</a></td><td></td></tr>
-<tr><td>Exp Two att 1</td><td>expTwoAtt1</td><td title="Mandatory">M</td><td>String [123]</td><td></td></tr>
-<tr><td>Exp Two att 2</td><td>expTwoAtt2</td><td title="Unique">U</td><td>Collection [Integer]</td><td></td></tr>
+<tr><td>Expanded atts two one</td><td></td><td><a href="#data_ExpandedTwoOne" title="Expanded two-one">Expanded two-one</a></td><td></td></tr>
+<tr><td>Exp Two att 1 <span class="pull-right"><code>expTwoAtt1</code></span></td><td title="Mandatory"><span class="label label-primary">M</span></td><td>String [123]</td><td></td></tr>
+<tr><td>Exp Two att 2 <span class="pull-right"><code>expTwoAtt2</code></span></td><td title="Unique"><span class="label label-warning">U</span></td><td>Collection [Integer]</td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1144,16 +1144,16 @@ Records of
 
 <a id="data_ExpandedTwoOne"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Expanded two-one</h3>
-<strong>Code:</strong> ExpandedTwoOne
+<strong>Code:</strong> <code>ExpandedTwoOne</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Exp Two-One att 1</td><td>expTwoOneAtt1</td><td title="Mandatory">M</td><td>String [123]</td><td></td></tr>
-<tr><td>Exp Two-One att 2</td><td>expTwoOneAtt2</td><td title="Unique">U</td><td>Collection [Integer]</td><td></td></tr>
-<tr><td>Not expanded atts</td><td></td><td></td><td><a href="#data_NotExpanded" title="Not expanded">Not expanded</a></td><td></td></tr>
-<tr><td>Referred structure</td><td></td><td></td><td><a href="#data_ExpansionReferredStructure" title="Expansion referred structure">Expansion referred structure</a></td><td></td></tr>
+<tr><td>Exp Two-One att 1 <span class="pull-right"><code>expTwoOneAtt1</code></span></td><td title="Mandatory"><span class="label label-primary">M</span></td><td>String [123]</td><td></td></tr>
+<tr><td>Exp Two-One att 2 <span class="pull-right"><code>expTwoOneAtt2</code></span></td><td title="Unique"><span class="label label-warning">U</span></td><td>Collection [Integer]</td><td></td></tr>
+<tr><td>Not expanded atts</td><td></td><td><a href="#data_NotExpanded" title="Not expanded">Not expanded</a></td><td></td></tr>
+<tr><td>Referred structure</td><td></td><td><a href="#data_ExpansionReferredStructure" title="Expansion referred structure">Expansion referred structure</a></td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1162,13 +1162,13 @@ Records of
 
 <a id="data_NotExpanded"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Not expanded</h3>
-<strong>Code:</strong> NotExpanded
+<strong>Code:</strong> <code>NotExpanded</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Not Expanded att 1</td><td>notExpandedAtt1</td><td title="Mandatory">M</td><td>Boolean</td><td></td></tr>
+<tr><td>Not Expanded att 1 <span class="pull-right"><code>notExpandedAtt1</code></span></td><td title="Mandatory"><span class="label label-primary">M</span></td><td>Boolean</td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1177,15 +1177,15 @@ Records of
 
 <a id="data_ExpansionTest"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Expansion test data</h3>
-<strong>Code:</strong> ExpansionTest
+<strong>Code:</strong> <code>ExpansionTest</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Expanded atts one</td><td></td><td></td><td><a href="#data_ExpandedOne" title="Expanded one">Expanded one</a></td><td></td></tr>
-<tr><td>Expanded atts two</td><td></td><td></td><td><a href="#data_ExpandedTwo" title="Expanded two">Expanded two</a></td><td></td></tr>
-<tr><td>ET Own att 1</td><td>etOwnAtt1</td><td></td><td>String [ ]</td><td></td></tr>
+<tr><td>Expanded atts one</td><td></td><td><a href="#data_ExpandedOne" title="Expanded one">Expanded one</a></td><td></td></tr>
+<tr><td>Expanded atts two</td><td></td><td><a href="#data_ExpandedTwo" title="Expanded two">Expanded two</a></td><td></td></tr>
+<tr><td>ET Own att 1 <span class="pull-right"><code>etOwnAtt1</code></span></td><td></td><td>String [ ]</td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in use cases:</strong>
@@ -1194,51 +1194,51 @@ Records of
 
 <a id="data_Empty"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Empty</h3>
-<strong>Code:</strong> Empty
+<strong>Code:</strong> <code>Empty</code>
 <div><strong>References in use cases:</strong>
 <a href="#uc_code003" title="code003 - Use case steps and extensions test">code003 - Use case steps and extensions test</a>
 </div>
 
 <a id="data_Master"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> A master</h3>
-<strong>Code:</strong> Master
+<strong>Code:</strong> <code>Master</code>
 <div><strong>Description:</strong></div>
 <div>This is the master entity.
 			<li>HTML tags work here.</li></div>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Empty</td><td></td><td></td><td></td><td></td></tr>
-<tr><td>With code</td><td>withCode</td><td></td><td></td><td></td></tr>
-<tr><td>With all</td><td>withAll</td><td title="Optional">O</td><td>String [123]</td><td>Attribute with all options set up.</td></tr>
-<tr><td>Display only</td><td></td><td title="Display only">D/O</td><td></td><td></td></tr>
-<tr><td>Optional</td><td></td><td title="Optional">O</td><td></td><td></td></tr>
-<tr><td>Conditional</td><td></td><td title="Conditional">C</td><td></td><td></td></tr>
-<tr><td>Mandatory</td><td></td><td title="Mandatory">M</td><td></td><td></td></tr>
-<tr><td>Unique</td><td></td><td title="Unique">U</td><td></td><td></td></tr>
-<tr><td>Natural key</td><td></td><td title="Natural key">NK</td><td></td><td></td></tr>
-<tr><td>Primary key</td><td></td><td title="Primary key">PK</td><td></td><td></td></tr>
-<tr><td>Integer</td><td></td><td></td><td>Integer</td><td></td></tr>
-<tr><td>Float</td><td></td><td></td><td>Float</td><td></td></tr>
-<tr><td>Decimal</td><td></td><td></td><td>Decimal</td><td></td></tr>
-<tr><td>Boolean</td><td></td><td></td><td>Boolean</td><td></td></tr>
-<tr><td>Date</td><td></td><td></td><td>Date</td><td></td></tr>
-<tr><td>Time</td><td></td><td></td><td>Time</td><td></td></tr>
-<tr><td>Date time</td><td></td><td></td><td>Date-time</td><td></td></tr>
-<tr><td>Timestamp</td><td></td><td></td><td>Timestamp</td><td></td></tr>
-<tr><td>Binary</td><td></td><td></td><td>Binary [4098]</td><td></td></tr>
-<tr><td>String without length</td><td></td><td></td><td>String [ ]</td><td></td></tr>
-<tr><td>Binary without length</td><td></td><td></td><td>Binary [ ]</td><td></td></tr>
-<tr><td>Reference to other structure</td><td></td><td></td><td><a href="#data_MasterDetail1" title="Detail 1">Detail 1</a></td><td></td></tr>
-<tr><td>Collection of integers</td><td></td><td></td><td>Collection [Integer]</td><td></td></tr>
-<tr><td>Integer with length</td><td></td><td></td><td>Integer [3]</td><td>Three digits.</td></tr>
-<tr><td>Collection of integers with length</td><td></td><td></td><td>Collection [Integer] [10]</td><td>Collection of max 10 integers.</td></tr>
-<tr><td>Collection of strings with length</td><td></td><td></td><td>Collection [String] [12]</td><td>Collection of max 12 strings.</td></tr>
-<tr><td>Collection of other structures</td><td></td><td></td><td>Collection [<a href="#data_DetailN" title="Detail N">Detail N</a>]</td><td></td></tr>
-<tr><td>Collection of other structures with length</td><td></td><td></td><td>Collection [<a href="#data_DetailN" title="Detail N">Detail N</a>] [5]</td><td>Collection of max 5 instances of DetailN.</td></tr>
-<tr><td>Selected detail N</td><td></td><td></td><td><a href="#data_DetailN" title="Detail N">Detail N</a></td><td></td></tr>
+<tr><td>Empty</td><td></td><td></td><td></td></tr>
+<tr><td>With code <span class="pull-right"><code>withCode</code></span></td><td></td><td></td><td></td></tr>
+<tr><td>With all <span class="pull-right"><code>withAll</code></span></td><td title="Optional"><span class="label label-success">O</span></td><td>String [123]</td><td>Attribute with all options set up.</td></tr>
+<tr><td>Display only</td><td title="Display only"><span class="label label-default">D/O</span></td><td></td><td></td></tr>
+<tr><td>Optional</td><td title="Optional"><span class="label label-success">O</span></td><td></td><td></td></tr>
+<tr><td>Conditional</td><td title="Conditional"><span class="label label-info">C</span></td><td></td><td></td></tr>
+<tr><td>Mandatory</td><td title="Mandatory"><span class="label label-primary">M</span></td><td></td><td></td></tr>
+<tr><td>Unique</td><td title="Unique"><span class="label label-warning">U</span></td><td></td><td></td></tr>
+<tr><td>Natural key</td><td title="Natural key"><span class="label label-warning">NK</span></td><td></td><td></td></tr>
+<tr><td>Primary key</td><td title="Primary key"><span class="label label-danger">PK</span></td><td></td><td></td></tr>
+<tr><td>Integer</td><td></td><td>Integer</td><td></td></tr>
+<tr><td>Float</td><td></td><td>Float</td><td></td></tr>
+<tr><td>Decimal</td><td></td><td>Decimal</td><td></td></tr>
+<tr><td>Boolean</td><td></td><td>Boolean</td><td></td></tr>
+<tr><td>Date</td><td></td><td>Date</td><td></td></tr>
+<tr><td>Time</td><td></td><td>Time</td><td></td></tr>
+<tr><td>Date time</td><td></td><td>Date-time</td><td></td></tr>
+<tr><td>Timestamp</td><td></td><td>Timestamp</td><td></td></tr>
+<tr><td>Binary</td><td></td><td>Binary [4098]</td><td></td></tr>
+<tr><td>String without length</td><td></td><td>String [ ]</td><td></td></tr>
+<tr><td>Binary without length</td><td></td><td>Binary [ ]</td><td></td></tr>
+<tr><td>Reference to other structure</td><td></td><td><a href="#data_MasterDetail1" title="Detail 1">Detail 1</a></td><td></td></tr>
+<tr><td>Collection of integers</td><td></td><td>Collection [Integer]</td><td></td></tr>
+<tr><td>Integer with length</td><td></td><td>Integer [3]</td><td>Three digits.</td></tr>
+<tr><td>Collection of integers with length</td><td></td><td>Collection [Integer] [10]</td><td>Collection of max 10 integers.</td></tr>
+<tr><td>Collection of strings with length</td><td></td><td>Collection [String] [12]</td><td>Collection of max 12 strings.</td></tr>
+<tr><td>Collection of other structures</td><td></td><td>Collection [<a href="#data_DetailN" title="Detail N">Detail N</a>]</td><td></td></tr>
+<tr><td>Collection of other structures with length</td><td></td><td>Collection [<a href="#data_DetailN" title="Detail N">Detail N</a>] [5]</td><td>Collection of max 5 instances of DetailN.</td></tr>
+<tr><td>Selected detail N</td><td></td><td><a href="#data_DetailN" title="Detail N">Detail N</a></td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in use cases:</strong>
@@ -1248,7 +1248,7 @@ Records of
 
 <a id="data_MasterDetail1"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Detail 1</h3>
-<strong>Code:</strong> MasterDetail1
+<strong>Code:</strong> <code>MasterDetail1</code>
 <div><strong>References in data:</strong>
 <a href="#data_Master" title="A master">A master</a>
 </div>
@@ -1259,7 +1259,7 @@ Records of
 
 <a id="data_DetailN"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Detail N</h3>
-<strong>Code:</strong> DetailN
+<strong>Code:</strong> <code>DetailN</code>
 <div><strong>References in data:</strong>
 <a href="#data_Master" title="A master">A master</a>,
 <a href="#data_AnotherMaster" title="Another master">Another master</a>
@@ -1267,7 +1267,7 @@ Records of
 
 <a id="data_AnotherMaster"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Another master</h3>
-<strong>Code:</strong> AnotherMaster
+<strong>Code:</strong> <code>AnotherMaster</code>
 <div><strong>Description:</strong></div>
 <div>Reference to
 			<a href="#data_AnotherStructure" title="Another structure">
@@ -1276,26 +1276,26 @@ Records of
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>A detail N</td><td></td><td></td><td><a href="#data_DetailN" title="Detail N">Detail N</a></td><td></td></tr>
+<tr><td>A detail N</td><td></td><td><a href="#data_DetailN" title="Detail N">Detail N</a></td><td></td></tr>
 </tbody>
 </table>
 
 <a id="data_AnotherStructure"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Another structure</h3>
-<strong>Code:</strong> AnotherStructure
+<strong>Code:</strong> <code>AnotherStructure</code>
 <div><strong>References in data:</strong>
 <a href="#data_AnotherMaster" title="Another master">Another master</a>
 </div>
 
 <a id="data_UnreferencedDataStructure"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Unreferenced data</h3>
-<strong>Code:</strong> UnreferencedDataStructure
+<strong>Code:</strong> <code>UnreferencedDataStructure</code>
 
 <a id="data_description-data"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Description data</h3>
-<strong>Code:</strong> description-data
+<strong>Code:</strong> <code>description-data</code>
 <div><strong>Description:</strong></div>
 <div>First description.</div>
 <div>Second description.</div>
@@ -1303,14 +1303,14 @@ Records of
 
 <a id="data_TreeViaMaster"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Tree via master</h3>
-<strong>Code:</strong> TreeViaMaster
+<strong>Code:</strong> <code>TreeViaMaster</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Name</td><td>name</td><td></td><td>String [ ]</td><td></td></tr>
-<tr><td>Master</td><td>master</td><td></td><td><a href="#data_TreeViaMaster" title="Tree via master">Tree via master</a></td><td></td></tr>
+<tr><td>Name <span class="pull-right"><code>name</code></span></td><td></td><td>String [ ]</td><td></td></tr>
+<tr><td>Master <span class="pull-right"><code>master</code></span></td><td></td><td><a href="#data_TreeViaMaster" title="Tree via master">Tree via master</a></td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1319,14 +1319,14 @@ Records of
 
 <a id="data_TreeViaSubordinates"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Tree via subordinates</h3>
-<strong>Code:</strong> TreeViaSubordinates
+<strong>Code:</strong> <code>TreeViaSubordinates</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Name</td><td>name</td><td></td><td>String [ ]</td><td></td></tr>
-<tr><td>Subordinates</td><td>subordinates</td><td></td><td>Collection [<a href="#data_TreeViaSubordinates" title="Tree via subordinates">Tree via subordinates</a>]</td><td></td></tr>
+<tr><td>Name <span class="pull-right"><code>name</code></span></td><td></td><td>String [ ]</td><td></td></tr>
+<tr><td>Subordinates <span class="pull-right"><code>subordinates</code></span></td><td></td><td>Collection [<a href="#data_TreeViaSubordinates" title="Tree via subordinates">Tree via subordinates</a>]</td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1335,13 +1335,13 @@ Records of
 
 <a id="data_Recursive1"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Recursive reference entity 1</h3>
-<strong>Code:</strong> Recursive1
+<strong>Code:</strong> <code>Recursive1</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>refTo2</td><td>refTo2</td><td></td><td><a href="#data_Recursive2" title="Recursive reference entity 2">Recursive reference entity 2</a></td><td></td></tr>
+<tr><td>refTo2 <span class="pull-right"><code>refTo2</code></span></td><td></td><td><a href="#data_Recursive2" title="Recursive reference entity 2">Recursive reference entity 2</a></td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1350,13 +1350,13 @@ Records of
 
 <a id="data_Recursive2"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Recursive reference entity 2</h3>
-<strong>Code:</strong> Recursive2
+<strong>Code:</strong> <code>Recursive2</code>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>refTo1</td><td>refTo1</td><td></td><td><a href="#data_Recursive1" title="Recursive reference entity 1">Recursive reference entity 1</a></td><td></td></tr>
+<tr><td>refTo1 <span class="pull-right"><code>refTo1</code></span></td><td></td><td><a href="#data_Recursive1" title="Recursive reference entity 1">Recursive reference entity 1</a></td><td></td></tr>
 </tbody>
 </table>
 <div><strong>References in data:</strong>
@@ -1365,57 +1365,57 @@ Records of
 
 <a id="data_PersistentEntity"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Persistent entity</h3>
-<strong>Code:</strong> PersistentEntity
+<strong>Code:</strong> <code>PersistentEntity</code>
 <div><strong>Category:</strong> Persistent entity</div>
 <div><strong>Description:</strong></div>
 <div>A generic business entity.</div>
 <div><strong>Attributes:</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>Name</th><th>Code</th><th>Status</th><th>Type</th><th>Description</th></tr>
+<tr><th>Name, Code</th><th title="Status">St.</th><th>Type</th><th>Description</th></tr>
 </thead><tbody>
-<tr><td>Some attribute</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Some attribute</td><td></td><td></td><td></td></tr>
 </tbody>
 </table>
 
 <a id="data_PersistentCodeTable"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Persistent code table</h3>
-<strong>Code:</strong> PersistentCodeTable
+<strong>Code:</strong> <code>PersistentCodeTable</code>
 <div><strong>Category:</strong> Persistent code table</div>
 
 <a id="data_PersistentEnumeration"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Persistent enumeration</h3>
-<strong>Code:</strong> PersistentEnumeration
+<strong>Code:</strong> <code>PersistentEnumeration</code>
 <div><strong>Category:</strong> Persistent enumeration</div>
 
 <a id="data_UiList"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> UI list</h3>
-<strong>Code:</strong> UiList
+<strong>Code:</strong> <code>UiList</code>
 <div><strong>Category:</strong> UI list</div>
 
 <a id="data_UiForm"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> UI form</h3>
-<strong>Code:</strong> UiForm
+<strong>Code:</strong> <code>UiForm</code>
 <div><strong>Category:</strong> UI form</div>
 
 <a id="data_Interface"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Interface</h3>
-<strong>Code:</strong> Interface
+<strong>Code:</strong> <code>Interface</code>
 <div><strong>Category:</strong> Interface</div>
 
 <a id="data_InterfaceRequest"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Interface request</h3>
-<strong>Code:</strong> InterfaceRequest
+<strong>Code:</strong> <code>InterfaceRequest</code>
 <div><strong>Category:</strong> Interface request</div>
 
 <a id="data_InterfaceResponse"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Interface response</h3>
-<strong>Code:</strong> InterfaceResponse
+<strong>Code:</strong> <code>InterfaceResponse</code>
 <div><strong>Category:</strong> Interface response</div>
 
 <a id="data_req-data-structure-01"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Req data 1</h3>
-<strong>Code:</strong> req-data-structure-01
+<strong>Code:</strong> <code>req-data-structure-01</code>
 <div><strong>Description:</strong></div>
 <div>Ref to
 			<a href="#req_req02" title="req02 - Reference">requirement (req02 - Reference)</a>
@@ -1423,7 +1423,7 @@ Records of
 
 <a id="data_req-data-structure-02"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Data</span> Req data 2</h3>
-<strong>Code:</strong> req-data-structure-02
+<strong>Code:</strong> <code>req-data-structure-02</code>
 <div><strong>Description:</strong></div>
 <div>Ref to
 			<a href="#req_req02" title="req02 - Reference">requirement (req02 - Reference)</a>
