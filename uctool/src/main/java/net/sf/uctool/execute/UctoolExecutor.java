@@ -70,6 +70,18 @@ public class UctoolExecutor {
 		uctoolWriter = new UctoolWriter();
 	}
 
+	public void validate(Reader reader) {
+		timeAll.start();
+		logger.info("Validating from reader stream.");
+
+		List<Uct> inputs = readReader(reader);
+		validateInputs(inputs);
+		convertToOutputs(executionContext.getOutputs());
+
+		timeAll.stop();
+		logger.info("Validated in {}.", timeAll.toString());
+	}
+
 	public void execute(Reader reader, File outputDir) {
 		timeAll.start();
 		logger.info("Executing UCTool from reader stream.");
