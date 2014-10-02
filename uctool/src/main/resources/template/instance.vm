@@ -13,8 +13,8 @@
 #end
 <a id="instance_$instance.code"></a>
 <h3><i class="fa fa-table"></i> <span class="text-muted">Instance</span> $instance.name</h3>
-<div><strong>Code:</strong> $instance.code</div>
-<div><strong>Instance of data:</strong> #ref($instance.ofRef)</div>
+<div><strong>Code:</strong> <code>$instance.code</code></div>
+<div><strong>Instance of data:</strong> #ref($instance.ofRef) (<code>$instance.of.code</code>)</div>
 #if(!$instance.descriptions.isEmpty())<div><strong>Description:</strong></div>
 #foreach($description in $instance.descriptions)<div>$description</div>
 #end
