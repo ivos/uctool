@@ -3,7 +3,7 @@
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
 				data-target="#app-navbar-collapse">
-				<span class="sr-only">Toggle navigation</span>
+				<span class="sr-only">$ctx.label("toggle.navigation")</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -12,31 +12,31 @@
 		</div>
 		<div class="collapse navbar-collapse" id="app-navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li#if($section=="home") class="active"#end><a href="${rel-path}index.html"><i class="fa fa-home"></i> Home</a></li>
-				<li#if($isSection=="true") class="active"#end><a href="index.html"><i class="fa fa-chevron-left"></i> Section</a></li>
-#if($ctx.useCases.size()>0)					<li#if($section=="entry") class="active"#end><a href="${rel-path}summary/entry-point-list.html">Entry point list <i class="fa fa-chevron-right"></i></a></li>
+				<li#if($section=="home") class="active"#end><a href="${rel-path}index.html"><i class="fa fa-home"></i> $ctx.label("home")</a></li>
+				<li#if($isSection=="true") class="active"#end><a href="index.html"><i class="fa fa-chevron-left"></i> $ctx.label("section")</a></li>
+#if($ctx.useCases.size()>0)					<li#if($section=="entry") class="active"#end><a href="${rel-path}summary/entry-point-list.html">$ctx.label("entry.point.list") <i class="fa fa-chevron-right"></i></a></li>
 #end
 				<li class="dropdown">
-					<a id="sections-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Sections <span class="caret"></span></a>
+					<a id="sections-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">$ctx.label("sections") <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="sections-dropdown">
-						<li role="presentation"#if($section=="summary" || $section=="entry" || $section=="actorgoal") class="active"#end><a role="menuitem" tabindex="-1" href="${rel-path}summary/index.html"><i class="fa fa-sitemap"></i> Overview pages</a></li>
-#if($ctx.actors.size()>0)							<li#if($section=="actor") class="active"#end><a href="${rel-path}actor/index.html"><i class="fa fa-user"></i> Actors</a></li>
+						<li role="presentation"#if($section=="summary" || $section=="entry" || $section=="actorgoal") class="active"#end><a role="menuitem" tabindex="-1" href="${rel-path}summary/index.html"><i class="fa fa-sitemap"></i> $ctx.label("overview.pages")</a></li>
+#if($ctx.actors.size()>0)							<li#if($section=="actor") class="active"#end><a href="${rel-path}actor/index.html"><i class="fa fa-user"></i> $ctx.label("actors")</a></li>
 #end
-#if($ctx.useCases.size()>0)							<li#if($section=="uc") class="active"#end><a href="${rel-path}uc/index.html"><i class="fa fa-file-text-o"></i> Use cases</a></li>
+#if($ctx.useCases.size()>0)							<li#if($section=="uc") class="active"#end><a href="${rel-path}uc/index.html"><i class="fa fa-file-text-o"></i> $ctx.label("use.cases")</a></li>
 #end
-#if($ctx.datas.size()>0)							<li#if($section=="data") class="active"#end><a href="${rel-path}data/index.html"><i class="fa fa-table"></i> Data</a></li>
+#if($ctx.datas.size()>0)							<li#if($section=="data") class="active"#end><a href="${rel-path}data/index.html"><i class="fa fa-table"></i> $ctx.label("datas")</a></li>
 #end
-#if($ctx.instances.size()>0)							<li#if($section=="instance") class="active"#end><a href="${rel-path}instance/index.html"><i class="fa fa-table"></i> Instances</a></li>
+#if($ctx.instances.size()>0)							<li#if($section=="instance") class="active"#end><a href="${rel-path}instance/index.html"><i class="fa fa-table"></i> $ctx.label("instances")</a></li>
 #end
-#if($ctx.requirements.size()>0)							<li><a href="${rel-path}req/index.html"><i class="fa fa-list"></i> Requirements</a></li>
+#if($ctx.requirements.size()>0)							<li><a href="${rel-path}req/index.html"><i class="fa fa-list"></i> $ctx.label("requirements")</a></li>
 #end
-#if($ctx.attachments.size()>0)							<li><a href="${rel-path}attachment/index.html"><i class="fa fa-picture-o"></i> Attachments</a></li>
+#if($ctx.attachments.size()>0)							<li><a href="${rel-path}attachment/index.html"><i class="fa fa-picture-o"></i> $ctx.label("attachments")</a></li>
 #end
-#if($ctx.terms.size()>0)							<li><a href="${rel-path}glossary/index.html"><i class="fa fa-search"></i> Glossary</a></li>
+#if($ctx.terms.size()>0)							<li><a href="${rel-path}glossary/index.html"><i class="fa fa-search"></i> $ctx.label("glossary")</a></li>
 #end
 					</ul>
 				</li>
-				<li><a href="${rel-path}single/index.html"><i class="fa fa-print"></i> Single page</a></li>
+				<li><a href="${rel-path}single/index.html"><i class="fa fa-print"></i> $ctx.label("single.page.short")</a></li>
 			</ul>
 		</div>
 	</div>

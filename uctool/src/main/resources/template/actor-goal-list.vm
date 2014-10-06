@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Actor-goal list</title>
+<title>$ctx.label("actor.goal.list")</title>
 #set($rel-path="../")
 #parse("template/head.vm")
 </head>
@@ -9,11 +9,11 @@
 #set($section="actorgoal")
 #set($isSection="false")
 #parse("template/navbar.vm")
-<h2>Actor-goal list</h2>
+<h2>$ctx.label("actor.goal.list")</h2>
 #foreach($actor in $ctx.actorOuts.values())
 
-<h3><i class="fa fa-user"></i> <span class="text-muted">Primary actor</span> $actor.name</h3>
-#if(!$actor.goals.isEmpty())<div><strong>Goals:</strong></div>
+<h3><i class="fa fa-user"></i> <span class="text-muted">$ctx.label("primary.actor")</span> $actor.name</h3>
+#if(!$actor.goals.isEmpty())<div><strong>$ctx.label("goals"):</strong></div>
 <ul>
 #foreach($goal in $actor.goals)<li>#ref($goal)</li>
 #end

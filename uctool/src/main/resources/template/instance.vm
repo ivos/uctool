@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Instance $instance.name</title>
+<title>$ctx.label("instance") $instance.name</title>
 #set($rel-path="../")
 #parse("template/head.vm")
 </head>
@@ -12,18 +12,18 @@
 #parse("template/navbar.vm")
 #end
 <a id="instance_$instance.code"></a>
-<h3><i class="fa fa-table"></i> <span class="text-muted">Instance</span> $instance.name</h3>
-<div><strong>Code:</strong> <code>$instance.code</code></div>
-<div><strong>Instance of data:</strong> #ref($instance.ofRef) (<code>$instance.of.code</code>)</div>
-#if(!$instance.descriptions.isEmpty())<div><strong>Description:</strong></div>
+<h3><i class="fa fa-table"></i> <span class="text-muted">$ctx.label("instance")</span> $instance.name</h3>
+<div><strong>$ctx.label("code"):</strong> <code>$instance.code</code></div>
+<div><strong>$ctx.label("instance.of"):</strong> #ref($instance.ofRef) (<code>$instance.of.code</code>)</div>
+#if(!$instance.descriptions.isEmpty())<div><strong>$ctx.label("description"):</strong></div>
 #foreach($description in $instance.descriptions)<div>$description</div>
 #end
 #end
-#if(!$instance.values.isEmpty())<div><strong>Values:</strong></div>
+#if(!$instance.values.isEmpty())<div><strong>$ctx.label("values"):</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th colspan="3" style="text-align: center;">Instance attribute</th><th rowspan="2" style="text-align: center;">Description</th><th colspan="4" style="text-align: center;">Mapped from</th></tr>
-<tr><th>Name, Code</th><th title="$ctx.label("status")">$ctx.label("status_abbr")</th><th>Type</th><th>Data</th><th>Name, Code</th><th title="$ctx.label("status")">$ctx.label("status_abbr")</th><th>Type</th></tr>
+<tr><th colspan="3" style="text-align: center;">$ctx.label("instance.attribute")</th><th rowspan="2" style="text-align: center;">$ctx.label("description")</th><th colspan="4" style="text-align: center;">$ctx.label("mapped.from")</th></tr>
+<tr><th>$ctx.label("name.code")</th><th title="$ctx.label("status")">$ctx.label("status_abbr")</th><th>$ctx.label("type")</th><th>$ctx.label("data")</th><th>$ctx.label("name.code")</th><th title="$ctx.label("status")">$ctx.label("status_abbr")</th><th>$ctx.label("type")</th></tr>
 </thead><tbody>
 #foreach($value in $instance.values)<tr>
 <td>$value.of.nameAndCodeLabel</code></td><td#if($value.of.statusHint) title="$value.of.statusHint"#end>$value.of.statusLabel</td><td>$value.of.type</td>
@@ -36,20 +36,20 @@
 #end</tbody>
 </table>
 #end
-#if(!$instance.unmapped.isEmpty())<div><strong>Unmapped data attributes:</strong></div>
+#if(!$instance.unmapped.isEmpty())<div><strong>$ctx.label("unmapped.data.attributes"):</strong></div>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
-<tr><th>$ctx.label("name"), $ctx.label("code")</th><th title="$ctx.label("status")">$ctx.label("status_abbr")</th><th>$ctx.label("type")</th><th>$ctx.label("description")</th></tr>
+<tr><th>$ctx.label("name.code")</th><th title="$ctx.label("status")">$ctx.label("status_abbr")</th><th>$ctx.label("type")</th><th>$ctx.label("description")</th></tr>
 </thead><tbody>
 #foreach($attribute in $instance.unmapped)<tr><td>$attribute.nameAndCodeLabel<td#if($attribute.statusHint) title="$attribute.statusHint"#end>$attribute.statusLabel</td><td>$attribute.type</td><td>$attribute.description</td></tr>
 #end</tbody>
 </table>
 #end
-#if(!$instance.referencesData.isEmpty())<div><strong>References in data:</strong>
+#if(!$instance.referencesData.isEmpty())<div><strong>$ctx.label("references.data"):</strong>
 #foreach($ref in $instance.referencesData)#ref($ref)#if( $foreach.hasNext ),#end
 $newline#end</div>
 #end
-#if(!$instance.referencesUcs.isEmpty())<div><strong>References in use cases:</strong>
+#if(!$instance.referencesUcs.isEmpty())<div><strong>$ctx.label("references.uc"):</strong>
 #foreach($ref in $instance.referencesUcs)#ref($ref)#if( $foreach.hasNext ),#end
 $newline#end</div>
 #end

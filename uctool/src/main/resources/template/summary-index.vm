@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Overview pages list</title>
+<title>$ctx.label("summary.index")</title>
 #set($rel-path="../")
 #parse("template/head.vm")
 </head>
@@ -9,13 +9,13 @@
 #set($section="summary")
 #set($isSection="true")
 #parse("template/navbar.vm")
-<h2>Overview pages list</h2>
+<h2>$ctx.label("summary.index")</h2>
 <div class="list-group">
-#if($ctx.useCases.size()>0)<a href="entry-point-list.html" class="list-group-item">Entry point list</a>
+#if($ctx.useCases.size()>0)<a href="entry-point-list.html" class="list-group-item">$ctx.label("entry.point.list")</a>
 #end
-#if($ctx.actors.size()>0)<a href="actor-goal-list.html" class="list-group-item">Actor-goal list</a>
+#if($ctx.actors.size()>0)<a href="actor-goal-list.html" class="list-group-item">$ctx.label("actor.goal.list")</a>
 #end
-#if($ctx.datas.size()>0)<a href="unused-data-list.html" class="list-group-item">Unused data list</a>
+#if($ctx.datas.size()>0)<a href="unused-data-list.html" class="list-group-item">$ctx.label("unused.data.list")</a>
 #end
 </div>
 #parse("template/footer.vm")

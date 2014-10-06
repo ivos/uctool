@@ -1,5 +1,5 @@
 <hr/>
-<small>Created in <a href="http://uctool.sf.net">uctool.sf.net</a>.</small>
+<small>$ctx.label("created.in") <a href="http://uctool.sf.net">uctool.sf.net</a>.</small>
 </div>
 <script src="$ctx.cdnPrefix//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="$ctx.cdnPrefix//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

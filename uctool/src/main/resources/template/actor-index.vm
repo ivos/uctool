@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Actors overview</title>
+<title>$ctx.label("actor.index")</title>
 #set($rel-path="../")
 #parse("template/head.vm")
 </head>
@@ -12,7 +12,7 @@
 #set($isSection="true")
 #parse("template/navbar.vm")
 #end
-<h2>Actors overview</h2>
+<h2>$ctx.label("actor.index")</h2>
 <div class="list-group">
 #foreach($actor in $ctx.actorOuts.values())#actorRef($actor,"list-group-item")
 #end</div>

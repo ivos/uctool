@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Entry point list</title>
+<title>$ctx.label("entry.point.list")</title>
 #set($rel-path="../")
 #parse("template/head.vm")
 </head>
@@ -9,13 +9,13 @@
 #set($section="entry")
 #set($isSection="false")
 #parse("template/navbar.vm")
-<h2>Entry point list</h2>
+<h2>$ctx.label("entry.point.list")</h2>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
 <tr>
-<th><i class="fa fa-user"></i> Primary actor</th>
-<th><i class="fa fa-bolt"></i> Goal</th>
-<th>Level</th>
+<th><i class="fa fa-user"></i> $ctx.label("primary.actor")</th>
+<th><i class="fa fa-bolt"></i> $ctx.label("goal")</th>
+<th>$ctx.label("level")</th>
 </tr>
 </thead>
 <tbody>

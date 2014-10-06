@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Data overview</title>
+<title>$ctx.label("data.index")</title>
 #set($rel-path="../")
 #parse("template/head.vm")
 </head>
@@ -12,13 +12,13 @@
 #set($isSection="true")
 #parse("template/navbar.vm")
 #end
-<h2>Data overview</h2>
+<h2>$ctx.label("data.index")</h2>
 <table class="table table-striped table-bordered table-hover table-condensed">
 <thead>
 <tr>
-<th><i class="fa fa-table"></i> Data</th>
-<th>Code</th>
-<th>Category</th>
+<th><i class="fa fa-table"></i> $ctx.label("data")</th>
+<th>$ctx.label("code")</th>
+<th>$ctx.label("category")</th>
 </tr>
 </thead>
 <tbody>
