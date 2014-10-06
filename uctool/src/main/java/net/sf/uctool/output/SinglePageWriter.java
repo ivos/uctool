@@ -35,8 +35,9 @@ public class SinglePageWriter {
 					fw, outputFile);
 
 			// actors
-			templateWriter.writeText("\n<h2>Actors details</h2>\n", fw,
-					outputFile);
+			templateWriter.writeText(
+					"\n<h2>" + executionContext.label("actor.details.section")
+							+ "</h2>\n", fw, outputFile);
 			for (ActorOut actor : executionContext.getActorOuts().values()) {
 				templateWriter.writeText("\n", fw, outputFile);
 				context.put("actor", actor);
@@ -52,8 +53,11 @@ public class SinglePageWriter {
 					outputFile);
 
 			// use cases
-			templateWriter.writeText("\n<h2>Use cases details</h2>\n", fw,
-					outputFile);
+			templateWriter.writeText(
+					"\n<h2>"
+							+ executionContext
+									.label("use.case.details.section")
+							+ "</h2>\n", fw, outputFile);
 			for (UseCaseOut useCase : executionContext.getUseCaseOuts()
 					.values()) {
 				templateWriter.writeText("\n", fw, outputFile);
@@ -70,8 +74,11 @@ public class SinglePageWriter {
 					outputFile);
 
 			// data
-			templateWriter.writeText("\n<h2>Data details</h2>\n", fw,
-					outputFile);
+			templateWriter.writeText(
+					"\n<h2>"
+							+ executionContext
+									.label("data.structure.details.section")
+							+ "</h2>\n", fw, outputFile);
 			for (DataOut data : executionContext.getDataOuts().values()) {
 				templateWriter.writeText("\n", fw, outputFile);
 				context.put("data", data);
@@ -87,8 +94,11 @@ public class SinglePageWriter {
 					fw, outputFile);
 
 			// instances
-			templateWriter.writeText("\n<h2>Instances details</h2>\n", fw,
-					outputFile);
+			templateWriter.writeText(
+					"\n<h2>"
+							+ executionContext
+									.label("instance.details.section")
+							+ "</h2>\n", fw, outputFile);
 			for (InstanceOut instance : executionContext.getInstanceOuts()
 					.values()) {
 				templateWriter.writeText("\n", fw, outputFile);
