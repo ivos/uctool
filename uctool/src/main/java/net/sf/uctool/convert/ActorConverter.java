@@ -119,6 +119,11 @@ public class ActorConverter {
 		for (ExtendsActor extendsActor : actor.getExtendsActor()) {
 			Actor extended = executionContext.getActors().get(
 					extendsActor.getCode());
+			if (list.contains(extended)) {
+				throw new ValidationException(
+						"Inheritance cycle on actor with code ["
+								+ actor.getCode() + "].");
+			}
 			list.add(extended);
 			getTransitiveExtendedActors(extended, list);
 		}

@@ -46,6 +46,28 @@ public class ActorTest extends TemplateTestBase {
 	}
 
 	@Test
+	public void val_ExtendedSelf() {
+		try {
+			e.execute(new File(inputBaseDir, "actor/extendedSelf.xml"),
+					outputDir);
+		} catch (ValidationException e) {
+			assertEquals("Inheritance cycle on actor with code [a1].",
+					e.getMessage());
+		}
+	}
+
+	@Test
+	public void val_ExtendedCycle() {
+		try {
+			e.execute(new File(inputBaseDir, "actor/extendedCycle.xml"),
+					outputDir);
+		} catch (ValidationException e) {
+			assertEquals("Inheritance cycle on actor with code [a2].",
+					e.getMessage());
+		}
+	}
+
+	@Test
 	public void val_AttachmentMissing() {
 		try {
 			e.execute(new File(inputBaseDir, "actor/attachmentMissing.xml"),
