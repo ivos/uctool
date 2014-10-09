@@ -62,7 +62,7 @@ public class ActorTest extends TemplateTestBase {
 			e.execute(new File(inputBaseDir, "actor/extendedCycle.xml"),
 					outputDir);
 		} catch (ValidationException e) {
-			assertEquals("Inheritance cycle on actor with code [a2].",
+			assertEquals("Inheritance cycle on actor with code [a1].",
 					e.getMessage());
 		}
 	}

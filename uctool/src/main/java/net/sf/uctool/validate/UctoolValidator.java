@@ -1,5 +1,6 @@
 package net.sf.uctool.validate;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,7 @@ import net.sf.uctool.xsd.Attachment;
 import net.sf.uctool.xsd.AttachmentGroup;
 import net.sf.uctool.xsd.Attribute;
 import net.sf.uctool.xsd.Data;
+import net.sf.uctool.xsd.ExtendsActor;
 import net.sf.uctool.xsd.Instance;
 import net.sf.uctool.xsd.Requirement;
 import net.sf.uctool.xsd.Term;
@@ -165,6 +167,30 @@ public class UctoolValidator {
 						executionContext.getUcGroups().put(refcode, ucGroup);
 					}
 				}
+			}
+		}
+		for (Actor actor : executionContext.getActors().values()) {
+			validateActorInheritanceCycles(null, actor);
+		}
+	}
+
+	private void validateActorInheritanceCycles(List<String> chain, Actor actor) {
+		if (null == chain) {
+			chain = new ArrayList<String>();
+		} else {
+			chain = new ArrayList<String>(chain);
+		}
+		chain.add(actor.getCode());
+		for (ExtendsActor extendsActor : actor.getExtendsActor()) {
+			String code = extendsActor.getCode();
+			if (chain.contains(code)) {
+				throw new ValidationException(
+						"Inheritance cycle on actor with code [" + chain.get(0)
+								+ "].");
+			}
+			Actor extended = executionContext.getActors().get(code);
+			if (null != extended) {
+				validateActorInheritanceCycles(chain, extended);
 			}
 		}
 	}

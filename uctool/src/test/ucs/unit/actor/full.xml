@@ -66,10 +66,14 @@
 		<extends-actor code="ined3" />
 	</actor>
 	<actor name="Inherited 1 &lt;b &amp; " code="ined1">
+		<extends-actor code="base" />
 	</actor>
 	<actor name="Inherited 2" code="ined2">
 	</actor>
 	<actor name="Inherited 3" code="ined3">
+		<extends-actor code="base" />
+	</actor>
+	<actor name="Base" code="base">
 	</actor>
 
 	<actor name="Extending 1 &lt;b &amp; " code="exing1">
@@ -80,6 +84,10 @@
 	</actor>
 	<actor name="Extending 3" code="exing3">
 		<extends-actor code="full" />
+	</actor>
+	<actor name="Super" code="super">
+		<extends-actor code="exing1" />
+		<extends-actor code="exing3" />
 	</actor>
 
 	<uc-group primary-actor="full">
