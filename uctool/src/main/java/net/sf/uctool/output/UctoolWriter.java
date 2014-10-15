@@ -41,6 +41,7 @@ public class UctoolWriter {
 		new File(baseDir, "uc").mkdirs();
 		new File(baseDir, "data").mkdirs();
 		new File(baseDir, "instance").mkdirs();
+		new File(baseDir, "glossary").mkdirs();
 		new File(baseDir, "summary").mkdirs();
 		new File(baseDir, "single").mkdirs();
 
@@ -109,6 +110,13 @@ public class UctoolWriter {
 		context.put("ctx", executionContext);
 		templateWriter.writeFile("template/instance-index.vm",
 				"instance/index", context);
+	}
+
+	public void writeGlossary() {
+		VelocityContext context = new VelocityContext();
+		context.put("ctx", executionContext);
+		templateWriter.writeFile("template/glossary.vm", "glossary/index",
+				context);
 	}
 
 	public void writeSummaryIndex() {

@@ -14,6 +14,7 @@ import net.sf.uctool.exception.UnsupportedCDNProtocolException;
 import net.sf.uctool.output.actor.ActorOut;
 import net.sf.uctool.output.data.DataOut;
 import net.sf.uctool.output.data.InstanceOut;
+import net.sf.uctool.output.term.TermOut;
 import net.sf.uctool.output.uc.UseCaseOut;
 import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Attachment;
@@ -53,6 +54,7 @@ public class ExecutionContext {
 	private final Map<String, ActorOut> actorOuts;
 	private final Map<String, DataOut> dataOuts;
 	private final Map<String, InstanceOut> instanceOuts;
+	private final Set<TermOut> termOuts;
 
 	private UseCase currentUseCase;
 	private boolean single = false;
@@ -82,6 +84,7 @@ public class ExecutionContext {
 		actorOuts = new LinkedHashMap<String, ActorOut>();
 		dataOuts = new LinkedHashMap<String, DataOut>();
 		instanceOuts = new LinkedHashMap<String, InstanceOut>();
+		termOuts = new LinkedHashSet<TermOut>();
 	}
 
 	public String label(String key) {
@@ -188,6 +191,10 @@ public class ExecutionContext {
 
 	public Map<String, InstanceOut> getInstanceOuts() {
 		return instanceOuts;
+	}
+
+	public Set<TermOut> getTermOuts() {
+		return termOuts;
 	}
 
 	public void addUcRef(String refcodeReferenced, String refcodeReferencing) {

@@ -17,6 +17,7 @@ import net.sf.uctool.convert.ActorConverter;
 import net.sf.uctool.convert.AttributeConverter;
 import net.sf.uctool.convert.DataConverter;
 import net.sf.uctool.convert.InstanceConverter;
+import net.sf.uctool.convert.TermConverter;
 import net.sf.uctool.convert.UseCaseConverter;
 import net.sf.uctool.exception.ReaderException;
 import net.sf.uctool.exception.ResourcesException;
@@ -25,11 +26,13 @@ import net.sf.uctool.output.UctoolWriter;
 import net.sf.uctool.output.actor.ActorOut;
 import net.sf.uctool.output.data.DataOut;
 import net.sf.uctool.output.data.InstanceOut;
+import net.sf.uctool.output.term.TermOut;
 import net.sf.uctool.output.uc.UseCaseOut;
 import net.sf.uctool.validate.UctoolValidator;
 import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Data;
 import net.sf.uctool.xsd.Instance;
+import net.sf.uctool.xsd.Term;
 import net.sf.uctool.xsd.Uct;
 import net.sf.uctool.xsd.UseCase;
 
@@ -51,6 +54,7 @@ public class UctoolExecutor {
 	private final DataConverter dataConverter;
 	private final AttributeConverter attributeConverter;
 	private final InstanceConverter instanceConverter;
+	private final TermConverter termConverter;
 	private final UctoolWriter uctoolWriter;
 	private final UctoolValidator uctoolValidator;
 
@@ -67,6 +71,7 @@ public class UctoolExecutor {
 		attributeConverter = new AttributeConverter(executionContext);
 		dataConverter = new DataConverter(executionContext, attributeConverter);
 		instanceConverter = new InstanceConverter(executionContext);
+		termConverter = new TermConverter(executionContext);
 		uctoolWriter = new UctoolWriter();
 	}
 
@@ -101,11 +106,15 @@ public class UctoolExecutor {
 
 	private void executeInternal(List<Uct> inputs, File outputDir) {
 		validateInputs(inputs);
+
 		convertToOutputs(executionContext.getOutputs());
+		writeOutputs(outputDir);
+		executionContext.getTermOuts().clear();
+
 		executionContext.setSingle(true);
 		convertToOutputs(executionContext.getOutputsSinglePage());
 		executionContext.setSingle(false);
-		writeOutputs(outputDir);
+		writeSinglePageOutputs(outputDir);
 
 		extractResources(outputDir);
 
@@ -193,6 +202,10 @@ public class UctoolExecutor {
 			executionContext.getInstanceOuts().put(instanceOut.getRefcode(),
 					instanceOut);
 		}
+		for (Term term : executionContext.getTerms()) {
+			TermOut termOut = termConverter.convert(term);
+			executionContext.getTermOuts().add(termOut);
+		}
 
 		for (Object output : outputs) {
 			if (output instanceof UseCaseOut) {
@@ -213,19 +226,27 @@ public class UctoolExecutor {
 		logger.debug("Writing {} outputs.", outputs.size());
 		time.start();
 		uctoolWriter.init(outputDir, executionContext);
+		for (Object output : outputs) {
+			uctoolWriter.write(output);
+		}
 		uctoolWriter.writeIndex();
 		uctoolWriter.writeActorIndex();
 		uctoolWriter.writeUseCaseIndex();
 		uctoolWriter.writeDataIndex();
 		uctoolWriter.writeInstanceIndex();
+		uctoolWriter.writeGlossary();
 		uctoolWriter.writeSummaryIndex();
 		uctoolWriter.writeEntryPointList();
 		uctoolWriter.writeActorGoalList();
-		uctoolWriter.writeSinglePage();
-		for (Object output : outputs) {
-			uctoolWriter.write(output);
-		}
 		logger.debug("Wrote outputs @ {}.", time.toString());
+		time.reset();
+	}
+
+	private void writeSinglePageOutputs(File outputDir) {
+		logger.debug("Writing single page outputs.");
+		time.start();
+		uctoolWriter.writeSinglePage();
+		logger.debug("Wrote single page outputs @ {}.", time.toString());
 		time.reset();
 	}
 

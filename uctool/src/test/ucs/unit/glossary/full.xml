@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
+	<term name="Name only" />
+	<term name="Name and abbrev." abbreviation="Abbr1." />
+	<term name="Name and description">
+		<description>Description 2.</description>
+	</term>
+	<term name="Full" abbreviation="abr3.">
+		<description>Description 3.</description>
+	</term>
+	<term name="With refs">
+		<description>
+			Description 4. A
+			<attachment-ref code="att1">ref to attachment</attachment-ref>
+			. A
+			<data-ref code="dt1">ref to data</data-ref>
+			. A
+			<req-ref code="req1">ref to requirement</req-ref>
+			.
+			Some
+			<h:strong>HTML</h:strong>
+			.
+		</description>
+	</term>
+
+	<attachment-group directory="d1" name="">
+		<attachment name="Att 1" code="att1" file-name="fn1" />
+	</attachment-group>
+	<data name="Data 1" code="dt1"></data>
+	<requirement name="Req 1" code="req1"></requirement>
+</uct>

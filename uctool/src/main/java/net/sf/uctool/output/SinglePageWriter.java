@@ -108,6 +108,12 @@ public class SinglePageWriter {
 			}
 		}
 
+		if (!executionContext.getTermOuts().isEmpty()) {
+			templateWriter.writeText("\n", fw, outputFile);
+			templateWriter.writeFragment("template/glossary.vm", context, fw,
+					outputFile);
+		}
+
 		templateWriter.writeText("\n", fw, outputFile);
 		templateWriter.writeFragment("template/single-end.vm", context, fw,
 				outputFile);
