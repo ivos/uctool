@@ -11,7 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
+//@Ignore
 public class IntegrationTest extends TemplatingTestBase implements
 		TemplateTestConstants {
 
@@ -150,11 +150,6 @@ public class IntegrationTest extends TemplatingTestBase implements
 	@Test
 	public void actorGoalList() throws IOException {
 		performTest("summary/actor-goal-list.html");
-	}
-
-	@Test
-	public void entryPointList() throws IOException {
-		performTest("summary/entry-point-list.html");
 	}
 
 	@Test

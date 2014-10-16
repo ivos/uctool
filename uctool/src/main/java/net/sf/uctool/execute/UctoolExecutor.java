@@ -236,7 +236,6 @@ public class UctoolExecutor {
 		uctoolWriter.writeInstanceIndex();
 		uctoolWriter.writeGlossary();
 		uctoolWriter.writeSummaryIndex();
-		uctoolWriter.writeEntryPointList();
 		uctoolWriter.writeActorGoalList();
 		logger.debug("Wrote outputs @ {}.", time.toString());
 		time.reset();
