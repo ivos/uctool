@@ -22,11 +22,7 @@
 		</description>
 		<description>
 			Contains
-			<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-			,
 			<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-			,
-			<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 			.
 		</description>
 		<description>
@@ -35,11 +31,7 @@
 				is
 				<h:em>
 					some
-					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-					,
 					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-					,
-					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 					within
 				</h:em>
 				HTML
@@ -50,11 +42,8 @@
 		<extends-actor code="exed2" />
 		<extends-actor code="exed3" />
 	</actor>
-	<attachment-group directory="att-dir1" name="">
-		<attachment name="Att 1 name" code="att1" file-name="att1-file-name" />
-	</attachment-group>
+
 	<data name="Dt 1 name" code="dt1"></data>
-	<requirement name="Rq 1 name" code="rq1"></requirement>
 
 	<actor name="Extended 1 &lt;b &amp; " code="exed1">
 		<extends-actor code="ined1" />

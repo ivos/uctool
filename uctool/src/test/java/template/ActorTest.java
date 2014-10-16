@@ -68,18 +68,6 @@ public class ActorTest extends TemplateTestBase {
 	}
 
 	@Test
-	public void val_AttachmentMissing() {
-		try {
-			e.execute(new File(inputBaseDir, "actor/attachmentMissing.xml"),
-					outputDir);
-		} catch (ValidationException e) {
-			assertEquals(
-					"Missing attachment with code [missing] referenced from actor with code [a1].",
-					e.getMessage());
-		}
-	}
-
-	@Test
 	public void val_DataMissing() {
 		try {
 			e.execute(new File(inputBaseDir, "actor/dataMissing.xml"),
@@ -87,18 +75,6 @@ public class ActorTest extends TemplateTestBase {
 		} catch (ValidationException e) {
 			assertEquals(
 					"Missing data or instance with refcode [missing] referenced from actor with code [a1].",
-					e.getMessage());
-		}
-	}
-
-	@Test
-	public void val_RequirementMissing() {
-		try {
-			e.execute(new File(inputBaseDir, "actor/requirementMissing.xml"),
-					outputDir);
-		} catch (ValidationException e) {
-			assertEquals(
-					"Missing requirement with code [missing] referenced from actor with code [a1].",
 					e.getMessage());
 		}
 	}

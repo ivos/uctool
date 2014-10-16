@@ -7,14 +7,9 @@ import java.util.List;
 
 import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.ExecutionContext;
-import net.sf.uctool.xsd.Attachment;
-import net.sf.uctool.xsd.AttachmentGroup;
-import net.sf.uctool.xsd.AttachmentRef;
 import net.sf.uctool.xsd.Data;
 import net.sf.uctool.xsd.DataRef;
 import net.sf.uctool.xsd.Instance;
-import net.sf.uctool.xsd.ReqRef;
-import net.sf.uctool.xsd.Requirement;
 import net.sf.uctool.xsd.StepRef;
 import net.sf.uctool.xsd.Success;
 import net.sf.uctool.xsd.UcRef;
@@ -69,42 +64,6 @@ public class ConverterHelper {
 				}
 			}
 		}
-		if (content instanceof AttachmentRef) {
-			AttachmentRef attachmentRef = ((AttachmentRef) content);
-			String attachmentCode = attachmentRef.getCode();
-			Attachment attachment = executionContext.getAttachments().get(
-					attachmentCode);
-			if (null == attachment) {
-				throw new ValidationException("Missing attachment with code ["
-						+ attachmentCode + "] referenced from "
-						+ referencedFromType + " with code ["
-						+ referencedFromCode + "].");
-			}
-			AttachmentGroup attachmentGroup = executionContext
-					.getAttachmentGroups().get(attachmentCode);
-			sb.append("<a href=\"../attachment/");
-			sb.append(attachmentGroup.getDirectory());
-			sb.append("/");
-			sb.append(attachment.getFileName());
-			sb.append("\" title=\"");
-			sb.append(attachment.getName());
-			sb.append(" - ");
-			sb.append(attachmentGroup.getDirectory());
-			sb.append("/");
-			sb.append(attachment.getFileName());
-			sb.append("\">");
-			sb.append(escape(attachmentRef.getValue()));
-			if (executionContext.isSingle()) {
-				sb.append(" (");
-				sb.append(attachment.getName());
-				sb.append(" - ");
-				sb.append(attachmentGroup.getDirectory());
-				sb.append("/");
-				sb.append(attachment.getFileName());
-				sb.append(")");
-			}
-			sb.append("</a>");
-		}
 		if (content instanceof DataRef) {
 			DataRef dataRef = (DataRef) content;
 			String refcode = dataRef.getCode();
@@ -142,33 +101,6 @@ public class ConverterHelper {
 			sb.append("</a>");
 			executionContext.addDataRef(refcode, referencedFromRefcode,
 					referencedFromType);
-		}
-		if (content instanceof ReqRef) {
-			ReqRef reqRef = (ReqRef) content;
-			String code = reqRef.getCode();
-			Requirement requirement = executionContext.getRequirements().get(
-					code);
-			if (null == requirement) {
-				throw new ValidationException("Missing requirement with code ["
-						+ code + "] referenced from " + referencedFromType
-						+ " with code [" + referencedFromCode + "].");
-			}
-			sb.append("<a href=\"" + getRefPrefix() + "req" + getRefSeparator());
-			sb.append(code);
-			sb.append(getRefSuffix() + "\" title=\"");
-			sb.append(code);
-			sb.append(" - ");
-			sb.append(requirement.getName());
-			sb.append("\">");
-			sb.append(escape(reqRef.getValue()));
-			if (executionContext.isSingle()) {
-				sb.append(" (");
-				sb.append(code);
-				sb.append(" - ");
-				sb.append(requirement.getName());
-				sb.append(")");
-			}
-			sb.append("</a>");
 		}
 		if (content instanceof UcRef) {
 			UcRef ucRef = (UcRef) content;
@@ -222,24 +154,8 @@ public class ConverterHelper {
 		if (content instanceof Element) {
 			Element element = (Element) content;
 			String name = element.getLocalName();
-			if ("attachment-ref".equals(name)) {
-				AttachmentRef ref = new AttachmentRef();
-				ref.setCode(element.getAttribute("code"));
-				ref.setValue(element.getTextContent());
-				writeDescription(sb, ref, referencedFromType,
-						referencedFromCode, referencedFromRefcode);
-				return;
-			}
 			if ("data-ref".equals(name)) {
 				DataRef ref = new DataRef();
-				ref.setCode(element.getAttribute("code"));
-				ref.setValue(element.getTextContent());
-				writeDescription(sb, ref, referencedFromType,
-						referencedFromCode, referencedFromRefcode);
-				return;
-			}
-			if ("req-ref".equals(name)) {
-				ReqRef ref = new ReqRef();
 				ref.setCode(element.getAttribute("code"));
 				ref.setValue(element.getTextContent());
 				writeDescription(sb, ref, referencedFromType,

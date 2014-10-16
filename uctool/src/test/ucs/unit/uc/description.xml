@@ -19,13 +19,9 @@
 			</description>
 			<description>
 				Contains
-				<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-				,
 				<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
 				,
 				<data-ref code="in1">instance link &lt;b &amp; " '</data-ref>
-				,
-				<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 				.
 			</description>
 			<description>
@@ -34,13 +30,9 @@
 					is
 					<h:em>
 						some
-						<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-						,
 						<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
 						,
 						<data-ref code="in1">instance link &lt;b &amp; " '</data-ref>
-						,
-						<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 						within
 					</h:em>
 					HTML
@@ -50,11 +42,7 @@
 		</use-case>
 	</uc-group>
 
-	<attachment-group directory="att-dir1" name="">
-		<attachment name="Att 1 name" code="att1" file-name="att1-file-name" />
-	</attachment-group>
 	<data name="Dt 1 name" code="dt1"></data>
 	<instance name="In 1 name" code="in1" of="dt1"></instance>
-	<requirement name="Rq 1 name" code="rq1"></requirement>
 
 </uct>

@@ -17,11 +17,8 @@ import net.sf.uctool.output.data.InstanceOut;
 import net.sf.uctool.output.term.TermOut;
 import net.sf.uctool.output.uc.UseCaseOut;
 import net.sf.uctool.xsd.Actor;
-import net.sf.uctool.xsd.Attachment;
-import net.sf.uctool.xsd.AttachmentGroup;
 import net.sf.uctool.xsd.Data;
 import net.sf.uctool.xsd.Instance;
-import net.sf.uctool.xsd.Requirement;
 import net.sf.uctool.xsd.Term;
 import net.sf.uctool.xsd.UcGroup;
 import net.sf.uctool.xsd.UseCase;
@@ -33,11 +30,8 @@ public class ExecutionContext {
 	private final ResourceBundle labels;
 	private final Project project;
 	private final Map<String, Actor> actors;
-	private final Map<String, Attachment> attachments;
-	private final Map<String, AttachmentGroup> attachmentGroups;
 	private final Map<String, Data> datas;
 	private final Map<String, Instance> instances;
-	private final Map<String, Requirement> requirements;
 	private final Set<Term> terms;
 	private final Map<String, UseCase> useCases;
 	private final Map<String, UcGroup> ucGroups;
@@ -63,11 +57,8 @@ public class ExecutionContext {
 		this.labels = labels;
 		this.project = project;
 		actors = new LinkedHashMap<String, Actor>();
-		attachments = new LinkedHashMap<String, Attachment>();
-		attachmentGroups = new LinkedHashMap<String, AttachmentGroup>();
 		datas = new LinkedHashMap<String, Data>();
 		instances = new LinkedHashMap<String, Instance>();
-		requirements = new LinkedHashMap<String, Requirement>();
 		terms = new LinkedHashSet<Term>();
 		useCases = new LinkedHashMap<String, UseCase>();
 		ucGroups = new LinkedHashMap<String, UcGroup>();
@@ -113,24 +104,12 @@ public class ExecutionContext {
 		return actors;
 	}
 
-	public Map<String, Attachment> getAttachments() {
-		return attachments;
-	}
-
-	public Map<String, AttachmentGroup> getAttachmentGroups() {
-		return attachmentGroups;
-	}
-
 	public Map<String, Data> getDatas() {
 		return datas;
 	}
 
 	public Map<String, Instance> getInstances() {
 		return instances;
-	}
-
-	public Map<String, Requirement> getRequirements() {
-		return requirements;
 	}
 
 	public Set<Term> getTerms() {

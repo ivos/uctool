@@ -8,11 +8,7 @@
 		<description>Description 1.</description>
 		<description>
 			Contains
-			<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-			,
 			<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-			,
-			<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 			.
 		</description>
 		<extends-actor code="exed1" />
@@ -25,11 +21,7 @@
 			<description>Some description.</description>
 			<description>
 				Contains
-				<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-				,
 				<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-				,
-				<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 				.
 			</description>
 			<stakeholders-interests>
@@ -46,11 +38,7 @@
 					, a reference to step
 					<step-ref handle="stepHandle1" />
 					,
-					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-					,
 					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-					,
-					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 					&lt;b &amp; .
 				</interest>
 			</stakeholders-interests>
@@ -64,11 +52,7 @@
 					, a reference to step
 					<step-ref handle="stepHandle1" />
 					,
-					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-					,
 					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-					,
-					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 					&lt;b &amp; .
 				</item>
 			</preconditions>
@@ -80,11 +64,7 @@
 					, a reference to step
 					<step-ref handle="stepHandle1" />
 					,
-					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-					,
 					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-					,
-					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 					&lt;b &amp; .
 				</item>
 			</minimal-guarantees>
@@ -98,11 +78,7 @@
 					, a reference to step
 					<step-ref handle="stepHandle1" />
 					,
-					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-					,
 					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-					,
-					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 					&lt;b &amp; .
 				</item>
 			</success-guarantees>
@@ -132,11 +108,7 @@
 			</extensions>
 			<notes>
 				References,
-				<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-				,
 				<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-				,
-				<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 				&lt;b &amp; .
 			</notes>
 		</use-case>
@@ -146,14 +118,10 @@
 		<use-case goal="UC referenced via refcode" code="RF003" refcode="rfcd02"></use-case>
 	</uc-group>
 
-	<attachment-group directory="att-dir1" name="">
-		<attachment name="Att 1 name" code="att1" file-name="att1-file-name" />
-	</attachment-group>
 	<data name="Dt 1 name" code="dt1"></data>
 	<data name="Dt 2 name" code="dt2" refcode="dt2_refc"></data>
 	<instance name="Instance 1 name" code="in1" of="dt1"></instance>
 	<instance name="Instance 2 name" code="in2" of="dt2_refc"></instance>
-	<requirement name="Rq 1 name" code="rq1"></requirement>
 
 	<term name="Name only" />
 	<term name="Name and abbrev." abbreviation="Abbr1." />
@@ -166,11 +134,7 @@
 	<term name="With refs">
 		<description>
 			Description 4. A
-			<attachment-ref code="att1">ref to attachment</attachment-ref>
-			. A
 			<data-ref code="dt1">ref to data</data-ref>
-			. A
-			<req-ref code="rq1">ref to requirement</req-ref>
 			.
 			Some
 			<h:strong>HTML</h:strong>

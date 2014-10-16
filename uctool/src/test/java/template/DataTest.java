@@ -62,36 +62,12 @@ public class DataTest extends TemplateTestBase {
 	}
 
 	@Test
-	public void val_AttachmentMissing() {
-		try {
-			e.execute(new File(inputBaseDir, "data/attachmentMissing.xml"),
-					outputDir);
-		} catch (ValidationException e) {
-			assertEquals(
-					"Missing attachment with code [missing] referenced from data with code [d1].",
-					e.getMessage());
-		}
-	}
-
-	@Test
 	public void val_DataMissing() {
 		try {
 			e.execute(new File(inputBaseDir, "data/dataMissing.xml"), outputDir);
 		} catch (ValidationException e) {
 			assertEquals(
 					"Missing data or instance with refcode [missing] referenced from data with code [d1].",
-					e.getMessage());
-		}
-	}
-
-	@Test
-	public void val_RequirementMissing() {
-		try {
-			e.execute(new File(inputBaseDir, "data/requirementMissing.xml"),
-					outputDir);
-		} catch (ValidationException e) {
-			assertEquals(
-					"Missing requirement with code [missing] referenced from data with code [d1].",
 					e.getMessage());
 		}
 	}

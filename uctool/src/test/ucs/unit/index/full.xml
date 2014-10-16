@@ -5,12 +5,8 @@
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
 	">
 	<actor name="" code="ac-1"></actor>
-	<attachment-group directory="att-dir" name="">
-		<attachment name="" code="att-1" file-name="att-file-1" />
-	</attachment-group>
 	<data name="" code="dt-1"></data>
 	<instance name="" code="in-1" of="dt-1"></instance>
-	<requirement name="" code="rq-1"></requirement>
 	<term name=""></term>
 	<uc-group primary-actor="ac-1">
 		<use-case goal="G 1" code="UC1"></use-case>

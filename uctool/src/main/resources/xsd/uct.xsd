@@ -8,13 +8,11 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="uct:term" />
-				<xs:element ref="uct:requirement" />
-				<xs:element ref="uct:uc-group" />
 				<xs:element ref="uct:actor" />
+				<xs:element ref="uct:uc-group" />
 				<xs:element ref="uct:data" />
 				<xs:element ref="uct:instance" />
-				<xs:element ref="uct:attachment-group" />
+				<xs:element ref="uct:term" />
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>
@@ -151,8 +149,6 @@
 				<xs:element ref="uct:step-ref" />
 				<xs:element ref="uct:uc-ref" />
 				<xs:element ref="uct:data-ref" />
-				<xs:element ref="uct:req-ref" />
-				<xs:element ref="uct:attachment-ref" />
 			</xs:choice>
 			<xs:attribute name="handle" type="uct:HandleType">
 				<xs:annotation>
@@ -238,8 +234,6 @@
 				<xs:element ref="uct:uc-ref" />
 				<xs:element ref="uct:step-ref" />
 				<xs:element ref="uct:data-ref" />
-				<xs:element ref="uct:req-ref" />
-				<xs:element ref="uct:attachment-ref" />
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>
@@ -297,8 +291,6 @@
 				<xs:element ref="uct:step-ref" />
 				<xs:element ref="uct:uc-ref" />
 				<xs:element ref="uct:data-ref" />
-				<xs:element ref="uct:req-ref" />
-				<xs:element ref="uct:attachment-ref" />
 			</xs:choice>
 			<xs:attribute name="stakeholder" type="xs:string" use="required">
 				<xs:annotation>
@@ -585,142 +577,6 @@
 			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
-	<!-- user requirements -->
-	<xs:element name="requirement">
-		<xs:annotation>
-			<xs:documentation>User requirement definition.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="uct:description" minOccurs="0" />
-			</xs:sequence>
-			<xs:attribute name="code" use="required" type="uct:CodeType">
-				<xs:annotation>
-					<xs:documentation>Code of requirement. Uniquely identifies the requirement.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="name" use="required" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Requirement name.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="type" type="uct:RequirementTypeType">
-				<xs:annotation>
-					<xs:documentation>Requirement type.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="priority" type="uct:RequirementPriorityType">
-				<xs:annotation>
-					<xs:documentation>Requirement priority.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="status" type="uct:RequirementStatusType">
-				<xs:annotation>
-					<xs:documentation>Requirement status.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="origin" type="xs:string" default="">
-				<xs:annotation>
-					<xs:documentation>Origin of requirement, e.g. workshop, meeting, proposal, etc.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="level" type="uct:LevelType">
-				<xs:annotation>
-					<xs:documentation>Requirement level.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="area" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Area of the requirement.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="req-ref">
-		<xs:annotation>
-			<xs:documentation>Reference to a requirement.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:simpleContent>
-				<xs:extension base="xs:string">
-					<xs:attribute name="code" type="uct:CodeType" use="required">
-						<xs:annotation>
-							<xs:documentation>Code of the referenced requirement.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-				</xs:extension>
-			</xs:simpleContent>
-		</xs:complexType>
-	</xs:element>
-	<!-- attachments -->
-	<xs:element name="attachment-group">
-		<xs:annotation>
-			<xs:documentation>Group of attachments. Allows to arrange attached documents and figures into groups. A group
-				corresponds to a subdirectory that contains the attachment files.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="uct:attachment" minOccurs="0" maxOccurs="unbounded" />
-			</xs:sequence>
-			<xs:attribute name="directory" use="required" type="uct:CodeType">
-				<xs:annotation>
-					<xs:documentation>Directory of the attachment group. Defines a subdirectory of the main attachments directory, that
-						contains the files of the attachments included in the group. The main attachments directory is by default
-						src/main/attachments.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="name" use="required" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Name of the attachment group. The name is displayed as a group title in generated documentation.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="attachment">
-		<xs:annotation>
-			<xs:documentation>Attachment file definition. Attachment is typically a diagram, figure, or document attached to the
-				analytical documentation.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:attribute name="code" use="required" type="uct:CodeType">
-				<xs:annotation>
-					<xs:documentation>Code of attachment. Uniquely identifies the attachment.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="name" use="required" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Attachment name.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-			<xs:attribute name="file-name" use="required" type="uct:FileNameType">
-				<xs:annotation>
-					<xs:documentation>Attachment file name. Name of the attachment file. The path is given by the directory defined on
-						the attachment group containing the attachment.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
-		</xs:complexType>
-	</xs:element>
-	<xs:element name="attachment-ref">
-		<xs:annotation>
-			<xs:documentation>Reference to an attachment.</xs:documentation>
-		</xs:annotation>
-		<xs:complexType>
-			<xs:simpleContent>
-				<xs:extension base="xs:string">
-					<xs:attribute name="code" type="uct:CodeType" use="required">
-						<xs:annotation>
-							<xs:documentation>Code of the referenced attachment.</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-				</xs:extension>
-			</xs:simpleContent>
-		</xs:complexType>
-	</xs:element>
 	<!-- common, enumerations, miscellaneous -->
 	<xs:element name="item" type="uct:TextType" />
 	<xs:element name="description" type="uct:DescriptionType" />
@@ -738,8 +594,6 @@
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
 			<xs:any namespace="http://www.w3.org/1999/xhtml" processContents="skip" />
 			<xs:element ref="uct:data-ref" />
-			<xs:element ref="uct:req-ref" />
-			<xs:element ref="uct:attachment-ref" />
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="TextType" mixed="true">
@@ -748,8 +602,6 @@
 			<xs:element ref="uct:step-ref" />
 			<xs:element ref="uct:uc-ref" />
 			<xs:element ref="uct:data-ref" />
-			<xs:element ref="uct:req-ref" />
-			<xs:element ref="uct:attachment-ref" />
 		</xs:choice>
 	</xs:complexType>
 	<xs:simpleType name="HandleType">

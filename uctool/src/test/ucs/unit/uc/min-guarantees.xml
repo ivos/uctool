@@ -15,11 +15,7 @@
 					, a reference to step
 					<step-ref handle="stepHandle1" />
 					,
-					<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-					,
 					<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-					,
-					<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 					&lt;b &amp; .
 				</item>
 				<item>
@@ -34,11 +30,7 @@
 									, a reference to step
 									<step-ref handle="stepHandle1" />
 									,
-									<attachment-ref code="att1">attachment link &lt;b &amp; " '</attachment-ref>
-									,
 									<data-ref code="dt1">data link &lt;b &amp; " '</data-ref>
-									,
-									<req-ref code="rq1">requirement link &lt;b &amp; " '</req-ref>
 									.
 								</h:td>
 							</h:tr>
@@ -55,11 +47,7 @@
 		</use-case>
 	</uc-group>
 
-	<attachment-group directory="att-dir1" name="">
-		<attachment name="Att 1 name" code="att1" file-name="att1-file-name" />
-	</attachment-group>
 	<data name="Dt 1 name" code="dt1"></data>
-	<requirement name="Rq 1 name" code="rq1"></requirement>
 	<uc-group primary-actor="a1">
 		<use-case goal="Referenced UC" code="RF001"></use-case>
 	</uc-group>

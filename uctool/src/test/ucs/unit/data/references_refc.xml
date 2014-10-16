@@ -256,10 +256,4 @@
 		</use-case>
 	</uc-group>
 
-	<requirement name="Rq 1 name" code="rq1">
-		<description>
-			<data-ref code="references"></data-ref>
-		</description>
-	</requirement>
-
 </uct>

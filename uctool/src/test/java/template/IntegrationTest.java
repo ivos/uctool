@@ -178,56 +178,6 @@ public class IntegrationTest extends TemplatingTestBase implements
 	}
 
 	@Test
-	public void requirement() throws IOException {
-		performTest("req/req01.html");
-	}
-
-	@Test
-	public void requirement2() throws IOException {
-		performTest("req/req02.html");
-	}
-
-	@Test
-	public void requirementIndex() throws IOException {
-		performTest("req/index.html");
-	}
-
-	@Test
-	public void requirementUc() throws IOException {
-		performTest("uc/req-ref-03.html");
-	}
-
-	@Test
-	public void requirementActor() throws IOException {
-		performTest("actor/req-actor-01.html");
-	}
-
-	@Test
-	public void attachmentIndex() throws IOException {
-		performTest("attachment/index.html");
-	}
-
-	@Test
-	public void attachmentUc() throws IOException {
-		performTest("uc/attachment-ref-01.html");
-	}
-
-	@Test
-	public void attachmentActor() throws IOException {
-		performTest("actor/attachment-actor.html");
-	}
-
-	@Test
-	public void attachmentData() throws IOException {
-		performTest("data/attachment-data-structure.html");
-	}
-
-	@Test
-	public void attachmentRequirement() throws IOException {
-		performTest("req/attachment-requirement.html");
-	}
-
-	@Test
 	public void glossary() throws IOException {
 		performTest("glossary/index.html");
 	}

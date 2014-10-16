@@ -8,13 +8,10 @@ import java.util.Set;
 import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.ExecutionContext;
 import net.sf.uctool.xsd.Actor;
-import net.sf.uctool.xsd.Attachment;
-import net.sf.uctool.xsd.AttachmentGroup;
 import net.sf.uctool.xsd.Attribute;
 import net.sf.uctool.xsd.Data;
 import net.sf.uctool.xsd.ExtendsActor;
 import net.sf.uctool.xsd.Instance;
-import net.sf.uctool.xsd.Requirement;
 import net.sf.uctool.xsd.Term;
 import net.sf.uctool.xsd.UcGroup;
 import net.sf.uctool.xsd.Uct;
@@ -31,7 +28,7 @@ public class UctoolValidator {
 
 	public void validate(List<Uct> inputs) {
 		for (Uct uct : inputs) {
-			for (Object object : uct.getTermOrRequirementOrUcGroup()) {
+			for (Object object : uct.getActorOrUcGroupOrData()) {
 				if (object instanceof Actor) {
 					Actor actor = (Actor) object;
 					String code = actor.getCode();
@@ -40,21 +37,6 @@ public class UctoolValidator {
 								"Duplicate actor with code [" + code + "].");
 					}
 					executionContext.getActors().put(code, actor);
-				}
-				if (object instanceof AttachmentGroup) {
-					AttachmentGroup attachmentGroup = (AttachmentGroup) object;
-					for (Attachment attachment : attachmentGroup
-							.getAttachment()) {
-						String code = attachment.getCode();
-						if (executionContext.getAttachments().containsKey(code)) {
-							throw new ValidationException(
-									"Duplicate attachment with code [" + code
-											+ "].");
-						}
-						executionContext.getAttachments().put(code, attachment);
-						executionContext.getAttachmentGroups().put(code,
-								attachmentGroup);
-					}
 				}
 				if (object instanceof Data) {
 					Data data = (Data) object;
@@ -130,16 +112,6 @@ public class UctoolValidator {
 					}
 
 					executionContext.getInstances().put(refcode, instance);
-				}
-				if (object instanceof Requirement) {
-					Requirement requirement = (Requirement) object;
-					String code = requirement.getCode();
-					if (executionContext.getRequirements().containsKey(code)) {
-						throw new ValidationException(
-								"Duplicate requirement with code [" + code
-										+ "].");
-					}
-					executionContext.getRequirements().put(code, requirement);
 				}
 				if (object instanceof Term) {
 					Term term = (Term) object;
