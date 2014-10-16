@@ -32,8 +32,7 @@ $ctx.label("entry.point.list.hint")
 </tr>
 </thead>
 <tbody>
-#foreach($uc in $ctx.useCaseOuts.values())
-#if(!$ctx.ucReferences.containsKey($uc.refcode))
+#foreach($uc in $ctx.entryPoints)
 <tr>
 <td>$uc.primaryActor.name</td>
 <td><a href="uc/${uc.code}.html" title="$uc.code - $uc.goal">$uc.code - $uc.goal</a></td>
@@ -43,7 +42,6 @@ $ctx.label("entry.point.list.hint")
 #end
 </td>
 </tr>
-#end
 #end
 </tbody>
 </table>

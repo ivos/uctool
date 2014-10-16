@@ -50,6 +50,8 @@ public class ExecutionContext {
 	private final Map<String, InstanceOut> instanceOuts;
 	private final Set<TermOut> termOuts;
 
+	private final Set<UseCaseOut> entryPoints;
+
 	private UseCase currentUseCase;
 	private boolean single = false;
 
@@ -76,6 +78,8 @@ public class ExecutionContext {
 		dataOuts = new LinkedHashMap<String, DataOut>();
 		instanceOuts = new LinkedHashMap<String, InstanceOut>();
 		termOuts = new LinkedHashSet<TermOut>();
+
+		entryPoints = new LinkedHashSet<UseCaseOut>();
 	}
 
 	public String label(String key) {
@@ -174,6 +178,10 @@ public class ExecutionContext {
 
 	public Set<TermOut> getTermOuts() {
 		return termOuts;
+	}
+
+	public Set<UseCaseOut> getEntryPoints() {
+		return entryPoints;
 	}
 
 	public void addUcRef(String refcodeReferenced, String refcodeReferencing) {

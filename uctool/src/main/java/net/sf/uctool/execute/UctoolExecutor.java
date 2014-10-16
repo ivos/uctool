@@ -216,6 +216,13 @@ public class UctoolExecutor {
 				instanceConverter.addReferences((InstanceOut) output);
 			}
 		}
+
+		for (UseCaseOut useCaseOut : executionContext.getUseCaseOuts().values()) {
+			if (useCaseOut.getReferences().isEmpty()) {
+				executionContext.getEntryPoints().add(useCaseOut);
+			}
+		}
+
 		logger.debug("Converted to {} outputs @ {}.", outputs.size(),
 				time.toString());
 		time.reset();
