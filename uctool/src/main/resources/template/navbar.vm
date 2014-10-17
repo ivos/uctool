@@ -17,7 +17,6 @@
 				<li class="dropdown">
 					<a id="sections-dropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">$ctx.label("sections") <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="sections-dropdown">
-						<li role="presentation"#if($section=="summary" || $section=="entry" || $section=="actorgoal") class="active"#end><a role="menuitem" tabindex="-1" href="${rel-path}summary/index.html"><i class="fa fa-sitemap"></i> $ctx.label("overview.pages")</a></li>
 #if($ctx.actors.size()>0)							<li#if($section=="actor") class="active"#end><a href="${rel-path}actor/index.html"><i class="fa fa-user"></i> $ctx.label("actors")</a></li>
 #end
 #if($ctx.useCases.size()>0)							<li#if($section=="uc") class="active"#end><a href="${rel-path}uc/index.html"><i class="fa fa-file-text-o"></i> $ctx.label("use.cases")</a></li>

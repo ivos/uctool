@@ -88,7 +88,6 @@ $ctx.label("entry.point.list.hint")
 $ctx.label("sections.hint")
 </div>
 <div class="list-group">
-<a href="summary/index.html" class="list-group-item"><i class="fa fa-sitemap"></i> $ctx.label("overview.pages")</a>
 #if($ctx.actors.size()>0)<a href="actor/index.html" class="list-group-item"><i class="fa fa-user"></i> $ctx.label("actors")
 	<span class="badge">$ctx.actors.size()</span></a>
 #end
