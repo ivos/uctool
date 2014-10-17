@@ -222,6 +222,19 @@ public class UctoolExecutor {
 				executionContext.getEntryPoints().add(useCaseOut);
 			}
 		}
+		for (DataOut dataOut : executionContext.getDataOuts().values()) {
+			if (dataOut.getReferencesData().isEmpty()
+					&& dataOut.getReferencesUcs().isEmpty()) {
+				executionContext.getUnusedData().add(dataOut);
+			}
+		}
+		for (InstanceOut instanceOut : executionContext.getInstanceOuts()
+				.values()) {
+			if (instanceOut.getReferencesData().isEmpty()
+					&& instanceOut.getReferencesUcs().isEmpty()) {
+				executionContext.getUnusedInstances().add(instanceOut);
+			}
+		}
 
 		logger.debug("Converted to {} outputs @ {}.", outputs.size(),
 				time.toString());
@@ -242,8 +255,6 @@ public class UctoolExecutor {
 		uctoolWriter.writeDataIndex();
 		uctoolWriter.writeInstanceIndex();
 		uctoolWriter.writeGlossary();
-		uctoolWriter.writeSummaryIndex();
-		uctoolWriter.writeActorGoalList();
 		logger.debug("Wrote outputs @ {}.", time.toString());
 		time.reset();
 	}

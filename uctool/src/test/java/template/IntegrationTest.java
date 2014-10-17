@@ -11,7 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-//@Ignore
+@Ignore
 public class IntegrationTest extends TemplatingTestBase implements
 		TemplateTestConstants {
 
@@ -145,21 +145,6 @@ public class IntegrationTest extends TemplatingTestBase implements
 	@Test
 	public void dataAttRefExpansion2ndLevel() throws IOException {
 		performTest("data/att-ref-expansion-2.html");
-	}
-
-	@Test
-	public void actorGoalList() throws IOException {
-		performTest("summary/actor-goal-list.html");
-	}
-
-	@Test
-	public void unusedDataList() throws IOException {
-		performTest("summary/unused-data-list.html");
-	}
-
-	@Test
-	public void summaryIndex() throws IOException {
-		performTest("summary/index.html");
 	}
 
 	@Test

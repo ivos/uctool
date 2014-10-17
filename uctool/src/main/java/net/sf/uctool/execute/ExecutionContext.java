@@ -51,6 +51,8 @@ public class ExecutionContext {
 	private final Set<TermOut> termOuts;
 
 	private final Set<UseCaseOut> entryPoints;
+	private final Set<DataOut> unusedData;
+	private final Set<InstanceOut> unusedInstances;
 
 	private UseCase currentUseCase;
 	private boolean single = false;
@@ -80,6 +82,8 @@ public class ExecutionContext {
 		termOuts = new LinkedHashSet<TermOut>();
 
 		entryPoints = new LinkedHashSet<UseCaseOut>();
+		unusedData = new LinkedHashSet<DataOut>();
+		unusedInstances = new LinkedHashSet<InstanceOut>();
 	}
 
 	public String label(String key) {
@@ -182,6 +186,14 @@ public class ExecutionContext {
 
 	public Set<UseCaseOut> getEntryPoints() {
 		return entryPoints;
+	}
+
+	public Set<DataOut> getUnusedData() {
+		return unusedData;
+	}
+
+	public Set<InstanceOut> getUnusedInstances() {
+		return unusedInstances;
 	}
 
 	public void addUcRef(String refcodeReferenced, String refcodeReferencing) {

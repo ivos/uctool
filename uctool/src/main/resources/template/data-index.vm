@@ -25,7 +25,7 @@
 #foreach($data in $ctx.dataOuts.values())
 <tr>
 <td>#dataRef($data)</td>
-<td>$data.code</td>
+<td><code>$data.code</code></td>
 <td>$data.category</td>
 </tr>
 #end

@@ -14,6 +14,38 @@ $ctx.label("version"): $ctx.project.version</p>
 <p class="lead">$ctx.project.description</p>
 <p>$ctx.label("welcome")</p>
 <p></p>
+#if($ctx.unusedData.size()>0)
+
+<div class="panel panel-danger">
+<div class="panel-heading">
+<h3 class="panel-title">$ctx.label("unused.data.list")</h3>
+</div>
+<div class="panel-body">
+$ctx.label("unused.data.list.hint")
+</div>
+<div class="list-group">
+#foreach($data in $ctx.unusedData)
+<a href="data/${data.code}.html" class="list-group-item">$data.name &nbsp; <code>$data.code</code></a>
+#end
+</div>
+</div>
+#end
+#if($ctx.unusedInstances.size()>0)
+
+<div class="panel panel-danger">
+<div class="panel-heading">
+<h3 class="panel-title">$ctx.label("unused.instances.list")</h3>
+</div>
+<div class="panel-body">
+$ctx.label("unused.instances.list.hint")
+</div>
+<div class="list-group">
+#foreach($instance in $ctx.unusedInstances)
+<a href="instance/${instance.code}.html" class="list-group-item">$instance.name &nbsp; <code>$instance.code</code></a>
+#end
+</div>
+</div>
+#end
 #if($ctx.useCases.size()>0)
 
 <div class="panel panel-primary">

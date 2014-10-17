@@ -120,14 +120,76 @@
 					<uc-ref code="uc10">uc10</uc-ref>
 					.
 				</step>
+				<step>
+					Reference to other use cases:
+					<uc-ref code="uc_refer_to_items"></uc-ref>
+				</step>
 			</success>
 		</use-case>
 		<use-case goal="Goal 30" code="uc30" />
 	</uc-group>
 
+	<!-- unused data -->
+	<data name="Unused data 1" code="dt_unused_1"></data>
+	<data name="Referred from uc" code="dt_referred_from_uc">
+		<attribute name="" type="dt_referred_from_data"></attribute>
+	</data>
+	<uc-group primary-actor="a1">
+		<use-case goal="Refer to items" code="uc_refer_to_items">
+			<success>
+				<step>
+					Ref to
+					<data-ref code="dt_referred_from_uc">data</data-ref>
+					,
+					<data-ref code="dt_referred_from_instance_instance"></data-ref>
+					,
+					<data-ref code="in_referred_from_uc"></data-ref>
+					.
+				</step>
+			</success>
+		</use-case>
+	</uc-group>
+	<data name="Referred from data" code="dt_referred_from_data"></data>
+	<data name="Referred from instance" code="dt_referred_from_instance"></data>
+	<instance name="Refering to data" code="dt_referred_from_instance_instance" of="dt_referred_from_instance"></instance>
+	<data name="Referred from self" code="dt_referred_from_self">
+		<attribute name="" type="dt_referred_from_self"></attribute>
+	</data>
+	<data name="Refering cycle 1" code="dt_refering_cycle_1">
+		<attribute name="" type="dt_refering_cycle_2"></attribute>
+	</data>
+	<data name="Refering cycle 2" code="dt_refering_cycle_2">
+		<attribute name="" type="dt_refering_cycle_3"></attribute>
+	</data>
+	<data name="Refering cycle 3" code="dt_refering_cycle_3">
+		<attribute name="" type="dt_refering_cycle_1"></attribute>
+	</data>
+	<data name="Unused data 2" code="dt_unused_2"></data>
+
+	<!-- unused instances -->
+	<data name="Data for unused instances" code="dt_unused_instances">
+		<attribute name="" code="att1"></attribute>
+	</data>
+	<instance name="Unused instance 1" code="in_unused_1" of="dt_unused_instances"></instance>
+	<instance name="Referred from uc" code="in_referred_from_uc" of="dt_unused_instances">
+		<value of="att1" from="in_referred_from_instance"></value>
+	</instance>
+	<instance name="Referred from instance" code="in_referred_from_instance" of="dt_unused_instances"></instance>
+	<instance name="Referred from self" code="in_referred_from_self" of="dt_unused_instances">
+		<value of="att1" from="in_referred_from_self"></value>
+	</instance>
+	<instance name="Refering cycle 1" code="in_refering_cycle_1" of="dt_unused_instances">
+		<value of="att1" from="in_refering_cycle_2"></value>
+	</instance>
+	<instance name="Refering cycle 2" code="in_refering_cycle_2" of="dt_unused_instances">
+		<value of="att1" from="in_refering_cycle_3"></value>
+	</instance>
+	<instance name="Refering cycle 3" code="in_refering_cycle_3" of="dt_unused_instances">
+		<value of="att1" from="in_refering_cycle_1"></value>
+	</instance>
+	<instance name="Unused instance 2" code="in_unused_2" of="dt_unused_instances"></instance>
+
 	<!-- sections -->
-	<data name="" code="dt-1"></data>
-	<instance name="" code="in-1" of="dt-1"></instance>
 	<term name=""></term>
 
 </uct>

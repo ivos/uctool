@@ -119,27 +119,6 @@ public class UctoolWriter {
 				context);
 	}
 
-	public void writeSummaryIndex() {
-		VelocityContext context = new VelocityContext();
-		context.put("ctx", executionContext);
-		templateWriter.writeFile("template/summary-index.vm", "summary/index",
-				context);
-	}
-
-	public void writeEntryPointList() {
-		VelocityContext context = new VelocityContext();
-		context.put("ctx", executionContext);
-		templateWriter.writeFile("template/entry-point-list.vm",
-				"summary/entry-point-list", context);
-	}
-
-	public void writeActorGoalList() {
-		VelocityContext context = new VelocityContext();
-		context.put("ctx", executionContext);
-		templateWriter.writeFile("template/actor-goal-list.vm",
-				"summary/actor-goal-list", context);
-	}
-
 	public void writeSinglePage() {
 		singlePageWriter.write(executionContext);
 	}
