@@ -57,6 +57,7 @@ public class UctoolExecutor {
 	private final TermConverter termConverter;
 	private final UctoolWriter uctoolWriter;
 	private final UctoolValidator uctoolValidator;
+	private final KeyDataManager keyDataManager;
 
 	public UctoolExecutor(Project project) {
 		time = new StopWatch();
@@ -73,6 +74,7 @@ public class UctoolExecutor {
 		instanceConverter = new InstanceConverter(executionContext);
 		termConverter = new TermConverter(executionContext);
 		uctoolWriter = new UctoolWriter();
+		keyDataManager = new KeyDataManager(executionContext);
 	}
 
 	public void validate(Reader reader) {
@@ -235,6 +237,7 @@ public class UctoolExecutor {
 				executionContext.getUnusedInstances().add(instanceOut);
 			}
 		}
+		keyDataManager.setupKeyData();
 
 		logger.debug("Converted to {} outputs @ {}.", outputs.size(),
 				time.toString());

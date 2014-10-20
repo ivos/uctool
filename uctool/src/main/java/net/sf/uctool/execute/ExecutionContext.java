@@ -53,6 +53,7 @@ public class ExecutionContext {
 	private final Set<UseCaseOut> entryPoints;
 	private final Set<DataOut> unusedData;
 	private final Set<InstanceOut> unusedInstances;
+	private final Set<DataOut> keyData;
 
 	private UseCase currentUseCase;
 	private boolean single = false;
@@ -84,6 +85,7 @@ public class ExecutionContext {
 		entryPoints = new LinkedHashSet<UseCaseOut>();
 		unusedData = new LinkedHashSet<DataOut>();
 		unusedInstances = new LinkedHashSet<InstanceOut>();
+		keyData = new LinkedHashSet<DataOut>();
 	}
 
 	public String label(String key) {
@@ -194,6 +196,10 @@ public class ExecutionContext {
 
 	public Set<InstanceOut> getUnusedInstances() {
 		return unusedInstances;
+	}
+
+	public Set<DataOut> getKeyData() {
+		return keyData;
 	}
 
 	public void addUcRef(String refcodeReferenced, String refcodeReferencing) {

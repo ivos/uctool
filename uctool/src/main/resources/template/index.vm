@@ -79,6 +79,22 @@ $ctx.label("entry.point.list.hint")
 </table>
 </div>
 #end
+#if($ctx.keyData.size()>0)
+
+<div class="panel panel-primary">
+<div class="panel-heading">
+<h3 class="panel-title">$ctx.label("key.data.list")</h3>
+</div>
+<div class="panel-body">
+$ctx.label("key.data.list.hint")
+</div>
+<div class="list-group">
+#foreach($data in $ctx.keyData)
+<a href="data/${data.code}.html" class="list-group-item">$data.name &nbsp; <code>$data.code</code></a>
+#end
+</div>
+</div>
+#end
 
 <div class="panel panel-default">
 <div class="panel-heading">
