@@ -25,7 +25,7 @@
 #foreach($instance in $ctx.instanceOuts.values())
 <tr>
 <td>#instanceRef($instance)</td>
-<td>$instance.code</td>
+<td><code>$instance.code</code></td>
 <td>#dataRef($instance.of)</td>
 </tr>
 #end

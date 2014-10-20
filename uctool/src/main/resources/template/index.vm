@@ -100,12 +100,6 @@ $ctx.label("sections.hint")
 #if($ctx.instances.size()>0)<a href="instance/index.html" class="list-group-item"><i class="fa fa-table"></i> $ctx.label("instances")
 	<span class="badge">$ctx.instances.size()</span></a>
 #end
-#if($ctx.requirements.size()>0)<a href="req/index.html" class="list-group-item"><i class="fa fa-list"></i> $ctx.label("requirements")
-	<span class="badge">$ctx.requirements.size()</span></a>
-#end
-#if($ctx.attachments.size()>0)<a href="attachment/index.html" class="list-group-item"><i class="fa fa-picture-o"></i> $ctx.label("attachments")
-	<span class="badge">$ctx.attachments.size()</span></a>
-#end
 #if($ctx.terms.size()>0)<a href="glossary/index.html" class="list-group-item"><i class="fa fa-search"></i> $ctx.label("glossary")
 	<span class="badge">$ctx.terms.size()</span></a>
 #end
