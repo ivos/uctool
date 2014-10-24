@@ -68,6 +68,22 @@ public class DataConverter {
 		String refcode = o.getRefcode();
 		Set<String> references;
 
+		references = executionContext.getDataInstances().get(refcode);
+		if (null != references) {
+			for (String referencingRefcode : references) {
+				String referencingCode, referencingName, type;
+				Instance referencingInstance = executionContext.getInstances()
+						.get(referencingRefcode);
+				referencingCode = referencingInstance.getCode();
+				referencingName = referencingInstance.getName();
+				type = "instance";
+				Reference reference = new Reference(type, referencingCode,
+						referencingName);
+				o.getInstances().add(reference);
+				logger.debug("Added reference {}.", reference);
+			}
+		}
+
 		references = executionContext.getDataReferencesData().get(refcode);
 		if (null != references) {
 			for (String referencingRefcode : references) {
@@ -87,7 +103,11 @@ public class DataConverter {
 				}
 				Reference reference = new Reference(type, referencingCode,
 						referencingName);
-				o.getReferencesData().add(reference);
+				if ("data".equals(type)) {
+					o.getReferencesData().add(reference);
+				} else {
+					o.getReferencesInstances().add(reference);
+				}
 				logger.debug("Added reference {}.", reference);
 			}
 		}
@@ -105,5 +125,4 @@ public class DataConverter {
 			}
 		}
 	}
-
 }

@@ -11,13 +11,13 @@
 
 	<data name="Reference from data description" code="reference_from_data_description">
 		<description>
-			<data-ref code="references"></data-ref>
+			<data-ref code="references">references</data-ref>
 		</description>
 	</data>
 	<data name="Reference from attribute description" code="reference_from_attribute_description">
 		<attribute name="Some attribute">
 			<description>
-				<data-ref code="references"></data-ref>
+				<data-ref code="references">references</data-ref>
 			</description>
 		</attribute>
 	</data>
@@ -32,7 +32,7 @@
 	</data>
 	<instance name="Reference from instance description" code="instance_description_ref_data" of="dt_other_instances">
 		<description>
-			<data-ref code="references"></data-ref>
+			<data-ref code="references">references</data-ref>
 		</description>
 	</instance>
 	<instance name="Reference from instance value" code="instance_value_ref_data" of="dt_other_instances">
@@ -44,7 +44,7 @@
 	<instance name="Reference from instance value description" code="instance_value_description_ref_data" of="dt_other_instances">
 		<value of="refering_att">
 			<description>
-				<data-ref code="references"></data-ref>
+				<data-ref code="references">references</data-ref>
 			</description>
 		</value>
 	</instance>
@@ -56,19 +56,19 @@
 
 	<actor name="Actor 1" code="a1">
 		<description>
-			<data-ref code="references"></data-ref>
+			<data-ref code="references">references</data-ref>
 		</description>
 	</actor>
 	<actor name="Actor 2" code="a2">
 		<description>
-			<data-ref code="references"></data-ref>
+			<data-ref code="references">references</data-ref>
 		</description>
 	</actor>
 	<uc-group primary-actor="a1" type="system" visibility="black" scope="Scope 1">
 		<use-case goal="Ref from same uc group" code="ref-from-same-ucg">
 			<success>
 				<step>
-					<data-ref code="references"></data-ref>
+					<data-ref code="references">references</data-ref>
 				</step>
 			</success>
 		</use-case>
@@ -78,7 +78,7 @@
 		<use-case goal="Ref from other uc group &lt;b &amp; " code="ref-from-other-ucg">
 			<success>
 				<step>
-					<data-ref code="references"></data-ref>
+					<data-ref code="references">references</data-ref>
 				</step>
 			</success>
 		</use-case>
@@ -87,7 +87,7 @@
 				<step>
 					<h:div>
 						<h:strong>
-							<data-ref code="references"></data-ref>
+							<data-ref code="references">references</data-ref>
 						</h:strong>
 					</h:div>
 				</step>
@@ -97,7 +97,7 @@
 		<use-case goal="Ref from interest" code="ref-from-interest">
 			<stakeholders-interests>
 				<interest stakeholder="S1">
-					<data-ref code="references"></data-ref>
+					<data-ref code="references">references</data-ref>
 				</interest>
 			</stakeholders-interests>
 		</use-case>
@@ -106,7 +106,7 @@
 				<interest stakeholder="S1">
 					<h:div>
 						<h:strong>
-							<data-ref code="references"></data-ref>
+							<data-ref code="references">references</data-ref>
 						</h:strong>
 					</h:div>
 				</interest>
@@ -116,7 +116,7 @@
 		<use-case goal="Ref from min guarantees item" code="ref-from-ming-item">
 			<minimal-guarantees>
 				<item>
-					<data-ref code="references"></data-ref>
+					<data-ref code="references">references</data-ref>
 				</item>
 			</minimal-guarantees>
 		</use-case>
@@ -125,7 +125,7 @@
 				<item>
 					<h:div>
 						<h:strong>
-							<data-ref code="references"></data-ref>
+							<data-ref code="references">references</data-ref>
 						</h:strong>
 					</h:div>
 				</item>
@@ -134,7 +134,7 @@
 		<use-case goal="Ref from min guarantees text" code="ref-from-ming-text">
 			<minimal-guarantees>
 				<text>
-					<data-ref code="references"></data-ref>
+					<data-ref code="references">references</data-ref>
 				</text>
 			</minimal-guarantees>
 		</use-case>
@@ -143,7 +143,7 @@
 				<text>
 					<h:div>
 						<h:strong>
-							<data-ref code="references"></data-ref>
+							<data-ref code="references">references</data-ref>
 						</h:strong>
 					</h:div>
 				</text>
@@ -153,7 +153,7 @@
 		<use-case goal="Ref from suc guarantees item" code="ref-from-sucg-item">
 			<success-guarantees>
 				<item>
-					<data-ref code="references"></data-ref>
+					<data-ref code="references">references</data-ref>
 				</item>
 			</success-guarantees>
 		</use-case>
@@ -162,7 +162,7 @@
 				<item>
 					<h:div>
 						<h:strong>
-							<data-ref code="references"></data-ref>
+							<data-ref code="references">references</data-ref>
 						</h:strong>
 					</h:div>
 				</item>
@@ -171,7 +171,7 @@
 		<use-case goal="Ref from suc guarantees text" code="ref-from-sucg-text">
 			<success-guarantees>
 				<text>
-					<data-ref code="references"></data-ref>
+					<data-ref code="references">references</data-ref>
 				</text>
 			</success-guarantees>
 		</use-case>
@@ -180,7 +180,7 @@
 				<text>
 					<h:div>
 						<h:strong>
-							<data-ref code="references"></data-ref>
+							<data-ref code="references">references</data-ref>
 						</h:strong>
 					</h:div>
 				</text>
@@ -194,7 +194,7 @@
 			<extensions>
 				<condition step-ref="s1">
 					<step>
-						<data-ref code="references"></data-ref>
+						<data-ref code="references">references</data-ref>
 					</step>
 				</condition>
 			</extensions>
@@ -208,7 +208,7 @@
 					<step>
 						<h:div>
 							<h:strong>
-								<data-ref code="references"></data-ref>
+								<data-ref code="references">references</data-ref>
 							</h:strong>
 						</h:div>
 					</step>
@@ -226,7 +226,7 @@
 					<step-extensions>
 						<step-condition>
 							<step>
-								<data-ref code="references"></data-ref>
+								<data-ref code="references">references</data-ref>
 							</step>
 						</step-condition>
 					</step-extensions>
@@ -245,7 +245,7 @@
 							<step>
 								<h:div>
 									<h:strong>
-										<data-ref code="references"></data-ref>
+										<data-ref code="references">references</data-ref>
 									</h:strong>
 								</h:div>
 							</step>

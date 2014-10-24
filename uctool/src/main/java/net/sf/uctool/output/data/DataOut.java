@@ -15,7 +15,9 @@ public class DataOut {
 	private String category;
 	private final List<String> descriptions = new ArrayList<String>();
 	private final List<AttributeOut> attributes = new ArrayList<AttributeOut>();
+	private final List<Reference> instances = new ArrayList<Reference>();
 	private final List<Reference> referencesData = new ArrayList<Reference>();
+	private final List<Reference> referencesInstances = new ArrayList<Reference>();
 	private final List<Reference> referencesUcs = new ArrayList<Reference>();
 
 	public String getCode() {
@@ -72,8 +74,16 @@ public class DataOut {
 		return null;
 	}
 
+	public List<Reference> getInstances() {
+		return instances;
+	}
+
 	public List<Reference> getReferencesData() {
 		return referencesData;
+	}
+
+	public List<Reference> getReferencesInstances() {
+		return referencesInstances;
 	}
 
 	public List<Reference> getReferencesUcs() {

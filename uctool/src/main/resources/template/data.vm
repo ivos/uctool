@@ -29,8 +29,16 @@
 #end</tbody>
 </table>
 #end
+#if(!$data.instances.isEmpty())<div><strong>$ctx.label("instances"):</strong>
+#foreach($ref in $data.instances)#ref($ref)#if( $foreach.hasNext ),#end
+$newline#end</div>
+#end
 #if(!$data.referencesData.isEmpty())<div><strong>$ctx.label("references.data"):</strong>
 #foreach($ref in $data.referencesData)#ref($ref)#if( $foreach.hasNext ),#end
+$newline#end</div>
+#end
+#if(!$data.referencesInstances.isEmpty())<div><strong>$ctx.label("references.instances"):</strong>
+#foreach($ref in $data.referencesInstances)#ref($ref)#if( $foreach.hasNext ),#end
 $newline#end</div>
 #end
 #if(!$data.referencesUcs.isEmpty())<div><strong>$ctx.label("references.uc"):</strong>

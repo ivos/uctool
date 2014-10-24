@@ -37,6 +37,7 @@ public class ExecutionContext {
 	private final Map<String, UcGroup> ucGroups;
 	private final Map<String, Set<String>> ucReferences;
 	private final Map<String, Set<String>> dataReferencesData;
+	private final Map<String, Set<String>> dataInstances;
 	private final Map<String, Set<String>> dataReferencesUc;
 
 	private final Set<String> dataCodes;
@@ -69,6 +70,7 @@ public class ExecutionContext {
 		ucGroups = new LinkedHashMap<String, UcGroup>();
 		ucReferences = new LinkedHashMap<String, Set<String>>();
 		dataReferencesData = new LinkedHashMap<String, Set<String>>();
+		dataInstances = new LinkedHashMap<String, Set<String>>();
 		dataReferencesUc = new LinkedHashMap<String, Set<String>>();
 
 		dataCodes = new HashSet<String>();
@@ -150,6 +152,10 @@ public class ExecutionContext {
 		return dataReferencesData;
 	}
 
+	public Map<String, Set<String>> getDataInstances() {
+		return dataInstances;
+	}
+
 	public Map<String, Set<String>> getDataReferencesUc() {
 		return dataReferencesUc;
 	}
@@ -219,6 +225,8 @@ public class ExecutionContext {
 				|| "attribute".equals(referencingType)
 				|| "value".equals(referencingType)) {
 			refs = dataReferencesData;
+		} else if ("instance of".equals(referencingType)) {
+			refs = dataInstances;
 		} else if ("use case".equals(referencingType)) {
 			refs = dataReferencesUc;
 		} else {
