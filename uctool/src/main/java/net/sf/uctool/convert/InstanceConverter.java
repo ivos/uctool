@@ -177,7 +177,11 @@ public class InstanceConverter {
 				}
 				Reference reference = new Reference(type, referencingCode,
 						referencingName);
-				o.getReferencesData().add(reference);
+				if ("data".equals(type)) {
+					o.getReferencesData().add(reference);
+				} else {
+					o.getReferencesInstances().add(reference);
+				}
 				logger.debug("Added reference {}.", reference);
 			}
 		}

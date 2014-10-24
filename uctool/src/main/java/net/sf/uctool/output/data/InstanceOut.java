@@ -14,6 +14,7 @@ public class InstanceOut {
 	private final List<String> descriptions = new ArrayList<String>();
 	private final List<ValueOut> values = new ArrayList<ValueOut>();
 	private final List<Reference> referencesData = new ArrayList<Reference>();
+	private final List<Reference> referencesInstances = new ArrayList<Reference>();
 	private final List<Reference> referencesUcs = new ArrayList<Reference>();
 	private final List<AttributeOut> unmapped = new ArrayList<AttributeOut>();
 
@@ -63,6 +64,10 @@ public class InstanceOut {
 
 	public List<Reference> getReferencesData() {
 		return referencesData;
+	}
+
+	public List<Reference> getReferencesInstances() {
+		return referencesInstances;
 	}
 
 	public List<Reference> getReferencesUcs() {

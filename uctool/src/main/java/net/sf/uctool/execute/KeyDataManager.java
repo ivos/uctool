@@ -6,7 +6,12 @@ import java.util.List;
 
 import net.sf.uctool.output.data.DataOut;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class KeyDataManager {
+
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private final ExecutionContext executionContext;
 
@@ -31,29 +36,43 @@ public class KeyDataManager {
 		int maxLength = cutSameOrderCrossingMaxLength(items);
 		int maxRefs = items.get(0).getOrder() / 2;
 		for (KeyDataItem item : items) {
-			if (i++ > maxLength) {
+			if (i++ >= maxLength) {
 				break;
 			}
 			if (item.getOrder() < maxRefs) {
+				logger.debug(
+						"Data {} has too few references, skipping all following.",
+						item.getDataOut().getRefcode());
 				break;
 			}
+			logger.debug("Adding key data {} with number of references {}.",
+					item.getDataOut().getRefcode(), item.getOrder());
 			executionContext.getKeyData().add(item.getDataOut());
 		}
 	}
 
 	private int cutSameOrderCrossingMaxLength(List<KeyDataItem> items) {
 		if (items.size() <= MAX_LENGTH) {
+			logger.debug("Too few data, including all of them.");
 			return items.size();
+		}
+		if (items.get(0).getOrder() == items.get(MAX_LENGTH).getOrder()) {
+			logger.debug(
+					"All data within the max limit have the same number of references {}, keeping all of them.",
+					items.get(0).getOrder());
+			return MAX_LENGTH;
 		}
 		int i = MAX_LENGTH - 1;
 		while (items.get(i).getOrder() == items.get(MAX_LENGTH).getOrder()
 				&& i > 0) {
+			logger.debug(
+					"Removing data {} that has the same number of references {} as the first after-limit data {}.",
+					items.get(i).getDataOut().getRefcode(), items.get(i)
+							.getOrder(), items.get(MAX_LENGTH).getDataOut()
+							.getRefcode());
 			i--;
 		}
-		if (0 == i) {
-			i = MAX_LENGTH;
-		}
-		return i;
+		return i + 1;
 	}
 
 	private final static int MAX_LENGTH = 5;
@@ -65,7 +84,9 @@ public class KeyDataManager {
 
 		public KeyDataItem(DataOut dataOut) {
 			this.dataOut = dataOut;
-			this.order = dataOut.getReferencesData().size()
+			this.order = dataOut.getInstances().size()
+					+ dataOut.getReferencesData().size()
+					+ dataOut.getReferencesInstances().size()
 					+ dataOut.getReferencesUcs().size();
 		}
 

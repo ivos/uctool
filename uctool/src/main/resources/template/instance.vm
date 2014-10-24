@@ -49,6 +49,10 @@
 #foreach($ref in $instance.referencesData)#ref($ref)#if( $foreach.hasNext ),#end
 $newline#end</div>
 #end
+#if(!$instance.referencesInstances.isEmpty())<div><strong>$ctx.label("references.instances"):</strong>
+#foreach($ref in $instance.referencesInstances)#ref($ref)#if( $foreach.hasNext ),#end
+$newline#end</div>
+#end
 #if(!$instance.referencesUcs.isEmpty())<div><strong>$ctx.label("references.uc"):</strong>
 #foreach($ref in $instance.referencesUcs)#ref($ref)#if( $foreach.hasNext ),#end
 $newline#end</div>

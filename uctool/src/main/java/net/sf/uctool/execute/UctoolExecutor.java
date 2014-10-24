@@ -235,6 +235,7 @@ public class UctoolExecutor {
 		for (InstanceOut instanceOut : executionContext.getInstanceOuts()
 				.values()) {
 			if (instanceOut.getReferencesData().isEmpty()
+					&& instanceOut.getReferencesInstances().isEmpty()
 					&& instanceOut.getReferencesUcs().isEmpty()) {
 				executionContext.getUnusedInstances().add(instanceOut);
 			}
