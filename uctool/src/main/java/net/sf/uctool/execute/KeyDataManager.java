@@ -41,8 +41,8 @@ public class KeyDataManager {
 			}
 			if (item.getOrder() < maxRefs) {
 				logger.debug(
-						"Data {} has too few references, skipping all following.",
-						item.getDataOut().getRefcode());
+						"Data {} has too few references {}, skipping all following.",
+						item.getDataOut().getRefcode(), item.getOrder());
 				break;
 			}
 			logger.debug("Adding key data {} with number of references {}.",
