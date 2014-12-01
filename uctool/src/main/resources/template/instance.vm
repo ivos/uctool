@@ -26,7 +26,7 @@
 <tr><th>$ctx.label("name.code")</th><th title="$ctx.label("status")">$ctx.label("status_abbr")</th><th>$ctx.label("type")</th><th>$ctx.label("data")</th><th>$ctx.label("name.code")</th><th title="$ctx.label("status")">$ctx.label("status_abbr")</th><th>$ctx.label("type")</th></tr>
 </thead><tbody>
 #foreach($value in $instance.values)<tr>
-<td>$value.of.nameAndCodeLabel</code></td><td#if($value.of.statusHint) title="$value.of.statusHint"#end>$value.of.statusLabel</td><td>$value.of.type</td>
+<td>$value.of.nameAndCodeLabel</td><td#if($value.of.statusHint) title="$value.of.statusHint"#end>$value.of.statusLabel</td><td>$value.of.type</td>
  <td>$value.description</td>
 #if($value.isFromDataAttribute())<td>#ref($value.fromDataRef)</td><td>$!value.fromAttribute.nameAndCodeLabel</td><td#if($value.fromAttribute.statusHint) title="$value.fromAttribute.statusHint"#end>$!value.fromAttribute.statusLabel</td><td>$!value.fromAttribute.type</td>
 #end
