@@ -212,11 +212,6 @@
 					<xs:documentation>Reference to step(s) which this condition extends.</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
-			<xs:attribute name="inline-step" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Inline step of the condition.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="when">
@@ -254,11 +249,6 @@
 					<xs:element ref="uct:step-extensions" />
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute name="inline-step" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>Inline step of the condition.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="stakeholders-interests">

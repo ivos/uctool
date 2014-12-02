@@ -223,9 +223,6 @@ public class UseCaseConverter {
 					when = "";
 				}
 				String content = when.trim() + ":";
-				if (null != condition.getInlineStep()) {
-					content += " " + condition.getInlineStep().trim();
-				}
 				extensionOut.setContent(content);
 				o.getExtensions().add(extensionOut);
 
@@ -294,10 +291,6 @@ public class UseCaseConverter {
 						stepWhen = "";
 					}
 					String stepContent = stepWhen.trim() + ":";
-					if (null != stepCondition.getInlineStep()) {
-						stepContent += " "
-								+ stepCondition.getInlineStep().trim();
-					}
 					extensionOut.setContent(stepContent);
 					o.getExtensions().add(extensionOut);
 

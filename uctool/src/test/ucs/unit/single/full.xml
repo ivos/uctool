@@ -101,8 +101,9 @@
 				<condition step-ref="*">
 					<when></when>
 				</condition>
-				<condition step-ref="*" inline-step="Inline step.">
+				<condition step-ref="*">
 					<when>Ref to star, inline when</when>
+					<step>Inline step.</step>
 				</condition>
 				<condition step-ref="goto">
 					<when>Ref to step, inline when</when>

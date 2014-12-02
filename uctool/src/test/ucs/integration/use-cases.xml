@@ -106,8 +106,9 @@
 					<when>Power failure</when>
 					<step>Nothing.</step>
 				</condition>
-				<condition step-ref="*" inline-step="Nothing too.">
+				<condition step-ref="*">
 					<when>Sun sets</when>
+					<step>Nothing too.</step>
 				</condition>
 				<condition step-ref="selectCustomer">
 					<when>User selects to update a customer</when>
@@ -123,8 +124,9 @@
 							<step>User modifies customer search criteria and finds again or cancels.</step>
 							<step>System performs as requested.</step>
 							<step-extensions>
-								<step-condition inline-step="Failure.">
+								<step-condition>
 									<when>System error</when>
+									<step>Failure.</step>
 								</step-condition>
 								<step-condition>
 									<when>Power failure</when>
@@ -139,8 +141,9 @@
 									</step>
 									<step>Anything.</step>
 									<step-extensions>
-										<step-condition inline-step="Whatever.">
+										<step-condition>
 											<when>After ref-step</when>
+											<step>Whatever.</step>
 										</step-condition>
 									</step-extensions>
 								</step-condition>
@@ -177,15 +180,17 @@
 					<step>User confirms deleting the customer.</step>
 					<step>System updates customer data.</step>
 				</condition>
-				<condition step-ref="goto" inline-step="Nothing.">
+				<condition step-ref="goto">
 					<when>User enters other data</when>
+					<step>Nothing.</step>
 				</condition>
 				<condition step-ref="goto">
 					<when>User enters yet other data</when>
 					<step>Nothing as well.</step>
 				</condition>
-				<condition step-ref="goto-end" inline-step="Do this.">
+				<condition step-ref="goto-end">
 					<when>Something happens</when>
+					<step>Do this.</step>
 				</condition>
 				<condition step-ref="goto-end">
 					<when>

@@ -73,8 +73,9 @@
 				<condition step-ref="*">
 					<when></when>
 				</condition>
-				<condition step-ref="*" inline-step="Inline step.">
+				<condition step-ref="*">
 					<when>Ref to star, inline when</when>
+					<step>Inline step.</step>
 				</condition>
 				<condition step-ref="goto">
 					<when>Ref to step, inline when</when>
@@ -88,8 +89,9 @@
 					<step>Explicit step 2.</step>
 					<step>Explicit step 3.</step>
 				</condition>
-				<condition step-ref="enterCustomerData" inline-step="Inline step.">
+				<condition step-ref="enterCustomerData">
 					<when>Explicit when</when>
+					<step>Inline step.</step>
 				</condition>
 				<condition step-ref="*">
 					<when>Multiple inline refs to star c</when>
@@ -123,8 +125,9 @@
 						<step-condition>
 							<when></when>
 						</step-condition>
-						<step-condition inline-step="Inline step.">
+						<step-condition>
 							<when>Inline when</when>
+							<step>Inline step.</step>
 						</step-condition>
 						<step-condition>
 							<when>Explicit when</when>
@@ -132,8 +135,9 @@
 							<step>Explicit step 2.</step>
 							<step>Explicit step 3.</step>
 						</step-condition>
-						<step-condition inline-step="Inline step.">
+						<step-condition>
 							<when>Explicit when</when>
+							<step>Inline step.</step>
 						</step-condition>
 					</step-extensions>
 					<step>Step 3.</step>
