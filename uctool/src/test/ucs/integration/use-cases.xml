@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
 	xsi:schemaLocation="
-		http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd
-		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+		http://uctool.sf.net/ ../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
 	<uc-group primary-actor="primary-actor-for-use-cases" type="system" visibility="black" scope="Scope 1">
 		<use-case code="code001" goal="Use case header fields test" level="sea">
 			<description>Some UC description.</description>
@@ -101,23 +102,32 @@
 				<step handle="end">Any other step.</step>
 			</success>
 			<extensions>
-				<condition when="Power failure" step-ref="*">
+				<condition step-ref="*">
+					<when>Power failure</when>
 					<step>Nothing.</step>
 				</condition>
-				<condition when="Sun sets" step-ref="*" inline-step="Nothing too." />
-				<condition step-ref="selectCustomer" when="User selects to update a customer">
+				<condition step-ref="*" inline-step="Nothing too.">
+					<when>Sun sets</when>
+				</condition>
+				<condition step-ref="selectCustomer">
+					<when>User selects to update a customer</when>
+					<step></step>
 					<step>
 						User
 						<uc-ref code="CD100">finds customer</uc-ref>
 						using customer search criteria.
 					</step>
 					<step-extensions>
-						<step-condition when="Customer not found">
+						<step-condition>
+							<when>Customer not found</when>
 							<step>User modifies customer search criteria and finds again or cancels.</step>
 							<step>System performs as requested.</step>
 							<step-extensions>
-								<step-condition when="System error" inline-step="Failure." />
-								<step-condition when="Power failure">
+								<step-condition inline-step="Failure.">
+									<when>System error</when>
+								</step-condition>
+								<step-condition>
+									<when>Power failure</when>
 									<step>What then?</step>
 									<step>Failure.</step>
 									<step>
@@ -129,7 +139,9 @@
 									</step>
 									<step>Anything.</step>
 									<step-extensions>
-										<step-condition when="After ref-step" inline-step="Whatever." />
+										<step-condition inline-step="Whatever.">
+											<when>After ref-step</when>
+										</step-condition>
 									</step-extensions>
 								</step-condition>
 							</step-extensions>
@@ -138,34 +150,43 @@
 					<step>User modifies customer data.</step>
 					<step>System validates customer data and updates customer data.</step>
 					<step-extensions>
-						<step-condition when="Customer data validation fails">
+						<step-condition>
+							<when>Customer data validation fails</when>
 							<step>User corrects customer data and has system update it.</step>
 						</step-condition>
 					</step-extensions>
 				</condition>
-				<condition step-ref="selectCustomer" when="User selects to delete a customer">
+				<condition step-ref="selectCustomer">
+					<when>User selects to delete a customer</when>
 					<step>
 						User
 						<uc-ref code="CD105">finds customer</uc-ref>
 						using customer search criteria.
 					</step>
 					<step-extensions>
-						<step-condition when="Customer not found">
+						<step-condition>
+							<when>Customer not found</when>
 							<step>User modifies customer search criteria and finds again or cancels.</step>
 							<step>System performs.</step>
 						</step-condition>
-						<step-condition when="Multiple customers found">
+						<step-condition>
+							<when>Multiple customers found</when>
 							<step>User modifies customer search criteria and finds again or cancels.</step>
 						</step-condition>
 					</step-extensions>
 					<step>User confirms deleting the customer.</step>
 					<step>System updates customer data.</step>
 				</condition>
-				<condition step-ref="goto" when="User enters other data" inline-step="Nothing." />
-				<condition step-ref="goto" when="User enters yet other data">
+				<condition step-ref="goto" inline-step="Nothing.">
+					<when>User enters other data</when>
+				</condition>
+				<condition step-ref="goto">
+					<when>User enters yet other data</when>
 					<step>Nothing as well.</step>
 				</condition>
-				<condition when="Something happens" step-ref="goto-end" inline-step="Do this." />
+				<condition step-ref="goto-end" inline-step="Do this.">
+					<when>Something happens</when>
+				</condition>
 				<condition step-ref="goto-end">
 					<when>
 						When with a reference to step

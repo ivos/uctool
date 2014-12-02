@@ -201,17 +201,12 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="uct:when" minOccurs="0" />
+				<xs:element ref="uct:when" minOccurs="1" />
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
 					<xs:element ref="uct:step" />
 					<xs:element ref="uct:step-extensions" />
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute name="when" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>When the condition applies. The condition itself.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
 			<xs:attribute name="step-ref" type="uct:StepRefType" use="required">
 				<xs:annotation>
 					<xs:documentation>Reference to step(s) which this condition extends.</xs:documentation>
@@ -253,17 +248,12 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="uct:when" minOccurs="0" />
+				<xs:element ref="uct:when" minOccurs="1" />
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
 					<xs:element ref="uct:step" />
 					<xs:element ref="uct:step-extensions" />
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute name="when" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>When the condition applies. The condition itself.</xs:documentation>
-				</xs:annotation>
-			</xs:attribute>
 			<xs:attribute name="inline-step" type="xs:string">
 				<xs:annotation>
 					<xs:documentation>Inline step of the condition.</xs:documentation>

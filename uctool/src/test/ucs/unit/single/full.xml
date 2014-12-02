@@ -98,9 +98,14 @@
 				<step handle="end">Step 3.</step>
 			</success>
 			<extensions>
-				<condition step-ref="*" />
-				<condition step-ref="*" when="Ref to star, inline when" inline-step="Inline step." />
-				<condition step-ref="goto" when="Ref to step, inline when">
+				<condition step-ref="*">
+					<when></when>
+				</condition>
+				<condition step-ref="*" inline-step="Inline step.">
+					<when>Ref to star, inline when</when>
+				</condition>
+				<condition step-ref="goto">
+					<when>Ref to step, inline when</when>
 					<step>Explicit step 1.</step>
 					<step>Explicit step 2.</step>
 					<step>Explicit step 3.</step>

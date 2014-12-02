@@ -74,6 +74,7 @@
 			</success>
 			<extensions>
 				<condition step-ref="h1">
+					<when></when>
 					<step>
 						Call
 						<uc-ref code="UC005">UC005</uc-ref>

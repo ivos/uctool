@@ -17,9 +17,15 @@
 				<step handle="h3">Step 3.</step>
 			</success>
 			<extensions>
-				<condition step-ref="h1"></condition>
-				<condition step-ref="missing"></condition>
-				<condition step-ref="h3"></condition>
+				<condition step-ref="h1">
+					<when></when>
+				</condition>
+				<condition step-ref="missing">
+					<when></when>
+				</condition>
+				<condition step-ref="h3">
+					<when></when>
+				</condition>
 			</extensions>
 		</use-case>
 	</uc-group>

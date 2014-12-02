@@ -70,9 +70,14 @@
 				</step>
 			</success>
 			<extensions>
-				<condition step-ref="*" />
-				<condition step-ref="*" when="Ref to star, inline when" inline-step="Inline step." />
-				<condition step-ref="goto" when="Ref to step, inline when">
+				<condition step-ref="*">
+					<when></when>
+				</condition>
+				<condition step-ref="*" inline-step="Inline step.">
+					<when>Ref to star, inline when</when>
+				</condition>
+				<condition step-ref="goto">
+					<when>Ref to step, inline when</when>
 					<step>Explicit step 1.</step>
 					<step>Explicit step 2.</step>
 					<step>Explicit step 3.</step>
@@ -86,20 +91,41 @@
 				<condition step-ref="enterCustomerData" inline-step="Inline step.">
 					<when>Explicit when</when>
 				</condition>
-				<condition step-ref="*" when="Multiple inline refs to star c" />
-				<condition step-ref="*" when="Multiple inline refs to star d" />
-				<condition step-ref="*" when="Multiple inline refs to star e" />
-				<condition step-ref="goto" when="Multiple inline refs to step b" />
-				<condition step-ref="goto" when="Multiple inline refs to step c" />
-				<condition step-ref="goto" when="Multiple inline refs to step d" />
-				<condition step-ref="selectCustomer-goto" when="Ref to span of steps 1" />
-				<condition step-ref="goto-end" when="Ref to span of steps 2" />
-				<condition step-ref="goto" when="Step extensions">
+				<condition step-ref="*">
+					<when>Multiple inline refs to star c</when>
+				</condition>
+				<condition step-ref="*">
+					<when>Multiple inline refs to star d</when>
+				</condition>
+				<condition step-ref="*">
+					<when>Multiple inline refs to star e</when>
+				</condition>
+				<condition step-ref="goto">
+					<when>Multiple inline refs to step b</when>
+				</condition>
+				<condition step-ref="goto">
+					<when>Multiple inline refs to step c</when>
+				</condition>
+				<condition step-ref="goto">
+					<when>Multiple inline refs to step d</when>
+				</condition>
+				<condition step-ref="selectCustomer-goto">
+					<when>Ref to span of steps 1</when>
+				</condition>
+				<condition step-ref="goto-end">
+					<when>Ref to span of steps 2</when>
+				</condition>
+				<condition step-ref="goto">
+					<when>Step extensions</when>
 					<step>Step 1.</step>
 					<step>Step 2.</step>
 					<step-extensions>
-						<step-condition />
-						<step-condition when="Inline when" inline-step="Inline step." />
+						<step-condition>
+							<when></when>
+						</step-condition>
+						<step-condition inline-step="Inline step.">
+							<when>Inline when</when>
+						</step-condition>
 						<step-condition>
 							<when>Explicit when</when>
 							<step>Explicit step 1.</step>
@@ -112,44 +138,65 @@
 					</step-extensions>
 					<step>Step 3.</step>
 				</condition>
-				<condition step-ref="goto" when="Multiple levels">
+				<condition step-ref="goto">
+					<when>Multiple levels</when>
 					<step>Step 1 1.</step>
 					<step>Step 1 2.</step>
 					<step-extensions>
-						<step-condition />
-						<step-condition when="Level 2">
+						<step-condition>
+							<when></when>
+						</step-condition>
+						<step-condition>
+							<when>Level 2</when>
 							<step>Step 2 1.</step>
 							<step>Step 2 2.</step>
 							<step-extensions>
-								<step-condition />
-								<step-condition when="Level 3">
+								<step-condition>
+									<when></when>
+								</step-condition>
+								<step-condition>
+									<when>Level 3</when>
 									<step>Step 3 1.</step>
 									<step>Step 3 2.</step>
 									<step-extensions>
-										<step-condition />
-										<step-condition when="Level 4">
+										<step-condition>
+											<when></when>
+										</step-condition>
+										<step-condition>
+											<when>Level 4</when>
 											<step>Step 4 1.</step>
 											<step>Step 4 2.</step>
 											<step-extensions>
-												<step-condition />
-												<step-condition when="Level 5">
+												<step-condition>
+													<when></when>
+												</step-condition>
+												<step-condition>
+													<when>Level 5</when>
 													<step>Step 5 1.</step>
 													<step>Step 5 2.</step>
 													<step>Step 5 3.</step>
 												</step-condition>
-												<step-condition />
+												<step-condition>
+													<when></when>
+												</step-condition>
 											</step-extensions>
 											<step>Step 4 3.</step>
 										</step-condition>
-										<step-condition />
+										<step-condition>
+											<when></when>
+										</step-condition>
 									</step-extensions>
 									<step>Step 3 3.</step>
 								</step-condition>
-								<step-condition />
+								<step-condition>
+									<when></when>
+								</step-condition>
 							</step-extensions>
 							<step>Step 2 3.</step>
 						</step-condition>
-						<step-condition />
+						<step-condition>
+							<when></when>
+						</step-condition>
 					</step-extensions>
 					<step>Step 1 3.</step>
 				</condition>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd">
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
 	<actor name="No Ucs Primary Actor" code="no-ucs-primary-actor"></actor>
 	<actor name="Primary Actor With Goals" code="primary-actor-with-goals"></actor>
 	<uc-group primary-actor="no-ucs-primary-actor" />

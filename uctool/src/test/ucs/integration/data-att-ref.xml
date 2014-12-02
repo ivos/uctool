@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd">
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
 	<data name="Data attribute reference entity 1" code="DARE1">
 		<attribute name="Full string inherited attribute" code="fullStringInherited" status="natural-key" type="string"
 			length="123">
@@ -42,26 +45,11 @@
 		<attribute name="Own attribute 1" code="own1" status="optional" type="string">
 			<description>Own attribute description.</description>
 		</attribute>
-		<attribute-ref type="DARE1.fullStringInherited" />
-		<attribute-ref type="DARE1.fullStringOverridden" name="Custom full string name" code="customFullStringCode"
-			status="optional" length="321" description="Custom full string description." />
-		<attribute-ref type="DARE1.emptyEmpty" />
-		<attribute-ref type="DARE1.emptyOverridden" name="Empty attribute name" code="customEmptyCode" status="mandatory"
-			length="56" description="Empty attribute description." />
-		<attribute-ref type="DARE2.date" />
-		<attribute-ref type="DARE2.dare1Ref" status="optional" />
-		<attribute-ref type="DARE2.dare1List" />
-		<attribute-ref type="DARE2.dare3Ref" />
 	</data>
 	<data name="Expanded structure with att ref" code="expand-att-ref" expand="true">
 		<attribute name="Expanded own attribute" code="exp-own" status="unique" type="string">
 			<description>Expanded own attribute description.</description>
 		</attribute>
-		<attribute-ref type="DARE1.fullStringInherited" />
-		<attribute-ref type="DARE1.fullStringOverridden" name="Expanded overridden attribute" code="expandedOverriddenCode"
-			status="display-only" length="45" description="Expanded overridden attribute description." />
-		<attribute-ref type="DARE2.dare1List" name="Expanded structure list" />
-		<attribute-ref type="DARE2.dare3Ref" />
 	</data>
 	<data name="Expansion of att ref" code="att-ref-expansion" expand="true">
 		<attribute name="Some expansion own attribute" code="expansion-own-attribute" status="primary-key" type="integer" />
@@ -70,9 +58,7 @@
 	<data name="Second level expansion of att ref" code="att-ref-expansion-2">
 		<attribute name="Some 2nd level own attribute" code="expansion-2-own-attribute" status="natural-key" type="timestamp" />
 		<attribute name="Expansion of 1st level" type="att-ref-expansion" />
-		<attribute-ref type="DARE2.dare1Ref" name="Additional ref att" />
 	</data>
 	<data name="Direct ref expansion" code="direct-ref-expansion">
-		<attribute-ref type="DARE1.emptyEmpty" />
 	</data>
 </uct>

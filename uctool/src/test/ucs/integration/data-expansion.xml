@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://uctool.sf.net/ ../../../main/resources/generator/uctool/xsd/uct.xsd">
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ ../../../main/resources/xsd/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd
+	">
 	<data name="Expansion referred structure" code="ExpansionReferredStructure">
 		<attribute name="Some att" code="some-att" />
 	</data>
 	<data name="Expanded one" code="ExpandedOne" expand="true">
-		<attribute name="Exp One att 1" code="expOneAtt1" type="string" length="123"
-			status="mandatory" description="Description of Exp One att 1" />
-		<attribute name="Exp One att 2" code="expOneAtt2" type="integer" collection="true"
-			status="unique" />
+		<attribute name="Exp One att 1" code="expOneAtt1" type="string" length="123" status="mandatory">
+			<description>Description of Exp One att 1</description>
+		</attribute>
+		<attribute name="Exp One att 2" code="expOneAtt2" type="integer" collection="true" status="unique" />
 	</data>
 	<data name="Expanded two" code="ExpandedTwo" expand="true">
 		<attribute name="Expanded atts two one" type="ExpandedTwoOne" />
-		<attribute name="Exp Two att 1" code="expTwoAtt1" type="string" length="123"
-			status="mandatory" description="Description of Exp Two att 1" />
-		<attribute name="Exp Two att 2" code="expTwoAtt2" type="integer" collection="true"
-			status="unique" />
+		<attribute name="Exp Two att 1" code="expTwoAtt1" type="string" length="123" status="mandatory">
+			<description>Description of Exp Two att 1</description>
+		</attribute>
+		<attribute name="Exp Two att 2" code="expTwoAtt2" type="integer" collection="true" status="unique" />
 	</data>
 	<data name="Expanded two-one" code="ExpandedTwoOne" expand="true">
-		<attribute name="Exp Two-One att 1" code="expTwoOneAtt1" type="string" length="123"
-			status="mandatory" description="Description of Exp Two One att 1" />
-		<attribute name="Exp Two-One att 2" code="expTwoOneAtt2" type="integer"
-			collection="true" status="unique" />
+		<attribute name="Exp Two-One att 1" code="expTwoOneAtt1" type="string" length="123" status="mandatory">
+			<description>Description of Exp Two One att 1</description>
+		</attribute>
+		<attribute name="Exp Two-One att 2" code="expTwoOneAtt2" type="integer" collection="true" status="unique" />
 		<attribute name="Not expanded atts" type="NotExpanded" />
 		<attribute name="Referred structure" type="ExpansionReferredStructure" />
 	</data>
 	<data name="Not expanded" code="NotExpanded">
-		<attribute name="Not Expanded att 1" code="notExpandedAtt1" type="boolean"
-			status="mandatory" />
+		<attribute name="Not Expanded att 1" code="notExpandedAtt1" type="boolean" status="mandatory" />
 	</data>
 	<data name="Expansion test data" code="ExpansionTest">
 		<attribute name="Expanded atts one" type="ExpandedOne" />

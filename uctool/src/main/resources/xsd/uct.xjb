@@ -2,17 +2,5 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.1">
 	<bindings schemaLocation="uct.xsd" version="1.0">
 
-		<bindings node="//xs:element[@name='condition']">
-			<bindings node=".//xs:attribute[@name='when']">
-				<property name="whenAttribute" />
-			</bindings>
-		</bindings>
-
-		<bindings node="//xs:element[@name='step-condition']">
-			<bindings node=".//xs:attribute[@name='when']">
-				<property name="whenAttribute" />
-			</bindings>
-		</bindings>
-
 	</bindings>
 </bindings>

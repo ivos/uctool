@@ -210,19 +210,17 @@ public class UseCaseConverter {
 				String conditionNumber = expandStepRef(code,
 						condition.getStepRef(), stepRefs);
 				extensionOut.setNumber(conditionNumber);
-				String when = condition.getWhenAttribute();
-				if (null == when) {
-					When whenElement = condition.getWhen();
-					if (null != whenElement) {
-						StringBuilder sb = new StringBuilder();
-						for (Object content : whenElement.getContent()) {
-							converterHelper.writeDescription(sb, content,
-									"use case", code, refcode);
-						}
-						when = sb.toString();
-					} else {
-						when = "";
+				String when;
+				When whenElement = condition.getWhen();
+				if (null != whenElement) {
+					StringBuilder sb = new StringBuilder();
+					for (Object content : whenElement.getContent()) {
+						converterHelper.writeDescription(sb, content,
+								"use case", code, refcode);
 					}
+					when = sb.toString();
+				} else {
+					when = "";
 				}
 				String content = when.trim() + ":";
 				if (null != condition.getInlineStep()) {
@@ -283,21 +281,17 @@ public class UseCaseConverter {
 					String stepConditionNumber = appendCaseToStepRef(
 							stepNumber, stepRefs);
 					extensionOut.setNumber(stepConditionNumber);
-					String stepWhen = stepCondition.getWhenAttribute();
-					if (null == stepWhen) {
-						When stepWhenElement = stepCondition.getWhen();
-						if (null != stepWhenElement) {
-							StringBuilder sb = new StringBuilder();
-							for (Object stepContent : stepWhenElement
-									.getContent()) {
-								converterHelper.writeDescription(sb,
-										stepContent, "use case", ucCode,
-										ucRefcode);
-							}
-							stepWhen = sb.toString();
-						} else {
-							stepWhen = "";
+					String stepWhen;
+					When stepWhenElement = stepCondition.getWhen();
+					if (null != stepWhenElement) {
+						StringBuilder sb = new StringBuilder();
+						for (Object stepContent : stepWhenElement.getContent()) {
+							converterHelper.writeDescription(sb, stepContent,
+									"use case", ucCode, ucRefcode);
 						}
+						stepWhen = sb.toString();
+					} else {
+						stepWhen = "";
 					}
 					String stepContent = stepWhen.trim() + ":";
 					if (null != stepCondition.getInlineStep()) {

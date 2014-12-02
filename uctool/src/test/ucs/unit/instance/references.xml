@@ -184,6 +184,7 @@
 			</success>
 			<extensions>
 				<condition step-ref="s1">
+					<when></when>
 					<step>
 						<data-ref code="references">references</data-ref>
 					</step>
@@ -196,6 +197,7 @@
 			</success>
 			<extensions>
 				<condition step-ref="s1">
+					<when></when>
 					<step>
 						<h:div>
 							<h:strong>
@@ -213,9 +215,11 @@
 			</success>
 			<extensions>
 				<condition step-ref="s1">
+					<when></when>
 					<step></step>
 					<step-extensions>
 						<step-condition>
+							<when></when>
 							<step>
 								<data-ref code="references">references</data-ref>
 							</step>
@@ -230,9 +234,11 @@
 			</success>
 			<extensions>
 				<condition step-ref="s1">
+					<when></when>
 					<step></step>
 					<step-extensions>
 						<step-condition>
+							<when></when>
 							<step>
 								<h:div>
 									<h:strong>
