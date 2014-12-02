@@ -7,7 +7,5 @@
 </head>
 <body>
 <div class="container">
-<h1>$ctx.label("single.page.title")</h1>
-<p class="lead">$ctx.label("name"): test-name<br/>
-$ctx.label("version"): test-version</p>
-<p class="lead">test-description</p>
+<h1 class="page-header">$ctx.project.name <small>$ctx.label("version") $ctx.project.version</small></h1>
+<p class="lead">$ctx.project.description</p>
