@@ -8,7 +8,7 @@
 <body>
 #set($section="home")
 #parse("template/navbar.vm")
-<h1 class="page-header">$ctx.project.name <small>$ctx.label("version") $ctx.project.version</small></h1>
+<h1 class="page-header" style="margin-top: 15px;">$ctx.project.name <small>$ctx.label("version") $ctx.project.version</small></h1>
 <p class="lead">$ctx.project.description</p>
 <p>$ctx.label("welcome")</p>
 <p></p>
