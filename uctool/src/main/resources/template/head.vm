@@ -31,7 +31,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="$ctx.cdnPrefix//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="$ctx.cdnPrefix//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<style type="text/css">@media print {a[href^=".."]:after {content: ""} a {text-decoration: underline;}}</style>
+<style type="text/css">@media print {a[href^=".."]:after {content: ""} a {text-decoration: underline;}} .padded {padding-top: 5px;}</style>
 <link rel="shortcut icon" href="${rel-path}resources/favicon.ico" />
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

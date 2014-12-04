@@ -117,6 +117,9 @@
 				<condition step-ref="goto-end">
 					<when>Ref to span of steps 2</when>
 				</condition>
+				<condition step-ref="goto-end">
+					<when>Another ref to span of steps 2</when>
+				</condition>
 				<condition step-ref="goto">
 					<when>Step extensions</when>
 					<step>Step 1.</step>

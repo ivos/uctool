@@ -204,6 +204,7 @@ public class UseCaseConverter {
 		if (null != extensions) {
 			Map<String, String> stepRefs = new HashMap<String, String>();
 			List<Condition> conditions = extensions.getCondition();
+			Condition previousCondition = null;
 			for (Condition condition : conditions) {
 				ExtensionOut extensionOut = new ExtensionOut();
 				extensionOut.setIndent("");
@@ -224,7 +225,15 @@ public class UseCaseConverter {
 				}
 				String content = when.trim() + ":";
 				extensionOut.setContent(content);
+				extensionOut.setSpaceBefore(true);
+				if (null != previousCondition
+						&& null != previousCondition.getStepRef()
+						&& previousCondition.getStepRef().equals(
+								condition.getStepRef())) {
+					extensionOut.setSpaceBefore(false);
+				}
 				o.getExtensions().add(extensionOut);
+				previousCondition = condition;
 
 				processConditionSteps(code, refcode, o, conditionNumber,
 						"&nbsp;&nbsp;&nbsp;&nbsp;",

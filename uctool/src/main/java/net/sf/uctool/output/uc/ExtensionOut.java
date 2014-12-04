@@ -5,6 +5,7 @@ public class ExtensionOut {
 	private String indent;
 	private String number;
 	private String content;
+	private boolean spaceBefore = false;
 
 	public String getIndent() {
 		return indent;
@@ -28,6 +29,14 @@ public class ExtensionOut {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public boolean getSpaceBefore() {
+		return spaceBefore;
+	}
+
+	public void setSpaceBefore(boolean spaceBefore) {
+		this.spaceBefore = spaceBefore;
 	}
 
 }

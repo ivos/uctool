@@ -64,14 +64,14 @@ $uc.successGuaranteesText
 #end
 #if($uc.trigger)<tr><td><strong>$ctx.label("trigger"):</strong> $uc.trigger</td></tr>
 #end
-#if(!$uc.steps.isEmpty())<tr><td><strong>$ctx.label("main.success.scenario"):</strong></td></tr>
+#if(!$uc.steps.isEmpty())<tr><td class="padded"><strong>$ctx.label("main.success.scenario"):</strong></td></tr>
 <tr><td style="vertical-align: text-top;">
 #foreach($step in $uc.steps)<table><tr><td style="vertical-align: text-top;">${step.number}.&nbsp;</td><td style="vertical-align: text-top;">$step.content</td></tr></table>
 #end</td></tr>
 #end
-#if(!$uc.extensions.isEmpty())<tr><td><strong>$ctx.label("extensions"):</strong></td></tr>
+#if(!$uc.extensions.isEmpty())<tr><td class="padded"><strong>$ctx.label("extensions"):</strong></td></tr>
 <tr><td style="vertical-align: text-top;">
-#foreach($extension in $uc.extensions)<table><tr><td style="vertical-align: text-top;">$extension.indent$extension.number.&nbsp;</td><td style="vertical-align: text-top;">$extension.content</td></tr></table>
+#foreach($extension in $uc.extensions)<table><tr><td style="vertical-align: text-top;"#if($extension.spaceBefore) class="padded"#end>$extension.indent$extension.number.&nbsp;</td><td style="vertical-align: text-top;">$extension.content</td></tr></table>
 #end</td></tr>
 #end
 #if($uc.notes)<tr><td><strong>$ctx.label("notes"):</strong>

@@ -11,7 +11,6 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
 public class IntegrationTest extends TemplatingTestBase implements
 		TemplateTestConstants {
 
@@ -78,17 +77,15 @@ public class IntegrationTest extends TemplatingTestBase implements
 		performTest("data/Master.html");
 	}
 
-	@Ignore
-	@Test
-	public void dataExpansionTest() throws IOException {
-		performTest("data/ExpansionTest.html");
-	}
+	// @Test
+	// public void dataExpansionTest() throws IOException {
+	// performTest("data/ExpansionTest.html");
+	// }
 
-	@Ignore
-	@Test
-	public void dataExpansionReferencesTest() throws IOException {
-		performTest("data/ExpansionReferredStructure.html");
-	}
+	// @Test
+	// public void dataExpansionReferencesTest() throws IOException {
+	// performTest("data/ExpansionReferredStructure.html");
+	// }
 
 	@Test
 	public void dataDescription() throws IOException {
@@ -105,47 +102,40 @@ public class IntegrationTest extends TemplatingTestBase implements
 		performTest("uc/mas-003.html");
 	}
 
-	@Ignore
-	@Test
-	public void dataAttRefE1() throws IOException {
-		performTest("data/DARE1.html");
-	}
+	// @Test
+	// public void dataAttRefE1() throws IOException {
+	// performTest("data/DARE1.html");
+	// }
 
-	@Ignore
-	@Test
-	public void dataAttRefE2() throws IOException {
-		performTest("data/DARE2.html");
-	}
+	// @Test
+	// public void dataAttRefE2() throws IOException {
+	// performTest("data/DARE2.html");
+	// }
 
-	@Ignore
-	@Test
-	public void dataAttRefE3() throws IOException {
-		performTest("data/DARE3.html");
-	}
+	// @Test
+	// public void dataAttRefE3() throws IOException {
+	// performTest("data/DARE3.html");
+	// }
 
-	@Ignore
-	@Test
-	public void dataAttRefF1() throws IOException {
-		performTest("data/DARF1.html");
-	}
+	// @Test
+	// public void dataAttRefF1() throws IOException {
+	// performTest("data/DARF1.html");
+	// }
 
-	@Ignore
-	@Test
-	public void dataAttRefExpanded() throws IOException {
-		performTest("data/expand-att-ref.html");
-	}
+	// @Test
+	// public void dataAttRefExpanded() throws IOException {
+	// performTest("data/expand-att-ref.html");
+	// }
 
-	@Ignore
-	@Test
-	public void dataAttRefExpansion() throws IOException {
-		performTest("data/att-ref-expansion.html");
-	}
+	// @Test
+	// public void dataAttRefExpansion() throws IOException {
+	// performTest("data/att-ref-expansion.html");
+	// }
 
-	@Ignore
-	@Test
-	public void dataAttRefExpansion2ndLevel() throws IOException {
-		performTest("data/att-ref-expansion-2.html");
-	}
+	// @Test
+	// public void dataAttRefExpansion2ndLevel() throws IOException {
+	// performTest("data/att-ref-expansion-2.html");
+	// }
 
 	@Test
 	public void single() throws IOException {
@@ -166,17 +156,20 @@ public class IntegrationTest extends TemplatingTestBase implements
 		performTest("integration/" + location, "site/out/" + location);
 	}
 
+	@Ignore
 	@Test
 	public void xsdExport() throws IOException {
 		performTest("xsd-export/data.xsd", "site/xsd/data.xsd");
 	}
 
+	@Ignore
 	@Test
 	public void xsdImportData() throws IOException {
 		performTest("xsd-import/data.xml", "site/import/data.xml",
 				"/xsd/[0-9\\.\\-A-Z]*/uct.xsd", "/xsd/VERSION/uct.xsd");
 	}
 
+	@Ignore
 	@Test
 	public void xsdImportImported() throws IOException {
 		performTest("xsd-import/imported.xml", "site/import/imported.xml",

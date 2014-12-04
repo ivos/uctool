@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<style type="text/css">@media print {a[href^=".."]:after {content: ""} a {text-decoration: underline;}}</style>
+<style type="text/css">@media print {a[href^=".."]:after {content: ""} a {text-decoration: underline;}} .padded {padding-top: 5px;}</style>
 <link rel="shortcut icon" href="../resources/favicon.ico" />
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -63,7 +63,7 @@
 <strong>Visibility:</strong> Black-box&nbsp;&nbsp;
 </td></tr>
 <tr><td><strong>Primary actor:</strong> <a href="../actor/a1.html" title="Actor 1">Actor 1</a></td></tr>
-<tr><td><strong>Main success scenario:</strong></td></tr>
+<tr><td class="padded"><strong>Main success scenario:</strong></td></tr>
 <tr><td style="vertical-align: text-top;">
 <table><tr><td style="vertical-align: text-top;">1.&nbsp;</td><td style="vertical-align: text-top;">User selects to create a customer.</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">2.&nbsp;</td><td style="vertical-align: text-top;">User enters customer data.</td></tr></table>
@@ -114,30 +114,31 @@
 						</table>
 					</div></td></tr></table>
 </td></tr>
-<tr><td><strong>Extensions:</strong></td></tr>
+<tr><td class="padded"><strong>Extensions:</strong></td></tr>
 <tr><td style="vertical-align: text-top;">
-<table><tr><td style="vertical-align: text-top;">*a.&nbsp;</td><td style="vertical-align: text-top;">:</td></tr></table>
+<table><tr><td style="vertical-align: text-top;" class="padded">*a.&nbsp;</td><td style="vertical-align: text-top;">:</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">*b.&nbsp;</td><td style="vertical-align: text-top;">Ref to star, inline when:</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;*b1.&nbsp;</td><td style="vertical-align: text-top;">Inline step.</td></tr></table>
-<table><tr><td style="vertical-align: text-top;">3a.&nbsp;</td><td style="vertical-align: text-top;">Ref to step, inline when:</td></tr></table>
+<table><tr><td style="vertical-align: text-top;" class="padded">3a.&nbsp;</td><td style="vertical-align: text-top;">Ref to step, inline when:</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;3a1.&nbsp;</td><td style="vertical-align: text-top;">Explicit step 1.</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;3a2.&nbsp;</td><td style="vertical-align: text-top;">Explicit step 2.</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;3a3.&nbsp;</td><td style="vertical-align: text-top;">Explicit step 3.</td></tr></table>
-<table><tr><td style="vertical-align: text-top;">1a.&nbsp;</td><td style="vertical-align: text-top;">Explicit when:</td></tr></table>
+<table><tr><td style="vertical-align: text-top;" class="padded">1a.&nbsp;</td><td style="vertical-align: text-top;">Explicit when:</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;1a1.&nbsp;</td><td style="vertical-align: text-top;">Explicit step 1.</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;1a2.&nbsp;</td><td style="vertical-align: text-top;">Explicit step 2.</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;1a3.&nbsp;</td><td style="vertical-align: text-top;">Explicit step 3.</td></tr></table>
-<table><tr><td style="vertical-align: text-top;">2a.&nbsp;</td><td style="vertical-align: text-top;">Explicit when:</td></tr></table>
+<table><tr><td style="vertical-align: text-top;" class="padded">2a.&nbsp;</td><td style="vertical-align: text-top;">Explicit when:</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;2a1.&nbsp;</td><td style="vertical-align: text-top;">Inline step.</td></tr></table>
-<table><tr><td style="vertical-align: text-top;">*c.&nbsp;</td><td style="vertical-align: text-top;">Multiple inline refs to star c:</td></tr></table>
+<table><tr><td style="vertical-align: text-top;" class="padded">*c.&nbsp;</td><td style="vertical-align: text-top;">Multiple inline refs to star c:</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">*d.&nbsp;</td><td style="vertical-align: text-top;">Multiple inline refs to star d:</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">*e.&nbsp;</td><td style="vertical-align: text-top;">Multiple inline refs to star e:</td></tr></table>
-<table><tr><td style="vertical-align: text-top;">3b.&nbsp;</td><td style="vertical-align: text-top;">Multiple inline refs to step b:</td></tr></table>
+<table><tr><td style="vertical-align: text-top;" class="padded">3b.&nbsp;</td><td style="vertical-align: text-top;">Multiple inline refs to step b:</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">3c.&nbsp;</td><td style="vertical-align: text-top;">Multiple inline refs to step c:</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">3d.&nbsp;</td><td style="vertical-align: text-top;">Multiple inline refs to step d:</td></tr></table>
-<table><tr><td style="vertical-align: text-top;">1‑3a.&nbsp;</td><td style="vertical-align: text-top;">Ref to span of steps 1:</td></tr></table>
-<table><tr><td style="vertical-align: text-top;">3‑6a.&nbsp;</td><td style="vertical-align: text-top;">Ref to span of steps 2:</td></tr></table>
-<table><tr><td style="vertical-align: text-top;">3e.&nbsp;</td><td style="vertical-align: text-top;">Step extensions:</td></tr></table>
+<table><tr><td style="vertical-align: text-top;" class="padded">1‑3a.&nbsp;</td><td style="vertical-align: text-top;">Ref to span of steps 1:</td></tr></table>
+<table><tr><td style="vertical-align: text-top;" class="padded">3‑6a.&nbsp;</td><td style="vertical-align: text-top;">Ref to span of steps 2:</td></tr></table>
+<table><tr><td style="vertical-align: text-top;">3‑6b.&nbsp;</td><td style="vertical-align: text-top;">Another ref to span of steps 2:</td></tr></table>
+<table><tr><td style="vertical-align: text-top;" class="padded">3e.&nbsp;</td><td style="vertical-align: text-top;">Step extensions:</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;3e1.&nbsp;</td><td style="vertical-align: text-top;">Step 1.</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;3e2.&nbsp;</td><td style="vertical-align: text-top;">Step 2.</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3e2a.&nbsp;</td><td style="vertical-align: text-top;">:</td></tr></table>
@@ -178,7 +179,7 @@
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3f2b3.&nbsp;</td><td style="vertical-align: text-top;">Step 2 3.</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3f2c.&nbsp;</td><td style="vertical-align: text-top;">:</td></tr></table>
 <table><tr><td style="vertical-align: text-top;">&nbsp;&nbsp;&nbsp;&nbsp;3f3.&nbsp;</td><td style="vertical-align: text-top;">Step 1 3.</td></tr></table>
-<table><tr><td style="vertical-align: text-top;">*f.&nbsp;</td><td style="vertical-align: text-top;">References in condition when,
+<table><tr><td style="vertical-align: text-top;" class="padded">*f.&nbsp;</td><td style="vertical-align: text-top;">References in condition when,
 						a reference to step
 						7
 						,
