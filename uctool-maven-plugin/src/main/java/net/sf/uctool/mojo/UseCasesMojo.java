@@ -56,13 +56,13 @@ public class UseCasesMojo extends AbstractMojo {
 	private String bundleLanguage;
 
 	/**
-	 * Set protocol to use to load files from CDNs. When not specified, protocol
-	 * is used, which effectively defaults to the same protocol through which is
-	 * accessed the HTML page itself. This should be the default when hosting
-	 * generated site on a web server. It will, however, fail to load the files
-	 * (styles, etc.) when browsing the generated site directly from filesystem
-	 * (using protocol <code>file</code>), in such a case, use protocol
-	 * <code>http</code>.
+	 * Set protocol to use to load files from CDNs. When not specified, no
+	 * explicit protocol is used, which effectively defaults to the same
+	 * protocol through which is accessed the HTML page itself. This should be
+	 * the default when hosting generated site on a web server. It will,
+	 * however, fail to load the files (styles, etc.) when browsing the
+	 * generated site directly from filesystem (using protocol <code>file</code>
+	 * ), in such a case, use protocol <code>http</code>.
 	 * 
 	 * @parameter
 	 */
@@ -95,7 +95,7 @@ public class UseCasesMojo extends AbstractMojo {
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		UctoolExecutor uctoolExecutor = new UctoolExecutor(new Project(
 				useCasesName, useCasesVersion, useCasesDescription,
-				bundleLanguage, cdnProtocol));
+				sourceEncoding, bundleLanguage, cdnProtocol));
 		uctoolExecutor.execute(useCasesDirectory, outputDirectory);
 	}
 

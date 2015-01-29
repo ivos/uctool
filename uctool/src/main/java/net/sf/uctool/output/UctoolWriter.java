@@ -16,9 +16,10 @@ import net.sf.uctool.output.uc.UseCaseWriter;
 
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
-public class UctoolWriter {
+public class UctoolWriter implements RuntimeConstants {
 
 	private VelocityEngine ve;
 	private TemplateWriter templateWriter;
@@ -29,11 +30,19 @@ public class UctoolWriter {
 	private InstanceWriter instanceWriter;
 	private ExecutionContext executionContext;
 
+	private final String enconding;
+
+	public UctoolWriter(String enconding) {
+		this.enconding = enconding;
+	}
+
 	public void init(File baseDir, ExecutionContext executionContext) {
 		Properties p = new Properties();
-		p.setProperty("resource.loader", "cp");
+		p.setProperty(RESOURCE_LOADER, "cp");
 		p.setProperty("cp.resource.loader.class",
 				ClasspathResourceLoader.class.getName());
+		p.setProperty(INPUT_ENCODING, enconding);
+		p.setProperty(OUTPUT_ENCODING, enconding);
 		ve = new VelocityEngine();
 		ve.init(p);
 

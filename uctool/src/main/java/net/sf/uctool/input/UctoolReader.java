@@ -1,9 +1,12 @@
 package net.sf.uctool.input;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -21,9 +24,12 @@ public class UctoolReader {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	private final StopWatch time;
 
+	private final String enconding;
+
 	private JAXBContext jc;
 
-	public UctoolReader() {
+	public UctoolReader(String enconding) {
+		this.enconding = enconding;
 		time = new StopWatch();
 	}
 
@@ -43,11 +49,15 @@ public class UctoolReader {
 	public Uct read(File file) {
 		logger.trace("Reading input file {}.", file);
 		try {
-			Reader reader = new FileReader(file);
+			InputStream is = new FileInputStream(file);
+			Reader reader = new InputStreamReader(is, enconding);
 			return read(reader, file.getName());
 		} catch (FileNotFoundException e) {
 			throw new ReaderException("Input file [" + file.getName()
 					+ "] does not exist.", e);
+		} catch (UnsupportedEncodingException e) {
+			throw new ReaderException("Encoding " + enconding
+					+ " is not supported on this platform.", e);
 		}
 	}
 

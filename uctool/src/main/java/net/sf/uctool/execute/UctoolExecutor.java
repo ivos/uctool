@@ -64,7 +64,7 @@ public class UctoolExecutor {
 		timeAll = new StopWatch();
 		labels = PropertyResourceBundle.getBundle("translations/Resource",
 				new Locale(project.getLanguage()));
-		uctoolReader = new UctoolReader().init();
+		uctoolReader = new UctoolReader(project.getEnconding()).init();
 		executionContext = new ExecutionContext(labels, project);
 		uctoolValidator = new UctoolValidator(executionContext);
 		actorConverter = new ActorConverter(executionContext);
@@ -73,7 +73,7 @@ public class UctoolExecutor {
 		dataConverter = new DataConverter(executionContext, attributeConverter);
 		instanceConverter = new InstanceConverter(executionContext);
 		termConverter = new TermConverter(executionContext);
-		uctoolWriter = new UctoolWriter();
+		uctoolWriter = new UctoolWriter(project.getEnconding());
 		keyDataManager = new KeyDataManager(executionContext);
 	}
 
