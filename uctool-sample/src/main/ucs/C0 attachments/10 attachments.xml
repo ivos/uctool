@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
-	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
-	<attachment-group directory="receipts" name="Receipt printing templates">
-		<attachment name="Withdrawal receipt" code="withdrawal-receipt-template" file-name="withdrawal-receipt-template-01.gif" />
-	</attachment-group>
-</uct>

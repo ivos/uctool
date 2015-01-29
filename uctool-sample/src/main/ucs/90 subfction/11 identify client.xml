@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
 	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
 	<uc-group primary-actor="teller" scope="New Branch System" type="system" visibility="black">
 		<use-case goal="Identify client" code="SYS-110" level="fish">
@@ -24,24 +25,25 @@
 				</step>
 			</success>
 			<extensions>
-				<condition step-ref="enters" when="An account number was passed-in">
+				<condition step-ref="enters">
+					<when>An account number was passed-in</when>
 					<step>
-						System retrieves primary account holder details by the account number,
-						pre-fills them
-						as the client details and
-						continues by step
+						System retrieves primary account holder details by the account number, pre-fills them as the
+						client details and continues by step
 						<step-ref handle="amends" />
 						.
 					</step>
 				</condition>
-				<condition step-ref="enters" when="Client does not present personal id number">
+				<condition step-ref="enters">
+					<when>Client does not present personal id number</when>
 					<step>
 						System continues by step
 						<step-ref handle="amends" />
 						.
 					</step>
 				</condition>
-				<condition step-ref="retrieves" when="Personal id number not found">
+				<condition step-ref="retrieves">
+					<when>Personal id number not found</when>
 					<step>
 						System displays error message and continues by step
 						<step-ref handle="amends" />

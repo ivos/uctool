@@ -6,9 +6,7 @@
 			<success>
 				<step>Client comes to a branch.</step>
 				<step>
-					Client approaches a counter and uses services relevant to the counter (
-					<req-ref code="RQ-001" />
-					):
+					Client approaches a counter and uses services relevant to the counter:
 					<h:ul>
 						<h:li>
 							On cash counter

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
 	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
 	<uc-group primary-actor="non-cash" scope="New Branch System" type="system" visibility="black">
 		<use-case goal="Perform direct debit in local currency" code="NCA-200" level="sea">
@@ -23,15 +24,16 @@
 				<step handle="submits">User submits the transaction.</step>
 			</success>
 			<extensions>
-				<condition step-ref="debit" when="User decides to verify signature">
+				<condition step-ref="debit">
+					<when>User decides to verify signature</when>
 					<step>User verifies client's signature for the debit account.</step>
 				</condition>
-				<condition step-ref="debit" when="Debit and credit accounts are the same">
-					<step>System displays error message
-						and lets the user identify other accounts.
-					</step>
+				<condition step-ref="debit">
+					<when>Debit and credit accounts are the same</when>
+					<step>System displays error message and lets the user identify other accounts.</step>
 				</condition>
-				<condition step-ref="submits" when="Effective date is in past or more than one year in future">
+				<condition step-ref="submits">
+					<when>Effective date is in past or more than one year in future</when>
 					<step>
 						System displays error message and returns to step
 						<step-ref handle="data" />

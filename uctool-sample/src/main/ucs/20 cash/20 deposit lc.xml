@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
 	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
 	<uc-group primary-actor="cash" scope="New Branch System" type="system" visibility="black">
 		<use-case goal="Deposit cash in local currency" code="CAS-200" level="sea">
@@ -18,14 +19,16 @@
 				<step handle="submits">User submits the transaction.</step>
 			</success>
 			<extensions>
-				<condition step-ref="account" when="User decides to identify client">
+				<condition step-ref="account">
+					<when>User decides to identify client</when>
 					<step>
 						User also
 						<uc-ref code="SYS-110">identifies client</uc-ref>
 						based on the account number.
 					</step>
 				</condition>
-				<condition step-ref="amount" when="User decides to enter cash denomination">
+				<condition step-ref="amount">
+					<when>User decides to enter cash denomination</when>
 					<step>User enters cash denomination.</step>
 				</condition>
 				<condition step-ref="submits">

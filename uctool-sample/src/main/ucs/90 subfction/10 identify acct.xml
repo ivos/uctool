@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
 	xsi:schemaLocation="http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
 	<uc-group primary-actor="teller" scope="New Branch System" type="system" visibility="black">
 		<use-case goal="Identify account" code="SYS-100" level="fish">
@@ -18,10 +19,14 @@
 				</step>
 			</success>
 			<extensions>
-				<condition step-ref="retrieves" when="Not own account        (bank code of the account number has Own bank flag unset)">
+				<condition step-ref="retrieves">
+					<when>Not own account (bank code of the account number has Own bank flag unset)</when>
 					<step>System does not retrieve account details.</step>
 				</condition>
-				<condition step-ref="retrieves" when="Account not found" inline-step="System displays error message." />
+				<condition step-ref="retrieves">
+					<when>Account not found</when>
+					<step>System displays error message.</step>
+				</condition>
 			</extensions>
 		</use-case>
 	</uc-group>
