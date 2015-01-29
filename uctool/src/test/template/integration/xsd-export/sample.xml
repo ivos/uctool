@@ -1,5 +1,5 @@
-<dta:Master xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dta="http://data.sample.com/"
-	xsi:schemaLocation="http://data.sample.com/ ./data.xsd">
+<dta:Master xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dta="http://example.com/"
+	xsi:schemaLocation="http://example.com/ ./data.xsd">
 	<dta:withAll>abcd</dta:withAll>
 	<dta:mandatory></dta:mandatory>
 	<dta:unique></dta:unique>
