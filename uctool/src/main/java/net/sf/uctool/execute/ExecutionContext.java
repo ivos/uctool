@@ -1,7 +1,6 @@
 package net.sf.uctool.execute;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -10,7 +9,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-import net.sf.uctool.exception.UnsupportedCDNProtocolException;
 import net.sf.uctool.output.actor.ActorOut;
 import net.sf.uctool.output.data.DataOut;
 import net.sf.uctool.output.data.InstanceOut;
@@ -22,8 +20,6 @@ import net.sf.uctool.xsd.Instance;
 import net.sf.uctool.xsd.Term;
 import net.sf.uctool.xsd.UcGroup;
 import net.sf.uctool.xsd.UseCase;
-
-import org.apache.commons.lang.StringUtils;
 
 public class ExecutionContext {
 
@@ -97,20 +93,6 @@ public class ExecutionContext {
 	public Project getProject() {
 		return project;
 	}
-
-	public String getCdnPrefix() {
-		String protocol = project.getCdnProtocol();
-		if (StringUtils.isBlank(protocol)) {
-			return "";
-		}
-		if (!ALLOWED_PROTOCOLS.contains(protocol)) {
-			throw new UnsupportedCDNProtocolException(protocol);
-		}
-		return protocol + ":";
-	}
-
-	public static final List<String> ALLOWED_PROTOCOLS = Arrays.asList("http",
-			"https");
 
 	public Map<String, Actor> getActors() {
 		return actors;

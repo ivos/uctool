@@ -23,7 +23,7 @@ public class TemplateTestBase extends TemplatingTestBase implements
 	@Before
 	public void cleanExecute() {
 		Project project = new Project("test-name", "test-version",
-				"test-description", "UTF-8", "en", "http");
+				"test-description", "UTF-8", "en");
 		e = new UctoolExecutor(project);
 		inputBaseDir = new File("src/test/ucs/unit");
 		outputDir = new File("target/site/out");

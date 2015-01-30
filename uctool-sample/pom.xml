@@ -153,7 +153,6 @@
 				<artifactId>uctool-maven-plugin</artifactId>
 				<configuration>
 					<bundleLanguage>en</bundleLanguage>
-					<cdnProtocol>http</cdnProtocol>
 				</configuration>
 				<executions>
 					<execution>

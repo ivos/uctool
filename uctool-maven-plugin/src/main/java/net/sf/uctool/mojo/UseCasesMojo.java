@@ -56,19 +56,6 @@ public class UseCasesMojo extends AbstractMojo {
 	private String bundleLanguage;
 
 	/**
-	 * Set protocol to use to load files from CDNs. When not specified, no
-	 * explicit protocol is used, which effectively defaults to the same
-	 * protocol through which is accessed the HTML page itself. This should be
-	 * the default when hosting generated site on a web server. It will,
-	 * however, fail to load the files (styles, etc.) when browsing the
-	 * generated site directly from filesystem (using protocol <code>file</code>
-	 * ), in such a case, use protocol <code>http</code>.
-	 * 
-	 * @parameter
-	 */
-	private String cdnProtocol;
-
-	/**
 	 * The directory holding the use case XML source files.
 	 * 
 	 * @parameter default-value="${project.basedir}/src/main/ucs/"
@@ -84,18 +71,10 @@ public class UseCasesMojo extends AbstractMojo {
 	 */
 	private File outputDirectory;
 
-	/**
-	 * The directory holding sub-directories with the attachment files.
-	 * 
-	 * @parameter default-value="${project.basedir}/src/main/attachments/"
-	 * @required
-	 */
-	private File attachmentsDirectory;
-
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		UctoolExecutor uctoolExecutor = new UctoolExecutor(new Project(
 				useCasesName, useCasesVersion, useCasesDescription,
-				sourceEncoding, bundleLanguage, cdnProtocol));
+				sourceEncoding, bundleLanguage));
 		uctoolExecutor.execute(useCasesDirectory, outputDirectory);
 	}
 
