@@ -1,8 +1,11 @@
 package net.sf.uctool.output;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,20 +27,24 @@ public class TemplateWriter {
 
 	private final VelocityEngine ve;
 	private final File baseDir;
+	private final String encoding;
+
 	private final StopWatch time;
 
-	public TemplateWriter(VelocityEngine ve, File baseDir) {
+	public TemplateWriter(VelocityEngine ve, File baseDir, String encoding) {
 		this.ve = ve;
 		this.baseDir = baseDir;
+		this.encoding = encoding;
 		time = new StopWatch();
 	}
 
 	public void writeFile(String templateName, String outputFileNameCore,
 			VelocityContext context) {
 		File outputFile = getOutputFile(outputFileNameCore);
-		FileWriter fw = openFile(outputFile);
-		writeFragment(templateName, context, fw, outputFile);
-		closeFile(fw, outputFile);
+		OutputStream os = openStream(outputFile);
+		Writer w = openWriter(os, outputFile);
+		writeFragment(templateName, context, w, outputFile);
+		closeFile(os, w, outputFile);
 	}
 
 	public File getOutputFile(String outputFileNameCore) {
@@ -45,11 +52,22 @@ public class TemplateWriter {
 		return outputFile;
 	}
 
-	public FileWriter openFile(File outputFile) {
+	public OutputStream openStream(File outputFile) {
 		try {
-			FileWriter fw = new FileWriter(outputFile);
-			logger.trace("Opened file writer for file [{}].", outputFile);
-			return fw;
+			OutputStream os = new FileOutputStream(outputFile);
+			logger.trace("Opened file stream for file [{}].", outputFile);
+			return os;
+		} catch (IOException e) {
+			throw new WriterException("Error opening output file ["
+					+ outputFile.getName() + "].", e);
+		}
+	}
+
+	public Writer openWriter(OutputStream os, File outputFile) {
+		try {
+			Writer w = new OutputStreamWriter(os, encoding);
+			logger.trace("Opened writer for file [{}].", outputFile);
+			return w;
 		} catch (IOException e) {
 			throw new WriterException("Error opening output file ["
 					+ outputFile.getName() + "].", e);
@@ -61,7 +79,7 @@ public class TemplateWriter {
 		if (null == template) {
 			logger.trace("Loading template by name [{}]...", templateName);
 			try {
-				template = ve.getTemplate(templateName);
+				template = ve.getTemplate(templateName, encoding);
 			} catch (ResourceNotFoundException e) {
 				throw new WriterException("Template not found: ["
 						+ templateName + "].", e);
@@ -79,12 +97,12 @@ public class TemplateWriter {
 	}
 
 	public void writeFragment(String templateName, VelocityContext context,
-			FileWriter fw, File outputFile) {
+			Writer w, File outputFile) {
 		if (logger.isDebugEnabled()) {
 			time.start();
 		}
 		Template template = loadTemplate(templateName);
-		template.merge(context, fw);
+		template.merge(context, w);
 		if (logger.isDebugEnabled()) {
 			logger.debug("Merged template [{}] to {} @ {}.",
 					template.getName(), outputFile, time.toString());
@@ -92,18 +110,19 @@ public class TemplateWriter {
 		}
 	}
 
-	public void writeText(String text, FileWriter fw, File outputFile) {
+	public void writeText(String text, Writer w, File outputFile) {
 		try {
-			fw.write(text);
+			w.write(text);
 		} catch (IOException e) {
 			throw new WriterException("Error writing text to output file ["
 					+ outputFile.getName() + "].", e);
 		}
 	}
 
-	public void closeFile(FileWriter fw, File outputFile) {
+	public void closeFile(OutputStream os, Writer w, File outputFile) {
 		try {
-			fw.close();
+			w.close();
+			os.close();
 			logger.debug("Closed {}.", outputFile);
 		} catch (IOException e) {
 			throw new WriterException("Error writing output file ["
