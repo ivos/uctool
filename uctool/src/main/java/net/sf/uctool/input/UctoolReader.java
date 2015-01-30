@@ -24,12 +24,12 @@ public class UctoolReader {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	private final StopWatch time;
 
-	private final String enconding;
+	private final String encoding;
 
 	private JAXBContext jc;
 
-	public UctoolReader(String enconding) {
-		this.enconding = enconding;
+	public UctoolReader(String encoding) {
+		this.encoding = encoding;
 		time = new StopWatch();
 	}
 
@@ -50,13 +50,13 @@ public class UctoolReader {
 		logger.trace("Reading input file {}.", file);
 		try {
 			InputStream is = new FileInputStream(file);
-			Reader reader = new InputStreamReader(is, enconding);
+			Reader reader = new InputStreamReader(is, encoding);
 			return read(reader, file.getName());
 		} catch (FileNotFoundException e) {
 			throw new ReaderException("Input file [" + file.getName()
 					+ "] does not exist.", e);
 		} catch (UnsupportedEncodingException e) {
-			throw new ReaderException("Encoding " + enconding
+			throw new ReaderException("Encoding " + encoding
 					+ " is not supported on this platform.", e);
 		}
 	}

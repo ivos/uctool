@@ -30,10 +30,10 @@ public class UctoolWriter implements RuntimeConstants {
 	private InstanceWriter instanceWriter;
 	private ExecutionContext executionContext;
 
-	private final String enconding;
+	private final String encoding;
 
-	public UctoolWriter(String enconding) {
-		this.enconding = enconding;
+	public UctoolWriter(String encoding) {
+		this.encoding = encoding;
 	}
 
 	public void init(File baseDir, ExecutionContext executionContext) {
@@ -41,8 +41,8 @@ public class UctoolWriter implements RuntimeConstants {
 		p.setProperty(RESOURCE_LOADER, "cp");
 		p.setProperty("cp.resource.loader.class",
 				ClasspathResourceLoader.class.getName());
-		p.setProperty(INPUT_ENCODING, enconding);
-		p.setProperty(OUTPUT_ENCODING, enconding);
+		p.setProperty(INPUT_ENCODING, encoding);
+		p.setProperty(OUTPUT_ENCODING, encoding);
 		ve = new VelocityEngine();
 		ve.init(p);
 
@@ -55,7 +55,7 @@ public class UctoolWriter implements RuntimeConstants {
 
 		this.executionContext = executionContext;
 
-		templateWriter = new TemplateWriter(ve, baseDir);
+		templateWriter = new TemplateWriter(ve, baseDir, encoding);
 		actorWriter = new ActorWriter(templateWriter);
 		useCaseWriter = new UseCaseWriter(templateWriter);
 		dataWriter = new DataWriter(templateWriter);
