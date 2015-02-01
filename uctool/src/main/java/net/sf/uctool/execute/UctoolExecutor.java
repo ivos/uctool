@@ -9,26 +9,21 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
 
+import net.sf.uctool.common.ExecutorBase;
 import net.sf.uctool.convert.ActorConverter;
 import net.sf.uctool.convert.AttributeConverter;
 import net.sf.uctool.convert.DataConverter;
 import net.sf.uctool.convert.InstanceConverter;
 import net.sf.uctool.convert.TermConverter;
 import net.sf.uctool.convert.UseCaseConverter;
-import net.sf.uctool.exception.ReaderException;
 import net.sf.uctool.exception.ResourcesException;
-import net.sf.uctool.input.UctoolReader;
 import net.sf.uctool.output.UctoolWriter;
 import net.sf.uctool.output.actor.ActorOut;
 import net.sf.uctool.output.data.DataOut;
 import net.sf.uctool.output.data.InstanceOut;
 import net.sf.uctool.output.term.TermOut;
 import net.sf.uctool.output.uc.UseCaseOut;
-import net.sf.uctool.validate.UctoolValidator;
 import net.sf.uctool.xsd.Actor;
 import net.sf.uctool.xsd.Data;
 import net.sf.uctool.xsd.Instance;
@@ -37,18 +32,13 @@ import net.sf.uctool.xsd.Uct;
 import net.sf.uctool.xsd.UseCase;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.time.StopWatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class UctoolExecutor {
+public class UctoolExecutor extends ExecutorBase {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-	private final StopWatch timeAll, time;
 
-	private final ResourceBundle labels;
-	private final UctoolReader uctoolReader;
-	private final ExecutionContext executionContext;
 	private final ActorConverter actorConverter;
 	private final UseCaseConverter useCaseConverter;
 	private final DataConverter dataConverter;
@@ -56,17 +46,10 @@ public class UctoolExecutor {
 	private final InstanceConverter instanceConverter;
 	private final TermConverter termConverter;
 	private final UctoolWriter uctoolWriter;
-	private final UctoolValidator uctoolValidator;
 	private final KeyDataManager keyDataManager;
 
 	public UctoolExecutor(Project project) {
-		time = new StopWatch();
-		timeAll = new StopWatch();
-		labels = PropertyResourceBundle.getBundle("translations/Resource",
-				new Locale(project.getLanguage()));
-		uctoolReader = new UctoolReader(project.getEncoding()).init();
-		executionContext = new ExecutionContext(labels, project);
-		uctoolValidator = new UctoolValidator(executionContext);
+		super(project);
 		actorConverter = new ActorConverter(executionContext);
 		useCaseConverter = new UseCaseConverter(executionContext);
 		attributeConverter = new AttributeConverter(executionContext);
@@ -75,6 +58,11 @@ public class UctoolExecutor {
 		termConverter = new TermConverter(executionContext);
 		uctoolWriter = new UctoolWriter(project.getEncoding());
 		keyDataManager = new KeyDataManager(executionContext);
+	}
+
+	@Override
+	protected Logger getLogger() {
+		return logger;
 	}
 
 	public void validate(Reader reader) {
@@ -125,36 +113,6 @@ public class UctoolExecutor {
 				timeAll.toString());
 	}
 
-	private List<File> findInputFiles(File inputPath) {
-		logger.debug("Finding input files.");
-		time.start();
-		InputFileFinder inputFileFinder = new InputFileFinder(inputPath,
-				"*.xml");
-		List<File> inputFiles = inputFileFinder.getInputFiles();
-		int filesCount = inputFiles.size();
-		logger.debug("Found {} input file(s) @ {}.", filesCount,
-				time.toString());
-		time.reset();
-		if (0 == filesCount) {
-			throw new ReaderException("No input files found at path ["
-					+ inputPath + "].");
-		}
-		return inputFiles;
-	}
-
-	private List<Uct> readInputFiles(List<File> inputFiles) {
-		logger.debug("Reading input files.");
-		time.start();
-		List<Uct> inputs = new ArrayList<Uct>();
-		for (File inputFile : inputFiles) {
-			Uct uct = uctoolReader.read(inputFile);
-			inputs.add(uct);
-		}
-		logger.debug("Read input files @ {}.", time.toString());
-		time.reset();
-		return inputs;
-	}
-
 	private List<Uct> readReader(Reader reader) {
 		logger.debug("Reading reader stream.");
 		time.start();
@@ -164,19 +122,6 @@ public class UctoolExecutor {
 		logger.debug("Read reader stream @ {}.", time.toString());
 		time.reset();
 		return inputs;
-	}
-
-	private void validateInputs(List<Uct> inputs) {
-		logger.debug("Validating inputs.");
-		time.start();
-		uctoolValidator.validate(inputs);
-		logger.debug("Validated inputs @ {}.", time.toString());
-		logger.debug(
-				"Loaded {} actor(s), {} use case(s), {} data(s), {} instance(s).",
-				executionContext.getActors().size(), executionContext
-						.getUseCases().size(), executionContext.getDatas()
-						.size(), executionContext.getInstances().size());
-		time.reset();
 	}
 
 	private void convertToOutputs(List<Object> outputs) {

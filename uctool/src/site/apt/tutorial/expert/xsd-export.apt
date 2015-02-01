@@ -20,7 +20,7 @@ Export data to XSD file
 mvn uctool:export-xsd
 +--
 
- To import XSD files automatically on saving every source file,
+ To export XSD files automatically on saving every source file,
  add the following execution to <<<build/plugins/plugin>>> with <<<artifactId>>> = <<<uctool-maven-plugin>>> in pom.xml:
  
 +--

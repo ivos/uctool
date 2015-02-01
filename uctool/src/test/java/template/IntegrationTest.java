@@ -6,6 +6,7 @@ import java.io.IOException;
 import net.sf.seaf.test.util.TemplatingTestBase;
 import net.sf.uctool.execute.Project;
 import net.sf.uctool.execute.UctoolExecutor;
+import net.sf.uctool.xsd.export.UctoolXsdExport;
 
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -25,6 +26,8 @@ public class IntegrationTest extends TemplatingTestBase implements
 		new UctoolExecutor(project).execute(
 				new File("src/test/ucs/integration"), new File(
 						"target/site/out"));
+		new UctoolXsdExport(project).execute(new File("src/test/xsd-export"),
+				new File("target/site/xsd"));
 	}
 
 	@Test
@@ -156,10 +159,9 @@ public class IntegrationTest extends TemplatingTestBase implements
 		performTest("integration/" + location, "site/out/" + location);
 	}
 
-	@Ignore
 	@Test
 	public void xsdExport() throws IOException {
-		performTest("xsd-export/data.xsd", "site/xsd/data.xsd");
+		performTest("integration/xsd-export/data.xsd", "site/xsd/data.xsd");
 	}
 
 	@Ignore

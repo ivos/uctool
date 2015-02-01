@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="$url"
+	xmlns="$url" elementFormDefault="qualified">
+#foreach($data in $datas)	<xs:element name="$data.code" type="${data.code}Type" />
+	<xs:complexType name="${data.code}Type">
+		<xs:annotation>
+			<xs:documentation>$data.name</xs:documentation>
+#foreach($description in $data.descriptions)			<xs:documentation>$description</xs:documentation>
+#end
+		</xs:annotation>
+		<xs:sequence>
+#foreach($attribute in $data.attributes)			<xs:element name="$attribute.code"#if($attribute.optional) minOccurs="0"#end#if($attribute.unbounded) maxOccurs="unbounded"#end#if($attribute.bounded) maxOccurs="$attribute.length"#end#if($attribute.typeAttr) type="$attribute.type"#end>
+				<xs:annotation>
+					<xs:documentation>$attribute.name</xs:documentation>
+#if($attribute.description)					<xs:documentation>$attribute.description</xs:documentation>
+#end
+				</xs:annotation>
+#if($attribute.simpleStringRestricted)				<xs:simpleType>
+					<xs:restriction base="$attribute.type">
+						<xs:maxLength value="$attribute.length" />
+					</xs:restriction>
+				</xs:simpleType>
+#end
+			</xs:element>
+#end
+		</xs:sequence>
+	</xs:complexType>
+#end
+</xs:schema>

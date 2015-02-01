@@ -16,7 +16,7 @@
 			<xs:documentation>
 			This is the master entity.
 			HTML tags.
-		       </xs:documentation>
+		</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="empty" minOccurs="0">
@@ -32,7 +32,7 @@
 			<xs:element name="withAll" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>With all</xs:documentation>
-					<xs:documentation>Attribute with all options set up.</xs:documentation>
+					<xs:documentation>Attribute with all options set up. HTML tags. Reference to another structure in an attribute description. And plain text.</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:string">

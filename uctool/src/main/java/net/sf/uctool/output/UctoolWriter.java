@@ -1,7 +1,6 @@
 package net.sf.uctool.output;
 
 import java.io.File;
-import java.util.Properties;
 
 import net.sf.uctool.exception.WriterException;
 import net.sf.uctool.execute.ExecutionContext;
@@ -15,13 +14,9 @@ import net.sf.uctool.output.uc.UseCaseOut;
 import net.sf.uctool.output.uc.UseCaseWriter;
 
 import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.VelocityEngine;
-import org.apache.velocity.runtime.RuntimeConstants;
-import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
-public class UctoolWriter implements RuntimeConstants {
+public class UctoolWriter {
 
-	private VelocityEngine ve;
 	private TemplateWriter templateWriter;
 	private ActorWriter actorWriter;
 	private SinglePageWriter singlePageWriter;
@@ -37,15 +32,6 @@ public class UctoolWriter implements RuntimeConstants {
 	}
 
 	public void init(File baseDir, ExecutionContext executionContext) {
-		Properties p = new Properties();
-		p.setProperty(RESOURCE_LOADER, "cp");
-		p.setProperty("cp.resource.loader.class",
-				ClasspathResourceLoader.class.getName());
-		p.setProperty(INPUT_ENCODING, encoding);
-		p.setProperty(OUTPUT_ENCODING, encoding);
-		ve = new VelocityEngine();
-		ve.init(p);
-
 		new File(baseDir, "actor").mkdirs();
 		new File(baseDir, "uc").mkdirs();
 		new File(baseDir, "data").mkdirs();
@@ -55,7 +41,7 @@ public class UctoolWriter implements RuntimeConstants {
 
 		this.executionContext = executionContext;
 
-		templateWriter = new TemplateWriter(ve, baseDir, encoding);
+		templateWriter = new TemplateWriter(baseDir, encoding, ".html");
 		actorWriter = new ActorWriter(templateWriter);
 		useCaseWriter = new UseCaseWriter(templateWriter);
 		dataWriter = new DataWriter(templateWriter);

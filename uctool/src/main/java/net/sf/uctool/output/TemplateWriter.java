@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import net.sf.uctool.exception.WriterException;
 
@@ -17,10 +18,12 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.ParseErrorException;
 import org.apache.velocity.exception.ResourceNotFoundException;
+import org.apache.velocity.runtime.RuntimeConstants;
+import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TemplateWriter {
+public class TemplateWriter implements RuntimeConstants {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	private final Map<String, Template> templates = new HashMap<String, Template>();
@@ -28,14 +31,24 @@ public class TemplateWriter {
 	private final VelocityEngine ve;
 	private final File baseDir;
 	private final String encoding;
+	private final String fileExtension;
 
 	private final StopWatch time;
 
-	public TemplateWriter(VelocityEngine ve, File baseDir, String encoding) {
-		this.ve = ve;
+	public TemplateWriter(File baseDir, String encoding, String fileExtension) {
 		this.baseDir = baseDir;
 		this.encoding = encoding;
+		this.fileExtension = fileExtension;
 		time = new StopWatch();
+
+		Properties p = new Properties();
+		p.setProperty(RESOURCE_LOADER, "cp");
+		p.setProperty("cp.resource.loader.class",
+				ClasspathResourceLoader.class.getName());
+		p.setProperty(INPUT_ENCODING, encoding);
+		p.setProperty(OUTPUT_ENCODING, encoding);
+		ve = new VelocityEngine();
+		ve.init(p);
 	}
 
 	public void writeFile(String templateName, String outputFileNameCore,
@@ -48,7 +61,7 @@ public class TemplateWriter {
 	}
 
 	public File getOutputFile(String outputFileNameCore) {
-		File outputFile = new File(baseDir, outputFileNameCore + ".html");
+		File outputFile = new File(baseDir, outputFileNameCore + fileExtension);
 		return outputFile;
 	}
 
