@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.uctool.common.ExecutorBase;
+import net.sf.uctool.exception.ValidationException;
 import net.sf.uctool.execute.Project;
 import net.sf.uctool.output.TemplateWriter;
 import net.sf.uctool.xsd.Attribute;
@@ -26,9 +27,12 @@ public class UctoolXsdExport extends ExecutorBase {
 
 	private final List<DataXsdOut> outputs = new ArrayList<DataXsdOut>();
 
-	public UctoolXsdExport(Project project) {
-		super(project);
-		this.encoding = project.getEncoding();
+	private final String targetNamespaceUrl;
+
+	public UctoolXsdExport(String encoding, String targetNamespaceUrl) {
+		super(new Project(null, null, null, encoding, "en"));
+		this.encoding = encoding;
+		this.targetNamespaceUrl = targetNamespaceUrl;
 	}
 
 	@Override
@@ -36,19 +40,25 @@ public class UctoolXsdExport extends ExecutorBase {
 		return logger;
 	}
 
-	public void execute(File inputPath, File outputDir) {
+	public void execute(File inputPath, File outputFile) {
 		timeAll.start();
 
-		outputDir.mkdirs();
+		File parentDir = outputFile.getParentFile();
+		if (null == parentDir) {
+			throw new ValidationException(
+					"The output file does not have a parent directory: "
+							+ outputFile);
+		}
+		parentDir.mkdirs();
 		List<File> inputFiles = findInputFiles(inputPath);
 		List<Uct> inputs = readInputFiles(inputFiles);
 		validateInputs(inputs);
 		convert();
-		write(outputDir);
+		write(outputFile);
 
 		timeAll.stop();
 		logger.info("Executed UCTool data XSD export into {} in {}.",
-				outputDir, timeAll.toString());
+				outputFile, timeAll.toString());
 	}
 
 	private void convert() {
@@ -61,8 +71,10 @@ public class UctoolXsdExport extends ExecutorBase {
 			}
 			for (Attribute attribute : data.getAttribute()) {
 				AttributeXsdOut ao = new AttributeXsdOut();
-				ao.setCode(attribute.getCode());
-				ao.setName(attribute.getName());
+				String name = attribute.getName();
+				String code = attribute.getCode();
+				ao.setCode((null == code) ? name : code);
+				ao.setName(name);
 				ao.setStatus(attribute.getStatus());
 				ao.setType(convertType(attribute.getType()));
 				ao.setCollection(attribute.isCollection());
@@ -113,17 +125,17 @@ public class UctoolXsdExport extends ExecutorBase {
 		return type + "Type";
 	}
 
-	private void write(File outputDir) {
+	private void write(File outputFile) {
 		logger.debug("Writing XSD file for {} data.", outputs.size());
 		time.start();
 
-		TemplateWriter templateWriter = new TemplateWriter(outputDir, encoding,
-				"");
+		TemplateWriter templateWriter = new TemplateWriter(
+				outputFile.getParentFile(), encoding, "");
 		VelocityContext context = new VelocityContext();
-		context.put("url", "http://example.com/");
+		context.put("url", targetNamespaceUrl);
 		context.put("datas", outputs);
-		templateWriter.writeFile("template/data-xsd-export.vm", "data.xsd",
-				context);
+		templateWriter.writeFile("template/data-xsd-export.vm",
+				outputFile.getName(), context);
 
 		logger.debug("Wrote XSD file @ {}.", time.toString());
 		time.reset();

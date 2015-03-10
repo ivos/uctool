@@ -65,7 +65,9 @@
 		       </description>
 		<attribute name="Empty" code="empty" status="optional" />
 		<attribute name="With code" code="withCode" status="optional" />
-		<attribute name="With all" code="withAll" status="optional" type="string" length="123" description="Attribute with all options set up." />
+		<attribute name="With all" code="withAll" status="optional" type="string" length="123">
+			<description>Attribute with all options set up.</description>
+		</attribute>
 		<attribute name="Display only" code="displayOnly" status="optional" />
 		<attribute name="Optional" code="optional" status="optional" />
 		<attribute name="Mandatory" code="mandatory" status="mandatory" />
@@ -85,14 +87,26 @@
 		<attribute name="Binary without length" code="binaryWithoutLength" status="optional" type="binary" />
 		<attribute name="Reference to other structure" code="referenceToOtherData" status="optional" type="MasterDetail1" />
 		<attribute name="Collection of integers" code="collectionOfIntegers" status="optional" type="integer" collection="true" />
-		<attribute name="Integer with length" code="integerWithLength" status="optional" type="integer" description="Three digits." />
-		<attribute name="Collection of integers with length" code="collectionOfIntsWithLength" status="optional" type="integer" collection="true" length="10" description="Collection of max 10 integers." />
-		<attribute name="Collection of strings with length" code="collectionOfStringsWithLength" status="optional" type="string" collection="true" length="12" description="Collection of max 12 strings." />
+		<attribute name="Integer with length" code="integerWithLength" status="optional" type="integer">
+			<description>Three digits.</description>
+		</attribute>
+		<attribute name="Collection of integers with length" code="collectionOfIntsWithLength" status="optional" type="integer" collection="true" length="10">
+			<description>Collection of max 10 integers.</description>
+		</attribute>
+		<attribute name="Collection of strings with length" code="collectionOfStringsWithLength" status="optional" type="string" collection="true" length="12">
+			<description>Collection of max 12 strings.</description>
+		</attribute>
 		<attribute name="Collection of other structures" code="collectionOfDataStructures" status="optional" type="DetailN" collection="true" />
-		<attribute name="Collection of other structures with length" code="collectionOfDataStructuresWithLength" status="optional" type="DetailN" collection="true" length="5" description="Collection of max 5 instances of DetailN." />
+		<attribute name="Collection of other structures with length" code="collectionOfDataStructuresWithLength" status="optional" type="DetailN" collection="true" length="5">
+			<description>Collection of max 5 instances of DetailN.</description>
+		</attribute>
 		<attribute name="Selected detail N" code="selectedDetailN" status="optional" type="DetailN" />
-		<attribute name="Multiple docs" code="multipleDocs" status="mandatory" description="Attribute with multiple XSD documentation. XSD documentation 2. XSD documentation 3. XSD documentation 4." />
-		<attribute name="Multi-line docs" code="multiLineDocs" status="mandatory" description="Attribute with XSD documentation spanning multiple lines. Next line A2. Next line A3. Next line A4. Another multi-line documentation. Next line B2. Next line B3. Next line B4." />
+		<attribute name="Multiple docs" code="multipleDocs" status="mandatory">
+			<description>Attribute with multiple XSD documentation. XSD documentation 2. XSD documentation 3. XSD documentation 4.</description>
+		</attribute>
+		<attribute name="Multi-line docs" code="multiLineDocs" status="mandatory">
+			<description>Attribute with XSD documentation spanning multiple lines. Next line A2. Next line A3. Next line A4. Another multi-line documentation. Next line B2. Next line B3. Next line B4.</description>
+		</attribute>
 		<attribute name="Integer with type as sub-element" code="integerSubType" status="optional" type="integer" />
 		<attribute name="String with type as sub-element" code="stringSubType" status="optional" type="string" />
 		<attribute name="Date with type as sub-element" code="dateSubType" status="optional" type="date" />

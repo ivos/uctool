@@ -67,6 +67,17 @@
 		<description>First description.</description>
 		<description>Second description.</description>
 		<description>Third description.</description>
+		<description>
+			Description with html elements:
+			<h:ul>
+				<h:li>Frist li.</h:li>
+				<h:li>Second li.</h:li>
+				<h:li>Third li.</h:li>
+			</h:ul>
+			And some
+			<h:strong>bold text</h:strong>
+			after that.
+		</description>
 	</data>
 	<data name="Tree via master" code="TreeViaMaster">
 		<attribute name="Name" code="name" type="string" />

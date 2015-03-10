@@ -129,14 +129,13 @@
 										<versionRange>[1.0.0,)</versionRange>
 										<goals>
 											<goal>use-cases</goal>
-											<goal>extract-resources</goal>
 											<goal>import-xsd</goal>
 											<goal>export-xsd</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
 										<execute>
-											<runOnIncremental>true</runOnIncremental>
+											<runOnIncremental>false</runOnIncremental>
 										</execute>
 									</action>
 								</pluginExecution>
@@ -155,6 +154,18 @@
 					<bundleLanguage>en</bundleLanguage>
 				</configuration>
 				<executions>
+					<execution>
+						<id>import-xsd</id>
+						<goals>
+							<goal>import-xsd</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>export-xsd</id>
+						<goals>
+							<goal>export-xsd</goal>
+						</goals>
+					</execution>
 					<execution>
 						<id>use-cases</id>
 						<goals>

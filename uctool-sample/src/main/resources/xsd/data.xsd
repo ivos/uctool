@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.com/"
+	xmlns="http://example.com/" elementFormDefault="qualified">
+	<xs:complexType name="ForeignAccountNumberType">
+		<xs:annotation>
+			<xs:documentation>Foreign account number</xs:documentation>
+			<xs:documentation>Structure of a foreign account number.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="countryCode" minOccurs="0" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Country code</xs:documentation>
+					<xs:documentation>Code of country.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="number" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>Number</xs:documentation>
+					<xs:documentation>The account number itself.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

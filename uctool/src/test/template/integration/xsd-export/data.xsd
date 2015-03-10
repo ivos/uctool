@@ -19,7 +19,7 @@
 		</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="empty" minOccurs="0">
+			<xs:element name="Empty" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Empty</xs:documentation>
 				</xs:annotation>
@@ -32,7 +32,13 @@
 			<xs:element name="withAll" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>With all</xs:documentation>
-					<xs:documentation>Attribute with all options set up. HTML tags. Reference to another structure in an attribute description. And plain text.</xs:documentation>
+					<xs:documentation>
+				Attribute with all options set up.
+				HTML tags.
+				Reference to
+				another structure
+				in an attribute description. And plain text.
+			</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
@@ -218,6 +224,14 @@
 			<xs:documentation>First description.</xs:documentation>
 			<xs:documentation>Second description.</xs:documentation>
 			<xs:documentation>Third description.</xs:documentation>
+			<xs:documentation>
+			Description with html elements:
+			Frist li.Second li.Third li.
+			
+			And some
+			bold text
+			after that.
+		</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 		</xs:sequence>

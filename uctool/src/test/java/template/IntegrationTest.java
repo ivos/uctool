@@ -7,9 +7,9 @@ import net.sf.seaf.test.util.TemplatingTestBase;
 import net.sf.uctool.execute.Project;
 import net.sf.uctool.execute.UctoolExecutor;
 import net.sf.uctool.xsd.export.UctoolXsdExport;
+import net.sf.uctool.xsd.import_.UctoolXsdImportXsl;
 
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class IntegrationTest extends TemplatingTestBase implements
@@ -26,8 +26,11 @@ public class IntegrationTest extends TemplatingTestBase implements
 		new UctoolExecutor(project).execute(
 				new File("src/test/ucs/integration"), new File(
 						"target/site/out"));
-		new UctoolXsdExport(project).execute(new File("src/test/xsd-export"),
-				new File("target/site/xsd"));
+		new UctoolXsdExport("UTF-8", "http://example.com/").execute(new File(
+				"src/test/xsd-export"), new File("target/site/xsd/data.xsd"));
+		new UctoolXsdImportXsl("UTF-8")
+				.execute(new File("src/test/xsd-import"), new File(
+						"target/site/import"));
 	}
 
 	@Test
@@ -164,18 +167,17 @@ public class IntegrationTest extends TemplatingTestBase implements
 		performTest("integration/xsd-export/data.xsd", "site/xsd/data.xsd");
 	}
 
-	@Ignore
 	@Test
 	public void xsdImportData() throws IOException {
-		performTest("xsd-import/data.xml", "site/import/data.xml",
+		performTest("integration/xsd-import/data.xml", "site/import/data.xml",
 				"/xsd/[0-9\\.\\-A-Z]*/uct.xsd", "/xsd/VERSION/uct.xsd");
 	}
 
-	@Ignore
 	@Test
 	public void xsdImportImported() throws IOException {
-		performTest("xsd-import/imported.xml", "site/import/imported.xml",
-				"/xsd/[0-9\\.\\-A-Z]*/uct.xsd", "/xsd/VERSION/uct.xsd");
+		performTest("integration/xsd-import/imported.xml",
+				"site/import/imported.xml", "/xsd/[0-9\\.\\-A-Z]*/uct.xsd",
+				"/xsd/VERSION/uct.xsd");
 	}
 
 }

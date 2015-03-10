@@ -41,10 +41,14 @@ public abstract class ExecutorBase {
 	}
 
 	protected List<File> findInputFiles(File inputPath) {
+		return findInputFiles(inputPath, "*.xml");
+	}
+
+	protected List<File> findInputFiles(File inputPath, String includes) {
 		getLogger().debug("Finding input files.");
 		time.start();
 		InputFileFinder inputFileFinder = new InputFileFinder(inputPath,
-				"*.xml");
+				includes);
 		List<File> inputFiles = inputFileFinder.getInputFiles();
 		int filesCount = inputFiles.size();
 		getLogger().debug("Found {} input file(s) @ {}.", filesCount,

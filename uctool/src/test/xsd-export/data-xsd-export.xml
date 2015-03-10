@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:h="http://www.w3.org/1999/xhtml"
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:h="http://www.w3.org/1999/xhtml"
 	xsi:schemaLocation="
 		http://uctool.sf.net/ ../../main/resources/xsd/uct.xsd
 		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
@@ -10,10 +9,16 @@
 			This is the master entity.
 			<h:li>HTML tags.</h:li>
 		</description>
-		<attribute name="Empty" code="empty" />
+		<attribute name="Empty" />
 		<attribute name="With code" code="withCode" />
 		<attribute name="With all" code="withAll" status="optional" type="string" length="123">
-			<description>Attribute with all options set up. <h:li>HTML tags.</h:li> Reference to <data-ref code="MasterDetail1">another structure</data-ref> in an attribute description. And plain text.</description>
+			<description>
+				Attribute with all options set up.
+				<h:li>HTML tags.</h:li>
+				Reference to
+				<data-ref code="MasterDetail1">another structure</data-ref>
+				in an attribute description. And plain text.
+			</description>
 		</attribute>
 		<attribute name="Display only" code="displayOnly" status="display-only" />
 		<attribute name="Optional" code="optional" status="optional" />
@@ -33,17 +38,16 @@
 		<attribute name="String without length" code="stringWithoutLength" type="string" />
 		<attribute name="Binary without length" code="binaryWithoutLength" type="binary" />
 		<attribute name="Reference to other structure" code="referenceToOtherData" type="MasterDetail1" />
-		<attribute name="Collection of integers" code="collectionOfIntegers" type="integer"
-			collection="true" />
+		<attribute name="Collection of integers" code="collectionOfIntegers" type="integer" collection="true" />
 		<attribute name="Integer with length" code="integerWithLength" type="integer" length="3">
 			<description>Three digits.</description>
 		</attribute>
-		<attribute name="Collection of integers with length" code="collectionOfIntsWithLength"
-			type="integer" collection="true" length="10">
+		<attribute name="Collection of integers with length" code="collectionOfIntsWithLength" type="integer"
+			collection="true" length="10">
 			<description>Collection of max 10 integers.</description>
 		</attribute>
-		<attribute name="Collection of strings with length" code="collectionOfStringsWithLength"
-			type="string" collection="true" length="12">
+		<attribute name="Collection of strings with length" code="collectionOfStringsWithLength" type="string"
+			collection="true" length="12">
 			<description>Collection of max 12 strings.</description>
 		</attribute>
 		<attribute name="Collection of other structures" code="collectionOfDataStructures" type="DetailN"
@@ -71,5 +75,16 @@
 		<description>First description.</description>
 		<description>Second description.</description>
 		<description>Third description.</description>
+		<description>
+			Description with html elements:
+			<h:ul>
+				<h:li>Frist li.</h:li>
+				<h:li>Second li.</h:li>
+				<h:li>Third li.</h:li>
+			</h:ul>
+			And some
+			<h:strong>bold text</h:strong>
+			after that.
+		</description>
 	</data>
 </uct>

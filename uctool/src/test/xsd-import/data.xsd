@@ -219,7 +219,7 @@
 					<xs:restriction base="xs:date" />
 				</xs:simpleType>
 			</xs:element>
-			<xs:element name="withMaxOccursOne" maxOccurs=" 1 " type="xs:string" />
+			<xs:element name="withMaxOccursOne" maxOccurs="1" type="xs:string" />
 			<xs:element name="xsanySimpleType" type="xs:anySimpleType" />
 			<xs:element name="xsanyURI" type="xs:anyURI" />
 			<xs:element name="xsbyte" type="xs:byte" />
