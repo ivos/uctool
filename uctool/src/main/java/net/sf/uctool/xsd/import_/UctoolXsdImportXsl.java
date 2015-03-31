@@ -39,10 +39,9 @@ public class UctoolXsdImportXsl extends ExecutorBase {
 
 	private Transformer getTransformer() {
 		try {
-			InputStream is = ClassLoader
-					.getSystemResourceAsStream("template/ImportXsd.xsl");
+			InputStream is = getClass().getClassLoader().getResourceAsStream(
+					"template/ImportXsd.xsl");
 			TransformerFactory factory = new TransformerFactoryImpl();
-			// TransformerFactory factory = TransformerFactory.newInstance();
 			Transformer transformer = factory.newTransformer(new StreamSource(
 					is));
 			return transformer;

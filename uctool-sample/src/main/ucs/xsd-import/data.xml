@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uct xmlns="http://uctool.sf.net/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xsi:schemaLocation="
+		http://uctool.sf.net/ http://uctool.sf.net/xsd/4.0.0-SNAPSHOT/uct.xsd
+		http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+	<data name="Foreign account number" code="ForeignAccountNumber">
+		<description>Structure of a foreign account number.</description>
+		<attribute name="Country code" code="countryCode" status="optional" type="string">
+			<description>Code of country.</description>
+		</attribute>
+		<attribute name="Number" code="number" status="mandatory" type="integer">
+			<description>The account number itself.</description>
+		</attribute>
+	</data>
+</uct>
